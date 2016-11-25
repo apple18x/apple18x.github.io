@@ -27,8 +27,8 @@ source
         |- blogVideo
         |_ bl">
 <meta property="og:image" content="http://www.xinxiaoyang/2016/11/25/hexo-image-bug/image-1.png">
-<meta property="og:image" content="http://www.xinxiaoyang/2016/11/25/hexo-image-bug/image-1.png">
-<meta property="og:updated_time" content="2016-11-25T09:32:30.000Z">
+<meta property="og:image" content="http://www.xinxiaoyang/2016/11/25/hexo-image-bug/image-2.png">
+<meta property="og:updated_time" content="2016-11-25T09:57:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 图片插入">
 <meta name="twitter:description" content="作为小白，历经摸索将图片资源放在本地 source/ 文件夹后，发现本地服务器浏览时图片正常显示，但部署到 github 上就会找不到图片。
@@ -215,7 +215,7 @@ source
 </code></pre><p>在上述语法下，插入图片的方法：</p>
 <pre><code>{% asset_img image.png This is an example image %}
 </code></pre><p>查看页面，发现图片已经可以正常显示了，图片的路径和实际存放目录是一致的。</p>
-<img src="/2016/11/25/hexo-image-bug/image-1.png" alt="This is an example image" title="This is an example image">
+<img src="/2016/11/25/hexo-image-bug/image-2.png" alt="This is an example image" title="This is an example image">
 <p>如果想使用 markdown 语法插入相对路径的图片，可以利用插件。设置 <code>post_asset_folder:true</code> 后，在根目录下执行：</p>
 <pre><code>npm install https://github.com/CodeFalling/hexo-asset-image --save
 </code></pre><p>确保在 source/_posts 下创建和 markdown 文件同名的目录，里面存放需要的图片，然后在 markdown 中插入图片：</p>
