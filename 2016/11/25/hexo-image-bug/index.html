@@ -9,34 +9,35 @@
   <title>hexo 图片插入 | 昕小阳的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="作为小白，历经摸索将图片资源放在本地 source/ 文件夹后，发现本地服务器浏览时图片正常显示，但部署到 github 上就会找不到图片。
-究其原因，是图片路径出现问题。开始时我在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
+究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
 source
     |- _post
     |_ asset
         |- blogVideo
-        |_ blo">
+        |_ bl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo 图片插入">
 <meta property="og:url" content="http://apple18x.github.io/2016/11/25/hexo-image-bug/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="作为小白，历经摸索将图片资源放在本地 source/ 文件夹后，发现本地服务器浏览时图片正常显示，但部署到 github 上就会找不到图片。
-究其原因，是图片路径出现问题。开始时我在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
+究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
 source
     |- _post
     |_ asset
         |- blogVideo
-        |_ blo">
+        |_ bl">
 <meta property="og:image" content="http://apple18x.github.io/2016/11/25/hexo-image-bug/image-1.png">
-<meta property="og:updated_time" content="2016-11-25T09:21:50.000Z">
+<meta property="og:image" content="http://apple18x.github.io/2016/11/25/hexo-image-bug/image-1.png">
+<meta property="og:updated_time" content="2016-11-25T09:32:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 图片插入">
 <meta name="twitter:description" content="作为小白，历经摸索将图片资源放在本地 source/ 文件夹后，发现本地服务器浏览时图片正常显示，但部署到 github 上就会找不到图片。
-究其原因，是图片路径出现问题。开始时我在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
+究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
 source
     |- _post
     |_ asset
         |- blogVideo
-        |_ blo">
+        |_ bl">
 <meta name="twitter:image" content="http://apple18x.github.io/2016/11/25/hexo-image-bug/image-1.png">
   
     <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
@@ -175,7 +176,7 @@ source
     <div class="article-entry" itemprop="articleBody">
       
         <p>作为小白，历经摸索将图片资源放在本地 source/ 文件夹后，发现本地服务器浏览时图片正常显示，但部署到 github 上就会找不到图片。</p>
-<p>究其原因，是图片路径出现问题。开始时我在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：</p>
+<p>究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：</p>
 <pre><code>source
     |- _post
     |_ asset
@@ -213,13 +214,15 @@ source
 {% asset_link slug [title] %}
 </code></pre><p>在上述语法下，插入图片的方法：</p>
 <pre><code>{% asset_img image.png This is an example image %}
-</code></pre><p>如果想使用 markdown 语法插入相对路径的图片，可以利用插件。将 <code>post_asset_folder</code> 设置为 <code>true</code> 后，在根目录下执行：</p>
+</code></pre><p>查看页面，发现图片已经可以正常显示了，图片的路径和实际存放目录是一致的。</p>
+<img src="/2016/11/25/hexo-image-bug/image-1.png" alt="This is an example image" title="This is an example image">
+<p>如果想使用 markdown 语法插入相对路径的图片，可以利用插件。设置 <code>post_asset_folder:true</code> 后，在根目录下执行：</p>
 <pre><code>npm install https://github.com/CodeFalling/hexo-asset-image --save
 </code></pre><p>确保在 source/_posts 下创建和 markdown 文件同名的目录，里面存放需要的图片，然后在 markdown 中插入图片：</p>
 <pre><code>! [hexo image] (hexo/image.png)
 </code></pre><p>生成的页面中图片引用路径</p>
 <pre><code>&lt;img src=&quot;/2016/11/25/hexo/image.png&quot; alt=&quot;hexo image&quot;&gt;
-</code></pre><p>至此，用 markdown 语法完美实现插入本地图片。</p>
+</code></pre><p>至此，用 markdown 完美实现本地图片插入。</p>
 <p>参考文档：<br><a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/asset-folders.html</a></p>
 
       

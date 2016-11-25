@@ -42,7 +42,7 @@ npm install
 <meta property="og:image" content="http://apple18x.github.io/2016/11/23/hexo/hexo-1.png">
 <meta property="og:image" content="http://apple18x.github.io/2016/11/23/hexo/hexo-2.png">
 <meta property="og:image" content="http://apple18x.github.io/2016/11/23/hexo/hexo-3.png">
-<meta property="og:updated_time" content="2016-11-25T08:31:29.000Z">
+<meta property="og:updated_time" content="2016-11-25T09:31:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo + github 搭建个人主页">
 <meta name="twitter:description" content="安装 hexo全局安装 hexosudo npm install -g hexo
@@ -195,8 +195,8 @@ npm install
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h1><h4 id="全局安装-hexo"><a href="#全局安装-hexo" class="headerlink" title="全局安装 hexo"></a>全局安装 hexo</h4><pre><code>sudo npm install -g hexo
-</code></pre><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>新建文件夹，进行初始化，并在本地安装必要组件。  </p>
+        <h1 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h1><h3 id="全局安装-hexo"><a href="#全局安装-hexo" class="headerlink" title="全局安装 hexo"></a>全局安装 hexo</h3><pre><code>sudo npm install -g hexo
+</code></pre><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>新建文件夹，进行初始化，并在本地安装必要组件。  </p>
 <pre><code>hexo init
 npm install
 </code></pre><p>生成如下目录：</p>
@@ -218,9 +218,9 @@ npm install
 <li>themes 主题文件夹。</li>
 </ul>
 <a id="more"></a>
-<h4 id="生成页面"><a href="#生成页面" class="headerlink" title="生成页面"></a>生成页面</h4><pre><code>hexo genearate
+<h3 id="生成页面"><a href="#生成页面" class="headerlink" title="生成页面"></a>生成页面</h3><pre><code>hexo genearate
 </code></pre><p>这个命令将 md 格式的内容生成静态网页，可简写为 hexo g。</p>
-<h4 id="启动本地服务，预览页面"><a href="#启动本地服务，预览页面" class="headerlink" title="启动本地服务，预览页面"></a>启动本地服务，预览页面</h4><pre><code>hexo server
+<h3 id="启动本地服务，预览页面"><a href="#启动本地服务，预览页面" class="headerlink" title="启动本地服务，预览页面"></a>启动本地服务，预览页面</h3><pre><code>hexo server
 </code></pre><p>打开 localhost: 4000，页面已经可以访问。<br><img src="/2016/11/23/hexo/hexo-screenshot.png" alt="This is an example image" title="This is an example image"></p>
 <h1 id="配置-Github"><a href="#配置-Github" class="headerlink" title="配置 Github"></a>配置 Github</h1><p>进入 github，建立与用户名对应的仓库，仓库名必须为 <strong>username.github.io</strong>。这是由于 github 上的个人账户必须使用唯一且特定的库来创建 Github Pages 托管内容，master 分支的内容将会被构建和发布在 Github Pages 上。</p>
 <p>修改 /_config.yml 文件建立关联：</p>
