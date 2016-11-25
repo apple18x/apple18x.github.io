@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://apple18x.github.io">
+  <link rel="dns-prefetch" href="http://www.xinxiaoyang">
   <title>hexo 图片插入 | 昕小阳的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="作为小白，历经摸索将图片资源放在本地 source/ 文件夹后，发现本地服务器浏览时图片正常显示，但部署到 github 上就会找不到图片。
@@ -17,7 +17,7 @@ source
         |_ bl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo 图片插入">
-<meta property="og:url" content="http://apple18x.github.io/2016/11/25/hexo-image-bug/index.html">
+<meta property="og:url" content="http://www.xinxiaoyang/2016/11/25/hexo-image-bug/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="作为小白，历经摸索将图片资源放在本地 source/ 文件夹后，发现本地服务器浏览时图片正常显示，但部署到 github 上就会找不到图片。
 究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
@@ -26,8 +26,8 @@ source
     |_ asset
         |- blogVideo
         |_ bl">
-<meta property="og:image" content="http://apple18x.github.io/2016/11/25/hexo-image-bug/image-1.png">
-<meta property="og:image" content="http://apple18x.github.io/2016/11/25/hexo-image-bug/image-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/2016/11/25/hexo-image-bug/image-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/2016/11/25/hexo-image-bug/image-1.png">
 <meta property="og:updated_time" content="2016-11-25T09:32:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 图片插入">
@@ -38,7 +38,7 @@ source
     |_ asset
         |- blogVideo
         |_ bl">
-<meta name="twitter:image" content="http://apple18x.github.io/2016/11/25/hexo-image-bug/image-1.png">
+<meta name="twitter:image" content="http://www.xinxiaoyang/2016/11/25/hexo-image-bug/image-1.png">
   
     <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
   
@@ -186,7 +186,7 @@ source
 </code></pre><p>使用 markdown 引用图片的方式为  </p>
 <pre><code>![hexo image](../asset/blogImg/hexo-1.png)
 </code></pre><p>查看结构，发现部署以后，图片会自动添加日期相关的文件结构目录：<br><a id="more"></a><br><img src="/2016/11/25/hexo-image-bug/image-1.png" alt="This is an example image" title="This is an example image"></p>
-<p>而实际存放的目录是 <a href="http://apple18x.github.io/asset/blogImg/hexo-1.png">http://apple18x.github.io/asset/blogImg/hexo-1.png</a> ，导致图片资源访问不到。</p>
+<p>而实际存放的目录是 <a href="http://apple18x.github.io/asset/blogImg/hexo-1.png" target="_blank" rel="external">http://apple18x.github.io/asset/blogImg/hexo-1.png</a> ，导致图片资源访问不到。</p>
 <p>为了解决这个问题查了很多资料，才知道原来除了本地存放图片，还可以使用图床。</p>
 <h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p>所谓图床，就是储存图片的服务器，支持创建图片的对外链接地址便于引用。使用时只要引入图片的绝对地址就可以，方便简单。</p>
 <p>图床分为免费和收费的。无论是国内还是国外的免费图床都存在隐患，毕竟小本买卖，一旦停止服务，图片自然也就变成了小红叉。收费图床稳定一些，不管从服务还是稳定性上，都更推荐收费图床。</p>
