@@ -134,6 +134,68 @@
       <div class="body-wrap">
         
   
+    <article id="post-hexo-image-bug" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/25/hexo-image-bug/">hexo 图片插入</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作为小白，历经摸索将图片资源放在本地 source/ 文件夹后，发现本地服务器浏览时图片正常显示，但部署到 github 上就会找不到图片。</p>
+<p>究其原因，是图片路径出现问题。开始时我在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：</p>
+<pre><code>source
+    |- _post
+    |_ asset
+        |- blogVideo
+        |_ blogImg
+            |_ hexo-1.png
+</code></pre><p>使用 markdown 引用图片的方式为  </p>
+<pre><code>![hexo image](../asset/blogImg/hexo-1.png)
+</code></pre><p>查看结构，发现部署以后，图片会自动添加日期相关的文件结构目录：<br>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/11/25/hexo-image-bug/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/25/hexo-image-bug/" class="archive-article-date">
+  	<time datetime="2016-11-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-25</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
