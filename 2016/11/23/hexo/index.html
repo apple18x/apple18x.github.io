@@ -39,10 +39,10 @@ npm install
 |   ├── _drafts
 |">
 <meta property="og:image" content="http://apple18x.github.io/../assets/blogImg/hexo-screenshot.png">
-<meta property="og:image" content="http://apple18x.github.io/../assets/blogImg/hexo-1.png">
+<meta property="og:image" content="http://apple18x.github.io/2016/11/23/hexo/hexo-1.png">
 <meta property="og:image" content="http://apple18x.github.io/../assets/blogImg/hexo-2.png">
 <meta property="og:image" content="http://apple18x.github.io/../assets/blogImg/hexo-3.png">
-<meta property="og:updated_time" content="2016-11-23T13:59:05.000Z">
+<meta property="og:updated_time" content="2016-11-25T08:27:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo + github 搭建个人主页">
 <meta name="twitter:description" content="安装 hexo全局安装 hexosudo npm install -g hexo
@@ -213,7 +213,7 @@ npm install
 <li>_config.yml 站点配置文件，全局配置都在这个文件中。</li>
 <li>node_modules 依赖模块。</li>
 <li>package.json 应用数据。hexo 相关信息及依赖的一些组件。</li>
-<li>scaffolds 模版文件。当创建一篇新的文章时，hexo会依据模版文件进行创建。</li>
+<li>scaffolds 模版文件。当创建一篇新的文章时，hexo 会依据模版文件进行创建。</li>
 <li>source 资源文件夹。包括发表在站点的文章、图片和文件等等。</li>
 <li>themes 主题文件夹。</li>
 </ul>
@@ -223,14 +223,14 @@ npm install
 <h4 id="启动本地服务，预览页面"><a href="#启动本地服务，预览页面" class="headerlink" title="启动本地服务，预览页面"></a>启动本地服务，预览页面</h4><pre><code>hexo server
 </code></pre><p>打开 localhost: 4000，页面已经可以访问。<br><img src="../assets/blogImg/hexo-screenshot.png" alt="screenshot-hexodemo"></p>
 <h1 id="配置-Github"><a href="#配置-Github" class="headerlink" title="配置 Github"></a>配置 Github</h1><p>进入 github，建立与用户名对应的仓库，仓库名必须为 <strong>username.github.io</strong>。这是由于 github 上的个人账户必须使用唯一且特定的库来创建 Github Pages 托管内容，master 分支的内容将会被构建和发布在 Github Pages 上。</p>
-<p>修改 _config.yml 文件建立关联：</p>
+<p>修改 /_config.yml 文件建立关联：</p>
 <pre><code>deploy:
     type: git
     repository: https://github.com/username/username.github.io.git
     branch: master
 </code></pre><p>把上述 repository 中的 username 替换成自己的 github 用户名。</p>
 <p>执行 <code>hexo deploy</code> 将页面部署到 github 上，访问 username.github.io 可以查看页面。</p>
-<h1 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h1><p>我们已经将 hexo 搭建的页面放在 github 上并且可以访问了，下面进一步将域名和 github 进行绑定。<br><img src="../assets/blogImg/hexo-1.png" alt="domain name"></p>
+<h1 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h1><p>我们已经将 hexo 搭建的页面放在 github 上并且可以访问了，下面进一步将域名和 github 进行绑定。<br><!--![domain name](../assets/blogImg/hexo-1.png)--><br><img src="/2016/11/23/hexo/hexo-1.png" alt="This is an example image" title="This is an example image"></p>
 <p>这里的记录值 192.30.252.153 是 Github Pages 服务器指定的 IP 地址。</p>
 <p>进入 github 的 username.github.io 库，新建文件 CNAME，写入内容为域名。<br><img src="../assets/blogImg/hexo-2.png" alt="create CNAME"><br><img src="../assets/blogImg/hexo-3.png" alt="CNAME content"></p>
 <h1 id="页面部署"><a href="#页面部署" class="headerlink" title="页面部署"></a>页面部署</h1><p>每次部署的步骤，可以按以下三步来进行。</p>
