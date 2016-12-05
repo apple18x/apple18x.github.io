@@ -6,17 +6,39 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.xinxiaoyang">
-  <title>昕小阳的博客</title>
+  <title>hexo 图片插入 | 昕小阳的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="xinxiaoyang’s blog | xinxiaoyang | 昕小阳的博客 | 昕小阳">
-<meta property="og:type" content="website">
-<meta property="og:title" content="昕小阳的博客">
-<meta property="og:url" content="http://www.xinxiaoyang/index.html">
+  <meta name="description" content="图片资源放在本地 source/ 文件夹后，本地服务器浏览时图片正常显示，但部署到 github 上会找不到图片。
+究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
+source
+    |- _post
+    |_ asset
+        |- blogVideo
+        |_ blogImg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 图片插入">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2016-11-25-hexo-image-bug/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="xinxiaoyang’s blog | xinxiaoyang | 昕小阳的博客 | 昕小阳">
+<meta property="og:description" content="图片资源放在本地 source/ 文件夹后，本地服务器浏览时图片正常显示，但部署到 github 上会找不到图片。
+究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
+source
+    |- _post
+    |_ asset
+        |- blogVideo
+        |_ blogImg">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2016-11-25-hexo-image-bug/image-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2016-11-25-hexo-image-bug/image-2.png">
+<meta property="og:updated_time" content="2016-12-05T14:13:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="昕小阳的博客">
-<meta name="twitter:description" content="xinxiaoyang’s blog | xinxiaoyang | 昕小阳的博客 | 昕小阳">
+<meta name="twitter:title" content="hexo 图片插入">
+<meta name="twitter:description" content="图片资源放在本地 source/ 文件夹后，本地服务器浏览时图片正常显示，但部署到 github 上会找不到图片。
+究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：
+source
+    |- _post
+    |_ asset
+        |- blogVideo
+        |_ blogImg">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2016-11-25-hexo-image-bug/image-1.png">
   
     <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
   
@@ -135,9 +157,7 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-essay" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-hexo-image-bug" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -146,108 +166,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/essay/2016-12-03-essay/">随笔测试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是一篇随笔哦随笔哦随笔哦</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/essay/2016-12-03-essay/" class="archive-article-date">
-  	<time datetime="2016-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-03</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/essay/">随笔</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-essay2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/essay/2016-12-03-essay2/">随笔测试2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>随笔2</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/essay/2016-12-03-essay2/" class="archive-article-date">
-  	<time datetime="2016-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-03</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/essay/">随笔</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo-image-bug" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/programming/2016-11-25-hexo-image-bug/">hexo 图片插入</a>
+    <h1 class="article-title" itemprop="name">
+      hexo 图片插入
     </h1>
   
 
@@ -265,10 +185,45 @@
             |_ hexo-1.png
 </code></pre><p>使用 markdown 引用图片的方式为  </p>
 <pre><code>![hexo image](../asset/blogImg/hexo-1.png)
-</code></pre><p>查看结构，发现部署以后，图片会自动添加日期相关的文件结构目录：<br>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/programming/2016-11-25-hexo-image-bug/#more">more >></a>
-        </p>
+</code></pre><p>查看结构，发现部署以后，图片会自动添加日期相关的文件结构目录：<br><a id="more"></a><br><img src="/programming/2016-11-25-hexo-image-bug/image-1.png" alt="This is an example image" title="This is an example image"></p>
+<p>而实际存放的目录是 <a href="http://apple18x.github.io/asset/blogImg/hexo-1.png" target="_blank" rel="external">http://apple18x.github.io/asset/blogImg/hexo-1.png</a> ，导致图片资源访问不到。</p>
+<p>为了解决这个问题查了很多资料，才知道原来除了本地存放图片，还可以使用图床。</p>
+<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p>所谓图床，就是储存图片的服务器，支持创建图片的对外链接地址便于引用。使用时只要引入图片的绝对地址就可以，方便简单。</p>
+<p>图床分为免费和收费的。无论是国内还是国外的免费图床都存在隐患，毕竟小本买卖，一旦停止服务，图片自然也就变成了小红叉。收费图床稳定一些，不管从服务还是稳定性上，都更推荐收费图床。</p>
+<p>目前大家推荐比较多的国内图床：  </p>
+<ul>
+<li><p>七牛云储存<br>新注册用户可免费使用 10G 存储空间。</p>
+</li>
+<li><p>极简图床<br>其实也是依赖七牛云储存账号的。</p>
+</li>
+</ul>
+<h3 id="本地图片"><a href="#本地图片" class="headerlink" title="本地图片"></a>本地图片</h3><p>在本地存放图片的方法经过修改以后也可以完美使用。重点在于 _config.yml 文件中设置 <code>post_asset_folder: true</code>，开启资源文件夹功能，该功能支持用户通过相对路径标签引用资源。</p>
+<p>下面我们来看会发生什么。执行 <code>hexo new [layout] &lt;title&gt;</code> 创建一篇新的文章，会发现 source/_posts 下自动生成了一个和 md 文件同名的目录（也可以自己手动创建），这就是用于存放与文章有关的图片文件夹。</p>
+<p>例如，我们想写一篇名为 hexo.md 的文章，执行 <code>hexo new &quot;hexo&quot;</code>，那么 _post 文件夹下的结构将是：</p>
+<pre><code>_posts
+    |- hexo.md
+    |_ hexo
+</code></pre><p>将相关的图片放入 hexo 文件夹</p>
+<pre><code>_posts
+    |- hexo.md
+    |_ hexo
+        |_ image.png
+</code></pre><p>需要注意的是，使用该种方式在 markdown 文件中引用图片将<strong>不再</strong>使用 markdown 语法，而是使用标签插件引用相对路径，否则可能造成图片和其他资源显示不正确。引用语法如下：</p>
+<pre><code>{% asset_path slug %}
+{% asset_img slug [title] %}
+{% asset_link slug [title] %}
+</code></pre><p>在上述语法下，插入图片的方法：</p>
+<pre><code>{% asset_img image.png This is an example image %}
+</code></pre><p>查看页面，发现图片已经可以正常显示了，图片的路径和实际存放目录是一致的。</p>
+<img src="/programming/2016-11-25-hexo-image-bug/image-2.png" alt="This is an example image" title="This is an example image">
+<p>如果想使用 markdown 语法插入相对路径的图片，可以利用插件。设置 <code>post_asset_folder:true</code> 后，在根目录下执行：</p>
+<pre><code>npm install https://github.com/CodeFalling/hexo-asset-image --save
+</code></pre><p>确保在 source/_posts 下创建和 markdown 文件同名的目录，里面存放需要的图片，然后在 markdown 中插入图片：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">! [hexo image] (hexo/image.png)</div></pre></td></tr></table></figure></p>
+<p>生成的页面中图片引用路径</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/2016/11/25/hexo/image.png"</span> <span class="attr">alt</span>=<span class="string">"hexo image"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>至此，用 markdown 完美实现本地图片插入。</p>
+<p>参考文档：<br><a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/asset-folders.html</a></p>
+
       
     </div>
     <div class="article-info article-info-index">
@@ -294,83 +249,46 @@
   </div>
 </article>
 
-
-
-
-
-
-
-
-
-
   
-    <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/essay/2016-12-03-essay2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
         
+          随笔测试2
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/programming/2016-11-23-hexo/">hexo + github 搭建个人主页</a>
-    </h1>
   
+    <a href="/programming/2016-11-23-hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo + github 搭建个人主页</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h1><h3 id="全局安装-hexo"><a href="#全局安装-hexo" class="headerlink" title="全局安装 hexo"></a>全局安装 hexo</h3><pre><code>sudo npm install -g hexo
-</code></pre><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>新建文件夹，进行初始化，并在本地安装必要组件。  </p>
-<pre><code>hexo init
-npm install
-</code></pre><p>生成如下目录：</p>
-<pre><code>.
-├── _config.yml
-├── node_modules/
-├── package.json
-├── scaffolds/
-├── source/
-|   ├── _drafts
-|   └── _posts
-└── themes/
-</code></pre><ul>
-<li>_config.yml 站点配置文件，全局配置都在这个文件中。</li>
-<li>node_modules 依赖模块。</li>
-<li>package.json 应用数据。hexo 相关信息及依赖的一些组件。</li>
-<li>scaffolds 模版文件。当创建一篇新的文章时，hexo 会依据模版文件进行创建。</li>
-<li>source 资源文件夹。包括发表在站点的文章、图片和文件等等。</li>
-<li>themes 主题文件夹。</li>
-</ul>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/programming/2016-11-23-hexo/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/programming/2016-11-23-hexo/" class="archive-article-date">
-  	<time datetime="2016-11-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-23</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/programming/">技术</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
@@ -378,11 +296,6 @@ npm install
 
 
 
-
-
-
-  
-  
 
 
       </div>
@@ -404,8 +317,8 @@ npm install
 		fancybox: true,
 		mathjax: false,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
