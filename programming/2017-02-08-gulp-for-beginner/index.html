@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://www.xinxiaoyang">
+  <title>hexo 入门 | 昕小阳的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="年后，前端林宥嘉走了，一个满口广普的93年小孩儿。有点伤感，曾经在下班之后聊过几次，通常都是他教我写代码，帮我找bug。有几个瞬间，我突然有了无数动力学前端，因为想变得像他一样厉害。同样刚刚毕业，这是我心里学霸的模样，可又是个很有意思的人。
+最近因为项目重新翻出了gulp，发现好久不用又忘记了。总是这样，学了忘忘了学，脑容量让人堪忧。
+之前从“林宥嘉”的主页里看到一篇很好的用于gulp入门的翻译，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 入门">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-02-08-gulp-for-beginner/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="年后，前端林宥嘉走了，一个满口广普的93年小孩儿。有点伤感，曾经在下班之后聊过几次，通常都是他教我写代码，帮我找bug。有几个瞬间，我突然有了无数动力学前端，因为想变得像他一样厉害。同样刚刚毕业，这是我心里学霸的模样，可又是个很有意思的人。
+最近因为项目重新翻出了gulp，发现好久不用又忘记了。总是这样，学了忘忘了学，脑容量让人堪忧。
+之前从“林宥嘉”的主页里看到一篇很好的用于gulp入门的翻译，">
+<meta property="og:image" content="http://www.xinxiaoyang/gulp-forbeginner.gif">
+<meta property="og:updated_time" content="2017-02-08T14:00:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo 入门">
+<meta name="twitter:description" content="年后，前端林宥嘉走了，一个满口广普的93年小孩儿。有点伤感，曾经在下班之后聊过几次，通常都是他教我写代码，帮我找bug。有几个瞬间，我突然有了无数动力学前端，因为想变得像他一样厉害。同样刚刚毕业，这是我心里学霸的模样，可又是个很有意思的人。
+最近因为项目重新翻出了gulp，发现好久不用又忘记了。总是这样，学了忘忘了学，脑容量让人堪忧。
+之前从“林宥嘉”的主页里看到一篇很好的用于gulp入门的翻译，">
+<meta name="twitter:image" content="http://www.xinxiaoyang/gulp-forbeginner.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">昕小阳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">故事我有，我不喝酒。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/categories/essay">随笔</a></li>
+	        
+				<li><a href="/gallery">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">昕小阳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">昕小阳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">故事我有，我不喝酒。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/essay">随笔</a></li>
+		        
+					<li><a href="/gallery">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-gulp-for-beginner" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo 入门
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>年后，前端林宥嘉走了，一个满口广普的93年小孩儿。有点伤感，曾经在下班之后聊过几次，通常都是他教我写代码，帮我找bug。有几个瞬间，我突然有了无数动力学前端，因为想变得像他一样厉害。同样刚刚毕业，这是我心里学霸的模样，可又是个很有意思的人。</p>
+<p>最近因为项目重新翻出了gulp，发现好久不用又忘记了。总是这样，学了忘忘了学，脑容量让人堪忧。</p>
+<p>之前从“林宥嘉”的主页里看到一篇很好的用于gulp入门的翻译，以下内容完全是用代码重现了整个过程，聊表怀念：<a href="https://www.w3ctrain.com/2015/12/22/gulp-for-beginners/" target="_blank" rel="external">Gulp新手入门教程</a></p>
+<h3 id="安装gulp"><a href="#安装gulp" class="headerlink" title="安装gulp"></a>安装gulp</h3><p>安装gulp之前，先安装node.js，点<a href="http://nodejs.cn" target="_blank" rel="external">这里</a>。然后使用 <code>npm install</code> 命令安装gulp    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install gulp -g</div></pre></td></tr></table></figure>
+<p><code>npm install</code>从字面意义上来看就是安装，安装什么呢？你可以想象远程有个地方存着好多js库，<code>npm install</code>的意义就是从这个库里下载你需要的js代码。而在gulp当中，你需要的js库被称作“插件”或“包”。<br><a id="more"></a><br>只要知道插件的名称，就可以通过<code>npm install</code>下载到本地，如果你不知道插件的名称，可以在<a href="https://www.npmjs.com" target="_blank" rel="external">npmjs</a>里进行查找。例如，你想下载编译scss文件的插件，就可以在终端输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install sass</div></pre></td></tr></table></figure>
+<p>sass就是插件的名称。</p>
+<p>因为<code>npm install</code>安装插件是从国外服务器下载，常常会受到网络限制。阿里就提供了一个npm镜像库，把库从国外同步到了国内，10分钟从npmjs.org同步一次。安装后将命令改为<code>cnpm install</code>即可。  </p>
+<p>被下载的插件被存放在<code>node_modules</code>文件夹对应的模块名文件夹中。引用方式由<code>&lt;script src=&quot;node_modules/gulp&quot;&gt;&lt;/script&gt;</code>变成了在<code>gulpfile.js</code>文件的<code>require</code>，默认路径是<code>node_modules/</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&apos;gulp&apos;);</div></pre></td></tr></table></figure>
+<h3 id="创建gulp项目"><a href="#创建gulp项目" class="headerlink" title="创建gulp项目"></a>创建gulp项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init</div></pre></td></tr></table></figure>
+<p><code>npm init</code> 执行后，创建package.json文件，package.json文件包含项目相关信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;project&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行命令，局部安装依赖包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp --save-dev</div></pre></td></tr></table></figure>
+<p>使用<code>--save-dev</code>会在package.json文件中添加依赖信息。查看package.json文件，会发现devDependencies字段多了一行信息，这就是我们刚刚添加的依赖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;devDependencies&quot;: &#123;</div><div class="line">  &quot;gulp&quot;: &quot;^3.9.1&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>依赖的作用在于，当执行<code>npm install</code>时，会安装devDependencies下的所有插件。这一功能在多人协作开发当中是非常有用的。</p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p>除了<code>node_modules</code>和<code>package.json</code>可以通过命令生成，其他目录结构是需要手动创建的。通常情况下，目录结构如下  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">├── app/</div><div class="line">    ├── css/</div><div class="line">    ├── fonts/</div><div class="line">    ├── images/</div><div class="line">    ├── index.html</div><div class="line">    ├── js/</div><div class="line">|   └── scss/</div><div class="line">├── dist/</div><div class="line">├── gulpfile.js</div><div class="line">├── node_modules/</div><div class="line">└── package.json</div></pre></td></tr></table></figure>
+<p>在这个结构当中，<code>app</code>文件夹为开发目录，源文件都在这个文件夹下。<code>dist</code>文件夹用来存放生产环境的文件。<code>gulpfile.js</code>是最重要的一个文件，它是gulp项目的配置文件，下文讲到的所有代码都写在这个文件中。</p>
+<h3 id="第一个gulp项目"><a href="#第一个gulp项目" class="headerlink" title="第一个gulp项目"></a>第一个gulp项目</h3><p>在创建好的<code>gulpfile.js</code>文件中写入以下内容  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&apos;gulp&apos;);</div><div class="line"></div><div class="line">gulp.task(&apos;hello&apos;, function() &#123;</div><div class="line">  console.log(&apos;Hello World!&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>第一行代码引用了需要的gulp包。<code>gulp.task(&#39;hello&#39;,...)</code>自定义了一个名叫“hello”的任务，任务的内容就是输出<code>Hello World!</code>。</p>
+<p>在命令行中执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gulp hello</div></pre></td></tr></table></figure>
+<p>控制台输出<code>Hello World!</code>，这就是我们写的第一个gulp项目。</p>
+<p>通过使用不同的插件，可以对文件进行操作，比如编译scss文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;task-name&apos;, function () &#123;</div><div class="line">  return gulp.src(&apos;source-files&apos;) // Get source files with gulp.src</div><div class="line">    .pipe(aGulpPlugin()) // Sends it through a gulp plugin</div><div class="line">    .pipe(gulp.dest(&apos;destination&apos;)) // Outputs the file in the destination folder</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="gulp-执行预处理"><a href="#gulp-执行预处理" class="headerlink" title="gulp 执行预处理"></a>gulp 执行预处理</h3><p>首先，安装 gulp-sass 插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp-sass --save-dev</div></pre></td></tr></table></figure>
+<p>gulpfile.js文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var sass = require(&apos;gulp&apos;);</div><div class="line">// 添加 gulp-sass 插件</div><div class="line">var sass = require(&apos;gulp-sass&apos;);</div><div class="line"></div><div class="line">gulp.task(&apos;sass&apos;, function()&#123;</div><div class="line">  return gulp.src(&apos;app/scss/style.scss&apos;) // Get source files</div><div class="line">    .pipe(sass()) // Converts Sass to CSS with gulp-sass</div><div class="line">    .pipe(gulp.dest(&apos;app/css&apos;)) // Outputs the file</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这样，当我们编辑并保存style.scss文件以后，在控制台执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gulp sass</div></pre></td></tr></table></figure>
+<p>就会在app/css目录下生成编译好的style.css文件。</p>
+<p><img src="gulp-forbeginner.gif" alt=""></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/programming/2017-02-08-gulp-for-beginner/" class="archive-article-date">
+  	<time datetime="2017-02-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/programming/">技术</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/essay/2016-12-03-essay/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随笔测试</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 昕小阳
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">故事我有，我不喝酒。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
