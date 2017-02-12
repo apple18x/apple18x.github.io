@@ -19,7 +19,10 @@
 最近因为项目重新翻出了gulp，发现好久不用又忘记了。总是这样，学了忘忘了学，脑容量让人堪忧。
 之前从“林宥嘉”的主页里看到一篇很好的用于gulp入门的翻译，">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-02-08-gulp-for-beginner/gulp-for-beginner.gif">
-<meta property="og:updated_time" content="2017-02-09T12:53:50.000Z">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-02-08-gulp-for-beginner/gulp-for-beginner-2.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-02-08-gulp-for-beginner/gulp-for-beginner-3.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-02-08-gulp-for-beginner/gulp-for-beginner-4.gif">
+<meta property="og:updated_time" content="2017-02-12T07:24:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gulp 入门">
 <meta name="twitter:description" content="年后，前端林宥嘉走了，一个满口广普的93年小孩儿。有点伤感，曾经在下班之后聊过几次，通常都是他教我写代码，帮我找bug。有几个瞬间，我突然有了无数动力学前端，因为想变得像他一样厉害。同样刚刚毕业，这是我心里学霸的模样，可又是个很有意思的人。
@@ -199,6 +202,65 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gulp sass</div></pre></td></tr></table></figure>
 <p>就会在app/css目录下生成编译好的style.css文件。</p>
 <img src="/programming/2017-02-08-gulp-for-beginner/gulp-for-beginner.gif" alt="gulp-for-beginner.gif" title="">
+<h3 id="Node中的通配符"><a href="#Node中的通配符" class="headerlink" title="Node中的通配符"></a>Node中的通配符</h3><p>通配符，用于对文件名和文件路径进行匹配，一种匹配模式可以匹配多个文件。</p>
+<p>常用的几种如下：  </p>
+<ol>
+<li>*.scss：*号匹配当前目录任意文件，所以这里*.scss匹配当前目录下所有scss文件  </li>
+<li>**/*.scss：匹配当前目录及其子目录下的所有scss文件。  </li>
+<li>!not-me.scss：！号移除匹配的文件，这里将移除not-me.scss  </li>
+<li>*.+(scss|sass)：+号后面会跟着圆括号，里面的元素用|分割，匹配多个选项。这里将匹配scss和sass文件。</li>
+</ol>
+<p>如果写了多个scss文件，可以利用通配符实现多个文件同时编译。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;sass&apos;, function() &#123;</div><div class="line">  return gulp.src(&apos;app/scss/**/*.scss&apos;) </div><div class="line">    .pipe(sass())</div><div class="line">    .pipe(gulp.dest(&apos;app/css&apos;))</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这样，<code>app/scss</code>目录及其子目录下的所有scss文件都会编译到<code>app/css</code>目录下。语法如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// Gulp watch syntax  </div><div class="line">gulp.watch(&apos;files-to-watch&apos;, [&apos;tasks&apos;, &apos;to&apos;, &apos;run&apos;]);</div></pre></td></tr></table></figure>
+<h3 id="监听Sass文件"><a href="#监听Sass文件" class="headerlink" title="监听Sass文件"></a>监听Sass文件</h3><p>改造一下上面的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;watch&apos;, function()&#123;</div><div class="line">  gulp.watch(&apos;app/scss/**/*.scss&apos;, [&apos;sass&apos;]);</div><div class="line">  // Other watchers</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>如果我们修改了<code>app/scss</code>文件夹下的scss文件，就会执行名叫’sass’的任务。<br><img src="/programming/2017-02-08-gulp-for-beginner/gulp-for-beginner-2.gif" alt="gulp-for-beginner-2.gif" title=""></p>
+<h3 id="Browser-Sync-自动刷新"><a href="#Browser-Sync-自动刷新" class="headerlink" title="Browser Sync 自动刷新"></a>Browser Sync 自动刷新</h3><p>参考文档：<a href="http://www.browsersync.cn/docs/gulp/" target="_blank" rel="external">Browsersync + Gulp.js 说明文档</a></p>
+<p>在刚刚完成的任务中，我们实现了自动编译scss文件的功能。可是编译之后要刷新浏览器才能看到效果，我想保存一下就自动刷新浏览器，这样开发起来就更方便了。这时我们就用到了 Browser Sync。</p>
+<p>安装插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install browser-sync --save-dev</div></pre></td></tr></table></figure>
+<p>创建 Browser Sync 任务，并设定根目录的位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 静态服务器</div><div class="line">gulp.task(&apos;browserSync&apos;, function() &#123;</div><div class="line">  browserSync(&#123;</div><div class="line">    server: &#123;</div><div class="line">      baseDir: &apos;app&apos;</div><div class="line">    &#125;,</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Browser Sync 需要一个应用场景，对，就是编译sass。我们希望编译scss文件后刷新浏览器，所以在任务完成后我们调用 BrowserSync 的<code>reload()</code>方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// scss编译后的css将注入到浏览器里实现更新</div><div class="line">gulp.task(&apos;sass&apos;, function() &#123;</div><div class="line">  return gulp.src(&apos;app/scss/**/*.scss&apos;)    </div><div class="line">    .pipe(sass())</div><div class="line">    .pipe(gulp.dest(&apos;app/css&apos;))</div><div class="line">    .pipe(browserSync.reload(&#123;</div><div class="line">      stream: true</div><div class="line">    &#125;))</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>要实现同步刷新就要通过 gulp watch 来调用 BrowserSync 的 reload 方法，由于我们已经在 sass 任务中调用了 reload 方法，所以只需要在 watch 之前执行 browserSync 和 sass 任务即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;watch&apos;, [&apos;array&apos;, &apos;of&apos;, &apos;tasks&apos;, &apos;to&apos;, &apos;complete&apos;,&apos;before&apos;, &apos;watch&apos;], function ()&#123;</div><div class="line">  // ...</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>根据上述语法，更新代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;watch&apos;, [&apos;browserSync&apos;, &apos;sass&apos;], function ()&#123;</div><div class="line">  gulp.watch(&apos;app/scss/**/*.scss&apos;, [&apos;sass&apos;]);</div><div class="line">  // Other watchers</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>当在命令行中执行 <code>$ gulp watch</code> 以后，会发现浏览器自动打开 localhost:3000 页面，也就是起了本地服务。之前一直搞不懂怎么用 gulp 起本地服务，原来利用 gulp 起服务需要引入服务器插件，有关服务器的插件有很多个，Browser Sync 就是其中之一。</p>
+<p>当我们修改背景色的颜色时，只要保存一下，浏览器自动就会生效。是不是很神奇？</p>
+<img src="/programming/2017-02-08-gulp-for-beginner/gulp-for-beginner-3.gif" alt="gulp-for-beginner-3.gif" title="">
+<p>不仅如此，它还能在不同的浏览器不同的设备上同步所有页面上的操作。假如我同时打开两个窗口，我在其中一个进行鼠标滚动时，另一个浏览器窗口也会跟着一起滚动。开始不知道这个功能的时候，我把本地地址发给设计走查，出现了页面自己动的灵异现象，活活吓了我一跳。</p>
+<img src="/programming/2017-02-08-gulp-for-beginner/gulp-for-beginner-4.gif" alt="gulp-for-beginner-4.gif" title="">
+<p>除了监测 scss 文件的修改，我们还可以加入 HTML 文件和 js 文件的监测，一旦有任何修改都会立即更新。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;watch&apos;, [&apos;browserSync&apos;, &apos;sass&apos;], function ()&#123;</div><div class="line">  gulp.watch(&apos;app/scss/**/*.scss&apos;, [&apos;sass&apos;]);</div><div class="line">  gulp.watch(&apos;app/*.html&apos;, browserSync.reload);</div><div class="line">  gulp.watch(&apos;app/js/**/*.js&apos;, browserSync.reload);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="组合-Gulp-任务"><a href="#组合-Gulp-任务" class="headerlink" title="组合 Gulp 任务"></a>组合 Gulp 任务</h3><p>上面我们是这样定义任务的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gulp.task(&apos;watch&apos;, [&apos;browserSync&apos;, &apos;sass&apos;], function ()&#123;</div><div class="line">  // ... watchers</div><div class="line">&#125;)</div><div class="line">``` </div><div class="line"></div><div class="line">但是 Gulp 会同时触发[]中的事件。而通常情况下，我们希望 [] 中是按我们书写的顺序执行任务的，所以就要用到 RunSequence。</div></pre></td></tr></table></figure>
+<p>$ npm install run-sequence –save-dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">用法如下：</div></pre></td></tr></table></figure></p>
+<p>var runSequence = require(‘run-sequence’);</p>
+<p>gulp.task(‘task-name’, function(callback) {<br>  runSequence(‘task-one’, ‘task-two’, ‘task-three’, callback);<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">执行 task-name 时，Gulp 会按照顺序执行 task-one, task-two, task-thre。RunSequence也允许你同时执行多个任务。</div></pre></td></tr></table></figure></p>
+<p>gulp.task(‘default’, function (callback) {<br>  runSequence([‘sass’, ‘browserSync’, ‘watch’],<br>    callback<br>  )<br>})<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">如果你的任务名字叫做 default，那么只需要输入 gulp 命令即可执行。</div><div class="line"></div><div class="line">### 优化CSS和JavaScript文件</div><div class="line">通过压缩，拼接文件，减少 HTTP 请求。`gulp-useref` 插件可以很好地实现这个功能。</div></pre></td></tr></table></figure></p>
+<p>$ npm install gulp-useref –save-dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">假如我们有以下 js 文件需要合并</div></pre></td></tr></table></figure></p>
+<p><body><br>  <!-- other stuff --><br>  <script src="js/lib/a-library.js"></script><br>  <script src="js/lib/another-library.js"></script><br>  <script src="js/main.js"></script><br></body><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">合并的语法如下</div></pre></td></tr></table></figure></p>
+<!-- build:<type> <path> -->
+<p>… HTML Markup, list of script / link tags.<br><!-- endbuild --><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在我们这个例子里，只要将需要打包的文件外层加上两行代码，就可以输出到 js 文件夹下的 main.min.js 文件中了。</div></pre></td></tr></table></figure></p>
+<!--build:js js/main.min.js -->  
+<p><script src="js/lib/a-library.js"></script></p>
+<p><script src="js/lib/another-library.js"></script></p>
+<p><script src="js/main.js"></script><br><!-- endbuild --><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`gulpfile.js` 通过一个 useref 任务，把生成的文件保存到 dist/js/main.min.js 里。这样，在新生成的 dist/.html文件中，引用也将变成一行 `&lt;script src=&quot;js/main.min.js&quot;&gt;&lt;/script&gt;`</div></pre></td></tr></table></figure></p>
+<p>gulp.task(‘useref’, function(){<br>  return gulp.src(‘app/*.html’)<br>        .pipe(useref())<br>        .pipe(gulp.dest(‘dist’));<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">合并以后用 `gulp-uglify` 插件进行压缩。</div><div class="line"></div><div class="line">安装</div></pre></td></tr></table></figure></p>
+<p>$ npm install gulp-uglify –save-dev<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">使用</div></pre></td></tr></table></figure></p>
+<p>var uglify = require(‘gulp-uglify’);</p>
+<p>gulp.task(‘useref’, function(){<br>  return gulp.src(‘app/*.html’)<br>    .pipe(uglify())<br>    .pipe(useref())<br>    .pipe(gulp.dest(‘dist’))<br>});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`gulp-useref` 同样可以应用在 css 上，只不过压缩插件要变为 `gulp-minify-css`。我们还要使用 gulp-if 来做不同处理。</div></pre></td></tr></table></figure></p>
+<p>var gulpIf = require(‘gulp-if’);<br>var minifyCSS = require(‘gulp-minify-css’);</p>
+<p>gulp.task(‘useref’, function(){<br>  return gulp.src(‘app/<em>.html’)<br>    // Minifies only if it’s a CSS file<br>    .pipe(gulpIf(‘</em>.css’, minifyCSS()))<br>    // Uglifies only if it’s a Javascript file<br>    .pipe(gulpIf(‘*.js’, uglify()))<br>    .pipe(useref())<br>    .pipe(gulp.dest(‘dist’))<br>});<br>```</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>上面的的内容搭建了一个基本的 Gulp 工作流。另外还有一些常用的插件，同样摘自<br><a href="https://www.w3ctrain.com/2015/12/22/gulp-for-beginners/" target="_blank" rel="external">Gulp新手入门教程</a></p>
+<p>开发过程：</p>
+<p>使用 <a href="https://www.npmjs.com/package/gulp-autoprefixer" target="_blank" rel="external">Autoprefixer</a>，你不再需要写CSS浏览器内核前缀<br>增加 <a href="https://www.npmjs.com/package/gulp-sourcemaps" target="_blank" rel="external">Sourcemaps</a>，让你更方便的调试 Sass, coffeescript<br>使用 <a href="https://www.npmjs.com/package/sprity" target="_blank" rel="external">sprity</a> 创建精灵图<br><a href="https://www.npmjs.com/package/gulp-changed" target="_blank" rel="external">gulp-changed</a> 只允许通过修改的文件<br><a href="https://www.npmjs.com/package/gulp-babel" target="_blank" rel="external">Babel</a> 或 <a href="https://www.npmjs.com/package/gulp-traceur" target="_blank" rel="external">Traceur</a> 写ES6<br><a href="http://browserify.org" target="_blank" rel="external">Browserify</a> , <a href="https://github.com/webpack/webpack" target="_blank" rel="external">webpack</a> , <a href="https://github.com/jspm" target="_blank" rel="external">jspm</a> 模块化 JavaScript<br><a href="https://www.npmjs.com/package/gulp-handlebars" target="_blank" rel="external">Handlebars</a> ,<a href="https://www.npmjs.com/package/gulp-swig" target="_blank" rel="external">Swing</a> 模块化 HTML<br><a href="https://www.npmjs.com/package/require-directory" target="_blank" rel="external">require-dir</a> 分割 gulpfile 成多个文件<br><a href="https://www.npmjs.com/package/gulp-modernizr" target="_blank" rel="external">gulp-moderinizr</a> 自动生成Modernizr脚本  </p>
+<p>优化：<br><a href="https://www.npmjs.com/package/gulp-uncss" target="_blank" rel="external">unCSS</a> 移除多余的CSS<br><a href="https://www.npmjs.com/package/gulp-csso" target="_blank" rel="external">CSSO</a> 更深入地优化CSS<br><a href="https://www.npmjs.com/package/critical" target="_blank" rel="external">Critical</a> 生成行内CSS  </p>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><p>第一次录屏，觉得挺有意思的。<br>软件是 licecap，下载链接：<a href="http://www.cockos.com/licecap/" target="_blank" rel="external">http://www.cockos.com/licecap/</a></p>
 
       
     </div>
@@ -229,8 +291,8 @@
 <nav id="article-nav">
   
   
-    <a href="/essay/2016-12-03-essay/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">随笔测试</div>
+    <a href="/essay/2016-12-03-essay2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随笔测试2</div>
       <i class="icon-circle-right"></i>
     </a>
   
