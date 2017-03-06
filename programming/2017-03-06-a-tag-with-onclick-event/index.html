@@ -21,7 +21,7 @@ href 与 onclick 的执行顺序如果 a 标签上出现了 href 属性并同时
 随手写了一个栗子：
 12345">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-03-06-a-tag-with-onclick-event/href.gif">
-<meta property="og:updated_time" content="2017-03-06T14:14:42.000Z">
+<meta property="og:updated_time" content="2017-03-06T14:17:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="a 标签的 href 属性和 onclick 事件">
 <meta name="twitter:description" content="a 标签上有属性 href，标明了点击元素跳转的另一个 url。偶尔总需要在跳转前后做些什么，所以顺理成章的在 a 标签上绑定了 onclick 事件。href 属性跳转和 click 事件之间究竟是什么关系呢？
@@ -169,7 +169,7 @@ href 与 onclick 的执行顺序如果 a 标签上出现了 href 属性并同时
 <h3 id="href-与-onclick-的执行顺序"><a href="#href-与-onclick-的执行顺序" class="headerlink" title="href 与 onclick 的执行顺序"></a>href 与 onclick 的执行顺序</h3><p>如果 a 标签上出现了 href 属性并同时绑定了 click 事件（当然并不推荐这样做），是怎样一个执行顺序呢？</p>
 <p>随手写了一个栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;nameList.html&quot;&gt;btn&lt;/a&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    $(&quot;a&quot;).click(function()&#123;</div><div class="line">        alert(&apos;a&apos;);</div><div class="line">    &#125;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>点击按钮，在页面跳转之前跳出提示框，关掉提示框后跳转到 nameList.html 页面。显而易见，click 事件是在页面开始跳转之前执行的。</p>
+<p>点击按钮，在页面跳转之前跳出提示框，关掉提示框后跳转到 nameList.html 页面。显而易见，click 事件是在页面开始跳转之前执行的。<br><a id="more"></a></p>
 <h3 id="禁用-href-属性"><a href="#禁用-href-属性" class="headerlink" title="禁用 href 属性"></a>禁用 href 属性</h3><p>href 属性的作用只是实现页面跳转，而 onclick 事件的作用则强大很多。那么索性就把 href 跳转禁用掉，直接执行 onclick 里的代码。</p>
 <p>最开始总会想到最简单粗暴的办法，把 <code>href</code> 的路径置为空，或者 <code>href=&quot;#&quot;</code>，就像这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;&quot;&gt;btn&lt;/a&gt;  </div><div class="line"></div><div class="line">$(&quot;a&quot;).click(function()&#123;</div><div class="line">    alert(&apos;a&apos;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
