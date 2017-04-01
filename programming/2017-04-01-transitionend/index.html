@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-1.gif">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-2.gif">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-3.gif">
-<meta property="og:updated_time" content="2017-04-01T14:09:20.000Z">
+<meta property="og:updated_time" content="2017-04-01T14:13:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="transitionend">
 <meta name="twitter:description" content="不止一次地在项目中使用到 transitionend，这个事件用于监测 transition 动画是否完成，当完成时调用回调函数。与此相似的还有 animationend 事件。
@@ -173,10 +173,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.parent &#123;</div><div class="line">    transform: translateX(-100px);</div><div class="line">    transition: transform 3s linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.child &#123;</div><div class="line">    transform: translateX(100px);</div><div class="line">    transition: transform 1s linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.parent.active,</div><div class="line">.parent.active .child &#123;</div><div class="line">    transform: translateX(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>此外，我们对父元素进行了事件监测，当 transition 完成时，打印出 “end”。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;.parent&apos;).on(&apos;transitionend&apos;,function(e)&#123;</div><div class="line">    console.log(&apos;end&apos;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p></p><p data-height="265" data-theme-id="dark" data-slug-hash="MpZMbr" data-default-tab="html,result" data-user="apple18x" data-embed-version="2" data-pen-title="MpZMbr" class="codepen">See the Pen <a href="http://codepen.io/apple18x/pen/MpZMbr/" target="_blank" rel="external">MpZMbr</a> by apple18x (<a href="http://codepen.io/apple18x" target="_blank" rel="external">@apple18x</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-
-
 <p>我们期望的结果当然是父元素经过 3s 的动画后，打印出 end。但是结果确实打印了两个。我们发现子元素中的 transitionend 事件会冒泡到父元素上，因此会监测到两个 <code>transitionend</code>，分别在 1s （子元素 transition 完成）和 3s （父元素 transition 完成）时。</p>
 <img src="/programming/2017-04-01-transitionend/transitionend-1.gif" alt="transitionend-1.gif" title="">
 <p>在大部分情况下，如果我们只想监测当前元素的动画完成情况，需要在子元素中阻止冒泡。</p>
