@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://www.xinxiaoyang">
+  <title>transitionend | 昕小阳的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="不止一次地在项目中使用到 transitionend，这个事件用于监测 transition 动画是否完成，当完成时调用回调函数。与此相似的还有 animationend 事件。
+开始使用 transitionend 时觉得很难以理解，因为在大部分情况下，当我希望监测某个元素是否完成动画时，这个事件总是被触发了很多次，而且触发的时间也远远提前于动画完成时间。
+子元素事件冒泡如果子元素也有trans">
+<meta property="og:type" content="article">
+<meta property="og:title" content="transitionend">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="不止一次地在项目中使用到 transitionend，这个事件用于监测 transition 动画是否完成，当完成时调用回调函数。与此相似的还有 animationend 事件。
+开始使用 transitionend 时觉得很难以理解，因为在大部分情况下，当我希望监测某个元素是否完成动画时，这个事件总是被触发了很多次，而且触发的时间也远远提前于动画完成时间。
+子元素事件冒泡如果子元素也有trans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-1.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-2.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-3.gif">
+<meta property="og:updated_time" content="2017-04-01T14:09:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="transitionend">
+<meta name="twitter:description" content="不止一次地在项目中使用到 transitionend，这个事件用于监测 transition 动画是否完成，当完成时调用回调函数。与此相似的还有 animationend 事件。
+开始使用 transitionend 时觉得很难以理解，因为在大部分情况下，当我希望监测某个元素是否完成动画时，这个事件总是被触发了很多次，而且触发的时间也远远提前于动画完成时间。
+子元素事件冒泡如果子元素也有trans">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-1.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">昕小阳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">故事我有，我不喝酒。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/categories/essay">随笔</a></li>
+	        
+				<li><a href="/gallery">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">昕小阳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">昕小阳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">故事我有，我不喝酒。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/essay">随笔</a></li>
+		        
+					<li><a href="/gallery">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-transitionend" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      transitionend
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不止一次地在项目中使用到 transitionend，这个事件用于监测 transition 动画是否完成，当完成时调用回调函数。与此相似的还有 animationend 事件。</p>
+<p>开始使用 transitionend 时觉得很难以理解，因为在大部分情况下，当我希望监测某个元素是否完成动画时，这个事件总是被触发了很多次，而且触发的时间也远远提前于动画完成时间。</p>
+<h3 id="子元素事件冒泡"><a href="#子元素事件冒泡" class="headerlink" title="子元素事件冒泡"></a>子元素事件冒泡</h3><p>如果子元素也有transition的话，transitionend事件会冒泡。DOM 结构如下，只包含一个父元素和一个子元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;parent&quot;&gt;</div><div class="line">	&lt;div class=&quot;child&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>父元素和子元素都包含 transition 属性，当添加 active 的 class 时触发动画，但是动画的结束时间不同，以便我们更好地观察究竟是哪个元素触发了 transitionend 事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.parent &#123;</div><div class="line">    transform: translateX(-100px);</div><div class="line">    transition: transform 3s linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.child &#123;</div><div class="line">    transform: translateX(100px);</div><div class="line">    transition: transform 1s linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.parent.active,</div><div class="line">.parent.active .child &#123;</div><div class="line">    transform: translateX(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此外，我们对父元素进行了事件监测，当 transition 完成时，打印出 “end”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;.parent&apos;).on(&apos;transitionend&apos;,function(e)&#123;</div><div class="line">    console.log(&apos;end&apos;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p></p><p data-height="265" data-theme-id="dark" data-slug-hash="MpZMbr" data-default-tab="html,result" data-user="apple18x" data-embed-version="2" data-pen-title="MpZMbr" class="codepen">See the Pen <a href="http://codepen.io/apple18x/pen/MpZMbr/" target="_blank" rel="external">MpZMbr</a> by apple18x (<a href="http://codepen.io/apple18x" target="_blank" rel="external">@apple18x</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+
+<p>我们期望的结果当然是父元素经过 3s 的动画后，打印出 end。但是结果确实打印了两个。我们发现子元素中的 transitionend 事件会冒泡到父元素上，因此会监测到两个 <code>transitionend</code>，分别在 1s （子元素 transition 完成）和 3s （父元素 transition 完成）时。</p>
+<img src="/programming/2017-04-01-transitionend/transitionend-1.gif" alt="transitionend-1.gif" title="">
+<p>在大部分情况下，如果我们只想监测当前元素的动画完成情况，需要在子元素中阻止冒泡。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;.child&apos;).on(&apos;transitionend&apos;,function(e)&#123;</div><div class="line">    e.stopPropagation();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>结果和我们想象的一样，现在我们实现了只监测父元素动画，3s 之后控制台打印出一个 <code>end</code>。</p>
+<img src="/programming/2017-04-01-transitionend/transitionend-2.gif" alt="transitionend-2.gif" title="">
+<h3 id="transition-中包含不同的属性"><a href="#transition-中包含不同的属性" class="headerlink" title="transition 中包含不同的属性"></a>transition 中包含不同的属性</h3><p>如果 transition 属性像下面这样，包含了不止一个 transition-property，究竟会监测到一个还是两个 transitionend 事件呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transition: opacity 1s linear, transform 3s linear;</div></pre></td></tr></table></figure>
+<p>为了考察这个问题，我们在 HTML 中去掉子元素，只保留了父元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;parent&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>为父元素设置两个属性变动，其中 opacity 属性提前于 transform 到达最终状态，动画时间较短。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.parent &#123;</div><div class="line">    transform: translateX(-100px);</div><div class="line">    opacity: 0;</div><div class="line">    transition: opacity 1s linear, transform 3s linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.parent.active &#123;</div><div class="line">    transform: translateX(0);</div><div class="line">    opacity: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果如下：<br><img src="/programming/2017-04-01-transitionend/transitionend-3.gif" alt="transitionend-3.gif" title=""></p>
+<p>所以 transitionend 事件除了会有子元素的冒泡，还会监听不同属性。这就很好地解释了为什么我们在平时的使用里会得到比预期多得多的 transitionend 事件！</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/programming/2017-04-01-transitionend/" class="archive-article-date">
+  	<time datetime="2017-03-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-04-01</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/programming/">技术</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/programming/2017-03-09-dp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">dp 与 px</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 昕小阳
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">故事我有，我不喝酒。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
