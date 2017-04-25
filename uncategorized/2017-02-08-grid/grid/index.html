@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://www.xinxiaoyang">
+  <title>昕小阳的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CSS Grid 入门CSS Grid 是 CSS3 的一种新的布局方式，简单来说，就是一种网格布局的方式。
+Grid vs FlexCSS Grid 是二维的网格布局，而 CSS Flex 则是一维布局，至于选择哪个，在实际应用当中很好区分。目前 CSS Grid 已经在最新的主流浏览器上的到了较好的支持。
+
+从 CSS Grid Garden 以小游戏的形式介绍了 Grid 相关的几个属性，很">
+<meta property="og:type" content="article">
+<meta property="og:title" content="昕小阳的博客">
+<meta property="og:url" content="http://www.xinxiaoyang/uncategorized/2017-02-08-grid/grid/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="CSS Grid 入门CSS Grid 是 CSS3 的一种新的布局方式，简单来说，就是一种网格布局的方式。
+Grid vs FlexCSS Grid 是二维的网格布局，而 CSS Flex 则是一维布局，至于选择哪个，在实际应用当中很好区分。目前 CSS Grid 已经在最新的主流浏览器上的到了较好的支持。
+
+从 CSS Grid Garden 以小游戏的形式介绍了 Grid 相关的几个属性，很">
+<meta property="og:image" content="http://www.xinxiaoyang/screenshot.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-11.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-13.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-14.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-15.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-16.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-17.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-18.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-19.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-20.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-21.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-22.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-23.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-24.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-25.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-26.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-27.png">
+<meta property="og:image" content="http://www.xinxiaoyang/grid-28.png">
+<meta property="og:updated_time" content="2017-04-24T10:09:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="昕小阳的博客">
+<meta name="twitter:description" content="CSS Grid 入门CSS Grid 是 CSS3 的一种新的布局方式，简单来说，就是一种网格布局的方式。
+Grid vs FlexCSS Grid 是二维的网格布局，而 CSS Flex 则是一维布局，至于选择哪个，在实际应用当中很好区分。目前 CSS Grid 已经在最新的主流浏览器上的到了较好的支持。
+
+从 CSS Grid Garden 以小游戏的形式介绍了 Grid 相关的几个属性，很">
+<meta name="twitter:image" content="http://www.xinxiaoyang/screenshot.png">
+  
+    <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">昕小阳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">故事我有，我不喝酒。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/categories/essay">随笔</a></li>
+	        
+				<li><a href="/gallery">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">昕小阳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">昕小阳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">故事我有，我不喝酒。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/essay">随笔</a></li>
+		        
+					<li><a href="/gallery">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-grid/grid" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="CSS-Grid-入门"><a href="#CSS-Grid-入门" class="headerlink" title="CSS Grid 入门"></a>CSS Grid 入门</h3><p>CSS Grid 是 CSS3 的一种新的布局方式，简单来说，就是一种网格布局的方式。</p>
+<h4 id="Grid-vs-Flex"><a href="#Grid-vs-Flex" class="headerlink" title="Grid vs Flex"></a>Grid vs Flex</h4><p>CSS Grid 是二维的网格布局，而 CSS Flex 则是一维布局，至于选择哪个，在实际应用当中很好区分。目前 CSS Grid 已经在最新的主流浏览器上的到了较好的支持。</p>
+<p><img src="screenshot.png" alt="screenshot.png"></p>
+<p>从 CSS Grid Garden 以小游戏的形式介绍了 Grid 相关的几个属性，很有意思。以下翻译了部分任务介绍，并展示了实现代码。</p>
+<p>原文：<a href="http://cssgridgarden.com/" target="_blank" rel="external">http://cssgridgarden.com/</a></p>
+<p>欢迎来到 Grid 花园，在这里，你可以使用 CSS 来种植胡萝卜，使用 grid-column-start 属性来给你的胡萝卜浇水吧。</p>
+<p>例如，<code>grid-column-start: 3;</code> 代表将浇水区域从三列开始。</p>
+<p><img src="grid-1.png" alt="grid-1.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column-start: 3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>啊，如果像下面这样，角落里有一块杂草，那么用 <code>grid-column-start</code> 应该写成什么呢？<br><img src="grid-2.png" alt="grid-2.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#poison &#123;</div><div class="line">  grid-column-start: 5;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你只用 <code>grid-column-start</code> 属性，那么只能选取单列但不能选取多列，添加 <code>grid-column-end</code> 属性就可以完美解决这个问题。 </p>
+<p><img src="grid-3.png" alt="grid-3.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column-start: 1;</div><div class="line">  grid-column-end: 4;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很明显，我们选择了1～3列，但不包含第4列，即1 ≤ 选择列 &lt; 4。</p>
+<p>当我们成对使用 <code>grid-column-start</code> 和 <code>grid-column-end</code> 属性时，我们会以为<code>grid-column-end</code> 的值一定要大于 <code>grid-column-start</code>，事实并不是如此。<br>在下面这个例子里，<code>grid-column-end</code> 的值更小。</p>
+<p><img src="grid-4.png" alt="grid-4.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column-start: 5;</div><div class="line">  grid-column-end: 2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里代表2 ≤ 选择列 &lt; 5，究竟是否包含列数并不是由开始还是结束点决定的，而是由大小值决定的。</p>
+<p>如果想从右侧开始计算，你可以给 <code>grid-column-start</code> 或 <code>grid-column-end</code> 设为负值。例如，<code>grid-column-end: -1</code> 代表从右开始数的第一列。</p>
+<p><img src="grid-5.png" alt="grid-5.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column-start: 1;</div><div class="line">  grid-column-end: -2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们来试试 <code>grid-column-start</code> 设为负值。<code>grid-column-start: -2</code> 代表从右边数的第一列。</p>
+<p><img src="grid-6.png" alt="grid-6.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#poison &#123;</div><div class="line">  grid-column-start: -3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>除了用开始坐标和结束坐标的方式来选择网格，我们还可以用 <code>span</code> 这个关键字来表示选择的长度。在下面的例子中，代表起始位置为第二列，选择的长度为2。这种写法等同于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#water &#123;</div><div class="line">  grid-column-start: 2;</div><div class="line">  grid-column-end: 4;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>特别需要注意的是，<code>span</code> 不能为负值哦。</p>
+<p><img src="grid-7.png" alt="grid-7.png"></p>
+<p>另外你也可以在 <code>grid-column-start</code> 属性中使用 <code>span</code> 关键字来设置相对于结束位置的长度。</p>
+<p><img src="grid-9.png" alt="grid-9.png"></p>
+<p>如果你觉得每次都要同时设置  <code>grid-column-start</code> 和 <code>grid-column-end</code> 很麻烦，可以用 <code>grid-column</code> 来简写，语法如下：</p>
+<p><code>grid-column: &lt;grid-column-start&gt; / &lt;grid-column-end&gt;</code></p>
+<p>例如：<code>grid-column: 2 / 4</code> 表示 <code>grid-column-start</code> 的值是2，<code>grid-column-end</code> 的值是4。</p>
+<p><img src="grid-10.png" alt="grid-10.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column: 4 / 6</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在使用 <code>grid-column</code> 简写的方法里，也支持 <code>span</code> 关键词。</p>
+<p><img src="grid-11.png" alt="grid-11.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column: 2 / span 3;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Grid 与 Flex 布局方式最大的不同就是它可以从 columm 和 row 两个维度来进行定位。 <code>grid-row-start</code> 和 <code>grid-column-start</code> 的使用方法相同，但代表的是行而不再是列，就像下面这个例子一样。</p>
+<p><img src="grid-12.png" alt="grid-12.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-row-start: 3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在试试简写的 <code>grid-row: grid-row-start / grid-row-end</code> 语法。</p>
+<p><img src="grid-13.png" alt="grid-13.png"></p>
+<p>还可以同时设置 <code>grid-column</code> 和 <code>grid-row</code> 两个维度的数值来选择某一个特定的网格。</p>
+<p><img src="grid-14.png" alt="grid-14.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#poison &#123;</div><div class="line">  grid-column: 2/2;</div><div class="line">  grid-row: 5/5</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你也可以同时使用 <code>grid-column</code> 和 <code>grid-row</code> 来选择一个区域。</p>
+<p><img src="grid-15.png" alt="grid-15.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column: 2/6;</div><div class="line">  grid-row: 1/6</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你觉得同时写 <code>grid-column</code> 和 <code>grid-row</code> 太麻烦了，那么你可以试试 <code>grid-area</code>，语法如下：</p>
+<p><code>grid-area: grid-row-start / grid-row-end / grid-column-start / grid-row-end</code></p>
+<p>例如：<code>grid-area: 1 / 1 / 3 / 6;</code></p>
+<p><img src="grid-16.png" alt="grid-16.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-area: 1/2/4/6</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上考虑的都是单个区域的情况，如果选择了多个交叉区域会怎样呢？答案是完全没有问题。在下面的例子里，我们用 <code>grid-area</code> 来定义了第二个交叉区域。 </p>
+<p><img src="grid-17.png" alt="grid-17.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water-1 &#123;</div><div class="line">  grid-area: 1 / 4 / 6 / 5;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water-2 &#123;</div><div class="line">  grid-area: 2/3/5/6</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="grid-18.png" alt="grid-18.png"></p>
+<p><img src="grid-19.png" alt="grid-19.png"></p>
+<p>到目前为止，我们一直考虑的都是 5*5 网格情况，其中每个小格的宽是20%，高也是20%。这是由于设置了以下两个属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grid-template-columns: 20% 20% 20% 20% 20%; </div><div class="line">grid-template-rows: 20% 20% 20% 20% 20%;</div></pre></td></tr></table></figure>
+<p>每个属性包含5个值，对整体划分为5行5列，20%表示每一行（列）的宽（高）都是20%。当然你也可以设为自己需要的值，例如下面这样。</p>
+<p><img src="grid-20.png" alt="grid-20.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line"></div><div class="line">grid-template-columns: 50%</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column: 1;</div><div class="line">  grid-row: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果每一列都要设定一个具体的值可能会带来很多的不便，repeat 方法则会帮你摆脱这样的困境。例如，之前我们的写法都是 <code>grid-template-columns: 20% 20% 20% 20% 20%;</code>，我们也可以用 <code>grid-template-columns: repeat(5, 20%);</code>来取代。</p>
+<p><img src="grid-21.png" alt="grid-21.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line"></div><div class="line">grid-template-columns: repeat(8, 12.5%);</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column: 1;</div><div class="line">  grid-row: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>grid-template-columns</code> 属性并不是只接受百分比，也接受长度单位，比如 pixel 和 em，你也可以混合使用它们。</p>
+<p>在下面的例子里，我们分别设了三个不同单位的值，分别是 <code>100px</code>,<code>3em</code>和<code>40%</code>。<br><img src="grid-22.png" alt="grid-22.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line"></div><div class="line">  grid-template-columns: 100px 3em 40%;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 CSS Grid 中有一个全新的单位 —— fr，1fr 代表可用空间中的一个单位。<br>例如两个元素的宽分别设为 <code>1fr</code> 和 <code>3fr</code>，那么整个宽度将会被分为4等分，第一个元素宽度为1/4，第二个元素宽为3／4。</p>
+<p><img src="grid-23.png" alt="grid-23.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line"></div><div class="line">  grid-template-columns: 1fr 5fr;</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果<code>grid-template-columns</code>的属性值中出现了不同的单位，其中包含pixels, percentages 或 em，那么如果同时又包含 fr，则 fr 是以剩余空间为基础的。</p>
+<p><img src="grid-24.png" alt="grid-24.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line"></div><div class="line">  grid-template-columns: 50px 2fr 2fr 1fr 50px</div><div class="line">  grid-template-rows: 20% 20% 20% 20% 20%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-area: 1 / 1 / 6 / 2;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#poison &#123;</div><div class="line">  grid-area: 1 / 5 / 6 / 6;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面我们再来看一个 px 和 fr 混合使用的例子。</p>
+<p><img src="grid-25.png" alt="grid-25.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line"></div><div class="line">  grid-template-columns: 75px 3fr 2fr</div><div class="line">  grid-template-rows: 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>grid-template-rows</code> 的使用方法和 <code>grid-template-columns</code> 完全一样。</p>
+<p><code>grid-template-rows: &lt;length&gt; &lt;percentage&gt; &lt;flex&gt; max-content min-content minmax(min,max)</code></p>
+<p><img src="grid-26.png" alt="grid-26.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  </div><div class="line">  grid-template-columns: 20% 20% 20% 20% 20%;</div><div class="line">  grid-template-rows: 12.5px 12.5px 12.5px 12.5px 1fr;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column: 1 / 6;</div><div class="line">  grid-row: 5 / 6;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>grid-template</code> 是 <code>grid-template-rows</code> 和 <code>grid-template-columns</code> 的简写形式。</p>
+<p><code>grid-template:  &lt;grid-template-rows&gt; / &lt;grid-template-columns&gt;</code></p>
+<p>例如 <code>grid-template: 50% 50% / 200px;</code> 将会把行分为 50% 高的相等两行，列宽为 200px。</p>
+<p><img src="grid-27.png" alt="grid-27.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line"></div><div class="line">  grid-template: 60% 40% / 200px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#water &#123;</div><div class="line">  grid-column: 1;</div><div class="line">  grid-row: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后一个练习~</p>
+<p><img src="grid-28.png" alt="grid-28.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#garden &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template: 1fr 50px / 1fr 4fr</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/uncategorized/2017-02-08-grid/grid/" class="archive-article-date">
+  	<time datetime="2017-02-08T11:54:52.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-08</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/programming/2017-03-06-a-tag-with-onclick-event/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          a 标签的 href 属性和 onclick 事件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/programming/2017-02-08-gulp-for-beginner/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">gulp 入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 昕小阳
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/css-grid/" style="font-size: 10px;">css grid</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">故事我有，我不喝酒。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
