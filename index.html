@@ -155,7 +155,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="CSS-Grid-入门"><a href="#CSS-Grid-入门" class="headerlink" title="CSS Grid 入门"></a>CSS Grid 入门</h3><p>CSS Grid 是 CSS3 的一种新的布局方式，简单来说，就是一种网格布局的方式。</p>
+        <p>CSS Grid 是 CSS3 的一种新的布局方式，简单来说，就是一种网格布局的方式。</p>
 <h4 id="Grid-vs-Flex"><a href="#Grid-vs-Flex" class="headerlink" title="Grid vs Flex"></a>Grid vs Flex</h4><p>CSS Grid 是二维的网格布局，而 CSS Flex 则是一维布局，至于选择哪个，在实际应用当中很好区分。目前 CSS Grid 已经在最新的主流浏览器上的到了较好的支持。</p>
 <img src="/programming/2017-04-26-grid/screenshot.png" alt="screenshot.png" title="">
 <p>从 CSS Grid Garden 以小游戏的形式介绍了 Grid 相关的几个属性，很有意思。以下翻译了部分任务介绍，并展示了实现代码。</p>
@@ -258,6 +258,66 @@
 
 
   
+    <article id="post-slice" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/programming/2017-03-09-slice/">slice(0)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天看代码时看到了 <code>slice(0)</code> 的写法，简单研究了一下。</p>
+<p>JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var arr1 = [&apos;George&apos;,&apos;John&apos;,&apos;Thomas&apos;,&apos;James&apos;,&apos;Adrew&apos;,&apos;Martin&apos;];</div><div class="line">var arr2 = arr1;</div><div class="line"></div><div class="line">arr1.push(&apos;Jane&apos;);</div><div class="line"></div><div class="line">console.log(&apos;arr2:&apos;+ arr2);</div></pre></td></tr></table></figure>
+<p>打印结果为：<br>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/programming/2017-03-09-slice/#more">more >></a>
+        </p>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/programming/2017-03-09-slice/" class="archive-article-date">
+  	<time datetime="2017-03-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-09</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/programming/">技术</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-dp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -297,66 +357,6 @@
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/programming/">技术</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-slice" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/programming/2017-03-09-slice/">slice(0)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天看代码时看到了 <code>slice(0)</code> 的写法，简单研究了一下。</p>
-<p>JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var arr1 = [&apos;George&apos;,&apos;John&apos;,&apos;Thomas&apos;,&apos;James&apos;,&apos;Adrew&apos;,&apos;Martin&apos;];</div><div class="line">var arr2 = arr1;</div><div class="line"></div><div class="line">arr1.push(&apos;Jane&apos;);</div><div class="line"></div><div class="line">console.log(&apos;arr2:&apos;+ arr2);</div></pre></td></tr></table></figure>
-<p>打印结果为：<br>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/programming/2017-03-09-slice/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/programming/2017-03-09-slice/" class="archive-article-date">
-  	<time datetime="2017-03-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-09</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 	</div>
 
       
@@ -629,56 +629,6 @@
 
 
   
-    <article id="post-essay2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/essay/2016-12-03-essay2/">随笔测试2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>随笔2</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/essay/2016-12-03-essay2/" class="archive-article-date">
-  	<time datetime="2016-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-03</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/essay/">随笔</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
     <article id="post-essay" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -704,6 +654,56 @@
     <div class="article-info article-info-index">
       
       <a href="/essay/2016-12-03-essay/" class="archive-article-date">
+  	<time datetime="2016-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-03</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/essay/">随笔</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-essay2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/essay/2016-12-03-essay2/">随笔测试2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>随笔2</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/essay/2016-12-03-essay2/" class="archive-article-date">
   	<time datetime="2016-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-03</time>
 </a>
       
