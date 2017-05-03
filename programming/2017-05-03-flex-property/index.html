@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://www.xinxiaoyang">
+  <title>Flex Property | 昕小阳的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="低版本 IE 一直是前端开发的黑洞，从今年起公司终于放弃了 IE 这个低能儿。最近可以大刀阔斧地使用一些 CSS3 新属性了，从简单的了解到使用，还得花一段时间好好琢磨一下。
+flex 属性是 flex-grow, flex-shrink 和 flex-basis 三个属性的简写形式，必须应用在弹性盒模型（设置了 display: flex）元素的子元素上，否则 flex 属性是不起作用的。
+语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flex Property">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-05-03-flex-property/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="低版本 IE 一直是前端开发的黑洞，从今年起公司终于放弃了 IE 这个低能儿。最近可以大刀阔斧地使用一些 CSS3 新属性了，从简单的了解到使用，还得花一段时间好好琢磨一下。
+flex 属性是 flex-grow, flex-shrink 和 flex-basis 三个属性的简写形式，必须应用在弹性盒模型（设置了 display: flex）元素的子元素上，否则 flex 属性是不起作用的。
+语法">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-03-flex-property/flex-basis-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-03-flex-property/flex-grow-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-03-flex-property/flex-grow-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-03-flex-property/flex-shrink-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-03-flex-property/flex-shrink-2.png">
+<meta property="og:updated_time" content="2017-05-03T14:00:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flex Property">
+<meta name="twitter:description" content="低版本 IE 一直是前端开发的黑洞，从今年起公司终于放弃了 IE 这个低能儿。最近可以大刀阔斧地使用一些 CSS3 新属性了，从简单的了解到使用，还得花一段时间好好琢磨一下。
+flex 属性是 flex-grow, flex-shrink 和 flex-basis 三个属性的简写形式，必须应用在弹性盒模型（设置了 display: flex）元素的子元素上，否则 flex 属性是不起作用的。
+语法">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-05-03-flex-property/flex-basis-1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">昕小阳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">故事我有，我不喝酒。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/categories/essay">随笔</a></li>
+	        
+				<li><a href="/gallery">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">昕小阳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">昕小阳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">故事我有，我不喝酒。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/essay">随笔</a></li>
+		        
+					<li><a href="/gallery">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-flex-property" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Flex Property
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>低版本 IE 一直是前端开发的黑洞，从今年起公司终于放弃了 IE 这个低能儿。最近可以大刀阔斧地使用一些 CSS3 新属性了，从简单的了解到使用，还得花一段时间好好琢磨一下。</p>
+<p>flex 属性是 <code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code> 三个属性的简写形式，必须应用在弹性盒模型（设置了 display: flex）元素的子元素上，否则 flex 属性是不起作用的。</p>
+<p>语法格式如下：</p>
+<p><code>flex: &lt;flex-grow&gt; &lt;flex-shrink&gt; &lt;flex-basis&gt;</code></p>
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>flex-basis 指明了元素的宽度，相当于 width 这个属性。如果flex-basis 和 width 两个属性同时存在，则 flex-basis 会覆盖 width 的值。<br><a id="more"></a><br>如果 flex-basis 设为 auto，则 width 属性生效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;flex-box&quot;&gt;</div><div class="line">  &lt;div class=&quot;item-1&quot;&gt;item-1&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;item-2&quot;&gt;item-2&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<img src="/programming/2017-05-03-flex-property/flex-basis-1.png" alt="flex-basis-1.png" title="">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.flex-box &#123;</div><div class="line">  width: 400px;</div><div class="line">  height: 300px;</div><div class="line">  display: flex;</div><div class="line">  justify-content: center;</div><div class="line">  align-items: center;</div><div class="line">&#125;</div><div class="line">  </div><div class="line">.item-1 &#123;</div><div class="line">  width: 200px;</div><div class="line">  height: 200px;</div><div class="line">  flex-basis: 100px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.item-2 &#123;</div><div class="line">  height: 200px;</div><div class="line">  flex-basis: 200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上面这个的结构里，<code>item-1</code> 元素设置了 width 为 200px，但是 flex-basis 设置为 100px 覆盖了 width 的值。实际显示出的宽度也为 100px。</p>
+<h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p>该属性决定了当父元素宽度大于子元素宽度之和时，子元素的宽度该如何改变。</p>
+<h5 id="flex-grow-默认值为-0"><a href="#flex-grow-默认值为-0" class="headerlink" title="flex-grow 默认值为 0"></a>flex-grow 默认值为 0</h5><p><code>flex-grow</code> 的默认值为 0，说明子元素在任何情况下宽度都不变。就像上边的例子一样，子元素将保持 <code>flex-basis</code> 中设置的宽度不变，而不会进行放大。</p>
+<h5 id="flex-grow-大于-0"><a href="#flex-grow-大于-0" class="headerlink" title="flex-grow 大于 0"></a>flex-grow 大于 0</h5><p><code>flex-grow</code> 如果不为 0，则表示当父元素宽度大于子元素宽度之和时，子元素宽度将增加，而增加多少则取决于 <code>flex-grow</code> 的值。</p>
+<p>仍以上边的例子为例，父元素宽为 400px，两个子元素宽度分别为 200px 和 100px，剩余 100px (400px - 200px - 100px)。如果子元素的 <code>flex-grow</code> 的值大于 0，则会对剩余的 100px 进行分割。</p>
+<img src="/programming/2017-05-03-flex-property/flex-grow-1.png" alt="flex-grow-1.png" title="">
+<p>如果 <code>item-1</code> 设置 <code>flex-grow</code> 为 1，<code>item-2</code> 设置 <code>flex-grow</code> 为 2，那么两个子元素分别按照 1:2 的比例对剩余宽度进行分割。</p>
+<p><code>item-1</code> 将得到剩余的宽度为： 100px <em> 1/(1+2) = 33.3px<br><code>item-2</code> 将得到剩余的宽度为： 100px </em> 2/(1+2) = 66.7px</p>
+<p>最终，<br><code>item-1</code> 的总宽度为：100px + 33.3px = 133.3px<br><code>item-2</code> 的总宽度为：200px + 66.7px = 266.7px</p>
+<img src="/programming/2017-05-03-flex-property/flex-grow-2.png" alt="flex-grow-2.png" title="">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">.flex-box &#123;</div><div class="line">  ...</div><div class="line">  width: 400px;</div><div class="line">  height: 300px;</div><div class="line">&#125;</div><div class="line">  </div><div class="line">.item-1 &#123;</div><div class="line">  height: 200px;</div><div class="line">  flex-basis: 100px;</div><div class="line">  flex-grow: 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.item-2 &#123;</div><div class="line">  height: 200px;</div><div class="line">  flex-basis: 200px;</div><div class="line">  flex-grow: 2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只有设置 <code>flex-grow</code> 属性大于 0 的元素会对剩余空间进行分割，例如 <code>item-1</code> 设为 1， <code>item-2</code> 默认为 0。则 <code>item-1</code> 的最终宽度为 100px + 100px(剩余宽度) = 200px，而 <code>item-2</code> 则保持原大小不变。</p>
+<h3 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h3><p>该属性决定了当父元素宽度小于子元素宽度之和时，子元素的宽度该如何改变。</p>
+<h5 id="flex-shrink-默认值为-1"><a href="#flex-shrink-默认值为-1" class="headerlink" title="flex-shrink 默认值为 1"></a>flex-shrink 默认值为 1</h5><p><code>flex-shrink</code> 的默认值为 1 而不是 0！如果所有子元素都采用默认值 1，那么将按照子元素的宽度比例等比缩小。</p>
+<h5 id="flex-shrink-为-0"><a href="#flex-shrink-为-0" class="headerlink" title="flex-shrink 为 0"></a>flex-shrink 为 0</h5><p><code>flex-shrink</code> 等于 0 时，子元素宽度不变。</p>
+<p>在下面这个例子中，<code>item-1</code> 的宽度为 300px，<code>item-2</code> 的宽度为 200px，尽管两个子元素宽度之和超过了父元素的 400px 宽度，但子元素均设置了 <code>flex-shrink: 0</code>，所以宽度保持不变，结果仍然会超出父元素的宽度。</p>
+<img src="/programming/2017-05-03-flex-property/flex-shrink-1.png" alt="flex-shrink-1.png" title="">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">.flex-box &#123;</div><div class="line">  ...</div><div class="line">  width: 400px;</div><div class="line">  height: 300px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.item-1 &#123;</div><div class="line">  height: 200px;</div><div class="line">  flex-basis: 300px;  </div><div class="line">  flex-shrink: 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.item-2 &#123;</div><div class="line">  height: 200px;</div><div class="line">  flex-basis: 200px;</div><div class="line">  flex-shrink: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="flex-shrink-大于-0"><a href="#flex-shrink-大于-0" class="headerlink" title="flex-shrink 大于 0"></a>flex-shrink 大于 0</h5><p><code>flex-shrink</code> 如果大于 0，则表示当父元素宽度小于子元素宽度之和时，子元素宽度将减小到与父元素相同，而每个子元素减小多少则取决于 <code>flex-shrink</code> 的值。</p>
+<p>仍以上边的例子为例，父元素宽为 400px，两个子元素宽分别为 300px 和 200px，超出父元素 100px (300px + 200px - 400px)。如果子元素的 <code>flex-shrink</code> 的值大于 0，则会对超出的 100px 进行分割。</p>
+<img src="/programming/2017-05-03-flex-property/flex-shrink-2.png" alt="flex-shrink-2.png" title="">
+<p>如果 <code>item-1</code> 设置 <code>flex-shrink</code> 为 3，<code>item-2</code> 设置 <code>flex-shrink</code> 为 2，那么按照刚才的 <code>flex-grow</code> 计算原则，是不是两个子元素像下面这样，分别按照 3:2 的比例对超出部分进行缩小呢？</p>
+<p> <code>item-1</code> 缩小： 100 <em> 3/(3+2) = 60px<br> <code>item-2</code> 缩小： 100 </em> 2/(3+2) = 40px </p>
+<p> 最终，<br><code>item-1</code> 的总宽度为：200px - 60px = 140px<br><code>item-2</code> 的总宽度为：300px - 40px = 260px</p>
+<p>答案是：并不是！！！！</p>
+<p><code>flex-shrink</code> 的值谜之诡异，因为它不仅与本身的值有关，还与元素的宽度有关！！！！</p>
+<p>正确的计算方法是这样的：</p>
+<p> <code>item-1</code> 缩小： 100px <em> [ 3\</em>200px / (3*200px + 2<em>300px)]  = 50px<br> <code>item-2</code> 缩小： 100px </em> [ 2*300px / (3*200px + 2*300px)] = 50px</p>
+<p>最终，<br><code>item-1</code> 的总宽度为：200px - 50px = 150px<br><code>item-2</code> 的总宽度为：300px - 50px = 250px</p>
+<p>这里比较难理解的是 3*200px / (3*200px + 2*300px)，你可以将 200 和 300 想象为权重，各子元素的“地位”并不是平等的（平等时，直接使用 3/(3+2) 即可），当子元素宽度越大，那么它缩小的比例也应该相应增大。所以在计算缩小的大小时，还要把元素宽度这个权重因素考虑进去。</p>
+<p>如果不设置 <code>flex-shrink</code> 的属性值，那么所有元素默认为 1，意味着元素按照本身宽度的比例进行缩小，宽度越大的元素，当然缩小的也就越多。</p>
+<h3 id="几个常见的属性值"><a href="#几个常见的属性值" class="headerlink" title="几个常见的属性值"></a>几个常见的属性值</h3><p>flex 的默认值为 0 1 auto，表明子元素最大不会超过自身的宽度（width），如果父元素宽度比子元素宽度之和小，则会进行等比缩小。</p>
+<p>另外，flex 还有两个可识别的属性值，一个是 auto，一个是 none。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flex: auto;</div></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flex: 1 1 auto;</div></pre></td></tr></table></figure>
+<p>如果子元素未设置宽度，且 flex 属性设置均为 auto，那么子元素将完全平分父元素宽度。</p>
+<p>如果子元素设置了宽度，且 flex 属性设置均为 auto，则按照子元素的宽度比例进行缩放。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flex: none;</div></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flex: 0 0 auto;</div></pre></td></tr></table></figure>
+<p>如果子元素未设置宽度，且 flex 属性设置均为 none，那么子元素宽度与内容宽度相同，内容越长，宽度越大。</p>
+<p>如果子元素设置了宽度，且 flex 属性设置均为 none，则严格按照 width 属性进行显示。</p>
+<h3 id="一针见血的总结"><a href="#一针见血的总结" class="headerlink" title="一针见血的总结"></a>一针见血的总结</h3><p>flex 属性之所以很难理解，是因为 <code>flex-grow</code> 和 <code>flex-shrink</code> 之间存在着一个非常大的不同，<code>flex-shrink</code> 不仅依赖于属性值，还依赖于元素本身的大小，但 <code>flex-grow</code> 只与属性值有关。</p>
+<p>Happy Ending。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/programming/2017-05-03-flex-property/" class="archive-article-date">
+  	<time datetime="2017-05-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-03</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/programming/">技术</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/programming/2017-04-26-grid/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS Grid 入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 昕小阳
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/css-grid/" style="font-size: 10px;">css grid</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">故事我有，我不喝酒。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
