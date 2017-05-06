@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://www.xinxiaoyang">
+  <title>base64 编码图片 | 昕小阳的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。
+一直听说 base64 编码，终于趁这个机会搞了个明白。
+base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。
+在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="base64 编码图片">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-05-06-base64/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。
+一直听说 base64 编码，终于趁这个机会搞了个明白。
+base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。
+在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/./icon.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/./base64-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-4.png">
+<meta property="og:updated_time" content="2017-05-06T14:09:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="base64 编码图片">
+<meta name="twitter:description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。
+一直听说 base64 编码，终于趁这个机会搞了个明白。
+base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。
+在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">昕小阳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">故事我有，我不喝酒。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/categories/essay">随笔</a></li>
+	        
+				<li><a href="/gallery">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">昕小阳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">昕小阳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">故事我有，我不喝酒。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/essay">随笔</a></li>
+		        
+					<li><a href="/gallery">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-base64" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      base64 编码图片
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。</p>
+<p>一直听说 base64 编码，终于趁这个机会搞了个明白。</p>
+<h3 id="base64是什么"><a href="#base64是什么" class="headerlink" title="base64是什么"></a>base64是什么</h3><p>base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。</p>
+<p>在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方式就是记录下每个像素点的 rgb 信息，通过依次解码就能够还原整个图像。</p>
+<p>base64 编码长什么样呢？<br><a id="more"></a><br>google 告诉你答案。在 google 首页，你会发现话筒的小图标就是通过 base64 解码得到的。</p>
+<img src="/programming/2017-05-06-base64/base64-1.png" alt="base64-1.png" title="">
+<p>在这里，<code>data:image/png;base64,</code> 后面一大串字符串就是 base64 编码，通常情况下 base64 编码的结尾都会有 1-2 个 “=”。其中，png 指明了编码图片的类型，所以也可以写成这样：</p>
+<p><code>data:image/gif;base64,</code><br><code>data:image/jpeg;base64,</code>  </p>
+<p>当然，也不一定是图片，字体文件、链接地址等都可以进行 base64 编码。比如你们一定很熟悉长这样的：</p>
+<p><code>thunder://QUFodHRwOi8vd3d3LmJhaWR1LmNvbS9pbWcvc3NsbTFfbG9nby5naWZaWg==</code></p>
+<p>迅雷的地址也是 base64 加密的哦。<br>以上地址是复制别人家的，如果是种子。。不要太感谢我。</p>
+<h3 id="使用-base64-编码的意义"><a href="#使用-base64-编码的意义" class="headerlink" title="使用 base64 编码的意义"></a>使用 base64 编码的意义</h3><p>先不讨论 base64 是如何编码的，之所以要对图片编码，是因为图片要通过 HTTP 请求才能获得，HTTP 请求多了就会影响网站的性能。</p>
+<p>而编码后的字符串可以写在 html 或 css 文件里，只要文件加载完成就可以显示图片。如此一来，请求减少了，网站的性能自然会有所优化。</p>
+<h3 id="base64-的不足"><a href="#base64-的不足" class="headerlink" title="base64 的不足"></a>base64 的不足</h3><p>一切听起来都是那么完美。</p>
+<p>base64 原本是为了优化性能的，但我们真的如愿了吗？</p>
+<p>base64 编码确实减少了请求，但相应地 CSS 或 HTML 文件体积也增大了。举个栗子，我们对下面这张 4KB 大小 png 格式的图标图片进行编码。</p>
+<p><img src="./icon.png" width="41" height="41" alt="图片名称"></p>
+<p>编码后，我们将编码保存在 CSS 文件里，然后做一下比较。</p>
+<img src="/programming/2017-05-06-base64/base64-2.png" alt="base64-2.png" title="">
+<p>左边是原图的信息，只有 3007 字节，但编码之后字节变为 4012 字节反而增大了。即便 base64 编码能够被 gzip 压缩，压缩率达到 50% 以上，2000+ 个字符对 CSS 的可读性也会造成很大的影响。事实上，在大部分情况下，使用 base64 编码后的文件大小都会比原图片有明显的增加。</p>
+<p>如果以上造成的问题不认为是大问题，那么，增加的文件体积会对渲染造成堵塞则是必须要引起我们重视的。CSS 解析会阻塞页面的渲染，也就是说，CSSOM 生成之前，页面是不会显示任何东西的。如果 base64 编码过长，那么解析时间大大增加，空白时间的增加将会降低用户体验。</p>
+<p>由此可见，base64 存在一些适用条件，对于以下类型的图片才应该考虑使用 base64 编码：</p>
+<ul>
+<li>文件大小极小的图片</li>
+<li>会被大量重复使用的图片</li>
+<li>不能使用 CSS Sprite（例如背景图）</li>
+</ul>
+<p>既然这部分写的是不足，那么总要列举一些：</p>
+<ul>
+<li>增加文件体积</li>
+<li>编码成本</li>
+<li>不能单独缓存编码，除非 CSS 文件被缓存</li>
+</ul>
+<h3 id="如何对图片编码"><a href="#如何对图片编码" class="headerlink" title="如何对图片编码"></a>如何对图片编码</h3><p>如果想通过代码的方式对图片进行编码，那么 canvas 是个不错的选择。简单来说，在 canvas 中插入图片，使用 toDataURL() 方法就能获得 base64 编码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">function toDataURL(img) &#123;</div><div class="line">    var canvas = document.createElement(&quot;canvas&quot;);</div><div class="line">    canvas.width = img.width;</div><div class="line">    canvas.height = img.height;</div><div class="line"></div><div class="line">    var ctx = canvas.getContext(&quot;2d&quot;);</div><div class="line">    ctx.drawImage(img, 0, 0, img.width, img.height);</div><div class="line">    var dataURL = canvas.toDataURL(&quot;image/png&quot;);</div><div class="line">    return dataURL;</div><div class="line">&#125; </div><div class="line"></div><div class="line">function getBase64Image(src)&#123;</div><div class="line">	var img = new Image();</div><div class="line">	img.crossOrigin = &quot;anonymous&quot;; // 解决图片跨域问题</div><div class="line">	img.src = src; </div><div class="line">	</div><div class="line">	img.onload =function() &#123; </div><div class="line">	    dataUrl = getBase64Image(img); </div><div class="line">	&#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">getBase64Image(imgSrc);</div></pre></td></tr></table></figure>
+<p>如果使用 Chrome 浏览器，可以安装 WEB 前端助手（FeHelper）插件。这是一个集多个前端开发常用功能于一体的插件，不过我只用过图片 Base64 转换。</p>
+<p><img src="./base64-3.png" width="153" height="360" alt="图片名称"></p>
+<p>利用插件，可以qiao方便地实现图片到编码的人工转换。另外，插件还对比了原图片和编码的大小，给工程狮选择提供一些参考。</p>
+<img src="/programming/2017-05-06-base64/base64-4.png" alt="base64-4.png" title="">
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/programming/2017-05-06-base64/" class="archive-article-date">
+  	<time datetime="2017-05-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-06</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/programming/">技术</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/programming/2017-05-03-flex-property/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flex Property</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 昕小阳
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/css-grid/" style="font-size: 10px;">css grid</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">故事我有，我不喝酒。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
