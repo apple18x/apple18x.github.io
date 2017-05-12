@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://www.xinxiaoyang">
+  <title>lazyload 图片懒加载 | 昕小阳的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="记得去年毕业面试的时候，有个面试官问我怎么优化网页性能，我提到了图片懒加载可以提升用户体验。后来人家问我怎么实现的，我懵逼脸，然后就没有然后了。
+学前端过程中遇到很多技术点都没有深入研究，只是大概知道有那么个名词。最近做项目又想起这个问题，趁机做个总结吧。
+懒加载的实现原理还是很简单的嘛。
+lazyload 意义图片资源在网站当中的占比是很高的，对于一个以设计驱动型的公司来讲，图片大小可能超过所有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lazyload 图片懒加载">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-05-12-lazyload/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="记得去年毕业面试的时候，有个面试官问我怎么优化网页性能，我提到了图片懒加载可以提升用户体验。后来人家问我怎么实现的，我懵逼脸，然后就没有然后了。
+学前端过程中遇到很多技术点都没有深入研究，只是大概知道有那么个名词。最近做项目又想起这个问题，趁机做个总结吧。
+懒加载的实现原理还是很简单的嘛。
+lazyload 意义图片资源在网站当中的占比是很高的，对于一个以设计驱动型的公司来讲，图片大小可能超过所有">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-12-lazyload/lazyload-1.gif">
+<meta property="og:updated_time" content="2017-05-12T13:32:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lazyload 图片懒加载">
+<meta name="twitter:description" content="记得去年毕业面试的时候，有个面试官问我怎么优化网页性能，我提到了图片懒加载可以提升用户体验。后来人家问我怎么实现的，我懵逼脸，然后就没有然后了。
+学前端过程中遇到很多技术点都没有深入研究，只是大概知道有那么个名词。最近做项目又想起这个问题，趁机做个总结吧。
+懒加载的实现原理还是很简单的嘛。
+lazyload 意义图片资源在网站当中的占比是很高的，对于一个以设计驱动型的公司来讲，图片大小可能超过所有">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-05-12-lazyload/lazyload-1.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="昕小阳的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">昕小阳</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">故事我有，我不喝酒。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/categories/essay">随笔</a></li>
+	        
+				<li><a href="/gallery">相册</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">昕小阳</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">昕小阳</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">故事我有，我不喝酒。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/essay">随笔</a></li>
+		        
+					<li><a href="/gallery">相册</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/apple18x" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1084490643" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-lazyload" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      lazyload 图片懒加载
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记得去年毕业面试的时候，有个面试官问我怎么优化网页性能，我提到了图片懒加载可以提升用户体验。后来人家问我怎么实现的，我懵逼脸，然后就没有然后了。</p>
+<p>学前端过程中遇到很多技术点都没有深入研究，只是大概知道有那么个名词。最近做项目又想起这个问题，趁机做个总结吧。</p>
+<p>懒加载的实现原理还是很简单的嘛。</p>
+<h3 id="lazyload-意义"><a href="#lazyload-意义" class="headerlink" title="lazyload 意义"></a>lazyload 意义</h3><p>图片资源在网站当中的占比是很高的，对于一个以设计驱动型的公司来讲，图片大小可能超过所有请求资源的50%，大大影响了网站的性能。</p>
+<p>图片懒加载的意义就在于此，当图片进入视窗时再进行加载，从一定程度上减轻初始请求压力，加快页面呈现速度，提高用户体验。</p>
+<img src="/programming/2017-05-12-lazyload/lazyload-1.gif" alt="lazyload-1.gif" title="">
+<a id="more"></a>
+<p>你看，只有 banner 进入窗口内，才会去请求这个图片，是不是很爽。</p>
+<h3 id="lazyload-实现原理"><a href="#lazyload-实现原理" class="headerlink" title="lazyload 实现原理"></a>lazyload 实现原理</h3><p>实现图片懒加载的效果并不困难，几十行代码就可以搞定。</p>
+<p>简单来说，先将图片真实的 src 隐藏，只加载占位图片。当图片进入视窗时，再将实际需要显示的图片路径附给 src 属性。</p>
+<p>完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * picLazyLoad 图片懒加载，适用于img标签和背景图情况</div><div class="line"> * </div><div class="line"> * @property data-original: &lt;String&gt;  图片 url</div><div class="line"> * @property threshold:     &lt;Number&gt;  进入可视区域提前加载的高度</div><div class="line"> * @property placeholder:   &lt;String&gt;  用于背景图情况，占位图片 url</div><div class="line"> * @funcition callback():   回调函数</div><div class="line"> */</div><div class="line"></div><div class="line">;(function($)&#123;</div><div class="line">  $.fn.picLazyLoad = function(settings)&#123;</div><div class="line">    var $this = $(this),</div><div class="line">        _winScrollTop = 0,</div><div class="line">        _winHeight = window.screen.height;</div><div class="line"></div><div class="line">    settings = $.extend(&#123;</div><div class="line">      threshold: 0, </div><div class="line">      placeholder: &apos;img/banner-blank.jpg&apos;,</div><div class="line">      callback: function()&#123;</div><div class="line">      &#125;</div><div class="line">    &#125;, settings||&#123;&#125;);</div><div class="line"></div><div class="line">    // 执行懒加载图片</div><div class="line">    lazyLoadPic();</div><div class="line"></div><div class="line">    // 滚动触发换图</div><div class="line">    $(window).on(&apos;scroll&apos;,function()&#123;</div><div class="line">      _winScrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;</div><div class="line">      lazyLoadPic();</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    // 懒加载图片</div><div class="line">    function lazyLoadPic()&#123;</div><div class="line">      $this.each(function()&#123;</div><div class="line">        var $self = $(this);</div><div class="line">        if($self.is(&apos;img&apos;))&#123;</div><div class="line">          if($self.attr(&apos;data-original&apos;))&#123;</div><div class="line">            var _offsetTop = $self.offset().top;</div><div class="line">            // threshold超过0，代表元素未出现在可视区域时就显示</div><div class="line">            if((_offsetTop - settings.threshold) &lt;= (_winHeight + _winScrollTop))&#123;</div><div class="line">              $self.attr(&apos;src&apos;,$self.attr(&apos;data-original&apos;));</div><div class="line">              $self.removeAttr(&apos;data-original&apos;);</div><div class="line">              settings.callback($self);</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;else&#123;</div><div class="line">          if($self.attr(&apos;data-original&apos;))&#123; // 默认占位图片</div><div class="line">            if($self.css(&apos;background-image&apos;) == &apos;none&apos;)&#123;</div><div class="line">              $self.css(&apos;background-image&apos;,&apos;url(&apos;+settings.placeholder+&apos;)&apos;);</div><div class="line">            &#125;</div><div class="line">            var _offsetTop = $self.offset().top;</div><div class="line">            if((_offsetTop - settings.threshold) &lt;= (_winHeight + _winScrollTop))&#123;</div><div class="line">              $self.css(&apos;background-image&apos;,&apos;url(&apos;+$self.attr(&apos;data-original&apos;)+&apos;)&apos;);</div><div class="line">              $self.removeAttr(&apos;data-original&apos;);</div><div class="line">              settings.callback($self);</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
+<p>使用时，只需要在懒加载的元素上添加 <code>lazyload</code> 的 class，同时调用 lazyload() 方法即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">	&lt;li&gt;&lt;img class=&quot;lazyload&quot; src=&quot;img/banner-blank.jpg&quot; data-original=&quot;img/banner-1.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;img class=&quot;lazyload&quot; src=&quot;img/banner-blank.jpg&quot; data-original=&quot;img/banner-2.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;img class=&quot;lazyload&quot; src=&quot;img/banner-blank.jpg&quot; data-original=&quot;img/banner-3.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;img class=&quot;lazyload&quot; src=&quot;img/banner-blank.jpg&quot; data-original=&quot;img/banner-4.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;img class=&quot;lazyload&quot; src=&quot;img/banner-blank.jpg&quot; data-original=&quot;img/banner-5.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;img class=&quot;lazyload&quot; src=&quot;img/banner-blank.jpg&quot; data-original=&quot;img/banner-6.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;img class=&quot;lazyload&quot; src=&quot;img/banner-blank.jpg&quot; data-original=&quot;img/banner-7.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li class=&quot;lazyload banner-8&quot; data-original=&quot;img/banner-8.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li class=&quot;lazyload banner-9&quot; data-original=&quot;img/banner-9.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li class=&quot;lazyload banner-10&quot; data-original=&quot;img/banner-10.jpg&quot;&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&apos;.lazyload&apos;).picLazyLoad();</div></pre></td></tr></table></figure>
+<p>图片分为两种，一种是写在 <code>&lt;img&gt;</code> 标签里，另一种是写在 <code>background</code> 属性里，所以我们对不同来源的图片进行了分别处理。</p>
+<p>占位图写在默认的 <code>src</code> 属性里，如果是背景图，则写在 <code>background-image</code> 属性里。占位图片会在一开始就进行加载，因为占位图通常是同一张图片，因此只需要请求一次即可。</p>
+<p>而真正需要加载的图片写在自定义的属性，在这段代码当中，我们把它放在的 <code>data-original</code> 属性中。在图片加载以后，即 <code>data-original</code> 属性里的值写进 <code>src</code> 或 <code>background-image</code> 里，然后删除该属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$self.removeAttr(&apos;data-original&apos;);</div></pre></td></tr></table></figure></p>
+<p><code>(_offsetTop - settings.threshold) &lt;= (_winHeight + _winScrollTop)</code> 是图片是否显示的判断条件，这里 <code>threshold</code> 用来对显示时间进行控制。当 threshold 为 0，则图片进入视窗的同时进行加载；如果 <code>threshold</code> 大于 0，则图片在进入视窗之前就进行加载，属性值是提前加载的高度（px）。在文章开头的动图例子中，<code>threshold</code> 被设成 -50，所以你会发现当图片进入窗口的一段时间仍然是占位图片，直到 50px 以后才开始加载。</p>
+<p>另外，<code>setting</code> 里设置了一些懒加载的相关参数。除了 <code>threshold</code> 以外，<code>placeholder</code> 用来背景图时的占位图，<code>callback()</code> 则是加载图片完成后的回调函数。如果你想让图片显示得不那么突兀，也可以加动画相关属性等等。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/programming/2017-05-12-lazyload/" class="archive-article-date">
+  	<time datetime="2017-05-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-12</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/programming/">技术</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/programming/2017-05-06-base64/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">base64 编码图片</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 昕小阳
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/css-grid/" style="font-size: 10px;">css grid</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">故事我有，我不喝酒。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
