@@ -21,7 +21,7 @@ lazyload 意义图片资源在网站当中的占比是很高的，对于一个�
 懒加载的实现原理还是很简单的嘛。
 lazyload 意义图片资源在网站当中的占比是很高的，对于一个以设计驱动型的公司来讲，图片大小可能超过所有">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-12-lazyload/lazyload-1.gif">
-<meta property="og:updated_time" content="2017-05-18T05:21:00.000Z">
+<meta property="og:updated_time" content="2017-05-18T05:22:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lazyload 图片懒加载">
 <meta name="twitter:description" content="记得去年毕业面试的时候，有个面试官问我怎么优化网页性能，我提到了图片懒加载可以提升用户体验。后来人家问我怎么实现的，我懵逼脸，然后就没有然后了。
@@ -37,6 +37,19 @@ lazyload 意义图片资源在网站当中的占比是很高的，对于一个�
   
   <link rel="stylesheet" href="/main.css">
   
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-99363578-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
 
 </head>
 
@@ -182,7 +195,7 @@ lazyload 意义图片资源在网站当中的占比是很高的，对于一个�
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.lazyload'</span>).picLazyLoad();</div></pre></td></tr></table></figure>
 <p>图片分为两种，一种是写在 <code>&lt;img&gt;</code> 标签里，另一种是写在 <code>background</code> 属性里，所以我们对不同来源的图片进行了分别处理。</p>
 <p>占位图写在默认的 <code>src</code> 属性里，如果是背景图，则写在 <code>background-image</code> 属性里。占位图片会在一开始就进行加载，因为占位图通常是同一张图片，因此只需要请求一次即可。</p>
-<p>而真正需要加载的图片写在自定义的属性，在这段代码当中，我们把它放在的 <code>data-original</code> 属性中。在图片加载以后，即 <code>data-original</code> 属性里的值写进 <code>src</code> 或 <code>background-image</code> 里，然后删除该属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$self.removeAttr(&apos;data-original&apos;);</div></pre></td></tr></table></figure></p>
+<p>而真正需要加载的图片写在自定义的属性，在这段代码当中，我们把它放在的 <code>data-original</code> 属性中。在图片加载以后，即 <code>data-original</code> 属性里的值写进 <code>src</code> 或 <code>background-image</code> 里，然后删除该属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$self.removeAttr(<span class="string">'data-original'</span>);</div></pre></td></tr></table></figure></p>
 <p><code>(_offsetTop - settings.threshold) &lt;= (_winHeight + _winScrollTop)</code> 是图片是否显示的判断条件，这里 <code>threshold</code> 用来对显示时间进行控制。当 threshold 为 0，则图片进入视窗的同时进行加载；如果 <code>threshold</code> 大于 0，则图片在进入视窗之前就进行加载，属性值是提前加载的高度（px）。在文章开头的动图例子中，<code>threshold</code> 被设成 -50，所以你会发现当图片进入窗口的一段时间仍然是占位图片，直到 50px 以后才开始加载。</p>
 <p>另外，<code>setting</code> 里设置了一些懒加载的相关参数。除了 <code>threshold</code> 以外，<code>placeholder</code> 用来背景图时的占位图，<code>callback()</code> 则是加载图片完成后的回调函数。如果你想让图片显示得不那么突兀，也可以加动画相关属性等等。</p>
 
