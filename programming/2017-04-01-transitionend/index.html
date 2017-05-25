@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-1.gif">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-2.gif">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-04-01-transitionend/transitionend-3.gif">
-<meta property="og:updated_time" content="2017-04-01T14:17:08.000Z">
+<meta property="og:updated_time" content="2017-05-18T09:10:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="transitionend">
 <meta name="twitter:description" content="不止一次地在项目中使用到 transitionend，这个事件用于监测 transition 动画是否完成，当完成时调用回调函数。与此相似的还有 animationend 事件。
@@ -116,7 +116,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     }
   };
 </script>
@@ -130,7 +130,7 @@
   <title> transitionend | 昕小阳的博客 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            分类
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
@@ -224,7 +224,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -234,7 +234,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -244,7 +244,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
             
-            Schedule
+            日程
           </a>
         </li>
       
@@ -297,7 +297,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2017-04-01T00:00:00+08:00" content="2017-04-01">
               2017-04-01
             </time>
@@ -309,7 +309,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/programming/" itemprop="url" rel="index">
@@ -347,25 +347,24 @@
       
         <p>不止一次地在项目中使用到 transitionend，这个事件用于监测 transition 动画是否完成，当完成时调用回调函数。与此相似的还有 animationend 事件。</p>
 <p>开始使用 transitionend 时觉得很难以理解，因为在大部分情况下，当我希望监测某个元素是否完成动画时，这个事件总是被触发了很多次，而且触发的时间也远远提前于动画完成时间。</p>
-<h3 id="子元素事件冒泡"><a href="#子元素事件冒泡" class="headerlink" title="子元素事件冒泡"></a>子元素事件冒泡</h3><p>如果子元素也有transition的话，transitionend事件会冒泡。DOM 结构如下，只包含一个父元素和一个子元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;parent&quot;&gt;</div><div class="line">	&lt;div class=&quot;child&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<a id="more"></a>
+<h3 id="子元素事件冒泡"><a href="#子元素事件冒泡" class="headerlink" title="子元素事件冒泡"></a>子元素事件冒泡</h3><p>如果子元素也有transition的话，transitionend事件会冒泡。DOM 结构如下，只包含一个父元素和一个子元素。<br><a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>父元素和子元素都包含 transition 属性，当添加 active 的 class 时触发动画，但是动画的结束时间不同，以便我们更好地观察究竟是哪个元素触发了 transitionend 事件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.parent &#123;</div><div class="line">    transform: translateX(-100px);</div><div class="line">    transition: transform 3s linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.child &#123;</div><div class="line">    transform: translateX(100px);</div><div class="line">    transition: transform 1s linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.parent.active,</div><div class="line">.parent.active .child &#123;</div><div class="line">    transform: translateX(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-100px);</div><div class="line">    <span class="attribute">transition</span>: transform <span class="number">3s</span> linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(100px);</div><div class="line">    <span class="attribute">transition</span>: transform <span class="number">1s</span> linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.parent</span><span class="selector-class">.active</span>,</div><div class="line"><span class="selector-class">.parent</span><span class="selector-class">.active</span> <span class="selector-class">.child</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>此外，我们对父元素进行了事件监测，当 transition 完成时，打印出 “end”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;.parent&apos;).on(&apos;transitionend&apos;,function(e)&#123;</div><div class="line">    console.log(&apos;end&apos;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.parent'</span>).on(<span class="string">'transitionend'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'end'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>我们期望的结果当然是父元素经过 3s 的动画后，打印出 end，但结果却打印了两个。我们发现子元素中的 transitionend 事件会冒泡到父元素上，因此会监测到两个 <code>transitionend</code>，分别在 1s （子元素 transition 完成）和 3s （父元素 transition 完成）时。</p>
 <img src="/programming/2017-04-01-transitionend/transitionend-1.gif" alt="transitionend-1.gif" title="">
 <p>在大部分情况下，如果我们只想监测当前元素的动画完成情况，需要在子元素中阻止冒泡。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;.child&apos;).on(&apos;transitionend&apos;,function(e)&#123;</div><div class="line">    e.stopPropagation();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.child'</span>).on(<span class="string">'transitionend'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    e.stopPropagation();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>结果和我们想象的一样。现在我们实现了只监测父元素动画，3s 之后控制台打印出一个 “end”。</p>
 <img src="/programming/2017-04-01-transitionend/transitionend-2.gif" alt="transitionend-2.gif" title="">
 <h3 id="transition-中包含不同的属性"><a href="#transition-中包含不同的属性" class="headerlink" title="transition 中包含不同的属性"></a>transition 中包含不同的属性</h3><p>如果 transition 属性像下面这样，包含了不止一个 transition-property，究竟会监测到一个还是两个 transitionend 事件呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transition: opacity 1s linear, transform 3s linear;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">opacity</span> 1<span class="selector-tag">s</span> <span class="selector-tag">linear</span>, <span class="selector-tag">transform</span> 3<span class="selector-tag">s</span> <span class="selector-tag">linear</span>;</div></pre></td></tr></table></figure>
 <p>为了考察这个问题，我们在 HTML 中去掉子元素，只保留了父元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;parent&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>为父元素设置两个属性变动，其中 opacity 属性提前于 transform 到达最终状态，动画时间较短。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.parent &#123;</div><div class="line">    transform: translateX(-100px);</div><div class="line">    opacity: 0;</div><div class="line">    transition: opacity 1s linear, transform 3s linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.parent.active &#123;</div><div class="line">    transform: translateX(0);</div><div class="line">    opacity: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-100px);</div><div class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">transition</span>: opacity <span class="number">1s</span> linear, transform <span class="number">3s</span> linear;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.parent</span><span class="selector-class">.active</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(0);</div><div class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>结果如下：<br><img src="/programming/2017-04-01-transitionend/transitionend-3.gif" alt="transitionend-3.gif" title=""></p>
 <p>所以 transitionend 事件除了会有子元素的冒泡，还会监听不同属性。这就很好地解释了为什么我们在平时的使用里会得到比预期多得多的 transitionend 事件！</p>
 
@@ -458,10 +457,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -469,16 +468,16 @@
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="昕小阳" />
           <p class="site-author-name" itemprop="name">昕小阳</p>
-          <p class="site-description motion-element" itemprop="description">xinxiaoyang’s blog | xinxiaoyang | 昕小阳的博客 | 昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">14</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
@@ -486,7 +485,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
@@ -495,7 +494,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">标签</span>
               </a>
             </div>
           
@@ -550,11 +549,11 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>

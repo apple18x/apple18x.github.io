@@ -98,10 +98,10 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
 在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-1.png">
 <meta property="og:image" content="http://www.xinxiaoyang/./icon.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/./base64-2.png">
 <meta property="og:image" content="http://www.xinxiaoyang/./base64-3.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-4.png">
-<meta property="og:updated_time" content="2017-05-06T14:09:12.000Z">
+<meta property="og:updated_time" content="2017-05-18T09:06:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="base64 编码图片">
 <meta name="twitter:description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。
@@ -121,7 +121,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     }
   };
 </script>
@@ -135,7 +135,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
   <title> base64 编码图片 | 昕小阳的博客 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -199,7 +199,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -209,7 +209,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            分类
           </a>
         </li>
       
@@ -219,7 +219,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
@@ -229,7 +229,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -239,7 +239,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -249,7 +249,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             
               <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
             
-            Schedule
+            日程
           </a>
         </li>
       
@@ -302,7 +302,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2017-05-06T00:00:00+08:00" content="2017-05-06">
               2017-05-06
             </time>
@@ -314,7 +314,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/programming/" itemprop="url" rel="index">
@@ -353,8 +353,9 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
         <p>最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。</p>
 <p>一直听说 base64 编码，终于趁这个机会搞了个明白。</p>
 <h3 id="base64是什么"><a href="#base64是什么" class="headerlink" title="base64是什么"></a>base64是什么</h3><p>base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。</p>
-<p>在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方式就是记录下每个像素点的 rgb 信息，通过依次解码就能够还原整个图像。</p>
-<p>base64 编码长什么样呢？<br><a id="more"></a><br>google 告诉你答案。在 google 首页，你会发现话筒的小图标就是通过 base64 解码得到的。</p>
+<p>在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方式就是记录下每个像素点的 rgb 信息，通过依次解码就能够还原整个图像。<br><a id="more"></a></p>
+<p>base64 编码长什么样呢？</p>
+<p>google 告诉你答案。在 google 首页，你会发现话筒的小图标就是通过 base64 解码得到的。</p>
 <img src="/programming/2017-05-06-base64/base64-1.png" alt="base64-1.png" title="">
 <p>在这里，<code>data:image/png;base64,</code> 后面一大串字符串就是 base64 编码，通常情况下 base64 编码的结尾都会有 1-2 个 “=”。其中，png 指明了编码图片的类型，所以也可以写成这样：</p>
 <p><code>data:image/gif;base64,</code><br><code>data:image/jpeg;base64,</code>  </p>
@@ -366,9 +367,9 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
 <h3 id="base64-的不足"><a href="#base64-的不足" class="headerlink" title="base64 的不足"></a>base64 的不足</h3><p>一切听起来都是那么完美。</p>
 <p>base64 原本是为了优化性能的，但我们真的如愿了吗？</p>
 <p>base64 编码确实减少了请求，但相应地 CSS 或 HTML 文件体积也增大了。举个栗子，我们对下面这张 4KB 大小 png 格式的图标图片进行编码。</p>
-<p><img src="./icon.png" width="41" height="41" alt="图片名称"></p>
+<p><img src="./icon.png" width="41" height="41" alt="icon"></p>
 <p>编码后，我们将编码保存在 CSS 文件里，然后做一下比较。</p>
-<img src="/programming/2017-05-06-base64/base64-2.png" alt="base64-2.png" title="">
+<p><img src="./base64-2.png" width="100%" height="auto" alt="图片名称"></p>
 <p>左边是原图的信息，只有 3007 字节，但编码之后字节变为 4012 字节反而增大了。即便 base64 编码能够被 gzip 压缩，压缩率达到 50% 以上，2000+ 个字符对 CSS 的可读性也会造成很大的影响。事实上，在大部分情况下，使用 base64 编码后的文件大小都会比原图片有明显的增加。</p>
 <p>如果以上造成的问题不认为是大问题，那么，增加的文件体积会对渲染造成堵塞则是必须要引起我们重视的。CSS 解析会阻塞页面的渲染，也就是说，CSSOM 生成之前，页面是不会显示任何东西的。如果 base64 编码过长，那么解析时间大大增加，空白时间的增加将会降低用户体验。</p>
 <p>由此可见，base64 存在一些适用条件，对于以下类型的图片才应该考虑使用 base64 编码：</p>
@@ -384,7 +385,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
 <li>不能单独缓存编码，除非 CSS 文件被缓存</li>
 </ul>
 <h3 id="如何对图片编码"><a href="#如何对图片编码" class="headerlink" title="如何对图片编码"></a>如何对图片编码</h3><p>如果想通过代码的方式对图片进行编码，那么 canvas 是个不错的选择。简单来说，在 canvas 中插入图片，使用 toDataURL() 方法就能获得 base64 编码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">function toDataURL(img) &#123;</div><div class="line">    var canvas = document.createElement(&quot;canvas&quot;);</div><div class="line">    canvas.width = img.width;</div><div class="line">    canvas.height = img.height;</div><div class="line"></div><div class="line">    var ctx = canvas.getContext(&quot;2d&quot;);</div><div class="line">    ctx.drawImage(img, 0, 0, img.width, img.height);</div><div class="line">    var dataURL = canvas.toDataURL(&quot;image/png&quot;);</div><div class="line">    return dataURL;</div><div class="line">&#125; </div><div class="line"></div><div class="line">function getBase64Image(src)&#123;</div><div class="line">	var img = new Image();</div><div class="line">	img.crossOrigin = &quot;anonymous&quot;; // 解决图片跨域问题</div><div class="line">	img.src = src; </div><div class="line">	</div><div class="line">	img.onload =function() &#123; </div><div class="line">	    dataUrl = getBase64Image(img); </div><div class="line">	&#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">getBase64Image(imgSrc);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">toDataURL</span>(<span class="params">img</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line">  canvas.width = img.width;</div><div class="line">  canvas.height = img.height;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, img.width, img.height);</div><div class="line">  <span class="keyword">var</span> dataURL = canvas.toDataURL(<span class="string">"image/png"</span>);</div><div class="line">  <span class="keyword">return</span> dataURL;</div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getBase64Image</span>(<span class="params">src</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">  img.crossOrigin = <span class="string">"anonymous"</span>; <span class="comment">// 解决图片跨域问题</span></div><div class="line">  img.src = src; </div><div class="line">	</div><div class="line">  img.onload =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">    dataUrl = getBase64Image(img); </div><div class="line">  &#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">getBase64Image(imgSrc);</div></pre></td></tr></table></figure>
 <p>如果使用 Chrome 浏览器，可以安装 WEB 前端助手（FeHelper）插件。这是一个集多个前端开发常用功能于一体的插件，不过我只用过图片 Base64 转换。</p>
 <p><img src="./base64-3.png" width="153" height="360" alt="图片名称"></p>
 <p>利用插件，可以qiao方便地实现图片到编码的人工转换。另外，插件还对比了原图片和编码的大小，给工程狮选择提供一些参考。</p>
@@ -478,10 +479,10 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -489,16 +490,16 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="昕小阳" />
           <p class="site-author-name" itemprop="name">昕小阳</p>
-          <p class="site-description motion-element" itemprop="description">xinxiaoyang’s blog | xinxiaoyang | 昕小阳的博客 | 昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">14</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
@@ -506,7 +507,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
@@ -515,7 +516,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">标签</span>
               </a>
             </div>
           
@@ -570,11 +571,11 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
