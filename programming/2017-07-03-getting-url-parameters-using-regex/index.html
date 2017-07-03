@@ -94,7 +94,7 @@
 <meta property="og:description" content="要说学习面试题最好的方法，就是面试跪了以后的恶补。
 又是一道我曾经答得很烂的面试题。
 利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：">
-<meta property="og:updated_time" content="2017-07-03T15:10:09.000Z">
+<meta property="og:updated_time" content="2017-07-03T15:12:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用正则表达式获取 url 中的参数">
 <meta name="twitter:description" content="要说学习面试题最好的方法，就是面试跪了以后的恶补。
@@ -334,13 +334,13 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myId</div></pre></td></tr></table></figure>
 <h3 id="正则表达式解析"><a href="#正则表达式解析" class="headerlink" title="正则表达式解析"></a>正则表达式解析</h3><p>在这个例子中，正则表达式为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(^|&amp;)id=([^&amp;]*)(&amp;|$)</div></pre></td></tr></table></figure>
-<p>(1) 参数通常在开头(^)或以 &amp; 进行连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(^|&amp;)</div></pre></td></tr></table></figure></p>
-<p>(2) 属性值设定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">([^&amp;]*)</div></pre></td></tr></table></figure></p>
+<p>(1) 参数通常在开头(^)或以 &amp; 进行连接<br>(^|&amp;)</p>
+<p>(2) 属性值设定<br>([^&amp;]*)</p>
 <p><code>[^]</code> 代表匹配未在方括号中指定的字符。添加 &amp;，这样，该正则表达式匹配任何非 &amp; 字符。<code>*</code> 代表出现 0 次或多次，因此只要不出现 &amp;，均被认为是属性值的一部分。</p>
-<p>(3) 以 &amp; 作为结束或遇到结尾 ($)  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(&amp;|$)</div></pre></td></tr></table></figure>
+<p>(3) 以 &amp; 作为结束或遇到结尾 ($)<br>(&amp;|$)</p>
 <p><code>window.location.search.substr(1)</code> 是 url 当中的参数部分。</p>
-<p>调用方法的返回结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&quot;id=myId&amp;&quot;, &quot;&quot;, &quot;myId&quot;, &quot;&amp;&quot;, index: 0, input: &quot;id=myId&amp;name=myName&quot;]</div></pre></td></tr></table></figure></p>
+<p>调用方法的返回结果为：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&quot;id=myId&amp;&quot;, &quot;&quot;, &quot;myId&quot;, &quot;&amp;&quot;, index: 0, input: &quot;id=myId&amp;name=myName&quot;]</div></pre></td></tr></table></figure>
 <p>取数组中第三个值即可。</p>
 
       
@@ -373,17 +373,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-05-12-lazyload/" rel="next" title="lazyload 图片懒加载">
-                <i class="fa fa-chevron-left"></i> lazyload 图片懒加载
+              <a href="/programming/2017-07-03-picload/" rel="next" title="设置了 "display:none" 图片是否加载？">
+                <i class="fa fa-chevron-left"></i> 设置了 "display:none" 图片是否加载？
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/programming/2017-07-03-picload/" rel="prev" title="设置了 "display:none" 图片是否加载？">
-                设置了 "display:none" 图片是否加载？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
