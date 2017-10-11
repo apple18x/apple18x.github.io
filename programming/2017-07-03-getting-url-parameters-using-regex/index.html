@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：">
+<meta name="description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：
+12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用正则表达式获取 url 中的参数">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-07-03-getting-url-parameters-using-regex/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：">
-<meta property="og:updated_time" content="2017-10-11T13:53:14.000Z">
+<meta property="og:description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：
+12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search">
+<meta property="og:updated_time" content="2017-10-11T14:01:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用正则表达式获取 url 中的参数">
-<meta name="twitter:description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：">
+<meta name="twitter:description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：
+12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search">
 
 
 
@@ -316,8 +319,8 @@
 
       
         <h3 id="利用正则表达式获取url中的参数"><a href="#利用正则表达式获取url中的参数" class="headerlink" title="利用正则表达式获取url中的参数"></a>利用正则表达式获取url中的参数</h3><p>获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：</p>
-<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">par</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + par + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</div><div class="line">  <span class="keyword">var</span> result = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg)[<span class="number">2</span>];</div><div class="line">	</div><div class="line">  <span class="keyword">if</span> (result &amp;&amp; result[<span class="number">2</span>]) &#123;</div><div class="line">    <span class="keyword">return</span> result[<span class="number">2</span>];</div><div class="line">  &#125;</div><div class="line">	</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>假如我们想获得下面地址的 id 参数值：</p>
 <p><a href="http://127.0.0.1/test.html?id=myId&amp;name=myName" target="_blank" rel="external">http://127.0.0.1/test.html?id=myId&amp;name=myName</a></p>
 <p>调用该方法即可。</p>
@@ -365,16 +368,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-05-12-lazyload/" rel="next" title="lazyload 图片懒加载">
-                <i class="fa fa-chevron-left"></i> lazyload 图片懒加载
+              <a href="/programming/2017-07-03-picload/" rel="next" title="设置了 "display:none" 图片是否加载？">
+                <i class="fa fa-chevron-left"></i> 设置了 "display:none" 图片是否加载？
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-07-03-picload/" rel="prev" title="设置了 "display:none" 图片是否加载？">
-                设置了 "display:none" 图片是否加载？ <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-08-10-angular2-parent-child-communication/" rel="prev" title="Angular2 父子组件通讯">
+                Angular2 父子组件通讯 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
