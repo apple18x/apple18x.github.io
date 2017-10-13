@@ -1,0 +1,686 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Grid Layout，即网格布局是 CSS3 新属性，可以轻松实现二维布局。随着近一年各大浏览器对该属性的支持，Grid 布局的呼声也越来越高。
+最开始了解到 Grid 我是无感的，我无脑地把二维网格联想为 excel 表格，一个 excel 能玩儿出多大的花样？  
+直到有一天看到这个：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Grid Layout 入门">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="Grid Layout，即网格布局是 CSS3 新属性，可以轻松实现二维布局。随着近一年各大浏览器对该属性的支持，Grid 布局的呼声也越来越高。
+最开始了解到 Grid 我是无感的，我无脑地把二维网格联想为 excel 表格，一个 excel 能玩儿出多大的花样？  
+直到有一天看到这个：">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-2-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-5.png">
+<meta property="og:updated_time" content="2017-10-13T14:55:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Grid Layout 入门">
+<meta name="twitter:description" content="Grid Layout，即网格布局是 CSS3 新属性，可以轻松实现二维布局。随着近一年各大浏览器对该属性的支持，Grid 布局的呼声也越来越高。
+最开始了解到 Grid 我是无感的，我无脑地把二维网格联想为 excel 表格，一个 excel 能玩儿出多大的花样？  
+直到有一天看到这个：">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-07-18-grid-1/"/>
+
+
+  <title> Grid Layout 入门 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Grid Layout 入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-18T00:00:00+08:00" content="2017-07-18">
+              2017-07-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Grid Layout，即网格布局是 CSS3 新属性，可以轻松实现二维布局。随着近一年各大浏览器对该属性的支持，Grid 布局的呼声也越来越高。</p>
+<p>最开始了解到 Grid 我是无感的，我无脑地把二维网格联想为 excel 表格，一个 excel 能玩儿出多大的花样？  </p>
+<p>直到有一天看到这个：</p>
+<a id="more"></a>
+<img src="/programming/2017-07-18-grid-1/grid-1.png" alt="grid-1.png" title="">
+<p>我靠，这不是轻松实现了页面布局？</p>
+<p>有点儿意思。</p>
+<h3 id="1-Grid-基础结构"><a href="#1-Grid-基础结构" class="headerlink" title="1. Grid 基础结构"></a>1. Grid 基础结构</h3><p>与 Flexbox 类似，Grid 布局需要用 <code>display: grid</code> 来声明一个容器（以下称为“网格容器”），该容器里的所有子元素自动成为网格项目（以下称为“网格项目”）。 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.grid-container</span> &#123;</div><div class="line">  <span class="attribute">display</span>: grid;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-Grid-常用属性"><a href="#2-Grid-常用属性" class="headerlink" title="2. Grid 常用属性"></a>2. Grid 常用属性</h3><h4 id="2-1-行与列"><a href="#2-1-行与列" class="headerlink" title="2.1 行与列"></a>2.1 行与列</h4><ul>
+<li>grid-template-columns 指定每列的宽度</li>
+<li>grid-template-rows    指定每行的高度</li>
+<li>grid-gap  指定列（或行）的间距</li>
+</ul>
+<p>举个栗子：</p>
+<img src="/programming/2017-07-18-grid-1/grid-2.png" alt="grid-2.png" title="">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.grid-container &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 1fr 2fr 1fr;</div><div class="line">  grid-gap: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>grid-gap</code> 为每个网格项目之间添加 5px 的间隙。</p>
+<p><code>fr</code> 单位(fraction)是根据网格容器计算的单位列宽。我们在容器中设置了 <code>grid-template-columns</code> 属性值为 <code>1fr 2fr 1fr</code>，是将整个容器等分了 4(1+2+1) 列，因此容器的最小（单位）列宽为容器的 1/4 宽。同时，因为属性值有三个值，因此，默认每行显示三个元素，宽度比分别为 1: 2: 1。</p>
+<p>当然，更为普遍的单位，例如 <code>px</code>、<code>em</code>、<code>rem</code>和百分比同样可以使用，并且可以在 <code>grid-template-columns</code> 和 <code>grid-template-rows</code> 属性中混合使用，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grid-template-columns: 100px 3em 40%;</div></pre></td></tr></table></figure>
+<p>如果上述单位与 <code>fr</code> 同时设置为属性值，则 <code>fr</code> 在剩余空间再进行分割。举个栗子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">grid-template-columns</span>: 50<span class="selector-tag">px</span> 1<span class="selector-tag">fr</span> 2<span class="selector-tag">fr</span> 50<span class="selector-tag">px</span>;</div></pre></td></tr></table></figure>
+<img src="/programming/2017-07-18-grid-1/grid-2-1.png" alt="grid-2-1.png" title="">
+<p>左右分别为 50px，剩余部分再以 1:2 的比例进行分割。</p>
+<h4 id="2-2-网格线与合并单元格"><a href="#2-2-网格线与合并单元格" class="headerlink" title="2.2 网格线与合并单元格"></a>2.2 网格线与合并单元格</h4><ul>
+<li><p>grid-area 应用于网格项目，起始行的网格线位置/结束行的网格线位置/起始列的网格线位置/结束列的网格线位置</p>
+</li>
+<li><p>grid-rows 应用于网格项目，起始行的网格线位置/结束行的网格线位置</p>
+</li>
+<li>grid-rows-start 应用于网格项目，起始行的网格线位置</li>
+<li><p>grid-rows-end 应用于网格项目，结束行的网格线位置</p>
+</li>
+<li><p>grid-columns 应用于网格项目，起始列的网格线位置/结束列的网格线位置</p>
+</li>
+<li>grid-columns-start 应用于网格项目，起始列的网格线位置</li>
+<li>grid-columns-end 应用于网格项目，结束列的网格线位置</li>
+</ul>
+<p>举个栗子：</p>
+<img src="/programming/2017-07-18-grid-1/grid-3.png" alt="grid-3.png" title="">
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item header"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item sidebar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.sidebar</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">4</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里涉及到一个很重要的概念——网格线。网格线用来在水平和垂直方向分割网格的线。水平方向的网格线是从左向右，垂直方向是从上往下，编号从 1 开始。</p>
+<p>在本例中，网格线的位置如下：</p>
+<img src="/programming/2017-07-18-grid-1/grid-4.png" alt="grid-4.png" title="">
+<p>注意：这里的网格线编号是以最初的状态来标号的，因此在这个例子中，垂直方向并不存在 <code>line5</code>，这是因为你看到的第 5 条线是由合并单元格被挤下来的元素生成的.</p>
+<p>这样很容易理解 <code>grid-column: 1 / 4</code>和 <code>grid-row: 2 / 4</code> 轻松实现了我们常见的导航 header 和侧边栏 sidebar。</p>
+<p><code>grid-columns</code>、<br><code>grid-rows</code> 和 <code>grid-area</code> 指定的起始位置与结束位置均指的是网格线的编号。几个属性之间的关系如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">grid-columns： grid-column-start/grid-column-end;</div><div class="line">grid-rows： grid-row-start/grid-row-end;</div><div class="line"></div><div class="line">grid-area： grid-row-start/grid-column-start/grid-row-end/grid-column-end;</div></pre></td></tr></table></figure>
+<p><code>grid-column</code> 和 <code>grid-row</code> 是一种简写的方法，分开来写等价于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">grid-columns: 1 / 4;</div><div class="line">grid-column-start: 1;</div><div class="line">grid-column-end: 4;</div><div class="line"></div><div class="line">grid-row: 2 / 4;</div><div class="line">grid-row-start: 2;</div><div class="line">grid-row-end: 4;</div></pre></td></tr></table></figure>
+<p>另一种写法也可以实现相同的效果，以下写法是完全等价的：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">grid-column: 1 / 4;</div><div class="line">grid-column: 1 / span 3;</div><div class="line"></div><div class="line">grid-row: 2 / 4;</div><div class="line">grid-row: 2 / span 2;</div></pre></td></tr></table></figure>
+<p><code>span</code> 关键字很像我们操作 excel 中的合并单元格，<code>grid-column: 1 / span 3;</code> 代表从第一列开始，合并 3 个单元格，也就是列网格线跨度为 3。<code>grid-row: 2 / span 2;</code> 代表从第 2 根网格线开始，横跨 2 个网格线。</p>
+<h4 id="2-3-负的网格线编号"><a href="#2-3-负的网格线编号" class="headerlink" title="2.3 负的网格线编号"></a>2.3 负的网格线编号</h4><p>网格线不仅可以从左到右（水平方向）、从上到下（垂直方向）编号，还可以反向编号，这时的编号是负数。</p>
+<p>在上面的例子中，负编号如下：</p>
+<img src="/programming/2017-07-18-grid-1/grid-5.png" alt="grid-5.png" title="">
+<p>因此，以下两种写法是等价的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grid-column: 1 / 4;</div><div class="line">grid-column: -1 / -4;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS3/" rel="tag">#CSS3</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-07-03-picload/" rel="next" title="设置了 "display:none" 图片是否加载？">
+                <i class="fa fa-chevron-left"></i> 设置了 "display:none" 图片是否加载？
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-08-10-angular2-parent-child-communication/" rel="prev" title="Angular2 父子组件通讯">
+                Angular2 父子组件通讯 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Grid-基础结构"><span class="nav-number">1.</span> <span class="nav-text">1. Grid 基础结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Grid-常用属性"><span class="nav-number">2.</span> <span class="nav-text">2. Grid 常用属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-行与列"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 行与列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-网格线与合并单元格"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 网格线与合并单元格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-负的网格线编号"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 负的网格线编号</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
