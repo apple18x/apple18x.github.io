@@ -1319,8 +1319,8 @@
             
               
                 
-                <a class="post-title-link" href="/programming/2017-03-09-slice/" itemprop="url">
-                  slice(0)
+                <a class="post-title-link" href="/programming/2017-03-09-dp/" itemprop="url">
+                  dp 与 px
                 </a>
               
             
@@ -1381,12 +1381,11 @@
 
       
         
-          <p>今天看代码时看到了 <code>slice(0)</code> 的写法，简单研究了一下。</p>
-<p>JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;</div><div class="line"></div><div class="line">arr1.push(<span class="string">'Jane'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'arr2:'</span>+ arr2);</div></pre></td></tr></table></figure>
-<p>打印结果为：<br>
+          <p>前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？  </p>
+<p>参考网址：<a href="https://developer.android.com/guide/practices/screens_support.html">https://developer.android.com/guide/practices/screens_support.html</a></p>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均指屏幕，图像情况类似。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2017-03-09-slice/#more" rel="contents">
+            <a class="btn" href="/programming/2017-03-09-dp/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
