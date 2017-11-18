@@ -1,0 +1,666 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="1. 原型链类1.1 创建对象有几种方法1.1.1 字面量12var o1 = &amp;#123;name: &amp;apos;o1&amp;apos;&amp;#125;;var o2 = new Object(&amp;#123;name: &amp;apos;o2&amp;apos;&amp;#125;);
+结果：
+12&amp;#123;name: &amp;quot;o1&amp;quot;&amp;#125;  &amp;#123;name: &amp;quot;o2&amp;quot;&amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原型链">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-10-29-prototype/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="1. 原型链类1.1 创建对象有几种方法1.1.1 字面量12var o1 = &amp;#123;name: &amp;apos;o1&amp;apos;&amp;#125;;var o2 = new Object(&amp;#123;name: &amp;apos;o2&amp;apos;&amp;#125;);
+结果：
+12&amp;#123;name: &amp;quot;o1&amp;quot;&amp;#125;  &amp;#123;name: &amp;quot;o2&amp;quot;&amp;#125;">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-29-prototype/prototype-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-29-prototype/prototype-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-29-prototype/prototype-3.png">
+<meta property="og:updated_time" content="2017-11-18T07:48:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原型链">
+<meta name="twitter:description" content="1. 原型链类1.1 创建对象有几种方法1.1.1 字面量12var o1 = &amp;#123;name: &amp;apos;o1&amp;apos;&amp;#125;;var o2 = new Object(&amp;#123;name: &amp;apos;o2&amp;apos;&amp;#125;);
+结果：
+12&amp;#123;name: &amp;quot;o1&amp;quot;&amp;#125;  &amp;#123;name: &amp;quot;o2&amp;quot;&amp;#125;">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-10-29-prototype/prototype-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-10-29-prototype/"/>
+
+
+  <title> 原型链 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                原型链
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-29T00:00:00+08:00" content="2017-10-29">
+              2017-10-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-原型链类"><a href="#1-原型链类" class="headerlink" title="1. 原型链类"></a>1. 原型链类</h3><h4 id="1-1-创建对象有几种方法"><a href="#1-1-创建对象有几种方法" class="headerlink" title="1.1 创建对象有几种方法"></a>1.1 创建对象有几种方法</h4><h5 id="1-1-1-字面量"><a href="#1-1-1-字面量" class="headerlink" title="1.1.1 字面量"></a>1.1.1 字面量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var o1 = &#123;name: &apos;o1&apos;&#125;;</div><div class="line">var o2 = new Object(&#123;name: &apos;o2&apos;&#125;);</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;name: &quot;o1&quot;&#125;  </div><div class="line">&#123;name: &quot;o2&quot;&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="1-1-2-显式的构造函数"><a href="#1-1-2-显式的构造函数" class="headerlink" title="1.1.2 显式的构造函数"></a>1.1.2 显式的构造函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var M = function()&#123;this.name=&apos;o3&apos;&#125;;</div><div class="line">var o3 = new M();</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">M &#123;name: &quot;o3&quot;&#125;</div></pre></td></tr></table></figure>
+<p>注：任何函数被 new 运算符计算以后，都可以被称之为构造函数。</p>
+<h5 id="1-1-3-Object-create"><a href="#1-1-3-Object-create" class="headerlink" title="1.1.3 Object.create"></a>1.1.3 Object.create</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var P = &#123;name: &apos;o4&apos;&#125;;</div><div class="line">var o4 = Object.create(P);</div></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#125;</div></pre></td></tr></table></figure></p>
+<p>解释：<br>Object.create() 方法创建的对象是用原型链来连接的，即把参数（对象）作为原型对象的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">o4.__proto__ // p</div></pre></td></tr></table></figure></p>
+<h4 id="1-2-原型链、构造函数、实例和原型链"><a href="#1-2-原型链、构造函数、实例和原型链" class="headerlink" title="1.2 原型链、构造函数、实例和原型链"></a>1.2 原型链、构造函数、实例和原型链</h4><img src="/programming/2017-10-29-prototype/prototype-1.png" alt="prototype-1.png" title="">
+<ul>
+<li>构造函数通过 new 运算符得到实例</li>
+<li>用 new 运算符得到的函数为构造函数，相反则是普通函数。任何函数都可以被当作构造函数</li>
+<li>函数都有一个 prototype 属性（声明函数时自动添加），该属性指向原型对象</li>
+<li>原型对象通过 constructor（构造器） 来获得被引用的构造函数 </li>
+</ul>
+<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var M = function()&#123;this.name=&apos;o3&apos;&#125;;</div><div class="line">var o3 = new M();</div></pre></td></tr></table></figure></p>
+<p>构造器：<code>M</code><br>实例：<code>o3</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">M.prototype.constructor === M</div></pre></td></tr></table></figure>
+<p>输出： true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">o3.__proto__ === M.prototype</div></pre></td></tr></table></figure>
+<p>输出： true</p>
+<p>原型链：从实例往上找，找到它的原型对象，原型对象再向上找到原型对象，直到 Object 的原型对象。这一过程是通过 <strong><code>__proto__</code></strong> 向上找的。</p>
+<p>多个实例共用一个原型对象，原型对象上的方法被实例共享，举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var M = function()&#123;</div><div class="line">  this.name=&apos;o3&apos;;</div><div class="line">&#125;;</div><div class="line">var o3 = new M();</div><div class="line"></div><div class="line">// 增加方法</div><div class="line">M.prototype.say = function()&#123;</div><div class="line">  console.log(&apos;say hi&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var o3= new M();</div><div class="line">var o5= new M();</div><div class="line"></div><div class="line"></div><div class="line">o3.say() // say hi</div><div class="line">o5.say() // say hi</div></pre></td></tr></table></figure>
+<p>如果实例的某个方法，如果实例本身找不到这个方法时，将会沿着原型链，从它的原型对象上找，如果找到，则停止查找，返回。反之，继续向上一级原型对象上找，直到 Object。</p>
+<p><strong>注</strong>: 函数才会有 <code>prototype</code>，只有对象(函数既是函数也是对象)才有 <strong>proto</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">M.__proto__  === Function.prototype;</div></pre></td></tr></table></figure>
+<p>输出： true</p>
+<h4 id="1-3-instanceof-的原理"><a href="#1-3-instanceof-的原理" class="headerlink" title="1.3 instanceof 的原理"></a>1.3 instanceof 的原理</h4><img src="/programming/2017-10-29-prototype/prototype-2.png" alt="prototype-2.png" title="">
+<p>instanceof 实际判断的是实例对象的 <code>__proto__</code> 和构造函数的 <code>prototype</code> 是不是同一个引用（原型对象），如果是，则返回 true，反之返回 false。判断时，但原型链上的原型对象都会返回 true。</p>
+<p>举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var M = function()&#123;</div><div class="line">  this.name=&apos;o3&apos;;</div><div class="line">&#125;;</div><div class="line">var o3 = new M();</div><div class="line"></div><div class="line"></div><div class="line">o3 instanceof M // true</div><div class="line">os instanceof Object // true</div></pre></td></tr></table></figure>
+<p>因为 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">o3.__proto__ === M.prototype // true</div><div class="line">M.prototype.__proto__ === Object.prototype // true</div></pre></td></tr></table></figure>
+<p>问：如果 a 继承 b，b 继承 c，a 生成的实例 instanceof b 或 c 都会返回 true，如何判断它是哪个的实例呢？<br>答： constructor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">o3.__proto__.constructor === M; // true</div><div class="line">o3.__proto__.constructor === Object // false</div></pre></td></tr></table></figure>
+<h4 id="1-4-new-运算符"><a href="#1-4-new-运算符" class="headerlink" title="1.4 new 运算符"></a>1.4 new 运算符</h4><img src="/programming/2017-10-29-prototype/prototype-3.png" alt="prototype-3.png" title="">
+<p>以下模拟了新对象被创建的过程(对应上图的三个步骤)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var new2 = function(func)&#123;</div><div class="line">  // 假设 func 就是构造函数</div><div class="line">  var o = Object.create(func.prototype)&apos;</div><div class="line">  var k = func.call(o);</div><div class="line">  if(typeof k === &apos;object&apos;)&#123;</div><div class="line">  	return k</div><div class="line">  &#125; else &#123;</div><div class="line">  	return o</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-10-26-communication/" rel="next" title="通信类">
+                <i class="fa fa-chevron-left"></i> 通信类
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-10-31-js-concurrency-model/" rel="prev" title="JavaScript 运行机制">
+                JavaScript 运行机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原型链类"><span class="nav-number">1.</span> <span class="nav-text">1. 原型链类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-创建对象有几种方法"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 创建对象有几种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-1-字面量"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 字面量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-2-显式的构造函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 显式的构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-3-Object-create"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 Object.create</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-原型链、构造函数、实例和原型链"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 原型链、构造函数、实例和原型链</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-instanceof-的原理"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 instanceof 的原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-new-运算符"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 new 运算符</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

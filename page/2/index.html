@@ -258,6 +258,596 @@
             
               
                 
+                <a class="post-title-link" href="/programming/2017-07-18-grid/" itemprop="url">
+                  Grid Layout 入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-18T00:00:00+08:00" content="2017-07-18">
+              2017-07-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Grid Layout，即网格布局是 CSS3 新属性，可以轻松实现二维布局。随着近一年各大浏览器对该属性的支持，Grid 布局的呼声也越来越高。</p>
+<p>最开始了解到 Grid 我是无感的，我无脑地把二维网格联想为 excel 表格，一个 excel 能玩儿出多大的花样？  </p>
+<p>直到有一天看到这个：</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/2017-07-18-grid/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/programming/2017-07-03-getting-url-parameters-using-regex/" itemprop="url">
+                  利用正则表达式获取 url 中的参数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-03T00:00:00+08:00" content="2017-07-03">
+              2017-07-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="利用正则表达式获取url中的参数"><a href="#利用正则表达式获取url中的参数" class="headerlink" title="利用正则表达式获取url中的参数"></a>利用正则表达式获取url中的参数</h3><p>获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">par</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + par + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</div><div class="line">  <span class="keyword">var</span> result = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg)[<span class="number">2</span>];</div><div class="line">	</div><div class="line">  <span class="keyword">if</span> (result &amp;&amp; result[<span class="number">2</span>]) &#123;</div><div class="line">    <span class="keyword">return</span> result[<span class="number">2</span>];</div><div class="line">  &#125;</div><div class="line">	</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/2017-07-03-getting-url-parameters-using-regex/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/programming/2017-07-03-picload/" itemprop="url">
+                  设置了 "display:none" 图片是否加载？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-03T00:00:00+08:00" content="2017-07-03">
+              2017-07-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。</p>
+<p>有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。</p>
+<p>前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。</p>
+<p>把一个视频网站做烂真的是轻而易举。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/2017-07-03-picload/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/programming/2017-06-05-deepcopy/" itemprop="url">
+                  深拷贝
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-05T00:00:00+08:00" content="2017-06-05">
+              2017-06-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="1-深拷贝与浅拷贝"><a href="#1-深拷贝与浅拷贝" class="headerlink" title="1. 深拷贝与浅拷贝"></a>1. 深拷贝与浅拷贝</h3><p>浅复制，只是拷贝了基本类型的数据，而引用类型数据，复制后也是会发生引用，我们把这种拷贝叫做“浅拷贝（浅复制）”。</p>
+<p>深复制和浅复制最根本的区别在于是否是真正获取了一个对象的复制实体，而不是引用。</p>
+<ul>
+<li>深复制在计算机中开辟了一块内存地址用于存放复制的对象。</li>
+<li>浅复制仅仅是指向被复制的内存地址，如果原地址中对象被改变了，那么浅复制出来的对象也会相应改变。</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/2017-06-05-deepcopy/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/programming/2017-05-12-lazyload/" itemprop="url">
+                  lazyload 图片懒加载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-12T00:00:00+08:00" content="2017-05-12">
+              2017-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>记得去年毕业面试的时候，有个面试官问我怎么优化网页性能，我提到了图片懒加载可以提升用户体验。后来人家问我怎么实现的，我懵逼脸，然后就没有然后了。</p>
+<p>学前端过程中遇到很多技术点都没有深入研究，只是大概知道有那么个名词。最近做项目又想起这个问题，趁机做个总结吧。</p>
+<p>懒加载的实现原理还是很简单的嘛。</p>
+<h3 id="lazyload-意义"><a href="#lazyload-意义" class="headerlink" title="lazyload 意义"></a>lazyload 意义</h3><p>图片资源在网站当中的占比是很高的，对于一个以设计驱动型的公司来讲，图片大小可能超过所有请求资源的50%，大大影响了网站的性能。</p>
+<p>图片懒加载的意义就在于此，当图片进入视窗时再进行加载，从一定程度上减轻初始请求压力，加快页面呈现速度，提高用户体验。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/2017-05-12-lazyload/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/programming/2017-05-06-base64/" itemprop="url">
                   base64 编码图片
                 </a>
@@ -612,123 +1202,6 @@
             
               
                 
-                <a class="post-title-link" href="/programming/2017-03-09-dp/" itemprop="url">
-                  dp 与 px
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-09T00:00:00+08:00" content="2017-03-09">
-              2017-03-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？  </p>
-<p>参考网址：<a href="https://developer.android.com/guide/practices/screens_support.html">https://developer.android.com/guide/practices/screens_support.html</a></p>
-<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均指屏幕，图像情况类似。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2017-03-09-dp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/programming/2017-03-09-slice/" itemprop="url">
                   slice(0)
                 </a>
@@ -847,8 +1320,8 @@
             
               
                 
-                <a class="post-title-link" href="/programming/2017-03-06-a-tag-with-onclick-event/" itemprop="url">
-                  a 标签的 href 属性和 onclick 事件
+                <a class="post-title-link" href="/programming/2017-03-09-dp/" itemprop="url">
+                  dp 与 px
                 </a>
               
             
@@ -861,8 +1334,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-06T00:00:00+08:00" content="2017-03-06">
-              2017-03-06
+            <time itemprop="dateCreated" datetime="2017-03-09T00:00:00+08:00" content="2017-03-09">
+              2017-03-09
             </time>
           </span>
 
@@ -909,479 +1382,11 @@
 
       
         
-          <p>a 标签上有属性 href，标明了点击元素跳转的另一个 url。偶尔总需要在跳转前后做些什么，所以顺理成章的在 a 标签上绑定了 onclick 事件。href 属性跳转和 click 事件之间究竟是什么关系呢？</p>
-<h3 id="href-与-onclick-的执行顺序"><a href="#href-与-onclick-的执行顺序" class="headerlink" title="href 与 onclick 的执行顺序"></a>href 与 onclick 的执行顺序</h3><p>如果 a 标签上出现了 href 属性并同时绑定了 click 事件（当然并不推荐这样做），是怎样一个执行顺序呢？</p>
-<p>随手写了一个栗子：<br>
+          <p>前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？  </p>
+<p>参考网址：<a href="https://developer.android.com/guide/practices/screens_support.html">https://developer.android.com/guide/practices/screens_support.html</a></p>
+<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均指屏幕，图像情况类似。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2017-03-06-a-tag-with-onclick-event/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/programming/2017-02-08-gulp-for-beginner/" itemprop="url">
-                  Gulp 入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-08T00:00:00+08:00" content="2017-02-08">
-              2017-02-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>年后，前端林宥嘉走了，一个满口广普的93年小孩儿。有点伤感，曾经在下班之后聊过几次，通常都是他教我写代码，帮我找bug。有几个瞬间，我突然有了无数动力学前端，因为想变得像他一样厉害。同样刚刚毕业，这是我心里学霸的模样，可又是个很有意思的人。</p>
-<p>最近因为项目重新翻出了gulp，发现好久不用又忘记了。总是这样，学了忘忘了学，脑容量让人堪忧。</p>
-<p>之前从“林宥嘉”的主页里看到一篇很好的用于gulp入门的翻译，以下内容完全是用代码重现了整个过程，聊表怀念：<a href="https://www.w3ctrain.com/2015/12/22/gulp-for-beginners/">Gulp新手入门教程</a>。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2017-02-08-gulp-for-beginner/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-categories " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/essay/2016-12-03-essay2/" itemprop="url">
-                  随笔测试2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-03T00:00:00+08:00" content="2016-12-03">
-              2016-12-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/essay/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>随笔2</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-categories " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/essay/2016-12-03-essay/" itemprop="url">
-                  随笔测试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-03T00:00:00+08:00" content="2016-12-03">
-              2016-12-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/essay/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这是一篇随笔哦随笔哦随笔哦</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/programming/2016-11-25-hexo-image-bug/" itemprop="url">
-                  Hexo 图片插入
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-25T00:00:00+08:00" content="2016-11-25">
-              2016-11-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>图片资源放在本地 source/ 文件夹后，本地服务器浏览时图片正常显示，但部署到 github 上会找不到图片。</p>
-<p>究其原因，是图片路径出现问题。开始时自己在 source/ 文件夹下建了 asset 文件夹，专门用于存放文章相关的图片：</p>
-<pre><code>source
-    |- _post
-    |_ asset
-        |- blogVideo
-        |_ blogImg
-            |_ hexo-1.png
-</code></pre><p>使用 markdown 引用图片的方式为  </p>
-<pre><code>![hexo image](../asset/blogImg/hexo-1.png)
-</code></pre><p>查看结构，发现部署以后，图片会自动添加日期相关的文件结构目录：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2016-11-25-hexo-image-bug/#more" rel="contents">
+            <a class="btn" href="/programming/2017-03-09-dp/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1456,7 +1461,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -1,0 +1,704 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="1. 提升页面性能的方法
+资源压缩合并，减少 HTTP 请求
+非核心代码异步加载
+浏览器缓存
+使用 CDN
+预解析 DNS
+
+1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式
+动态脚本加载()  
+1document.createElement
+
+defer
+
+async">
+<meta property="og:type" content="article">
+<meta property="og:title" content="页面性能">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-02-performance/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="1. 提升页面性能的方法
+资源压缩合并，减少 HTTP 请求
+非核心代码异步加载
+浏览器缓存
+使用 CDN
+预解析 DNS
+
+1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式
+动态脚本加载()  
+1document.createElement
+
+defer
+
+async">
+<meta property="og:updated_time" content="2017-11-18T07:51:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="页面性能">
+<meta name="twitter:description" content="1. 提升页面性能的方法
+资源压缩合并，减少 HTTP 请求
+非核心代码异步加载
+浏览器缓存
+使用 CDN
+预解析 DNS
+
+1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式
+动态脚本加载()  
+1document.createElement
+
+defer
+
+async">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-02-performance/"/>
+
+
+  <title> 页面性能 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                页面性能
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-02T00:00:00+08:00" content="2017-11-02">
+              2017-11-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-提升页面性能的方法"><a href="#1-提升页面性能的方法" class="headerlink" title="1. 提升页面性能的方法"></a>1. 提升页面性能的方法</h3><ul>
+<li>资源压缩合并，减少 HTTP 请求</li>
+<li>非核心代码异步加载</li>
+<li>浏览器缓存</li>
+<li>使用 CDN</li>
+<li>预解析 DNS</li>
+</ul>
+<h4 id="1-1-资源压缩合并，减少-HTTP-请求"><a href="#1-1-资源压缩合并，减少-HTTP-请求" class="headerlink" title="1.1 资源压缩合并，减少 HTTP 请求"></a>1.1 资源压缩合并，减少 HTTP 请求</h4><h4 id="1-2-非核心代码异步加载"><a href="#1-2-非核心代码异步加载" class="headerlink" title="1.2 非核心代码异步加载"></a>1.2 非核心代码异步加载</h4><h5 id="1-2-1-异步加载的方式"><a href="#1-2-1-异步加载的方式" class="headerlink" title="1.2.1 异步加载的方式"></a>1.2.1 异步加载的方式</h5><ul>
+<li><p>动态脚本加载()  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.createElement</div></pre></td></tr></table></figure>
+</li>
+<li><p>defer</p>
+</li>
+<li>async</li>
+</ul>
+<a id="more"></a>
+<h5 id="1-2-2-异步加载的区别"><a href="#1-2-2-异步加载的区别" class="headerlink" title="1.2.2 异步加载的区别"></a>1.2.2 异步加载的区别</h5><ul>
+<li><code>defer</code> 是在 HTML 解析完之后才会执行，如果是多个，<strong>按照加载</strong>的顺序依次执行</li>
+<li><code>async</code> 是在加载完之后立即执行，如果是多个，执行顺序和加载顺序<strong>无关</strong></li>
+</ul>
+<p>举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&lt;script src=&quot;./defer1.js&quot; defer&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;./defer2.js&quot; defer&gt;&lt;/script&gt;</div><div class="line">...</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">  console.log(&apos;write&apos;);</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">  for(var i=1; i&lt;=40000; i++)&#123;</div><div class="line">    if(i%20000 === 0) &#123;</div><div class="line">      console.log(i);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">write  </div><div class="line">20000  </div><div class="line">40000  </div><div class="line">defer1  </div><div class="line">defer2</div></pre></td></tr></table></figure>
+<p>标记了 <code>defer</code> 属性的 script 标签是按照加载顺序执行的。如果将：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer1.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer2.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>修改为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer1.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer2.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>且将 <code>defer1.js</code> 的内容增加，则有可能出现 defer2 先于 defer1 打印的情况。</p>
+<h4 id="1-3-浏览器缓存"><a href="#1-3-浏览器缓存" class="headerlink" title="1.3 浏览器缓存"></a>1.3 浏览器缓存</h4><ul>
+<li>强缓存：不管是否有更新，都用本地缓存<ul>
+<li>Expires： 过期时间（<strong>服务器</strong>的绝对时间）<br>例如： <code>Expires: Thu, 21 Jan 2017 23:39:02 GMT</code> 表示在服务器时间之前，均使用缓存文件</li>
+<li>Cache-Control： 相对时间（<strong>客户端</strong>的相对时间），单位：秒<br>例如： <code>Cache-Control: max-age=3600</code> 表示客户端缓存下来的3600秒内不再请求新数据，直接使用本地缓存</li>
+</ul>
+</li>
+</ul>
+<p>如果二者同时出现，则由 <code>Cache-Control</code> </p>
+<ul>
+<li>协商缓存：与服务器确定是否用本地缓存<ul>
+<li>Last-Modified <code>Last-Modified: Wed, 26 Jan 2017 00:35:11 GMT</code></li>
+<li>If-Modified-Since<ul>
+<li>Etag</li>
+<li>If-None-Match</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>举个例子：<br>发送请求时，请求头中携带发送时间为 <code>Last-Modified</code>，返回的时间为 <code>If-Modified-Since</code>；</p>
+<p><code>Last-Modified</code> 与 <code>If-Modified-Since</code> 只能判断更新时间，无法判断内容<br><code>Etag</code> 与 <code>If-None-Match</code> 可以判断内容</p>
+<h4 id="1-4-使用-CDN"><a href="#1-4-使用-CDN" class="headerlink" title="1.4 使用 CDN"></a>1.4 使用 CDN</h4><p>第一次打开网站时，无法使用缓存，CDN 则能提高网站性能。</p>
+<p>CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。</p>
+<h4 id="1-5-预解析-DNS"><a href="#1-5-预解析-DNS" class="headerlink" title="1.5 预解析 DNS"></a>1.5 预解析 DNS</h4><p>DNS: Domain Name System，即域名系统，是域名和IP地址相互映射的一个分布式数据库。域名解析即通过主机名，最终得到该主机名对应的IP地址的过程。</p>
+<p>DNS 请求需要的带宽非常小，但是延迟却有点高，这点在手机网络上特别明显。DNS预解析 能让延迟明显减少一些，例如用户点击链接时。在某些情况下，延迟能减少一秒钟。</p>
+<p>DNS预解析是浏览器试图在用户访问链接之前解析域名，这是计算机的正常DNS解析机制。域名解析后，如果用户确实访问该域名，那么DNS解析时间将不会有延迟。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"on"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//host_name_to_prefetch.com"</span>&gt;</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-10-31-js-concurrency-model/" rel="next" title="JavaScript 运行机制">
+                <i class="fa fa-chevron-left"></i> JavaScript 运行机制
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-提升页面性能的方法"><span class="nav-number">1.</span> <span class="nav-text">1. 提升页面性能的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-资源压缩合并，减少-HTTP-请求"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 资源压缩合并，减少 HTTP 请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-非核心代码异步加载"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 非核心代码异步加载</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1-异步加载的方式"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 异步加载的方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2-异步加载的区别"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 异步加载的区别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-浏览器缓存"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 浏览器缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-使用-CDN"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 使用 CDN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-预解析-DNS"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 预解析 DNS</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

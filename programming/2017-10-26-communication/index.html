@@ -1,0 +1,688 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="1. 什么是同源策略及限制同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的关键的安全机制。
+源：协议+域名+端口，例如：
+123协议：HTTP域名：www.xinxiaoyang.com端口：默认 80
+不同源之间的访问限制：  
+
+无法获取 Cookie、LocalStorage 和 IndexDB 无法读取
+无法获取 DOM 节点
+不能发送">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通信类">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-10-26-communication/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="1. 什么是同源策略及限制同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的关键的安全机制。
+源：协议+域名+端口，例如：
+123协议：HTTP域名：www.xinxiaoyang.com端口：默认 80
+不同源之间的访问限制：  
+
+无法获取 Cookie、LocalStorage 和 IndexDB 无法读取
+无法获取 DOM 节点
+不能发送">
+<meta property="og:updated_time" content="2017-11-18T07:46:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通信类">
+<meta name="twitter:description" content="1. 什么是同源策略及限制同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的关键的安全机制。
+源：协议+域名+端口，例如：
+123协议：HTTP域名：www.xinxiaoyang.com端口：默认 80
+不同源之间的访问限制：  
+
+无法获取 Cookie、LocalStorage 和 IndexDB 无法读取
+无法获取 DOM 节点
+不能发送">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-10-26-communication/"/>
+
+
+  <title> 通信类 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                通信类
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-26T00:00:00+08:00" content="2017-10-26">
+              2017-10-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-什么是同源策略及限制"><a href="#1-什么是同源策略及限制" class="headerlink" title="1. 什么是同源策略及限制"></a>1. 什么是同源策略及限制</h3><p>同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的关键的安全机制。</p>
+<p>源：协议+域名+端口，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">协议：HTTP</div><div class="line">域名：www.xinxiaoyang.com</div><div class="line">端口：默认 80</div></pre></td></tr></table></figure>
+<p>不同源之间的访问限制：  </p>
+<ul>
+<li>无法获取 Cookie、LocalStorage 和 IndexDB 无法读取</li>
+<li>无法获取 DOM 节点</li>
+<li>不能发送 Ajax 请求</li>
+</ul>
+<a id="more"></a>
+<h3 id="2-前后端如何通信"><a href="#2-前后端如何通信" class="headerlink" title="2. 前后端如何通信"></a>2. 前后端如何通信</h3><ul>
+<li>Ajax：<br>受到同源策略的限制</li>
+<li>WebSocket：<br>不受同源策略的限制</li>
+<li>CORS：<br>既支持同源通信，也支持不同源通信</li>
+</ul>
+<h3 id="3-如何创建-Ajax"><a href="#3-如何创建-Ajax" class="headerlink" title="3. 如何创建 Ajax"></a>3. 如何创建 Ajax</h3><p>考察点：  </p>
+<ul>
+<li>XMLHttpRequest 对象的工作流程</li>
+<li>兼容性处理（IE和其他浏览器）</li>
+<li>事件的触发条件</li>
+<li>事件的触发顺序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">util.json = function(options)&#123;</div><div class="line">  var opt = &#123;</div><div class="line">    url: &apos;&apos;,</div><div class="line">    type: &apos;get&apos;,</div><div class="line">    data: &#123;&#125;,</div><div class="line">    success: function()&#123;&#125;.</div><div class="line">    error: function()&#123;&#125;,</div><div class="line">  &#125;</div><div class="line">  util.extend(opt, options);</div><div class="line"></div><div class="line">  if(opt.url)&#123;</div><div class="line">    // 对象声明，考虑浏览器兼容</div><div class="line">    var xhr = XMLHttpRequest ? new XMLHttpRequest() : new window.ActiveXObject(&apos;Microsoft.XMLHTTP&apos;)</div><div class="line">    var data = opt.data,</div><div class="line">        url = opt.url,</div><div class="line">        type = opt.type.toUpperCase(),</div><div class="line">        dataArr = [];</div><div class="line">    for (var k in data) &#123;</div><div class="line">      dataArr.push(k + &apos;=&apos; + data[k)</div><div class="line">    &#125;</div><div class="line">    // GET 请求</div><div class="line">    if(type === &apos;GET&apos;)&#123;</div><div class="line">      // 步骤1: GET 请求需要 url 拼接</div><div class="line">      url = url + &apos;?&apos; + dataArr.join(&apos;&amp;&apos;);</div><div class="line">      // 步骤2：open 确定发送方式</div><div class="line">      xhr.open(type, url.replace()/\?$/g, &apos;&apos;), true); </div><div class="line">      // 步骤3：send 发送请求</div><div class="line">      xhr.send(); </div><div class="line">    &#125;</div><div class="line">    // POST 请求</div><div class="line">    if(type === &apos;POST&apos;)&#123;</div><div class="line">      xhr.open(type, url, true);</div><div class="line">      xhr.setRequestHeader(&apos;Content-type&apos;, &apos;application/x-www-form-urlencoded&apos;);</div><div class="line">      xhr.send(dataArr.join(&apos;&amp;&apos;));</div><div class="line">    &#125;</div><div class="line">    // 步骤4： 响应请求</div><div class="line">    xhr.onload = function() &#123;</div><div class="line">      // 判断状态码（如果是媒体资源，需要添加 206）</div><div class="line">      if(xhr.status === 200 || xhr.status === 304) &#123;</div><div class="line">        var res;</div><div class="line">        // 转换为 JSON 格式</div><div class="line">        if(opt.success &amp;&amp; opt.success instanceof Function)&#123;</div><div class="line">          res = xhr.responseText;</div><div class="line">          if(typeof res === &apos;string&apos;) &#123;</div><div class="line">            res = JSON.parse(res);</div><div class="line">            opt.success.call(xhr, res);</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125; else &#123;</div><div class="line">        if(opt.error &amp;&amp; opt.error instanceof Function) &#123;</div><div class="line">          opt.error.call(xhr, res);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4-跨域通信的几种方式"><a href="#4-跨域通信的几种方式" class="headerlink" title="4. 跨域通信的几种方式"></a>4. 跨域通信的几种方式</h3><ul>
+<li>JSONP</li>
+<li>Hash</li>
+<li>postMessage</li>
+<li>WebSocket</li>
+<li>CORS</li>
+</ul>
+<h4 id="4-1-JSONP"><a href="#4-1-JSONP" class="headerlink" title="4.1 JSONP"></a>4.1 JSONP</h4><p>原理：利用 <code>&lt;script&gt;</code> 标签是可以异步加载的</p>
+<p>举个栗子，我的个人主页地址是：www.xinxiaoyang.com，但是我在页面中引用了 GA 的统计代码，引入的 JavaScript 地址是：<a href="https://www.google-analytics.com/analytics.js。很明显，请求的" target="_blank" rel="external">https://www.google-analytics.com/analytics.js。很明显，请求的</a> JS 文件是跨域的，但是是被允许的。</p>
+<p>i. 请求的 <code>&lt;script&gt;</code> 标签中写明回调函数名(callback)，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;http://www.abc.com/?callback=jsonp&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>ii. 在<strong>服务器</strong>端的 JS 文件中定义一个以 <code>callback</code> 为名称的函数，请求的数据以参数形式保存。例如：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	jsonp(&#123;</div><div class="line">	  data: &#123;</div><div class="line">		...</div><div class="line">	  &#125;</div><div class="line">	&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>iii. 使用时，<strong>客户端</strong>本地需要定义一个相同 <code>callback</code> 名的函数，用来处理返回的数据。</p>
+<p>以下代码实现了 jsonp 的处理过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">// 动态创建 script 标签</div><div class="line">util.createScript = function(url, charset) &#123;</div><div class="line">  var script = document.createElement(&apos;script&apos;);</div><div class="line">  script.settAttrbute(&apos;type&apos;, &apos;text/javascript&apos;);</div><div class="line">  charset &amp;&amp; script.setAttrbute(&apos;charset&apos;, charset);</div><div class="line">  script.setAttrbute(&apos;src&apos;, url);</div><div class="line">  script.async = true;</div><div class="line">  return script;</div><div class="line">&#125;</div><div class="line"></div><div class="line">util.jsonp = function(url, onsuccess, onerror, charset)&#123;</div><div class="line">  var callbackName = util.getName(&apos;tt_player&apos;);</div><div class="line">  window[callbackName] = function()&#123;</div><div class="line">    if(onsuccess &amp;&amp; util.isFunction(onsuccess))&#123;</div><div class="line">      onsuccess(arguments[0]);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  var script = util.createScript(url + &apos;&amp;callback=&apos; + callbackName, charset);</div><div class="line">  // 监听加载的脚本</div><div class="line">  script.onload = script.onreadystatechange = function()&#123;</div><div class="line">    if(!script.readySate || /loaded|complete/.test(script.readyState))&#123;</div><div class="line">      script.onload = script.onreadyStatechange = null;</div><div class="line">      // 移除该 script 的 DOM 对象</div><div class="line">      if(script.parentNode)&#123;</div><div class="line">        script.parentNode.removeChild(script);</div><div class="line">      &#125;</div><div class="line">      // 删除函数或变量</div><div class="line">      window[callbackName] = null;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  script.onerror = function()&#123;</div><div class="line">    if(onerror &amp;&amp; util.isFunction(onerror))&#123;</div><div class="line">      onerror();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  document.getElementByTagName(&apos;head&apos;)[0],appendChidd(script);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>缺点：  </p>
+<ul>
+<li>JSONP 只支持 GET 请求</li>
+</ul>
+<h4 id="4-2-Hash"><a href="#4-2-Hash" class="headerlink" title="4.2 Hash"></a>4.2 Hash</h4><p>原理：<br>注：Hash(#) 不会重新刷新页面，而Search(?) 会重新刷新页面</p>
+<p>举个例子，假设以下场景：当前页面 A 通过 iframe 或 frame 嵌入跨域的页面 B</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 在 A 中伪代码如下：</div><div class="line">var B = document.getElementByTagName(&apos;iframe&apos;);</div><div class="line">B.src = B.src + &apos;#&apos; + &apos;data&apos;;</div><div class="line"></div><div class="line">// 在 B 中伪代码如下：</div><div class="line">window.onhashchange = function() &#123;</div><div class="line">  var data = window.location.hash;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4-3-postMessage"><a href="#4-3-postMessage" class="headerlink" title="4.3 postMessage"></a>4.3 postMessage</h4><p>H5 新属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 窗口 A(http:A.com) 向跨域的窗口 B(http://B.com) 发送信息</div><div class="line">window.postMessage(&apos;data&apos;, &apos;http://B.com&apos;); // 该 window 为 B 窗口下的</div><div class="line"></div><div class="line">// 在窗口 B 中监听</div><div class="line">window.addEvenListener(&apos;message&apos;, function(evnet)&#123;</div><div class="line">  console.log(evene.origin); // http://A.com，表示只接收 A 域名下的信息</div><div class="line">  console.log(event.source); // Bwindow，A 窗口的一个引用</div><div class="line">  console.log(event.data) // data</div><div class="line">&#125;, false);</div></pre></td></tr></table></figure>
+<h4 id="4-4-WebSocket"><a href="#4-4-WebSocket" class="headerlink" title="4.4  WebSocket"></a>4.4  WebSocket</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// wss(加密)/ws(非加密)：服务器地址</div><div class="line">var ws = new WebSocket(&apos;wss://echo.websocket.org&apos;);</div><div class="line"></div><div class="line">ws.onopen = function(evt) &#123;</div><div class="line">  console.log(&apos;Connection open ...&apos;);</div><div class="line">  // 发送请求</div><div class="line">  ws.send(&apos;Hello WebSockets!&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">ws.onmessage = function(evt) &#123;</div><div class="line">  console.log(&apos;Received Message: &apos; + evt.data);</div><div class="line">  ws.close();</div><div class="line">&#125;</div><div class="line"></div><div class="line">ws.onclose = function(evt) &#123;</div><div class="line">  console.log(&apos;Connection closed.&apos;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4-5-CORS-Cross-Origin-Resource-Sharing"><a href="#4-5-CORS-Cross-Origin-Resource-Sharing" class="headerlink" title="4.5 CORS(Cross-Origin Resource Sharing)"></a>4.5 CORS(Cross-Origin Resource Sharing)</h4><p>原理：浏览器拦截 Ajax 请求，添加 <code>&lt;Access-Control-Allow-*&gt;</code> 请求头</p>
+<p>新的通信标准，可以理解为支持跨域通信的 Ajax，需要浏览器和服务器同时支持。  </p>
+<p>这里引入了一个新的 API：<code>fetch</code>。原生写法下，Ajax 只能通过 <code>XMLHttpRequest</code> 对象来实现，在新标准中，可以通过 <code>fetch</code> 来实现。</p>
+<p>同源情况下，<code>fetch</code> 就是 Ajax，不同源情况下，需要添加配置。<br>具体配置项参见：<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2016/04/cors.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// CORS： url(必须)，options(可选)</div><div class="line">fetch(&apos;/some/url&apos;, &#123;</div><div class="line">  method: &apos;get&apos;,</div><div class="line">&#125;).then(function(response)&#123;</div><div class="line"></div><div class="line">&#125;).catch(function(err)&#123;</div><div class="line">  // 出错了，等价于 then 的第二个参数，但这样更好用更直观</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-10-25-oop/" rel="next" title="面向对象">
+                <i class="fa fa-chevron-left"></i> 面向对象
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-10-29-prototype/" rel="prev" title="原型链">
+                原型链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是同源策略及限制"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是同源策略及限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-前后端如何通信"><span class="nav-number">2.</span> <span class="nav-text">2. 前后端如何通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-如何创建-Ajax"><span class="nav-number">3.</span> <span class="nav-text">3. 如何创建 Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-跨域通信的几种方式"><span class="nav-number">4.</span> <span class="nav-text">4. 跨域通信的几种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-JSONP"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 JSONP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-Hash"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Hash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-postMessage"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 postMessage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-WebSocket"><span class="nav-number">4.4.</span> <span class="nav-text">4.4  WebSocket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-CORS-Cross-Origin-Resource-Sharing"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 CORS(Cross-Origin Resource Sharing)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
