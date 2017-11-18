@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CSS," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -84,29 +84,39 @@
 
 
 
-<meta name="description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。
-有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。
-前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。
-把一个视频网站做烂真的是轻而易举。">
+<meta name="description" content="1. DOM 事件的级别
+DOM0:   
+
+1element.onclick = function()&amp;#123;&amp;#125;
+
+DOM2：addEventListener(冒泡、捕获等)
+
+12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设置了 "display:none" 图片是否加载？">
-<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-07-03-picload/index.html">
+<meta property="og:title" content="DOM 事件">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-10-22-event/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。
-有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。
-前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。
-把一个视频网站做烂真的是轻而易举。">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-03-picload/cat&dog.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-03-picload/result-img.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-03-picload/result-bgprop.png">
-<meta property="og:updated_time" content="2017-07-03T15:07:48.000Z">
+<meta property="og:description" content="1. DOM 事件的级别
+DOM0:   
+
+1element.onclick = function()&amp;#123;&amp;#125;
+
+DOM2：addEventListener(冒泡、捕获等)
+
+12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
+<meta property="og:image" content="http://www.xinxiaoyang/./event.png">
+<meta property="og:updated_time" content="2017-11-18T07:32:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设置了 "display:none" 图片是否加载？">
-<meta name="twitter:description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。
-有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。
-前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。
-把一个视频网站做烂真的是轻而易举。">
-<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-07-03-picload/cat&dog.png">
+<meta name="twitter:title" content="DOM 事件">
+<meta name="twitter:description" content="1. DOM 事件的级别
+DOM0:   
+
+1element.onclick = function()&amp;#123;&amp;#125;
+
+DOM2：addEventListener(冒泡、捕获等)
+
+12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
+<meta name="twitter:image" content="http://www.xinxiaoyang/./event.png">
 
 
 
@@ -127,10 +137,10 @@
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-07-03-picload/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-10-22-event/"/>
 
 
-  <title> 设置了 "display:none" 图片是否加载？ | 昕小阳的博客 </title>
+  <title> DOM 事件 | 昕小阳的博客 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +279,7 @@
             
             
               
-                设置了 "display:none" 图片是否加载？
+                DOM 事件
               
             
           </h1>
@@ -281,8 +291,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-03T00:00:00+08:00" content="2017-07-03">
-              2017-07-03
+            <time itemprop="dateCreated" datetime="2017-10-22T00:00:00+08:00" content="2017-10-22">
+              2017-10-22
             </time>
           </span>
 
@@ -328,34 +338,33 @@
       
 
       
-        <p>预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。</p>
-<p>有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。</p>
-<p>前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。</p>
-<p>把一个视频网站做烂真的是轻而易举。</p>
+        <h3 id="1-DOM-事件的级别"><a href="#1-DOM-事件的级别" class="headerlink" title="1. DOM 事件的级别"></a>1. DOM 事件的级别</h3><ul>
+<li>DOM0:   </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>DOM2：addEventListener(冒泡、捕获等)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">element.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>)</div><div class="line">element.attachEvent(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>) (IE)</div></pre></td></tr></table></figure>
+<ul>
+<li>DOM3：增加了事件类型（鼠标、键盘事件等）  </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>言归正传，当时想过这样一个问题：设置了 <code>display:none</code> 或 <code>visibility: hidden</code> 的图片究竟会不会加载？</p>
-<p>之所以这个问题记这么清楚，是因为我在校招笔试的时候遇到过，并且我清晰的记得，当时很开心的蒙了一个答案。</p>
-<p>看来这注定是一个面试题驱动的个人网站。</p>
-<h3 id="浏览器信息"><a href="#浏览器信息" class="headerlink" title="浏览器信息"></a>浏览器信息</h3><p>据说这个问题在不同浏览器的表现不大一样，我用的是 chrome 59.0.3071.115。</p>
-<p>useragent 信息如下：</p>
-<p>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36</p>
-<h3 id="img-标签"><a href="#img-标签" class="headerlink" title="img 标签"></a>img 标签</h3><p>原图如下：</p>
-<img src="/programming/2017-07-03-picload/cat&dog.png" alt="cat&dog.png" title="">  
-<p>我为它们分别设置了属性 display: none 和 visibility: hidden。</p>
-<p>HTML  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"dog"</span> <span class="attr">src</span>=<span class="string">"images/dog.png"</span> <span class="attr">alt</span>=<span class="string">"dog"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"cat"</span> <span class="attr">src</span>=<span class="string">"images/cat.png"</span> <span class="attr">alt</span>=<span class="string">"cat"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>CSS  </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.dog</span> &#123;</div><div class="line">  <span class="attribute">display</span>: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.cat</span> &#123;</div><div class="line">  <span class="attribute">visibility</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>结果是：<br><img src="/programming/2017-07-03-picload/result-img.png" alt="result-img.png" title=""></p>
-<p>显而易见，图片加载了。</p>
-<h3 id="background-属性"><a href="#background-属性" class="headerlink" title="background 属性"></a>background 属性</h3><p>把图片放到背景图里再试试。</p>
-<p>HTML  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dog"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"cat"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>CSS  </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.dog</span> &#123;</div><div class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(images/dog.png);</div><div class="line">  <span class="attribute">display</span>: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.cat</span> &#123;</div><div class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(images/cat.png);</div><div class="line">  <span class="attribute">visibility</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>结果是图片再一次加载了。<br><img src="/programming/2017-07-03-picload/result-bgprop.png" alt="result-bgprop.png" title=""></p>
-<h3 id="令人崩溃的结论"><a href="#令人崩溃的结论" class="headerlink" title="令人崩溃的结论"></a>令人崩溃的结论</h3><p>说白了，如果你想试图用 css 来控制图片加载，还是别想了。</p>
-<p>唯一的办法就是用 js 控制，原理和方法参见上一篇文章： <a href="http://www.xinxiaoyang.com/programming/2017-05-12-lazyload/" target="_blank" rel="external">《lazyload 图片懒加载》</a></p>
+<p><strong>为什么没有 DOM1?</strong><br>DOM1 标准制定时，没有与事件相关的标准，因此没有 DOM1，不代表 DOM1 标准不存在。</p>
+<h3 id="2-DOM-事件模型"><a href="#2-DOM-事件模型" class="headerlink" title="2. DOM 事件模型"></a>2. DOM 事件模型</h3><p>捕获和冒泡</p>
+<h3 id="3-DOM-事件流"><a href="#3-DOM-事件流" class="headerlink" title="3. DOM 事件流"></a>3. DOM 事件流</h3><p>事件流指的是与用户交互过程中，事件如何响应，如何传到页面上的。分为： </p>
+<ul>
+<li>捕获阶段</li>
+<li>目标阶段</li>
+<li>冒泡阶段</li>
+</ul>
+<h3 id="4-DOM-事件捕获的具体流程"><a href="#4-DOM-事件捕获的具体流程" class="headerlink" title="4. DOM 事件捕获的具体流程"></a>4. DOM 事件捕获的具体流程</h3><p><img src="./event.png" width="200" height="auto"></p>
+<p><strong>注</strong>： 捕获阶段触发 DOM 事件的最顶层是 window。</p>
+<h3 id="5-Event-对象的常见应用"><a href="#5-Event-对象的常见应用" class="headerlink" title="5. Event 对象的常见应用"></a>5. Event 对象的常见应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 阻止默认行为</div><div class="line">event.preventDefalt()</div><div class="line"></div><div class="line">// 阻止冒泡</div><div class="line">event.stopPropagation()</div><div class="line"></div><div class="line">// 阻止相同事件</div><div class="line">event.stopImmediatePropagation()</div><div class="line">应用场景：某个元素上注册了 A、B 两个相同事件，我们希望点击时优先执行 A，不再执行 B。可以在 A 的响应函数中添加 event.stopImmediatePropagation()， 则不会再触发 B.</div><div class="line"></div><div class="line">// 表示绑定了事件的对象</div><div class="line">event.currentTarget</div><div class="line"></div><div class="line">// 表示当前被点击的元素，常应用于事件委托</div><div class="line">event.target</div></pre></td></tr></table></figure>
+<h3 id="6-自定义事件"><a href="#6-自定义事件" class="headerlink" title="6. 自定义事件"></a>6. 自定义事件</h3><p>应用场景：我们希望给某些按钮绑定一个点击事件，但希望在事件中做一些额外的处理，而非在回调函数中进行处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var eve = new Event(&apos;custome&apos;);</div><div class="line">ev.addEventListener(&apos;custome&apos;, function()&#123;</div><div class="line">	console.log(&apos;custome&apos;);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// 触发事件</div><div class="line">ev.dispatchEvent(eve);</div></pre></td></tr></table></figure>
+<p><code>Event</code> 对象存在一些限制，它只能指定事件名，但无法给事件添加参数，而 <code>CustomEvent</code> 对象可解决这一问题。</p>
 
       
     </div>
@@ -378,7 +387,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CSS/" rel="tag">#CSS</a>
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
         </div>
       
@@ -387,17 +396,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-07-03-getting-url-parameters-using-regex/" rel="next" title="利用正则表达式获取 url 中的参数">
-                <i class="fa fa-chevron-left"></i> 利用正则表达式获取 url 中的参数
+              <a href="/programming/2017-09-08-border-less-than-1px/" rel="next" title="多倍屏上实现小于 1px 的边框/直线">
+                <i class="fa fa-chevron-left"></i> 多倍屏上实现小于 1px 的边框/直线
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/programming/2017-07-18-grid/" rel="prev" title="Grid Layout 入门">
-                Grid Layout 入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -511,7 +516,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器信息"><span class="nav-number">1.</span> <span class="nav-text">浏览器信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#img-标签"><span class="nav-number">2.</span> <span class="nav-text">img 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#background-属性"><span class="nav-number">3.</span> <span class="nav-text">background 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#令人崩溃的结论"><span class="nav-number">4.</span> <span class="nav-text">令人崩溃的结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-DOM-事件的级别"><span class="nav-number">1.</span> <span class="nav-text">1. DOM 事件的级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-DOM-事件模型"><span class="nav-number">2.</span> <span class="nav-text">2. DOM 事件模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-DOM-事件流"><span class="nav-number">3.</span> <span class="nav-text">3. DOM 事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-DOM-事件捕获的具体流程"><span class="nav-number">4.</span> <span class="nav-text">4. DOM 事件捕获的具体流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Event-对象的常见应用"><span class="nav-number">5.</span> <span class="nav-text">5. Event 对象的常见应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-自定义事件"><span class="nav-number">6.</span> <span class="nav-text">6. 自定义事件</span></a></li></ol></div>
             
           </div>
         </section>

@@ -89,24 +89,24 @@
 直到有一天看到这个：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Grid Layout 入门">
-<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/index.html">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-07-18-grid/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="Grid Layout，即网格布局是 CSS3 新属性，可以轻松实现二维布局。随着近一年各大浏览器对该属性的支持，Grid 布局的呼声也越来越高。
 最开始了解到 Grid 我是无感的，我无脑地把二维网格联想为 excel 表格，一个 excel 能玩儿出多大的花样？  
 直到有一天看到这个：">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-1.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-2.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-2-1.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-3.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-4.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid/grid-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid/grid-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid/grid-2-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid/grid-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid/grid-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid/grid-5.png">
 <meta property="og:updated_time" content="2017-10-13T14:55:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Grid Layout 入门">
 <meta name="twitter:description" content="Grid Layout，即网格布局是 CSS3 新属性，可以轻松实现二维布局。随着近一年各大浏览器对该属性的支持，Grid 布局的呼声也越来越高。
 最开始了解到 Grid 我是无感的，我无脑地把二维网格联想为 excel 表格，一个 excel 能玩儿出多大的花样？  
 直到有一天看到这个：">
-<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid-1/grid-1.png">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-07-18-grid/grid-1.png">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-07-18-grid-1/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-07-18-grid/"/>
 
 
   <title> Grid Layout 入门 | 昕小阳的博客 </title>
@@ -332,7 +332,7 @@
 <p>最开始了解到 Grid 我是无感的，我无脑地把二维网格联想为 excel 表格，一个 excel 能玩儿出多大的花样？  </p>
 <p>直到有一天看到这个：</p>
 <a id="more"></a>
-<img src="/programming/2017-07-18-grid-1/grid-1.png" alt="grid-1.png" title="">
+<img src="/programming/2017-07-18-grid/grid-1.png" alt="grid-1.png" title="">
 <p>我靠，这不是轻松实现了页面布局？</p>
 <p>有点儿意思。</p>
 <h3 id="1-Grid-基础结构"><a href="#1-Grid-基础结构" class="headerlink" title="1. Grid 基础结构"></a>1. Grid 基础结构</h3><p>与 Flexbox 类似，Grid 布局需要用 <code>display: grid</code> 来声明一个容器（以下称为“网格容器”），该容器里的所有子元素自动成为网格项目（以下称为“网格项目”）。 </p>
@@ -344,7 +344,7 @@
 <li>grid-gap  指定列（或行）的间距</li>
 </ul>
 <p>举个栗子：</p>
-<img src="/programming/2017-07-18-grid-1/grid-2.png" alt="grid-2.png" title="">
+<img src="/programming/2017-07-18-grid/grid-2.png" alt="grid-2.png" title="">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.grid-container &#123;</div><div class="line">  display: grid;</div><div class="line">  grid-template-columns: 1fr 2fr 1fr;</div><div class="line">  grid-gap: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>grid-gap</code> 为每个网格项目之间添加 5px 的间隙。</p>
 <p><code>fr</code> 单位(fraction)是根据网格容器计算的单位列宽。我们在容器中设置了 <code>grid-template-columns</code> 属性值为 <code>1fr 2fr 1fr</code>，是将整个容器等分了 4(1+2+1) 列，因此容器的最小（单位）列宽为容器的 1/4 宽。同时，因为属性值有三个值，因此，默认每行显示三个元素，宽度比分别为 1: 2: 1。</p>
@@ -352,7 +352,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grid-template-columns: 100px 3em 40%;</div></pre></td></tr></table></figure>
 <p>如果上述单位与 <code>fr</code> 同时设置为属性值，则 <code>fr</code> 在剩余空间再进行分割。举个栗子：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">grid-template-columns</span>: 50<span class="selector-tag">px</span> 1<span class="selector-tag">fr</span> 2<span class="selector-tag">fr</span> 50<span class="selector-tag">px</span>;</div></pre></td></tr></table></figure>
-<img src="/programming/2017-07-18-grid-1/grid-2-1.png" alt="grid-2-1.png" title="">
+<img src="/programming/2017-07-18-grid/grid-2-1.png" alt="grid-2-1.png" title="">
 <p>左右分别为 50px，剩余部分再以 1:2 的比例进行分割。</p>
 <h4 id="2-2-网格线与合并单元格"><a href="#2-2-网格线与合并单元格" class="headerlink" title="2.2 网格线与合并单元格"></a>2.2 网格线与合并单元格</h4><ul>
 <li><p>grid-area 应用于网格项目，起始行的网格线位置/结束行的网格线位置/起始列的网格线位置/结束列的网格线位置</p>
@@ -368,12 +368,12 @@
 <li>grid-columns-end 应用于网格项目，结束列的网格线位置</li>
 </ul>
 <p>举个栗子：</p>
-<img src="/programming/2017-07-18-grid-1/grid-3.png" alt="grid-3.png" title="">
+<img src="/programming/2017-07-18-grid/grid-3.png" alt="grid-3.png" title="">
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item header"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item sidebar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.sidebar</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">4</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这里涉及到一个很重要的概念——网格线。网格线用来在水平和垂直方向分割网格的线。水平方向的网格线是从左向右，垂直方向是从上往下，编号从 1 开始。</p>
 <p>在本例中，网格线的位置如下：</p>
-<img src="/programming/2017-07-18-grid-1/grid-4.png" alt="grid-4.png" title="">
+<img src="/programming/2017-07-18-grid/grid-4.png" alt="grid-4.png" title="">
 <p>注意：这里的网格线编号是以最初的状态来标号的，因此在这个例子中，垂直方向并不存在 <code>line5</code>，这是因为你看到的第 5 条线是由合并单元格被挤下来的元素生成的.</p>
 <p>这样很容易理解 <code>grid-column: 1 / 4</code>和 <code>grid-row: 2 / 4</code> 轻松实现了我们常见的导航 header 和侧边栏 sidebar。</p>
 <p><code>grid-columns</code>、<br><code>grid-rows</code> 和 <code>grid-area</code> 指定的起始位置与结束位置均指的是网格线的编号。几个属性之间的关系如下：</p>
@@ -385,7 +385,7 @@
 <p><code>span</code> 关键字很像我们操作 excel 中的合并单元格，<code>grid-column: 1 / span 3;</code> 代表从第一列开始，合并 3 个单元格，也就是列网格线跨度为 3。<code>grid-row: 2 / span 2;</code> 代表从第 2 根网格线开始，横跨 2 个网格线。</p>
 <h4 id="2-3-负的网格线编号"><a href="#2-3-负的网格线编号" class="headerlink" title="2.3 负的网格线编号"></a>2.3 负的网格线编号</h4><p>网格线不仅可以从左到右（水平方向）、从上到下（垂直方向）编号，还可以反向编号，这时的编号是负数。</p>
 <p>在上面的例子中，负编号如下：</p>
-<img src="/programming/2017-07-18-grid-1/grid-5.png" alt="grid-5.png" title="">
+<img src="/programming/2017-07-18-grid/grid-5.png" alt="grid-5.png" title="">
 <p>因此，以下两种写法是等价的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grid-column: 1 / 4;</div><div class="line">grid-column: -1 / -4;</div></pre></td></tr></table></figure>
       
@@ -418,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-07-03-getting-url-parameters-using-regex/" rel="next" title="利用正则表达式获取 url 中的参数">
-                <i class="fa fa-chevron-left"></i> 利用正则表达式获取 url 中的参数
+              <a href="/programming/2017-07-03-picload/" rel="next" title="设置了 "display:none" 图片是否加载？">
+                <i class="fa fa-chevron-left"></i> 设置了 "display:none" 图片是否加载？
               </a>
             
           </div>
@@ -496,7 +496,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
