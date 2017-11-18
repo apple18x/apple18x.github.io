@@ -90,10 +90,7 @@
 
 setTimeout 和 setInterval
 DOM 事件(click 等)
-ES6 中的 Promise 
-
-例题1：以下代码的输出结果：
-1">
+ES6 中的 Promise">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 运行机制">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-10-31-js-concurrency-model/index.html">
@@ -104,12 +101,9 @@ ES6 中的 Promise
 
 setTimeout 和 setInterval
 DOM 事件(click 等)
-ES6 中的 Promise 
-
-例题1：以下代码的输出结果：
-1">
+ES6 中的 Promise">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-31-js-concurrency-model/js-concurrency-model-1.png">
-<meta property="og:updated_time" content="2017-11-18T07:43:56.000Z">
+<meta property="og:updated_time" content="2017-11-18T07:52:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 运行机制">
 <meta name="twitter:description" content="1.1 JavaScript 是单线程的JavaScript 是单线程运行的，从上到下执行。  
@@ -118,10 +112,7 @@ ES6 中的 Promise
 
 setTimeout 和 setInterval
 DOM 事件(click 等)
-ES6 中的 Promise 
-
-例题1：以下代码的输出结果：
-1">
+ES6 中的 Promise">
 <meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-10-31-js-concurrency-model/js-concurrency-model-1.png">
 
 
@@ -352,6 +343,7 @@ ES6 中的 Promise
 <li>DOM 事件(click 等)</li>
 <li>ES6 中的 Promise </li>
 </ul>
+<a id="more"></a>
 <p>例题1：<br>以下代码的输出结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">console.log(1);</div><div class="line">setTimeout(function()&#123;</div><div class="line">  console.log(2);</div><div class="line">&#125;,0)</div><div class="line">console.log(3);</div><div class="line">console.log(4);</div><div class="line"></div><div class="line">// 答案：1 3 4 2</div></pre></td></tr></table></figure>
 <p>解释：考察同步任务和异步任务的优先顺序。<code>setTimeout/setTimeInterval</code> 是异步任务，<code>console.log</code> 是同步任务。</p>
