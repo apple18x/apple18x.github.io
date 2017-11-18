@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="Front-End," />
 
 
 
@@ -84,39 +84,73 @@
 
 
 
-<meta name="description" content="1. DOM 事件的级别
-DOM0:   
+<meta name="description" content="最近花了很多时间对前端的基础知识做了个梳理。JavaScript 还停留在 ES5 的阶段，计划把 ES6 的内容也整体学习一遍。目前还在学习中，慢慢会将内容补充完整。
+HTML
+页面布局
 
-1element.onclick = function()&amp;#123;&amp;#125;
+CSS
+CSS 基础  
+CSS 盒模型
 
-DOM2：addEventListener(冒泡、捕获等)
+JavaScript
+JavaScript 基础
+DOM 事件  
+HTTP 协议  
+原型链  
+面向对象  
+相关算法  
 
-12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
+其他
+通信类  
+安全类 
+渲染机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DOM 事件">
-<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-10-22-event/index.html">
+<meta property="og:title" content="前端知识整理">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-06-front-end-knowledge-structure/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="1. DOM 事件的级别
-DOM0:   
+<meta property="og:description" content="最近花了很多时间对前端的基础知识做了个梳理。JavaScript 还停留在 ES5 的阶段，计划把 ES6 的内容也整体学习一遍。目前还在学习中，慢慢会将内容补充完整。
+HTML
+页面布局
 
-1element.onclick = function()&amp;#123;&amp;#125;
+CSS
+CSS 基础  
+CSS 盒模型
 
-DOM2：addEventListener(冒泡、捕获等)
+JavaScript
+JavaScript 基础
+DOM 事件  
+HTTP 协议  
+原型链  
+面向对象  
+相关算法  
 
-12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
-<meta property="og:image" content="http://www.xinxiaoyang/./event.png">
-<meta property="og:updated_time" content="2017-11-18T07:36:16.000Z">
+其他
+通信类  
+安全类 
+渲染机">
+<meta property="og:updated_time" content="2017-11-18T08:07:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DOM 事件">
-<meta name="twitter:description" content="1. DOM 事件的级别
-DOM0:   
+<meta name="twitter:title" content="前端知识整理">
+<meta name="twitter:description" content="最近花了很多时间对前端的基础知识做了个梳理。JavaScript 还停留在 ES5 的阶段，计划把 ES6 的内容也整体学习一遍。目前还在学习中，慢慢会将内容补充完整。
+HTML
+页面布局
 
-1element.onclick = function()&amp;#123;&amp;#125;
+CSS
+CSS 基础  
+CSS 盒模型
 
-DOM2：addEventListener(冒泡、捕获等)
+JavaScript
+JavaScript 基础
+DOM 事件  
+HTTP 协议  
+原型链  
+面向对象  
+相关算法  
 
-12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
-<meta name="twitter:image" content="http://www.xinxiaoyang/./event.png">
+其他
+通信类  
+安全类 
+渲染机">
 
 
 
@@ -137,10 +171,10 @@ DOM2：addEventListener(冒泡、捕获等)
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-10-22-event/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-06-front-end-knowledge-structure/"/>
 
 
-  <title> DOM 事件 | 昕小阳的博客 </title>
+  <title> 前端知识整理 | 昕小阳的博客 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +313,7 @@ DOM2：addEventListener(冒泡、捕获等)
             
             
               
-                DOM 事件
+                前端知识整理
               
             
           </h1>
@@ -291,8 +325,8 @@ DOM2：addEventListener(冒泡、捕获等)
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-10-22T00:00:00+08:00" content="2017-10-22">
-              2017-10-22
+            <time itemprop="dateCreated" datetime="2017-11-06T00:00:00+08:00" content="2017-11-06">
+              2017-11-06
             </time>
           </span>
 
@@ -338,33 +372,30 @@ DOM2：addEventListener(冒泡、捕获等)
       
 
       
-        <h3 id="1-DOM-事件的级别"><a href="#1-DOM-事件的级别" class="headerlink" title="1. DOM 事件的级别"></a>1. DOM 事件的级别</h3><ul>
-<li>DOM0:   </li>
+        <p>最近花了很多时间对前端的基础知识做了个梳理。<br>JavaScript 还停留在 ES5 的阶段，计划把 ES6 的内容也整体学习一遍。<br>目前还在学习中，慢慢会将内容补充完整。</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><ul>
+<li>页面布局</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>DOM2：addEventListener(冒泡、捕获等)</li>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ul>
+<li>CSS 基础  </li>
+<li>CSS 盒模型</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">element.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>)</div><div class="line">element.attachEvent(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>) (IE)</div></pre></td></tr></table></figure>
-<ul>
-<li>DOM3：增加了事件类型（鼠标、键盘事件等）  </li>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><ul>
+<li>JavaScript 基础</li>
+<li><a href="http://www.xinxiaoyang.com/programming/2017-10-22-event/" target="_blank" rel="external">DOM 事件</a>  </li>
+<li><a href="http://www.xinxiaoyang.com/programming/2017-10-20-http/" target="_blank" rel="external">HTTP 协议</a>  </li>
+<li><a href="http://www.xinxiaoyang.com/programming/2017-10-29-prototype/" target="_blank" rel="external">原型链</a>  </li>
+<li><a href="http://www.xinxiaoyang.com/programming/2017-10-25-oop/" target="_blank" rel="external">面向对象</a>  </li>
+<li>相关算法  </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><strong>为什么没有 DOM1?</strong><br>DOM1 标准制定时，没有与事件相关的标准，因此没有 DOM1，不代表 DOM1 标准不存在。</p>
-<h3 id="2-DOM-事件模型"><a href="#2-DOM-事件模型" class="headerlink" title="2. DOM 事件模型"></a>2. DOM 事件模型</h3><p>捕获和冒泡</p>
-<h3 id="3-DOM-事件流"><a href="#3-DOM-事件流" class="headerlink" title="3. DOM 事件流"></a>3. DOM 事件流</h3><p>事件流指的是与用户交互过程中，事件如何响应，如何传到页面上的。分为： </p>
-<ul>
-<li>捕获阶段</li>
-<li>目标阶段</li>
-<li>冒泡阶段</li>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><a href="http://www.xinxiaoyang.com/programming/2017-10-26-communication/" target="_blank" rel="external">通信类</a>  </li>
+<li>安全类 </li>
+<li>渲染机制  </li>
+<li><a href="http://www.xinxiaoyang.com/programming/2017-10-31-js-concurrency-model/" target="_blank" rel="external">JavaScript 运行机制</a>  </li>
+<li><a href="http://www.xinxiaoyang.com/programming/2017-11-02-performance/" target="_blank" rel="external">页面性能</a>  </li>
+<li><a href="http://www.xinxiaoyang.com/programming/2017-10-25-error/" target="_blank" rel="external">错误监控</a>  </li>
 </ul>
-<h3 id="4-DOM-事件捕获的具体流程"><a href="#4-DOM-事件捕获的具体流程" class="headerlink" title="4. DOM 事件捕获的具体流程"></a>4. DOM 事件捕获的具体流程</h3><p><img src="./event.png" width="400" height="auto"></p>
-<p><strong>注</strong>： 捕获阶段触发 DOM 事件的最顶层是 window。</p>
-<h3 id="5-Event-对象的常见应用"><a href="#5-Event-对象的常见应用" class="headerlink" title="5. Event 对象的常见应用"></a>5. Event 对象的常见应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 阻止默认行为</div><div class="line">event.preventDefalt()</div><div class="line"></div><div class="line">// 阻止冒泡</div><div class="line">event.stopPropagation()</div><div class="line"></div><div class="line">// 阻止相同事件</div><div class="line">event.stopImmediatePropagation()</div><div class="line">应用场景：某个元素上注册了 A、B 两个相同事件，我们希望点击时优先执行 A，不再执行 B。可以在 A 的响应函数中添加 event.stopImmediatePropagation()， 则不会再触发 B.</div><div class="line"></div><div class="line">// 表示绑定了事件的对象</div><div class="line">event.currentTarget</div><div class="line"></div><div class="line">// 表示当前被点击的元素，常应用于事件委托</div><div class="line">event.target</div></pre></td></tr></table></figure>
-<h3 id="6-自定义事件"><a href="#6-自定义事件" class="headerlink" title="6. 自定义事件"></a>6. 自定义事件</h3><p>应用场景：我们希望给某些按钮绑定一个点击事件，但希望在事件中做一些额外的处理，而非在回调函数中进行处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var eve = new Event(&apos;custome&apos;);</div><div class="line">ev.addEventListener(&apos;custome&apos;, function()&#123;</div><div class="line">	console.log(&apos;custome&apos;);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// 触发事件</div><div class="line">ev.dispatchEvent(eve);</div></pre></td></tr></table></figure>
-<p><code>Event</code> 对象存在一些限制，它只能指定事件名，但无法给事件添加参数，而 <code>CustomEvent</code> 对象可解决这一问题。</p>
 
       
     </div>
@@ -387,7 +418,7 @@ DOM2：addEventListener(冒泡、捕获等)
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+            <a href="/tags/Front-End/" rel="tag">#Front-End</a>
           
         </div>
       
@@ -396,17 +427,13 @@ DOM2：addEventListener(冒泡、捕获等)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-10-20-http/" rel="next" title="HTTP 协议">
-                <i class="fa fa-chevron-left"></i> HTTP 协议
+              <a href="/programming/2017-11-02-performance/" rel="next" title="页面性能">
+                <i class="fa fa-chevron-left"></i> 页面性能
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/programming/2017-10-25-error/" rel="prev" title="错误监控">
-                错误监控 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -520,7 +547,7 @@ DOM2：addEventListener(冒泡、捕获等)
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-DOM-事件的级别"><span class="nav-number">1.</span> <span class="nav-text">1. DOM 事件的级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-DOM-事件模型"><span class="nav-number">2.</span> <span class="nav-text">2. DOM 事件模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-DOM-事件流"><span class="nav-number">3.</span> <span class="nav-text">3. DOM 事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-DOM-事件捕获的具体流程"><span class="nav-number">4.</span> <span class="nav-text">4. DOM 事件捕获的具体流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Event-对象的常见应用"><span class="nav-number">5.</span> <span class="nav-text">5. Event 对象的常见应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-自定义事件"><span class="nav-number">6.</span> <span class="nav-text">6. 自定义事件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">3.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
           </div>
         </section>
