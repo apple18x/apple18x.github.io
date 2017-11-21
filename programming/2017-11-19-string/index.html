@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法charAt() 和 charCodeAt()语法：strObj.charAt(index)&amp;gt;  index    必需。表示字符串中某个位置的数">
+<meta name="description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符串">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-19-string/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法charAt() 和 charCodeAt()语法：strObj.charAt(index)&amp;gt;  index    必需。表示字符串中某个位置的数字，即字符在字符串中的下标。   返回值：String，返回该位置的字符。  12var str = &amp;">
+<meta property="og:description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-21T16:02:07.000Z">
+<meta property="og:updated_time" content="2017-11-21T16:04:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串">
-<meta name="twitter:description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法charAt() 和 charCodeAt()语法：strObj.charAt(index)&amp;gt;  index    必需。表示字符串中某个位置的数字，即字符在字符串中的下标。   返回值：String，返回该位置的字符。  12var str = &amp;">
+<meta name="twitter:description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法">
 
 
 
@@ -318,13 +318,14 @@
 
       
         <h3 id="字符串的属性"><a href="#字符串的属性" class="headerlink" title="字符串的属性"></a>字符串的属性</h3><h4 id="length"><a href="#length" class="headerlink" title="length"></a>length</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Hello world!&quot;</span><br><span class="line">str.length; // 12</span><br></pre></td></tr></table></figure>
-<h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h4 id="charAt-和-charCodeAt"><a href="#charAt-和-charCodeAt" class="headerlink" title="charAt() 和 charCodeAt()"></a>charAt() 和 charCodeAt()</h4><p>语法：<br>strObj.charAt(index)<br>&gt;</p>
+<h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><a id="more"></a>  
+<h4 id="charAt-和-charCodeAt"><a href="#charAt-和-charCodeAt" class="headerlink" title="charAt() 和 charCodeAt()"></a>charAt() 和 charCodeAt()</h4><p>语法：<br>strObj.charAt(index)</p>
 <ul>
-<li>index    必需。表示字符串中某个位置的数字，即字符在字符串中的下标。  </li>
+<li>index：必需。表示字符串中某个位置的数字，即字符在字符串中的下标。  </li>
 <li>返回值：String，返回该位置的字符。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Hello world!&quot;</span><br><span class="line">str.charAt(3); // &apos;l&apos;</span><br></pre></td></tr></table></figure>
-<p>语法：<br><a id="more"></a><br>strObj.charCodeAt(index)<br>&gt;</p>
+<p>语法：<br>strObj.charCodeAt(index)</p>
 <ul>
 <li>index    必需。表示字符串中某个位置的数字，即字符在字符串中的下标。  </li>
 <li>返回值：Number，返回该位置字符的 Unicode 十进制编码。</li>
@@ -336,7 +337,7 @@
 <li>小写字母是从 97 开始的，字母 a 的编码是 97，b 的编码是 98…</li>
 <li>数字的编码是从 48 开始的，0 对应的编码是 48，9 对应的编码是 57…</li>
 </ul>
-<h4 id="indexOf-和lastIndexOf"><a href="#indexOf-和lastIndexOf" class="headerlink" title="indexOf()和lastIndexOf()"></a>indexOf()和lastIndexOf()</h4><p>语法：<br>strObj.indexOf(searchvalue, fromindex)<br>&gt;</p>
+<h4 id="indexOf-和lastIndexOf"><a href="#indexOf-和lastIndexOf" class="headerlink" title="indexOf()和lastIndexOf()"></a>indexOf()和lastIndexOf()</h4><p>语法：<br>strObj.indexOf(searchvalue, fromindex)</p>
 <ul>
 <li>searchvalue    必需。规定需检索的字符串值。    </li>
 <li>fromindex    可选。整数参数，规定在字符串中开始检索的位置。它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的首字符开始检索。    </li>
@@ -344,13 +345,12 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Hello, jeremy. How are you jeremy&quot;;</span><br><span class="line"></span><br><span class="line">str.indexOf(&apos;jeremy&apos;); // 7</span><br><span class="line">str.indexOf(&apos;jeremy&apos;, 10); // 27</span><br></pre></td></tr></table></figure>
 <p>语法：<br>strObj.lastIndexOf(searchvalue, fromindex);</p>
-<blockquote>
-<p>语法同上，唯一的区别是 lastIndexOf() 从字符串的结尾或指定位置向开头查找。</p>
-</blockquote>
+<ul>
+<li>语法同上，唯一的区别是 lastIndexOf() 从字符串的结尾或指定位置向开头查找。</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.lastIndexOf(&apos;jeremy&apos;); // 27</span><br><span class="line">str.lastIndexOf(&apos;jeremy&apos;,10 ); // 7</span><br></pre></td></tr></table></figure>
 <h4 id="substr-、substring-和slice"><a href="#substr-、substring-和slice" class="headerlink" title="substr()、substring()和slice()"></a>substr()、substring()和slice()</h4><p>substr() 和 substring() 均用来提取一个子串，但它们需要的参数不同。</p>
 <h5 id="substr-（不建议使用）"><a href="#substr-（不建议使用）" class="headerlink" title="substr() （不建议使用）"></a>substr() （不建议使用）</h5><p>语法：<br>strObj.substr(start, length);</p>
-<p>&gt;</p>
 <ul>
 <li>start    必需。提取子串的起始下标。必须是数值。如果是负数，那么该参数声明从字符串的尾部开始算起的位置。也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。</li>
 <li>length 可选。子串中的字符数。必须是数值。如果省略了该参数，那么返回从起始下标到结尾的字串。</li>
@@ -358,7 +358,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;JavaScript&quot;;</span><br><span class="line">str.substr(0,4); // &quot;Java&quot;</span><br><span class="line">str.substr(-4,4); // &quot;ript&quot;</span><br><span class="line">str.substr(4,4); // &quot;ript&quot;</span><br></pre></td></tr></table></figure>
 <p>参数 length 原则上不能为负数，若强行传递负数，会被当成 0 处理，那么该方法返回的就是一个空串（即长度为 0 的字符串）。</p>
-<h5 id="substring"><a href="#substring" class="headerlink" title="substring()"></a>substring()</h5><p>语法：<br>strObj.substring(start, stop)<br>&gt;</p>
+<h5 id="substring"><a href="#substring" class="headerlink" title="substring()"></a>substring()</h5><p>语法：<br>strObj.substring(start, stop)</p>
 <ul>
 <li>start    必需。一个非负的整数，提取子串的起始下标。</li>
 <li>stop 可选。一个非负的整数，提取子串的结束下标+1。如果省略该参数，那么返回的子串会一直到字符串的结尾。</li>
@@ -370,7 +370,6 @@
 <p>原则上参数不能为负数，若强行传负数，在执行时会被当成 0 处理。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str.substring(3,-1); // &quot;Jav&quot;</span><br><span class="line">str.substring(-1,3); // &quot;Jav&quot;</span><br><span class="line">str.substring(-1,-2); // &quot;&quot;</span><br></pre></td></tr></table></figure>
 <h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h5><p>语法：<br>strObj.slice(start, end);</p>
-<p>&gt;</p>
 <ul>
 <li>start 必需。必须是数值，提取子串的起始下标。如果是负数，那么该参数声明从字符串的尾部开始算起的位置。也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。</li>
 <li>end 可选。提取子串的结束下标+1。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</li>
@@ -386,29 +385,24 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;I Don&apos;t Care About Case&quot;;</span><br><span class="line">str.toLowerCase(); // &quot;i don&apos;t care about case&quot;</span><br><span class="line">str.toUpperCase(); // &quot;I DON&apos;T CARE ABOUT CASE&quot;</span><br></pre></td></tr></table></figure>
 <h4 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h4><p>把一个字符串分割成数组，原字符串不会被改变。</p>
 <p>语法：<br>str.split(separator, howmany)</p>
-<blockquote>
 <ul>
 <li>separator 必需。字符串或正则表达式，从该参数指定的地方分割 str。</li>
 <li>howmany    可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。 </li>
 <li>返回值：String，分割后的数组。</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str1 = &quot;a,1,b,2,c,3&quot;;</span><br><span class="line">console.log(str1.split(&quot;,&quot;)); // [&quot;a&quot;, &quot;1&quot;, &quot;b&quot;, &quot;2&quot;, &quot;c&quot;, &quot;3&quot;]</span><br><span class="line"></span><br><span class="line">var str2 = &quot;a,1,b,2,c,&quot;; </span><br><span class="line">console.log(str2.split(&quot;,&quot;)); // [&quot;a&quot;, &quot;1&quot;, &quot;b&quot;, &quot;2&quot;, &quot;c&quot;, &quot;&quot;]</span><br></pre></td></tr></table></figure>
 <p>注：每个分割符代表着数组中的一个元素，上述情况最后一个元素是空字符串</p>
 <h4 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h4><p>用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串，原字符串不会被改变。</p>
 <p>语法：<br>str.replace(regexp/substr, replacement)</p>
-<blockquote>
 <ul>
 <li>regexp/substr    必需。规定子字符串或 RegExp 对象</li>
 <li>replacement    可选。替换文本，可以是字符串，也可以是函数</li>
 <li>返回值：String，替换文本后的字符串</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str3 = &quot;This is an red apple.&quot;;</span><br><span class="line">console.log(str3.replace(&apos;apple&apos;, &apos;strawberry&apos;)); // This is an red strawberry.</span><br><span class="line">console.log(str3); // This is an red apple.</span><br><span class="line"></span><br><span class="line">console.log(str3.replace(/\bis\b/g, &apos;AA&apos;)); // This AA an red apple.</span><br></pre></td></tr></table></figure>
 <p>注：如果正则表达式中具有全局标志 g，那么 replace() 方法将替换所有匹配的子串，否则只替换第一个匹配子串。</p>
 <p>如果 replacement 为函数，则函数对应的参数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str.replace(regexp, function(eachStr [, eachSubstr1, eachSubstr2 ...] [, eachStrIndex1, eachStrIndex2, ..] [, str])&#123;</span><br><span class="line">   // do something</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>&gt;</p>
 <ul>
 <li>eachStr 每个匹配的字符串</li>
 <li>eachSubstr 每个匹配的子字符串(正则表达式中的小括号分组)</li>
@@ -434,18 +428,15 @@
 <p>其中，<br>$1: c<br>$2: undefined<br>$&amp;: c<br>$`: ab<br>$’: d  </p>
 <h4 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h4><p>检索子字符串，或与正则表达式相匹配的子字符串，原字符串不会被改变。</p>
 <p>语法：<br>str.search(substr/regexp)</p>
-<blockquote>
 <ul>
 <li>substr/regexp：子字符串或 RegExp 对象</li>
 <li>返回值：Number, 子字符串第一次出现的位置，如果不含该子字符串，则返回 -1</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str5 = &quot;abcdecfCg&quot;;</span><br><span class="line">console.log(str5.search(&apos;d&apos;)); // 3</span><br><span class="line">console.log(str5) // abcdefg</span><br><span class="line"></span><br><span class="line">console.log(str5.search(/c/g)); // 2</span><br></pre></td></tr></table></figure>
 <p>注：search() 方法不执行全局匹配，它将忽略标志 g</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(str5.search(/C/));  // 7</span><br><span class="line">console.log(str5.search(/C/i)); // 2</span><br></pre></td></tr></table></figure>
 <h4 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h4><p>检索子字符串，或与正则表达式相匹配的子字符串。原字符串不会被改变</p>
 <p>语法：<br>str.match(substr/regexp)</p>
-<blockquote>
 <ul>
 <li>substr/regexp：子字符串或 RegExp 对象</li>
 <li>返回值：</li>
@@ -463,7 +454,6 @@
 </ol>
 </li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var str6 = &quot;abcdecfCg&quot;;</span><br><span class="line">console.log(str6.match(&quot;c&quot;));</span><br><span class="line">// [&quot;c&quot;, index: 2, input: &quot;abcdecfCg&quot;]</span><br><span class="line"></span><br><span class="line">console.log(str6.match(/c/i));</span><br><span class="line">// [&quot;c&quot;, index: 2, input: &quot;abcdecfCg&quot;]</span><br><span class="line"></span><br><span class="line">console.log(str6.match(/c/g));</span><br><span class="line">// [&quot;c&quot;, &quot;c&quot;]</span><br></pre></td></tr></table></figure>
 
       
