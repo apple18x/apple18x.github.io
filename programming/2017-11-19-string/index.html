@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-21T16:04:19.000Z">
+<meta property="og:updated_time" content="2017-11-21T16:06:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串">
 <meta name="twitter:description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法">
@@ -416,7 +416,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">console.log(str3.replace(/(i)(s)/g, function(a,b,c,d,e,f)&#123;</span><br><span class="line">  console.log(a); // is</span><br><span class="line">  console.log(b); // i </span><br><span class="line">  console.log(c); // s </span><br><span class="line">  console.log(d); // 2, 5</span><br><span class="line">  console.log(e); // This is an red apple</span><br><span class="line">  console.log(f); // undefined</span><br><span class="line">  return a.toUpperCase();</span><br><span class="line">&#125;)); </span><br><span class="line"></span><br><span class="line">// is, i, s, 2, This is an red apple., undefined</span><br><span class="line">// is, i, s, 5, This is an red apple., undefined</span><br><span class="line">// ThIS IS an red apple.</span><br></pre></td></tr></table></figure>
 <p>参数个数是严格根据正则表达式来的，上例中只有两个分组，因此只有 b、c 两个参数用来匹配子字符串，而参数 f 因为没有对应的内容而显示 undefined。</p>
 <p>replacement 中的 \$ 字符具有特定的含义。如下表所示，它说明从模式匹配得到的字符串将用于替换。</p>
-<p>&gt;</p>
 <ul>
 <li>$1、$2、…、$99：与 regexp 中的第 1 到第 99 个子表达式相匹配的文本。</li>
 <li>$&amp;：与 regexp 相匹配的子串。</li>
