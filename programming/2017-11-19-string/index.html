@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法charAt() 和 charCodeAt()语法：strObj.charAt(index)&amp;gt;  index    必需。表示字符串中某个位置的数">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-19-string/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法charAt() 和 charCodeAt()语法：strObj.charAt(index)&amp;gt;  index    必需。表示字符串中某个位置的数字，即字符在字符串中的下标。   返回值：String，返回该位置的字符。  12var str = &amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-21T16:02:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="字符串">
+<meta name="twitter:description" content="字符串的属性length12var str = &amp;quot;Hello world!&amp;quot;str.length; // 12 字符串的方法charAt() 和 charCodeAt()语法：strObj.charAt(index)&amp;gt;  index    必需。表示字符串中某个位置的数字，即字符在字符串中的下标。   返回值：String，返回该位置的字符。  12var str = &amp;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-19-string/"/>
+
+
+  <title> 字符串 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                字符串
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-19T00:00:00+08:00" content="2017-11-19">
+              2017-11-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="字符串的属性"><a href="#字符串的属性" class="headerlink" title="字符串的属性"></a>字符串的属性</h3><h4 id="length"><a href="#length" class="headerlink" title="length"></a>length</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Hello world!&quot;</span><br><span class="line">str.length; // 12</span><br></pre></td></tr></table></figure>
+<h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h4 id="charAt-和-charCodeAt"><a href="#charAt-和-charCodeAt" class="headerlink" title="charAt() 和 charCodeAt()"></a>charAt() 和 charCodeAt()</h4><p>语法：<br>strObj.charAt(index)<br>&gt;</p>
+<ul>
+<li>index    必需。表示字符串中某个位置的数字，即字符在字符串中的下标。  </li>
+<li>返回值：String，返回该位置的字符。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Hello world!&quot;</span><br><span class="line">str.charAt(3); // &apos;l&apos;</span><br></pre></td></tr></table></figure>
+<p>语法：<br><a id="more"></a><br>strObj.charCodeAt(index)<br>&gt;</p>
+<ul>
+<li>index    必需。表示字符串中某个位置的数字，即字符在字符串中的下标。  </li>
+<li>返回值：Number，返回该位置字符的 Unicode 十进制编码。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Hello world!&quot;</span><br><span class="line">str.charCodeAt(3); // 108</span><br></pre></td></tr></table></figure>
+<p>字符是按顺序编码的：</p>
+<ul>
+<li>大写字母的编码是从 65 开始的，字母 A 的编码是 65，B 的编码是 66…</li>
+<li>小写字母是从 97 开始的，字母 a 的编码是 97，b 的编码是 98…</li>
+<li>数字的编码是从 48 开始的，0 对应的编码是 48，9 对应的编码是 57…</li>
+</ul>
+<h4 id="indexOf-和lastIndexOf"><a href="#indexOf-和lastIndexOf" class="headerlink" title="indexOf()和lastIndexOf()"></a>indexOf()和lastIndexOf()</h4><p>语法：<br>strObj.indexOf(searchvalue, fromindex)<br>&gt;</p>
+<ul>
+<li>searchvalue    必需。规定需检索的字符串值。    </li>
+<li>fromindex    可选。整数参数，规定在字符串中开始检索的位置。它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的首字符开始检索。    </li>
+<li>返回值：Number, 子串在字符串中的位置，以 0 为基础</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;Hello, jeremy. How are you jeremy&quot;;</span><br><span class="line"></span><br><span class="line">str.indexOf(&apos;jeremy&apos;); // 7</span><br><span class="line">str.indexOf(&apos;jeremy&apos;, 10); // 27</span><br></pre></td></tr></table></figure>
+<p>语法：<br>strObj.lastIndexOf(searchvalue, fromindex);</p>
+<blockquote>
+<p>语法同上，唯一的区别是 lastIndexOf() 从字符串的结尾或指定位置向开头查找。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.lastIndexOf(&apos;jeremy&apos;); // 27</span><br><span class="line">str.lastIndexOf(&apos;jeremy&apos;,10 ); // 7</span><br></pre></td></tr></table></figure>
+<h4 id="substr-、substring-和slice"><a href="#substr-、substring-和slice" class="headerlink" title="substr()、substring()和slice()"></a>substr()、substring()和slice()</h4><p>substr() 和 substring() 均用来提取一个子串，但它们需要的参数不同。</p>
+<h5 id="substr-（不建议使用）"><a href="#substr-（不建议使用）" class="headerlink" title="substr() （不建议使用）"></a>substr() （不建议使用）</h5><p>语法：<br>strObj.substr(start, length);</p>
+<p>&gt;</p>
+<ul>
+<li>start    必需。提取子串的起始下标。必须是数值。如果是负数，那么该参数声明从字符串的尾部开始算起的位置。也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。</li>
+<li>length 可选。子串中的字符数。必须是数值。如果省略了该参数，那么返回从起始下标到结尾的字串。</li>
+<li>返回值：String, 提取的子串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;JavaScript&quot;;</span><br><span class="line">str.substr(0,4); // &quot;Java&quot;</span><br><span class="line">str.substr(-4,4); // &quot;ript&quot;</span><br><span class="line">str.substr(4,4); // &quot;ript&quot;</span><br></pre></td></tr></table></figure>
+<p>参数 length 原则上不能为负数，若强行传递负数，会被当成 0 处理，那么该方法返回的就是一个空串（即长度为 0 的字符串）。</p>
+<h5 id="substring"><a href="#substring" class="headerlink" title="substring()"></a>substring()</h5><p>语法：<br>strObj.substring(start, stop)<br>&gt;</p>
+<ul>
+<li>start    必需。一个非负的整数，提取子串的起始下标。</li>
+<li>stop 可选。一个非负的整数，提取子串的结束下标+1。如果省略该参数，那么返回的子串会一直到字符串的结尾。</li>
+<li>返回值： String, 提取的子串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.substring(0,4); // &quot;Java&quot;</span><br></pre></td></tr></table></figure>
+<p>stop 的数值可以比 start 小，该情况与 str.substring(stop, start) 情况相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.substring(4,0); // &quot;Java&quot;</span><br></pre></td></tr></table></figure>
+<p>原则上参数不能为负数，若强行传负数，在执行时会被当成 0 处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str.substring(3,-1); // &quot;Jav&quot;</span><br><span class="line">str.substring(-1,3); // &quot;Jav&quot;</span><br><span class="line">str.substring(-1,-2); // &quot;&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h5><p>语法：<br>strObj.slice(start, end);</p>
+<p>&gt;</p>
+<ul>
+<li>start 必需。必须是数值，提取子串的起始下标。如果是负数，那么该参数声明从字符串的尾部开始算起的位置。也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。</li>
+<li>end 可选。提取子串的结束下标+1。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。</li>
+<li>返回值： String，一个新的字符串，值与提取的子串相同。</li>
+</ul>
+<p>注：slice() 和 substring() 的区别在于 slice() 接受负数参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;JavaScript&quot;;</span><br><span class="line">str.slice(1,4); // &quot;ava&quot;</span><br><span class="line">str.slice(-4,-1); // &quot;rip&quot;</span><br><span class="line">str.slice(-1,-4); // &quot;&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h4><p>字符串的拼接</p>
+<p>语法：<br>str.concat(string2[, string3, …, stringN])</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var hello = &apos;Hello, &apos;;</span><br><span class="line">console.log(hello.concat(&apos;Kevin&apos;, &apos;. Have a nice day.&apos;));</span><br><span class="line">// Hello, Kevin. Have a nice day.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var greetList = [&apos;Hello&apos;, &apos; &apos;, &apos;Venkat&apos;, &apos;!&apos;];</span><br><span class="line">&quot;&quot;.concat(greetList)</span><br><span class="line">// &quot;Hello, ,Venkat,!&quot;</span><br><span class="line"></span><br><span class="line">&quot;&quot;.concat(...greetList);</span><br><span class="line">// &quot;Hello Venkat!&quot;</span><br><span class="line"></span><br><span class="line">&quot;&quot;.concat(&#123;&#125;); // [object Object]</span><br><span class="line">&quot;&quot;.concat([]); /// &quot;&quot;</span><br><span class="line">&quot;&quot;.concat(null); // &quot;null&quot;</span><br><span class="line">&quot;&quot;.concat(true); // &quot;true&quot;</span><br><span class="line">&quot;&quot;.concat(4, 5); // &quot;45&quot;</span><br><span class="line">&quot;&quot;.concat(&#123;&#125;); // [object Object]</span><br></pre></td></tr></table></figure>
+<h4 id="toUpperCase-和toLowerCase"><a href="#toUpperCase-和toLowerCase" class="headerlink" title="toUpperCase()和toLowerCase()"></a>toUpperCase()和toLowerCase()</h4><p>大小写转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;I Don&apos;t Care About Case&quot;;</span><br><span class="line">str.toLowerCase(); // &quot;i don&apos;t care about case&quot;</span><br><span class="line">str.toUpperCase(); // &quot;I DON&apos;T CARE ABOUT CASE&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h4><p>把一个字符串分割成数组，原字符串不会被改变。</p>
+<p>语法：<br>str.split(separator, howmany)</p>
+<blockquote>
+<ul>
+<li>separator 必需。字符串或正则表达式，从该参数指定的地方分割 str。</li>
+<li>howmany    可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。 </li>
+<li>返回值：String，分割后的数组。</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str1 = &quot;a,1,b,2,c,3&quot;;</span><br><span class="line">console.log(str1.split(&quot;,&quot;)); // [&quot;a&quot;, &quot;1&quot;, &quot;b&quot;, &quot;2&quot;, &quot;c&quot;, &quot;3&quot;]</span><br><span class="line"></span><br><span class="line">var str2 = &quot;a,1,b,2,c,&quot;; </span><br><span class="line">console.log(str2.split(&quot;,&quot;)); // [&quot;a&quot;, &quot;1&quot;, &quot;b&quot;, &quot;2&quot;, &quot;c&quot;, &quot;&quot;]</span><br></pre></td></tr></table></figure>
+<p>注：每个分割符代表着数组中的一个元素，上述情况最后一个元素是空字符串</p>
+<h4 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h4><p>用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串，原字符串不会被改变。</p>
+<p>语法：<br>str.replace(regexp/substr, replacement)</p>
+<blockquote>
+<ul>
+<li>regexp/substr    必需。规定子字符串或 RegExp 对象</li>
+<li>replacement    可选。替换文本，可以是字符串，也可以是函数</li>
+<li>返回值：String，替换文本后的字符串</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str3 = &quot;This is an red apple.&quot;;</span><br><span class="line">console.log(str3.replace(&apos;apple&apos;, &apos;strawberry&apos;)); // This is an red strawberry.</span><br><span class="line">console.log(str3); // This is an red apple.</span><br><span class="line"></span><br><span class="line">console.log(str3.replace(/\bis\b/g, &apos;AA&apos;)); // This AA an red apple.</span><br></pre></td></tr></table></figure>
+<p>注：如果正则表达式中具有全局标志 g，那么 replace() 方法将替换所有匹配的子串，否则只替换第一个匹配子串。</p>
+<p>如果 replacement 为函数，则函数对应的参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str.replace(regexp, function(eachStr [, eachSubstr1, eachSubstr2 ...] [, eachStrIndex1, eachStrIndex2, ..] [, str])&#123;</span><br><span class="line">   // do something</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>&gt;</p>
+<ul>
+<li>eachStr 每个匹配的字符串</li>
+<li>eachSubstr 每个匹配的子字符串(正则表达式中的小括号分组)</li>
+<li>eachStrIndex 整数，每个匹配的字符串出现的位置</li>
+<li>str 原字符串</li>
+<li>返回值：String, 被替换的字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(str3.replace(/is/g, function(str)&#123;</span><br><span class="line">  console.log(str); // is</span><br><span class="line">  return str.toUpperCase();</span><br><span class="line">&#125;)); </span><br><span class="line"></span><br><span class="line">// is, is, ThIS IS an red apple.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">console.log(str3.replace(/(i)s/g, function(str, substr, index, originStr)&#123;</span><br><span class="line">  console.log(str); // is</span><br><span class="line">  console.log(substr); // i </span><br><span class="line">  console.log(index); // 2, 5</span><br><span class="line">  console.log(originStr); // This is an red apple</span><br><span class="line">  return str.toUpperCase();</span><br><span class="line">&#125;)); </span><br><span class="line"></span><br><span class="line">// is, i, 2, This is an red apple.</span><br><span class="line">// is, i, 5, This is an red apple.</span><br><span class="line">// ThIS IS an red apple.</span><br></pre></td></tr></table></figure>
+<p>注：子字符串是指正则表达式中的小括号的分组内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">console.log(str3.replace(/(i)(s)/g, function(a,b,c,d,e,f)&#123;</span><br><span class="line">  console.log(a); // is</span><br><span class="line">  console.log(b); // i </span><br><span class="line">  console.log(c); // s </span><br><span class="line">  console.log(d); // 2, 5</span><br><span class="line">  console.log(e); // This is an red apple</span><br><span class="line">  console.log(f); // undefined</span><br><span class="line">  return a.toUpperCase();</span><br><span class="line">&#125;)); </span><br><span class="line"></span><br><span class="line">// is, i, s, 2, This is an red apple., undefined</span><br><span class="line">// is, i, s, 5, This is an red apple., undefined</span><br><span class="line">// ThIS IS an red apple.</span><br></pre></td></tr></table></figure>
+<p>参数个数是严格根据正则表达式来的，上例中只有两个分组，因此只有 b、c 两个参数用来匹配子字符串，而参数 f 因为没有对应的内容而显示 undefined。</p>
+<p>replacement 中的 \$ 字符具有特定的含义。如下表所示，它说明从模式匹配得到的字符串将用于替换。</p>
+<p>&gt;</p>
+<ul>
+<li>$1、$2、…、$99：与 regexp 中的第 1 到第 99 个子表达式相匹配的文本。</li>
+<li>$&amp;：与 regexp 相匹配的子串。</li>
+<li>$`：位于匹配子串左侧的文本。</li>
+<li>$’：位于匹配子串右侧的文本。</li>
+<li>$$：$ 符号。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str4 = &apos;abcd&apos;</span><br><span class="line">console.log(str4.replace(/(c)/g, &quot;---$2 $1 $` $&apos;---&quot;));</span><br><span class="line"></span><br><span class="line">// ab ---$2 c ab d--- d</span><br></pre></td></tr></table></figure>
+<p>其中，<br>$1: c<br>$2: undefined<br>$&amp;: c<br>$`: ab<br>$’: d  </p>
+<h4 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h4><p>检索子字符串，或与正则表达式相匹配的子字符串，原字符串不会被改变。</p>
+<p>语法：<br>str.search(substr/regexp)</p>
+<blockquote>
+<ul>
+<li>substr/regexp：子字符串或 RegExp 对象</li>
+<li>返回值：Number, 子字符串第一次出现的位置，如果不含该子字符串，则返回 -1</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str5 = &quot;abcdecfCg&quot;;</span><br><span class="line">console.log(str5.search(&apos;d&apos;)); // 3</span><br><span class="line">console.log(str5) // abcdefg</span><br><span class="line"></span><br><span class="line">console.log(str5.search(/c/g)); // 2</span><br></pre></td></tr></table></figure>
+<p>注：search() 方法不执行全局匹配，它将忽略标志 g</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(str5.search(/C/));  // 7</span><br><span class="line">console.log(str5.search(/C/i)); // 2</span><br></pre></td></tr></table></figure>
+<h4 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h4><p>检索子字符串，或与正则表达式相匹配的子字符串。原字符串不会被改变</p>
+<p>语法：<br>str.match(substr/regexp)</p>
+<blockquote>
+<ul>
+<li>substr/regexp：子字符串或 RegExp 对象</li>
+<li>返回值：</li>
+<li><ol>
+<li>如果参数是substr或regexp（非全局匹配），则返回数组：[subStr, index, input]<ul>
+<li>subStr: 匹配的字符串</li>
+<li>index: 匹配的字符串第一次出现的位置</li>
+<li>input: 原字符串</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol>
+<li>如果参数是regexp（全局匹配），则返回一个包含所有匹配子串的数组（没有index属性或input属性）</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var str6 = &quot;abcdecfCg&quot;;</span><br><span class="line">console.log(str6.match(&quot;c&quot;));</span><br><span class="line">// [&quot;c&quot;, index: 2, input: &quot;abcdecfCg&quot;]</span><br><span class="line"></span><br><span class="line">console.log(str6.match(/c/i));</span><br><span class="line">// [&quot;c&quot;, index: 2, input: &quot;abcdecfCg&quot;]</span><br><span class="line"></span><br><span class="line">console.log(str6.match(/c/g));</span><br><span class="line">// [&quot;c&quot;, &quot;c&quot;]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-11-06-front-end-knowledge-structure/" rel="next" title="前端知识整理">
+                <i class="fa fa-chevron-left"></i> 前端知识整理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-11-20-array/" rel="prev" title="数组">
+                数组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串的属性"><span class="nav-number">1.</span> <span class="nav-text">字符串的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#length"><span class="nav-number">1.1.</span> <span class="nav-text">length</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串的方法"><span class="nav-number">2.</span> <span class="nav-text">字符串的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#charAt-和-charCodeAt"><span class="nav-number">2.1.</span> <span class="nav-text">charAt() 和 charCodeAt()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#indexOf-和lastIndexOf"><span class="nav-number">2.2.</span> <span class="nav-text">indexOf()和lastIndexOf()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#substr-、substring-和slice"><span class="nav-number">2.3.</span> <span class="nav-text">substr()、substring()和slice()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#substr-（不建议使用）"><span class="nav-number">2.3.1.</span> <span class="nav-text">substr() （不建议使用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#substring"><span class="nav-number">2.3.2.</span> <span class="nav-text">substring()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#slice"><span class="nav-number">2.3.3.</span> <span class="nav-text">slice()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#concat"><span class="nav-number">2.4.</span> <span class="nav-text">concat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toUpperCase-和toLowerCase"><span class="nav-number">2.5.</span> <span class="nav-text">toUpperCase()和toLowerCase()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#split"><span class="nav-number">2.6.</span> <span class="nav-text">split()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#replace"><span class="nav-number">2.7.</span> <span class="nav-text">replace()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#search"><span class="nav-number">2.8.</span> <span class="nav-text">search()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#match"><span class="nav-number">2.9.</span> <span class="nav-text">match()</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
