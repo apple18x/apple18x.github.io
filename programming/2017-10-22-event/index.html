@@ -84,39 +84,20 @@
 
 
 
-<meta name="description" content="1. DOM 事件的级别
-DOM0:   
-
-1element.onclick = function()&amp;#123;&amp;#125;
-
-DOM2：addEventListener(冒泡、捕获等)
-
-12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
+<meta name="description" content="1. DOM 事件的级别 DOM0:     1element.onclick = function()&amp;#123;&amp;#125;  DOM2：addEventListener(冒泡、捕获等)  12element.addEventListener(&apos;click&apos;, function(">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOM 事件">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-10-22-event/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="1. DOM 事件的级别
-DOM0:   
-
-1element.onclick = function()&amp;#123;&amp;#125;
-
-DOM2：addEventListener(冒泡、捕获等)
-
-12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
-<meta property="og:image" content="http://www.xinxiaoyang/./event.png">
+<meta property="og:description" content="1. DOM 事件的级别 DOM0:     1element.onclick = function()&amp;#123;&amp;#125;  DOM2：addEventListener(冒泡、捕获等)  12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-22-event/event.png">
 <meta property="og:updated_time" content="2017-11-18T07:36:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM 事件">
-<meta name="twitter:description" content="1. DOM 事件的级别
-DOM0:   
-
-1element.onclick = function()&amp;#123;&amp;#125;
-
-DOM2：addEventListener(冒泡、捕获等)
-
-12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
-<meta name="twitter:image" content="http://www.xinxiaoyang/./event.png">
+<meta name="twitter:description" content="1. DOM 事件的级别 DOM0:     1element.onclick = function()&amp;#123;&amp;#125;  DOM2：addEventListener(冒泡、捕获等)  12element.addEventListener(&apos;click&apos;, function()&amp;#123;&amp;#125;, false)element.attachEvent(&apos;click&apos;, function">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-10-22-event/event.png">
 
 
 
@@ -341,15 +322,15 @@ DOM2：addEventListener(冒泡、捕获等)
         <h3 id="1-DOM-事件的级别"><a href="#1-DOM-事件的级别" class="headerlink" title="1. DOM 事件的级别"></a>1. DOM 事件的级别</h3><ul>
 <li>DOM0:   </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>DOM2：addEventListener(冒泡、捕获等)</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">element.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>)</div><div class="line">element.attachEvent(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>) (IE)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>)</span><br><span class="line">element.attachEvent(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>) (IE)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>DOM3：增加了事件类型（鼠标、键盘事件等）  </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p><strong>为什么没有 DOM1?</strong><br>DOM1 标准制定时，没有与事件相关的标准，因此没有 DOM1，不代表 DOM1 标准不存在。</p>
 <h3 id="2-DOM-事件模型"><a href="#2-DOM-事件模型" class="headerlink" title="2. DOM 事件模型"></a>2. DOM 事件模型</h3><p>捕获和冒泡</p>
@@ -361,9 +342,9 @@ DOM2：addEventListener(冒泡、捕获等)
 </ul>
 <h3 id="4-DOM-事件捕获的具体流程"><a href="#4-DOM-事件捕获的具体流程" class="headerlink" title="4. DOM 事件捕获的具体流程"></a>4. DOM 事件捕获的具体流程</h3><p><img src="./event.png" width="400" height="auto"></p>
 <p><strong>注</strong>： 捕获阶段触发 DOM 事件的最顶层是 window。</p>
-<h3 id="5-Event-对象的常见应用"><a href="#5-Event-对象的常见应用" class="headerlink" title="5. Event 对象的常见应用"></a>5. Event 对象的常见应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 阻止默认行为</div><div class="line">event.preventDefalt()</div><div class="line"></div><div class="line">// 阻止冒泡</div><div class="line">event.stopPropagation()</div><div class="line"></div><div class="line">// 阻止相同事件</div><div class="line">event.stopImmediatePropagation()</div><div class="line">应用场景：某个元素上注册了 A、B 两个相同事件，我们希望点击时优先执行 A，不再执行 B。可以在 A 的响应函数中添加 event.stopImmediatePropagation()， 则不会再触发 B.</div><div class="line"></div><div class="line">// 表示绑定了事件的对象</div><div class="line">event.currentTarget</div><div class="line"></div><div class="line">// 表示当前被点击的元素，常应用于事件委托</div><div class="line">event.target</div></pre></td></tr></table></figure>
+<h3 id="5-Event-对象的常见应用"><a href="#5-Event-对象的常见应用" class="headerlink" title="5. Event 对象的常见应用"></a>5. Event 对象的常见应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 阻止默认行为</span><br><span class="line">event.preventDefalt()</span><br><span class="line"></span><br><span class="line">// 阻止冒泡</span><br><span class="line">event.stopPropagation()</span><br><span class="line"></span><br><span class="line">// 阻止相同事件</span><br><span class="line">event.stopImmediatePropagation()</span><br><span class="line">应用场景：某个元素上注册了 A、B 两个相同事件，我们希望点击时优先执行 A，不再执行 B。可以在 A 的响应函数中添加 event.stopImmediatePropagation()， 则不会再触发 B.</span><br><span class="line"></span><br><span class="line">// 表示绑定了事件的对象</span><br><span class="line">event.currentTarget</span><br><span class="line"></span><br><span class="line">// 表示当前被点击的元素，常应用于事件委托</span><br><span class="line">event.target</span><br></pre></td></tr></table></figure>
 <h3 id="6-自定义事件"><a href="#6-自定义事件" class="headerlink" title="6. 自定义事件"></a>6. 自定义事件</h3><p>应用场景：我们希望给某些按钮绑定一个点击事件，但希望在事件中做一些额外的处理，而非在回调函数中进行处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var eve = new Event(&apos;custome&apos;);</div><div class="line">ev.addEventListener(&apos;custome&apos;, function()&#123;</div><div class="line">	console.log(&apos;custome&apos;);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// 触发事件</div><div class="line">ev.dispatchEvent(eve);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var eve = new Event(&apos;custome&apos;);</span><br><span class="line">ev.addEventListener(&apos;custome&apos;, function()&#123;</span><br><span class="line">	console.log(&apos;custome&apos;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 触发事件</span><br><span class="line">ev.dispatchEvent(eve);</span><br></pre></td></tr></table></figure>
 <p><code>Event</code> 对象存在一些限制，它只能指定事件名，但无法给事件添加参数，而 <code>CustomEvent</code> 对象可解决这一问题。</p>
 
       
@@ -474,7 +455,7 @@ DOM2：addEventListener(冒泡、捕获等)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

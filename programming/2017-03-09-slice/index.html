@@ -84,22 +84,18 @@
 
 
 
-<meta name="description" content="今天看代码时看到了 slice(0) 的写法，简单研究了一下。
-JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。
-123456var arr1 = [&apos;George&apos;,&apos;John&apos;,&apos;Thomas&apos;,&apos;James&apos;,&apos;Adrew&apos;,&apos;Martin&apos;];var arr2 = arr1;arr1.push(&apos;Jane&apos;);con">
+<meta name="description" content="今天看代码时看到了 slice(0) 的写法，简单研究了一下。 JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。 123456var arr1 = [&apos;George&apos;,&apos;John&apos;,&apos;Thomas">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="slice(0)">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-03-09-slice/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="今天看代码时看到了 slice(0) 的写法，简单研究了一下。
-JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。
-123456var arr1 = [&apos;George&apos;,&apos;John&apos;,&apos;Thomas&apos;,&apos;James&apos;,&apos;Adrew&apos;,&apos;Martin&apos;];var arr2 = arr1;arr1.push(&apos;Jane&apos;);con">
+<meta property="og:description" content="今天看代码时看到了 slice(0) 的写法，简单研究了一下。 JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。 123456var arr1 = [&apos;George&apos;,&apos;John&apos;,&apos;Thomas&apos;,&apos;James&apos;,&apos;Adrew&apos;,&apos;Martin&apos;];var arr2 = arr1;arr1.push(&apos;Jane&apos;);con">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-05-18T09:11:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="slice(0)">
-<meta name="twitter:description" content="今天看代码时看到了 slice(0) 的写法，简单研究了一下。
-JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。
-123456var arr1 = [&apos;George&apos;,&apos;John&apos;,&apos;Thomas&apos;,&apos;James&apos;,&apos;Adrew&apos;,&apos;Martin&apos;];var arr2 = arr1;arr1.push(&apos;Jane&apos;);con">
+<meta name="twitter:description" content="今天看代码时看到了 slice(0) 的写法，简单研究了一下。 JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。 123456var arr1 = [&apos;George&apos;,&apos;John&apos;,&apos;Thomas&apos;,&apos;James&apos;,&apos;Adrew&apos;,&apos;Martin&apos;];var arr2 = arr1;arr1.push(&apos;Jane&apos;);con">
 
 
 
@@ -323,12 +319,12 @@ JS 中对象（数组也是对象）是索引传递的，赋值时会被共享�
       
         <p>今天看代码时看到了 <code>slice(0)</code> 的写法，简单研究了一下。</p>
 <p>JS 中对象（数组也是对象）是索引传递的，赋值时会被共享，而不是复制副本。所以只要一个对象被修改，被赋值的变量也会被改变。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1;</div><div class="line"></div><div class="line">arr1.push(<span class="string">'Jane'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'arr2:'</span>+ arr2);</div></pre></td></tr></table></figure>
-<p>打印结果为：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>,<span class="string">'Jane'</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = arr1;</span><br><span class="line"></span><br><span class="line">arr1.push(<span class="string">'Jane'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'arr2:'</span>+ arr2);</span><br></pre></td></tr></table></figure>
+<p>打印结果为：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>,<span class="string">'Jane'</span></span><br></pre></td></tr></table></figure></p>
 <p>因为 arr1 和 arr2 共享一个数据，当我们使用其中一个变量(arr1)修改对象数据时，另一个(arr2)也会跟着修改，slice(0) 则可以避免这个问题。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>];</div><div class="line"><span class="keyword">var</span> arr2 = arr1.slice(<span class="number">0</span>);</div><div class="line"></div><div class="line">arr1.push(<span class="string">'Jane'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'arr1:'</span>+ arr1); </div><div class="line"><span class="built_in">console</span>.log(<span class="string">'arr2:'</span>+ arr2);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = arr1.slice(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">arr1.push(<span class="string">'Jane'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'arr1:'</span>+ arr1); </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'arr2:'</span>+ arr2);</span><br></pre></td></tr></table></figure>
 <p>打印结果为：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>,<span class="string">'Jane'</span></div><div class="line"><span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span>,<span class="string">'Jane'</span></span><br><span class="line"><span class="string">'George'</span>,<span class="string">'John'</span>,<span class="string">'Thomas'</span>,<span class="string">'James'</span>,<span class="string">'Adrew'</span>,<span class="string">'Martin'</span></span><br></pre></td></tr></table></figure>
 <p>由此可见，添加 ‘Jane’ 的行为只影响了被操作的数组，但并不会影响“复制”出来的新数组。slice(0) 实现了深复制（deep copy），得到一个完全独立的数组。</p>
 
       
@@ -361,16 +357,16 @@ JS 中对象（数组也是对象）是索引传递的，赋值时会被共享�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-03-09-dp/" rel="next" title="dp 与 px">
-                <i class="fa fa-chevron-left"></i> dp 与 px
+              <a href="/programming/2017-03-06-a-tag-with-onclick-event/" rel="next" title="a 标签的 href 属性和 onclick 事件">
+                <i class="fa fa-chevron-left"></i> a 标签的 href 属性和 onclick 事件
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-04-01-transitionend/" rel="prev" title="transitionend">
-                transitionend <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-03-09-dp/" rel="prev" title="dp 与 px">
+                dp 与 px <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -439,7 +435,7 @@ JS 中对象（数组也是对象）是索引传递的，赋值时会被共享�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

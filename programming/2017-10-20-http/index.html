@@ -84,20 +84,14 @@
 
 
 
-<meta name="description" content="1、HTTP 协议的主要特点
-简单快速uri 是固定的，访问简单
-灵活HTTP 头部表明了数据类型，通过一个 HTTP 协议有可以完成不同数据类型的传输
-无连接连接一次就断开，不会保持持久连接
-无状态客户端向服务端建立连接，完成后连接断开；下次客户端发送请求，服务端无法判断是否是同一个身份。即服务端是不记录状态的。">
+<meta name="description" content="1、HTTP 协议的主要特点 简单快速uri 是固定的，访问简单 灵活HTTP 头部表明了数据类型，通过一个 HTTP 协议有可以完成不同数据类型的传输 无连接连接一次就断开，不会保持持久连接 无状态客户端向服务端建立连接，完成后连接断开；下次客户端发送请求，服务端无法判断是否是同一个身份。即服务端是不记录状态的。">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP 协议">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-10-20-http/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="1、HTTP 协议的主要特点
-简单快速uri 是固定的，访问简单
-灵活HTTP 头部表明了数据类型，通过一个 HTTP 协议有可以完成不同数据类型的传输
-无连接连接一次就断开，不会保持持久连接
-无状态客户端向服务端建立连接，完成后连接断开；下次客户端发送请求，服务端无法判断是否是同一个身份。即服务端是不记录状态的。">
+<meta property="og:description" content="1、HTTP 协议的主要特点 简单快速uri 是固定的，访问简单 灵活HTTP 头部表明了数据类型，通过一个 HTTP 协议有可以完成不同数据类型的传输 无连接连接一次就断开，不会保持持久连接 无状态客户端向服务端建立连接，完成后连接断开；下次客户端发送请求，服务端无法判断是否是同一个身份。即服务端是不记录状态的。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-20-http/http-1.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-20-http/http-2.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-20-http/http-3.png">
@@ -106,11 +100,7 @@
 <meta property="og:updated_time" content="2017-11-18T07:46:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP 协议">
-<meta name="twitter:description" content="1、HTTP 协议的主要特点
-简单快速uri 是固定的，访问简单
-灵活HTTP 头部表明了数据类型，通过一个 HTTP 协议有可以完成不同数据类型的传输
-无连接连接一次就断开，不会保持持久连接
-无状态客户端向服务端建立连接，完成后连接断开；下次客户端发送请求，服务端无法判断是否是同一个身份。即服务端是不记录状态的。">
+<meta name="twitter:description" content="1、HTTP 协议的主要特点 简单快速uri 是固定的，访问简单 灵活HTTP 头部表明了数据类型，通过一个 HTTP 协议有可以完成不同数据类型的传输 无连接连接一次就断开，不会保持持久连接 无状态客户端向服务端建立连接，完成后连接断开；下次客户端发送请求，服务端无法判断是否是同一个身份。即服务端是不记录状态的。">
 <meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-10-20-http/http-1.png">
 
 
@@ -358,7 +348,7 @@
 </li>
 <li>请求体</li>
 </ul>
-<p>举个栗子：<br><img src="/programming/2017-10-20-http/http-1.png" alt="http-1.png" title=""></p>
+<p>举个栗子：<br><img src="/programming/2017-10-20-http/http-1.png"></p>
 <h4 id="2-2-响应报文"><a href="#2-2-响应报文" class="headerlink" title="2.2 响应报文"></a>2.2 响应报文</h4><ul>
 <li>状态行    <ul>
 <li>HTTP 协议</li>
@@ -373,7 +363,7 @@
 <li>空行</li>
 <li>响应体</li>
 </ul>
-<p>举个栗子：<br><img src="/programming/2017-10-20-http/http-2.png" alt="http-2.png" title=""></p>
+<p>举个栗子：<br><img src="/programming/2017-10-20-http/http-2.png"></p>
 <h3 id="3、HTTP-方法"><a href="#3、HTTP-方法" class="headerlink" title="3、HTTP 方法"></a>3、HTTP 方法</h3><ul>
 <li>GET - 获取资源</li>
 <li>POST - 传输资源</li>
@@ -381,7 +371,7 @@
 <li>DELETE - 删除资源</li>
 <li>HEAD - 获得报文首部</li>
 </ul>
-<p>POST 和 GET 的区别：<br><img src="/programming/2017-10-20-http/http-3.png" alt="http-3.png" title=""></p>
+<p>POST 和 GET 的区别：<br><img src="/programming/2017-10-20-http/http-3.png"></p>
 <h3 id="4、HTTP-状态码"><a href="#4、HTTP-状态码" class="headerlink" title="4、HTTP 状态码"></a>4、HTTP 状态码</h3><ul>
 <li>1xx： 指示信息 - 表示请求已接收，继续处理</li>
 <li>2xx： 成功 - 表示请求已被成功接收</li>
@@ -408,10 +398,10 @@
 <p>HTTP 1.0 中默认是关闭的，需要在 HTTP 头加入 <code>Connection: Keep-Alive</code>，才能启用 Keep-Alive；HTTP 1.1 中默认启用 <code>Keep-Alive</code>，如果加入<code>Connection: close</code>，才关闭。目前大部分浏览器都是用http 1.1 协议，也就是说默认都会发起 Keep-Alive 的连接请求了，所以是否能完成一个完整的 Keep-Alive 连接就看服务器设置情况。</p>
 <p>优点：当页面包含多个元素时(例如Applet，图片)，显著地减少下载所需要的时间。</p>
 <h3 id="6、管线化"><a href="#6、管线化" class="headerlink" title="6、管线化"></a>6、管线化</h3><p>HTTP 管线化是将多个 HTTP 请求（request）整批提交的技术，而在传送过程中不需先等待服务端的回应。管线化机制须通过：<br>1、永久连接（persistent connection）完成<br>2、仅 HTTP/1.1 支持此技术（HTTP/1.0 不支持）<br>3、并且只有 GET 和 HEAD 要求可以进行管线化，而 POST 则有所限制。<br>此外，初次创建连接时也不应启动管线机制，因为对方（服务器）不一定支持 HTTP/1.1 版本的协议。</p>
-<img src="/programming/2017-10-20-http/http-4.png" alt="http-4.png" title="">
+<img src="/programming/2017-10-20-http/http-4.png">
 <p>浏览器将 HTTP 要求大批提交可大幅缩短页面的加载时间，特别是在传输延迟（lag/latency）较高的情况下（如卫星连接）。此技术之关键在于多个 HTTP 的要求消息可以同时塞入一个 TCP 分组中，所以只提交一个分组即可同时发出多个请求，借此可减少网络上多余的分组并降低线路负载。</p>
 <p>管线化的几个特点：</p>
-<img src="/programming/2017-10-20-http/http-5.png" alt="http-5.png" title="">
+<img src="/programming/2017-10-20-http/http-5.png">
 
       
     </div>
@@ -521,7 +511,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

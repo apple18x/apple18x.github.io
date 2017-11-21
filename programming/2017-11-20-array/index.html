@@ -1,0 +1,711 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="数组的定义字面量方式12345var BAT = [&amp;apos;Alibaba&amp;apos;, &amp;apos;Tencent&amp;apos;, &amp;apos;Baidu&amp;apos;];var students = [&amp;#123;name: &amp;apos;Bosn&am">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-20-array/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="数组的定义字面量方式12345var BAT = [&amp;apos;Alibaba&amp;apos;, &amp;apos;Tencent&amp;apos;, &amp;apos;Baidu&amp;apos;];var students = [&amp;#123;name: &amp;apos;Bosn&amp;apos;, age: 27&amp;#125;, &amp;#123;name: &amp;apos;Nunnly&amp;apos;, age: 3&amp;#125;];var co">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-20T14:53:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数组">
+<meta name="twitter:description" content="数组的定义字面量方式12345var BAT = [&amp;apos;Alibaba&amp;apos;, &amp;apos;Tencent&amp;apos;, &amp;apos;Baidu&amp;apos;];var students = [&amp;#123;name: &amp;apos;Bosn&amp;apos;, age: 27&amp;#125;, &amp;#123;name: &amp;apos;Nunnly&amp;apos;, age: 3&amp;#125;];var co">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-20-array/"/>
+
+
+  <title> 数组 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数组
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-20T00:00:00+08:00" content="2017-11-20">
+              2017-11-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="数组的定义"><a href="#数组的定义" class="headerlink" title="数组的定义"></a>数组的定义</h3><h4 id="字面量方式"><a href="#字面量方式" class="headerlink" title="字面量方式"></a>字面量方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var BAT = [&apos;Alibaba&apos;, &apos;Tencent&apos;, &apos;Baidu&apos;];</span><br><span class="line">var students = [&#123;name: &apos;Bosn&apos;, age: 27&#125;, &#123;name: &apos;Nunnly&apos;, age: 3&#125;];</span><br><span class="line"></span><br><span class="line">var commasArr1 = [1,,2]; // 1, undefined, 2</span><br><span class="line">var commasArr2 = [,,]; // undefined, undefined, undefined</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="构造器方式"><a href="#构造器方式" class="headerlink" title="构造器方式"></a>构造器方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = new Array();</span><br><span class="line">var arrWithLength = new Array(100); // undefined * 100</span><br><span class="line">var arrLikesLiteral = new Array(true, false, null, 1, 2, &quot;hi&quot;); // [true, false, null, 1, 2, &quot;hi&quot;]</span><br></pre></td></tr></table></figure>
+<p>注：new 可以去掉。</p>
+<p>数组最多可以容纳 4,294,967,295 （即 2^32-1）项，如果想添加的项数超过这个上限值，就会发生异常。而创建一个初始大小与这个上限值接近的数组，则可能会导致运行时间超长的脚本错误。</p>
+<p>用代码验证一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var maxArr1 = new Array(Math.pow(2,32)-1);  // (4294967295) [empty × 4294967295]</span><br><span class="line">var maxArr2 = new Array(Math.pow(2,32));   //  Uncaught RangeError: Invalid array length</span><br></pre></td></tr></table></figure>
+<h3 id="数组的增删"><a href="#数组的增删" class="headerlink" title="数组的增删"></a>数组的增删</h3><p>数组是动态的，无需指定大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr0 = [];</span><br></pre></td></tr></table></figure></p>
+<h3 id="增：角标访问"><a href="#增：角标访问" class="headerlink" title="增：角标访问"></a>增：角标访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr0[0] = 1;</span><br><span class="line">arr0[1] = 2;</span><br></pre></td></tr></table></figure>
+<p>几个特殊的增方法：</p>
+<ul>
+<li>push(最后一个位置增加)</li>
+<li>length(最后一个位置增加)</li>
+<li>unshift(第一个位置增加)   </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr0.push(3);</span><br><span class="line">arr0[arr0.length] = 4;</span><br><span class="line">arr0.unshift(0);</span><br></pre></td></tr></table></figure>
+<h3 id="删：delete"><a href="#删：delete" class="headerlink" title="删：delete"></a>删：delete</h3><p>delete(只删除值，位置不会删除，该位置的值变成 undefined)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">delete arr0[2];</span><br><span class="line">arr0; // [0, 1, undefined, 3, 4]</span><br><span class="line">arr0.length; // 5</span><br><span class="line">2 in arr0; // false</span><br></pre></td></tr></table></figure>
+<p>几个特殊的删方法：</p>
+<ul>
+<li>删除尾部元素：<code>arr.length -= 1; pop()</code></li>
+<li>删除头部元素：<code>unshift()</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">arr0.length -= 1;</span><br><span class="line">arr0; // [0, 1, undefined, 3]</span><br><span class="line">arr0.pop();</span><br><span class="line">arr0; // [0, 1, undefined]</span><br><span class="line"></span><br><span class="line">arr0.shift();</span><br><span class="line">arr0; // [1, undefined]</span><br></pre></td></tr></table></figure>
+<h3 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h3><ul>
+<li>Array.prototype.join()</li>
+<li>Array.prototype.reverse()</li>
+<li>Array.prototype.sort()</li>
+<li>Array.prototype.concat()</li>
+<li>Array.prototype.slice()</li>
+<li>Array.prototype.splice()</li>
+</ul>
+<p>以下为 ES5 的方法，支持 IE9+：</p>
+<ul>
+<li>Array.prototype.forEach()</li>
+<li>Array.prototype.map()</li>
+<li>Array.prototype.filter()</li>
+<li>Array.prototype.every()</li>
+<li>Array.prototype.some()</li>
+<li>Array.prototype.reduce()</li>
+<li>Array.prototype.reduceRight()</li>
+<li>Array.prototype.indexOf()</li>
+<li>Array.prototype.lastIndexOf()</li>
+<li>Array.prototype.isArray()</li>
+</ul>
+<p>其中，改变原数组的：</p>
+<p><code>shift</code>,<code>unshift</code>,<code>pop</code>,<code>push</code>,<code>reverse</code>,<code>sort</code>,<code>splice</code> (返回被删除数组，无删除则不返回)</p>
+<p>不改变原数组的：<br><code>join</code>,<code>concat</code>,<code>slice</code><br><code>forEach</code>,<code>map</code>,<code>filter</code>,<code>every</code>,<code>some</code> (ES5)</p>
+<h4 id="join-合并"><a href="#join-合并" class="headerlink" title="join 合并"></a>join 合并</h4><p>原数组不被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr1 = [1,2,3];</span><br><span class="line">arr1.join(); // &quot;1,2,3&quot;</span><br><span class="line">arr1.join(&quot;_&quot;) // &quot;1_2_3&quot;</span><br></pre></td></tr></table></figure>
+<p>应用：使用 join() 实现重复某个字符 N 次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function repeatString(str, n)&#123;</span><br><span class="line">  return new Array(n+1).join(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(repeatString(&quot;a&quot;, 3)); // &quot;aaa&quot;</span><br><span class="line">console.log(repeatString(&quot;Hi&quot;, 3)); // &quot;HiHiHi&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="reverse-反向排序"><a href="#reverse-反向排序" class="headerlink" title="reverse 反向排序"></a>reverse 反向排序</h4><p>原数组被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr2 = [1,2,3];</span><br><span class="line">console.log(arr2.reverse()); //[3,2,1]</span><br><span class="line">console.log(arr2);  //[3,2,1]</span><br></pre></td></tr></table></figure>
+<h4 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort 排序"></a>sort 排序</h4><p>原数组被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr3 = [&apos;a&apos;,&apos;d&apos;,&apos;b&apos;,&apos;c&apos;];</span><br><span class="line">console.log(arr3.sort()); // [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;];</span><br></pre></td></tr></table></figure>
+<p>注：sort 默认是按照字母顺序排序的，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr4 = [13,24,51,3]; // 会先转换成字符串再排序</span><br><span class="line">console.log(arr4.sort()); // [13, 24, 3, 51]</span><br></pre></td></tr></table></figure>
+<p>如果想自定义比较方法，需要自定义方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">arr4.sort(function(a,b)&#123;</span><br><span class="line">  return a-b;</span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line">// [3,13,24,51]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">arr5 = [&#123;age:25&#125;, &#123;age:99&#125;, &#123;age:39&#125;]</span><br><span class="line">arr5.sort(function(a,b)&#123;</span><br><span class="line">  return a.age - b.age;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">arr5.forEach(function(item)&#123;</span><br><span class="line">  console.log(&apos;age&apos;, item.age);</span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line">//age 25, age 39, age 99</span><br></pre></td></tr></table></figure>
+<h4 id="concat-拼接"><a href="#concat-拼接" class="headerlink" title="concat 拼接"></a>concat 拼接</h4><p>原数组不被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr6 = [1,2,3];</span><br><span class="line">arr6.concat(4,5); //[1,2,3,4,5]</span><br><span class="line">arr6; //[1,2,3]</span><br></pre></td></tr></table></figure>
+<p>concat 的参数如果为数组，那么数组会被“拉平”，即去掉数组形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(arr6.concat([10,11],13)); </span><br><span class="line">// [1,2,3,10,11,13]</span><br></pre></td></tr></table></figure>
+<p>注：去掉数组只能去一层<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(arr6.concat([1,[2,3]]));  </span><br><span class="line">// [1,2,3,1,[2,3]]</span><br></pre></td></tr></table></figure></p>
+<h4 id="slice-剪切"><a href="#slice-剪切" class="headerlink" title="slice 剪切"></a>slice 剪切</h4><p>原数组不被修改</p>
+<p>slice 方法为左闭右开区间，下例中为下标 1 =&lt; i &lt; 3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr7 = [1,2,3,4,5];</span><br><span class="line"></span><br><span class="line">arr7.slice(1,3); // [2,3]</span><br><span class="line">arr7.slice(1);   // [2,3,4,5]</span><br></pre></td></tr></table></figure>
+<p>负数索引表示从后往前的位置，-1 表示倒数第1个位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr7.slice(1,-1)  // [2,3,4]</span><br><span class="line">arr7.slice(-4,-3) // [2]</span><br><span class="line">arr7.slice(-3,-4) // []</span><br></pre></td></tr></table></figure>
+<p>注：该方法并不会修改数组，而是返回一个与子数组相同的新数组，因此可以用来实现深拷贝。</p>
+<h4 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h4><p>原数组被修改<br>语法： splice(index,howmany,item1,…..,itemX)   </p>
+<blockquote>
+<p>index - 添加/删除项目的位置<br>howmany - 要删除的项目数量。如果设置为 0，则不会删除项目。<br>item1,..,itemX - 可选。向数组添加的新项目。</p>
+</blockquote>
+<p>arr.splice() 的返回值为被删除的元素!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var arr8 = [1,2,3,4,5]; </span><br><span class="line">console.log(arr8.splice(2)); //[3,4,5]</span><br><span class="line">console.log(arr8); //[1,2] </span><br><span class="line"></span><br><span class="line">arr9 = [1,2,3,4,5];</span><br><span class="line">console.log(arr9.splice(2,2)); //[3,4]</span><br><span class="line">console.log(arr9); //[1,2,5]</span><br><span class="line"></span><br><span class="line">arr10 = [1,2,3,4,5];</span><br><span class="line">console.log(arr10.splice(1,1,&apos;a&apos;,&apos;b&apos;)); //[2]</span><br><span class="line">console.log(arr10); //[1,&apos;a&apos;,&apos;b&apos;,3,4,5]</span><br></pre></td></tr></table></figure>
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h4><p>原数组不被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var arr11 = [1,2,3,4,5]; </span><br><span class="line">arr11.forEach(function(x, index, a)&#123;</span><br><span class="line">  console.log(x+&apos;|&apos;+index+&apos;|&apos;+(a == arr11));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 输出：</span><br><span class="line">1|0|true</span><br><span class="line">2|1|true</span><br><span class="line">3|2|true</span><br><span class="line">4|3|true</span><br><span class="line">5|4|true</span><br></pre></td></tr></table></figure>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>原数组不被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var arr12 = [1,2,3,4,5]; </span><br><span class="line">console.log(arr12.map(function(x)&#123;</span><br><span class="line">  return x+10;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">console.log(arr12); </span><br><span class="line"></span><br><span class="line">// [11, 12, 13, 14, 15]</span><br><span class="line">// [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><p>原数组不被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr13 = [1,2,3,4,5,6,7,8,9,10]; </span><br><span class="line">console.log(arr13.filter(function(x,index)&#123;</span><br><span class="line">  return index%3 === 0|| x&gt;=8;</span><br><span class="line">&#125;)); </span><br><span class="line">console.log(arr13)</span><br><span class="line"></span><br><span class="line">// [1, 4, 7, 8, 9, 10] </span><br><span class="line">// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+<h4 id="every"><a href="#every" class="headerlink" title="every"></a>every</h4><p>检查数组中的每一个元素是否满足条件，原数组不被修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr14 = [1,2,3,4,5]; </span><br><span class="line">console.log(arr14.every(function(x)&#123;</span><br><span class="line">  return x&lt;10;</span><br><span class="line">&#125;)); // true</span><br><span class="line"></span><br><span class="line">console.log(arr14.every(function(x)&#123;</span><br><span class="line">  return x&lt;3;</span><br><span class="line">&#125;)); // false</span><br></pre></td></tr></table></figure>
+<h4 id="some"><a href="#some" class="headerlink" title="some"></a>some</h4><p>检查数组中是否有任意一个元素满足条件，原数组不被修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.log(arr14.some(function(x)&#123;</span><br><span class="line">  return x === 3;</span><br><span class="line">&#125;)); // true</span><br><span class="line"></span><br><span class="line">console.log(arr14.some(function(x)&#123;</span><br><span class="line">  return x === 100;</span><br><span class="line">&#125;)); // false</span><br></pre></td></tr></table></figure>
+<h4 id="reduce-amp-reduceRight"><a href="#reduce-amp-reduceRight" class="headerlink" title="reduce &amp; reduceRight"></a>reduce &amp; reduceRight</h4><p>原数组不被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var arr15 = [1,2,3];</span><br><span class="line">console.log(arr15.reduce(function(x,y)&#123;</span><br><span class="line">  return x+y;</span><br><span class="line">&#125;)); </span><br><span class="line"></span><br><span class="line">// 6</span><br><span class="line"></span><br><span class="line">console.log(arr15.reduce(function(x,y)&#123;</span><br><span class="line">  console.log(x + &apos;|&apos; + y);</span><br><span class="line">  return x &gt; y ? x : y;</span><br><span class="line">&#125;)); </span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">1|2</span><br><span class="line">2|3</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">console.log(arr15.reduceRight(function(x,y)&#123;</span><br><span class="line">  console.log(x + &apos;|&apos; + y);</span><br><span class="line">  return x &gt; y ? x : y;</span><br><span class="line">&#125;)); </span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">3|2</span><br><span class="line">3|1</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4 id="indexOf-amp-lastIndexOf"><a href="#indexOf-amp-lastIndexOf" class="headerlink" title="indexOf &amp; lastIndexOf"></a>indexOf &amp; lastIndexOf</h4><p>原数组不被修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var arr16 = [1,2,3,2,1]</span><br><span class="line">arr16.indexOf(2); // 1</span><br><span class="line">arr16.indexOf(99); // -1</span><br><span class="line">arr16.indexOf(1,1); // 4</span><br><span class="line">arr16.indexOf(1,-3); // 4</span><br><span class="line">arr16.indexOf(2,-1); // -1</span><br><span class="line">arr16.lastIndexOf(2); // 3</span><br><span class="line">arr16.lastIndexOf(2,-2); // 3</span><br><span class="line">arr16.lastIndexOf(2,-3); // 1</span><br></pre></td></tr></table></figure>
+<h4 id="isArray"><a href="#isArray" class="headerlink" title="isArray"></a>isArray</h4><p>isArray 是构造器函数上的方法，而不是原型对象上的方法，因此必须写 Array.isArray()。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array.isArray([]) // true</span><br></pre></td></tr></table></figure>
+<p>总结判断数组的几种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr17 =[];</span><br><span class="line">arr17 instanceof Array; // true</span><br><span class="line">(&#123;&#125;).toString.apply([]); // &quot;[object Array]&quot;</span><br><span class="line">[].constructor === Array; // true</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-11-06-front-end-knowledge-structure/" rel="next" title="前端知识整理">
+                <i class="fa fa-chevron-left"></i> 前端知识整理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-11-21-regular-expression/" rel="prev" title="正则表达式">
+                正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的定义"><span class="nav-number">1.</span> <span class="nav-text">数组的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字面量方式"><span class="nav-number">1.1.</span> <span class="nav-text">字面量方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造器方式"><span class="nav-number">1.2.</span> <span class="nav-text">构造器方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的增删"><span class="nav-number">2.</span> <span class="nav-text">数组的增删</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增：角标访问"><span class="nav-number">3.</span> <span class="nav-text">增：角标访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删：delete"><span class="nav-number">4.</span> <span class="nav-text">删：delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的方法"><span class="nav-number">5.</span> <span class="nav-text">数组的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#join-合并"><span class="nav-number">5.1.</span> <span class="nav-text">join 合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reverse-反向排序"><span class="nav-number">5.2.</span> <span class="nav-text">reverse 反向排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort-排序"><span class="nav-number">5.3.</span> <span class="nav-text">sort 排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#concat-拼接"><span class="nav-number">5.4.</span> <span class="nav-text">concat 拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#slice-剪切"><span class="nav-number">5.5.</span> <span class="nav-text">slice 剪切</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#splice"><span class="nav-number">5.6.</span> <span class="nav-text">splice</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach"><span class="nav-number">5.7.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">5.8.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">5.9.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#every"><span class="nav-number">5.10.</span> <span class="nav-text">every</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#some"><span class="nav-number">5.11.</span> <span class="nav-text">some</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce-amp-reduceRight"><span class="nav-number">5.12.</span> <span class="nav-text">reduce & reduceRight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#indexOf-amp-lastIndexOf"><span class="nav-number">5.13.</span> <span class="nav-text">indexOf & lastIndexOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isArray"><span class="nav-number">5.14.</span> <span class="nav-text">isArray</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

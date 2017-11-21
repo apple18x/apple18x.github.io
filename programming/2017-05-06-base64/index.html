@@ -84,30 +84,23 @@
 
 
 
-<meta name="description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。
-一直听说 base64 编码，终于趁这个机会搞了个明白。
-base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。
-在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
+<meta name="description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。 一直听说 base64 编码，终于趁这个机会搞了个明白。 base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。 在未知 base64 编">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="base64 编码图片">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-05-06-base64/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。
-一直听说 base64 编码，终于趁这个机会搞了个明白。
-base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。
-在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
+<meta property="og:description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。 一直听说 base64 编码，终于趁这个机会搞了个明白。 base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。 在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-1.png">
-<meta property="og:image" content="http://www.xinxiaoyang/./icon.png">
-<meta property="og:image" content="http://www.xinxiaoyang/./base64-2.png">
-<meta property="og:image" content="http://www.xinxiaoyang/./base64-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/icon.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-3.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-4.png">
 <meta property="og:updated_time" content="2017-05-18T09:06:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="base64 编码图片">
-<meta name="twitter:description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。
-一直听说 base64 编码，终于趁这个机会搞了个明白。
-base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。
-在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
+<meta name="twitter:description" content="最近做 webview 时有一个微信分享功能，图片需要通过 base64 编码以后传到客户端，再显示在微信分享链接的气泡里。 一直听说 base64 编码，终于趁这个机会搞了个明白。 base64是什么base64 编码是将图片转换为字符串，使用时，通过解码这个字符串，可以对图片进行完全还原。 在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方">
 <meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-05-06-base64/base64-1.png">
 
 
@@ -336,7 +329,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
 <p>在未知 base64 编码原理之前，我以最基本的认知认为，将图片编码是完全可行的。最简单暴力的一种编码方式就是记录下每个像素点的 rgb 信息，通过依次解码就能够还原整个图像。<br><a id="more"></a></p>
 <p>base64 编码长什么样呢？</p>
 <p>google 告诉你答案。在 google 首页，你会发现话筒的小图标就是通过 base64 解码得到的。</p>
-<img src="/programming/2017-05-06-base64/base64-1.png" alt="base64-1.png" title="">
+<img src="/programming/2017-05-06-base64/base64-1.png">
 <p>在这里，<code>data:image/png;base64,</code> 后面一大串字符串就是 base64 编码，通常情况下 base64 编码的结尾都会有 1-2 个 “=”。其中，png 指明了编码图片的类型，所以也可以写成这样：</p>
 <p><code>data:image/gif;base64,</code><br><code>data:image/jpeg;base64,</code>  </p>
 <p>当然，也不一定是图片，字体文件、链接地址等都可以进行 base64 编码。比如你们一定很熟悉长这样的：</p>
@@ -365,11 +358,11 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
 <li>不能单独缓存编码，除非 CSS 文件被缓存</li>
 </ul>
 <h3 id="如何对图片编码"><a href="#如何对图片编码" class="headerlink" title="如何对图片编码"></a>如何对图片编码</h3><p>如果想通过代码的方式对图片进行编码，那么 canvas 是个不错的选择。简单来说，在 canvas 中插入图片，使用 toDataURL() 方法就能获得 base64 编码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">toDataURL</span>(<span class="params">img</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line">  canvas.width = img.width;</div><div class="line">  canvas.height = img.height;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, img.width, img.height);</div><div class="line">  <span class="keyword">var</span> dataURL = canvas.toDataURL(<span class="string">"image/png"</span>);</div><div class="line">  <span class="keyword">return</span> dataURL;</div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getBase64Image</span>(<span class="params">src</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">  img.crossOrigin = <span class="string">"anonymous"</span>; <span class="comment">// 解决图片跨域问题</span></div><div class="line">  img.src = src; </div><div class="line">	</div><div class="line">  img.onload =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">    dataUrl = getBase64Image(img); </div><div class="line">  &#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">getBase64Image(imgSrc);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toDataURL</span>(<span class="params">img</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</span><br><span class="line">  canvas.width = img.width;</span><br><span class="line">  canvas.height = img.height;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, img.width, img.height);</span><br><span class="line">  <span class="keyword">var</span> dataURL = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">  <span class="keyword">return</span> dataURL;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getBase64Image</span>(<span class="params">src</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">  img.crossOrigin = <span class="string">"anonymous"</span>; <span class="comment">// 解决图片跨域问题</span></span><br><span class="line">  img.src = src; </span><br><span class="line">	</span><br><span class="line">  img.onload =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    dataUrl = getBase64Image(img); </span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getBase64Image(imgSrc);</span><br></pre></td></tr></table></figure>
 <p>如果使用 Chrome 浏览器，可以安装 WEB 前端助手（FeHelper）插件。这是一个集多个前端开发常用功能于一体的插件，不过我只用过图片 Base64 转换。</p>
 <p><img src="./base64-3.png" width="153" height="360" alt="图片名称"></p>
 <p>利用插件，可以qiao方便地实现图片到编码的人工转换。另外，插件还对比了原图片和编码的大小，给工程狮选择提供一些参考。</p>
-<img src="/programming/2017-05-06-base64/base64-4.png" alt="base64-4.png" title="">
+<img src="/programming/2017-05-06-base64/base64-4.png">
       
     </div>
 
@@ -478,7 +471,7 @@ base64是什么base64 编码是将图片转换为字符串，使用时，通过�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

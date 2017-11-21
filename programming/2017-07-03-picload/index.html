@@ -84,28 +84,21 @@
 
 
 
-<meta name="description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。
-有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。
-前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。
-把一个视频网站做烂真的是轻而易举。">
+<meta name="description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。 有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。 前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。 把一个">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设置了 "display:none" 图片是否加载？">
+<meta property="og:title" content="设置了 &quot;display:none&quot; 图片是否加载？">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-07-03-picload/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。
-有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。
-前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。
-把一个视频网站做烂真的是轻而易举。">
+<meta property="og:description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。 有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。 前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。 把一个视频网站做烂真的是轻而易举。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-03-picload/cat&dog.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-03-picload/result-img.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-07-03-picload/result-bgprop.png">
 <meta property="og:updated_time" content="2017-07-03T15:07:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设置了 "display:none" 图片是否加载？">
-<meta name="twitter:description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。
-有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。
-前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。
-把一个视频网站做烂真的是轻而易举。">
+<meta name="twitter:title" content="设置了 &quot;display:none&quot; 图片是否加载？">
+<meta name="twitter:description" content="预计2个月完事儿的项目做了半年，终于，要烂尾了，哦不，是收尾。 有一整月的时间都在做性能优化。网页里有大量的图片和视频，每次视频缓冲出现 loading 图标的时候，我都要跟着爆炸了，因为产品总会说“这种体验是上不了线的”。 前前后后尝试了很多种加载图片和视频的策略，无非就是哪些做预加载，把资源放在哪里的问题。 把一个视频网站做烂真的是轻而易举。">
 <meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-07-03-picload/cat&dog.png">
 
 
@@ -340,22 +333,22 @@
 <p>useragent 信息如下：</p>
 <p>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36</p>
 <h3 id="img-标签"><a href="#img-标签" class="headerlink" title="img 标签"></a>img 标签</h3><p>原图如下：</p>
-<img src="/programming/2017-07-03-picload/cat&dog.png" alt="cat&dog.png" title="">  
+<img src="/programming/2017-07-03-picload/cat&dog.png">  
 <p>我为它们分别设置了属性 display: none 和 visibility: hidden。</p>
 <p>HTML  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"dog"</span> <span class="attr">src</span>=<span class="string">"images/dog.png"</span> <span class="attr">alt</span>=<span class="string">"dog"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"cat"</span> <span class="attr">src</span>=<span class="string">"images/cat.png"</span> <span class="attr">alt</span>=<span class="string">"cat"</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"dog"</span> <span class="attr">src</span>=<span class="string">"images/dog.png"</span> <span class="attr">alt</span>=<span class="string">"dog"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"cat"</span> <span class="attr">src</span>=<span class="string">"images/cat.png"</span> <span class="attr">alt</span>=<span class="string">"cat"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>CSS  </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.dog</span> &#123;</div><div class="line">  <span class="attribute">display</span>: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.cat</span> &#123;</div><div class="line">  <span class="attribute">visibility</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>结果是：<br><img src="/programming/2017-07-03-picload/result-img.png" alt="result-img.png" title=""></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dog</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.cat</span> &#123;</span><br><span class="line">  <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果是：<br><img src="/programming/2017-07-03-picload/result-img.png"></p>
 <p>显而易见，图片加载了。</p>
 <h3 id="background-属性"><a href="#background-属性" class="headerlink" title="background 属性"></a>background 属性</h3><p>把图片放到背景图里再试试。</p>
 <p>HTML  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dog"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"cat"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"dog"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"cat"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>CSS  </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.dog</span> &#123;</div><div class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(images/dog.png);</div><div class="line">  <span class="attribute">display</span>: none;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.cat</span> &#123;</div><div class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(images/cat.png);</div><div class="line">  <span class="attribute">visibility</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>结果是图片再一次加载了。<br><img src="/programming/2017-07-03-picload/result-bgprop.png" alt="result-bgprop.png" title=""></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dog</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(images/dog.png);</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.cat</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(images/cat.png);</span><br><span class="line">  <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果是图片再一次加载了。<br><img src="/programming/2017-07-03-picload/result-bgprop.png"></p>
 <h3 id="令人崩溃的结论"><a href="#令人崩溃的结论" class="headerlink" title="令人崩溃的结论"></a>令人崩溃的结论</h3><p>说白了，如果你想试图用 css 来控制图片加载，还是别想了。</p>
-<p>唯一的办法就是用 js 控制，原理和方法参见上一篇文章： <a href="http://www.xinxiaoyang.com/programming/2017-05-12-lazyload/" target="_blank" rel="external">《lazyload 图片懒加载》</a></p>
+<p>唯一的办法就是用 js 控制，原理和方法参见上一篇文章： <a href="http://www.xinxiaoyang.com/programming/2017-05-12-lazyload/" target="_blank" rel="noopener">《lazyload 图片懒加载》</a></p>
 
       
     </div>
@@ -387,16 +380,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-06-05-deepcopy/" rel="next" title="深拷贝">
-                <i class="fa fa-chevron-left"></i> 深拷贝
+              <a href="/programming/2017-07-03-getting-url-parameters-using-regex/" rel="next" title="利用正则表达式获取 url 中的参数">
+                <i class="fa fa-chevron-left"></i> 利用正则表达式获取 url 中的参数
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-07-03-getting-url-parameters-using-regex/" rel="prev" title="利用正则表达式获取 url 中的参数">
-                利用正则表达式获取 url 中的参数 <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-07-18-grid/" rel="prev" title="Grid Layout 入门">
+                Grid Layout 入门 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -465,7 +458,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

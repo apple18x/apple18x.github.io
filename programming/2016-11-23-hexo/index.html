@@ -84,18 +84,14 @@
 
 
 
-<meta name="description" content="安装 hexo全局安装 hexosudo npm install -g hexo
-初始化新建文件夹，进行初始化，并在本地安装必要组件。  
-hexo init
-npm install">
+<meta name="description" content="安装 hexo全局安装 hexosudo npm install -g hexo 初始化新建文件夹，进行初始化，并在本地安装必要组件。   hexo init npm install">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo + Github 搭建个人主页">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2016-11-23-hexo/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="安装 hexo全局安装 hexosudo npm install -g hexo
-初始化新建文件夹，进行初始化，并在本地安装必要组件。  
-hexo init
-npm install">
+<meta property="og:description" content="安装 hexo全局安装 hexosudo npm install -g hexo 初始化新建文件夹，进行初始化，并在本地安装必要组件。   hexo init npm install">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2016-11-23-hexo/hexo-screenshot.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2016-11-23-hexo/hexo-1.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2016-11-23-hexo/hexo-2.png">
@@ -103,10 +99,7 @@ npm install">
 <meta property="og:updated_time" content="2017-05-18T09:16:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo + Github 搭建个人主页">
-<meta name="twitter:description" content="安装 hexo全局安装 hexosudo npm install -g hexo
-初始化新建文件夹，进行初始化，并在本地安装必要组件。  
-hexo init
-npm install">
+<meta name="twitter:description" content="安装 hexo全局安装 hexosudo npm install -g hexo 初始化新建文件夹，进行初始化，并在本地安装必要组件。   hexo init npm install">
 <meta name="twitter:image" content="http://www.xinxiaoyang/programming/2016-11-23-hexo/hexo-screenshot.png">
 
 
@@ -346,7 +339,7 @@ npm install
 <h3 id="生成页面"><a href="#生成页面" class="headerlink" title="生成页面"></a>生成页面</h3><pre><code>hexo genearate
 </code></pre><p>这个命令将 md 格式的内容生成静态网页，可简写为 hexo g。</p>
 <h3 id="启动本地服务，预览页面"><a href="#启动本地服务，预览页面" class="headerlink" title="启动本地服务，预览页面"></a>启动本地服务，预览页面</h3><pre><code>hexo server
-</code></pre><p>打开 localhost: 4000，页面已经可以访问。<br><img src="/programming/2016-11-23-hexo/hexo-screenshot.png" alt="This is an example image" title="This is an example image"></p>
+</code></pre><p>打开 localhost: 4000，页面已经可以访问。<br><img src="/programming/2016-11-23-hexo/hexo-screenshot.png" title="This is an example image"></p>
 <h1 id="配置-Github"><a href="#配置-Github" class="headerlink" title="配置 Github"></a>配置 Github</h1><p>进入 github，建立与用户名对应的仓库，仓库名必须为 <strong>username.github.io</strong>。这是由于 github 上的个人账户必须使用唯一且特定的库来创建 Github Pages 托管内容，master 分支的内容将会被构建和发布在 Github Pages 上。</p>
 <p>修改 /_config.yml 文件建立关联：</p>
 <pre><code>deploy:
@@ -355,9 +348,9 @@ npm install
     branch: master
 </code></pre><p>把上述 repository 中的 username 替换成自己的 github 用户名。</p>
 <p>执行 <code>hexo deploy</code> 将页面部署到 github 上，访问 username.github.io 可以查看页面。</p>
-<h1 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h1><p>我们已经将 hexo 搭建的页面放在 github 上并且可以访问了，下面进一步将域名和 github 进行绑定。<br><!--![domain name](../assets/blogImg/hexo-1.png)--><br><img src="/programming/2016-11-23-hexo/hexo-1.png" alt="This is an example image" title="This is an example image"></p>
+<h1 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h1><p>我们已经将 hexo 搭建的页面放在 github 上并且可以访问了，下面进一步将域名和 github 进行绑定。<br><!--![domain name](../assets/blogImg/hexo-1.png)--><br><img src="/programming/2016-11-23-hexo/hexo-1.png" title="This is an example image"></p>
 <p>这里的记录值 192.30.252.153 是 Github Pages 服务器指定的 IP 地址。</p>
-<p>进入 github 的 username.github.io 库，新建文件 CNAME，写入内容为域名。<br><img src="/programming/2016-11-23-hexo/hexo-2.png" alt="This is an example image" title="This is an example image"><br><img src="/programming/2016-11-23-hexo/hexo-3.png" alt="This is an example image" title="This is an example image"></p>
+<p>进入 github 的 username.github.io 库，新建文件 CNAME，写入内容为域名。<br><img src="/programming/2016-11-23-hexo/hexo-2.png" title="This is an example image"><br><img src="/programming/2016-11-23-hexo/hexo-3.png" title="This is an example image"></p>
 <h1 id="页面部署"><a href="#页面部署" class="headerlink" title="页面部署"></a>页面部署</h1><p>每次部署的步骤，可以按以下三步来进行。</p>
 <pre><code>hexo clean    
 hexo generate
@@ -467,7 +460,7 @@ hexo deploy
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

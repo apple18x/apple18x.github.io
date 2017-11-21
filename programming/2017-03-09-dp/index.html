@@ -84,16 +84,14 @@
 
 
 
-<meta name="description" content="前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？  
-参考网址：https://developer.android.com/guide/practices/screens_support.html
-名词解释像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均">
+<meta name="description" content="前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？   参考网址：https://developer.android.com/guide/practices/screens_support.ht">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dp 与 px">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-03-09-dp/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？  
-参考网址：https://developer.android.com/guide/practices/screens_support.html
-名词解释像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均">
+<meta property="og:description" content="前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？   参考网址：https://developer.android.com/guide/practices/screens_support.html 名词解释像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-03-09-dp/yingmu.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-03-09-dp/screen-size.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-03-09-dp/px_comparison.png">
@@ -103,9 +101,7 @@
 <meta property="og:updated_time" content="2017-05-18T09:20:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dp 与 px">
-<meta name="twitter:description" content="前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？  
-参考网址：https://developer.android.com/guide/practices/screens_support.html
-名词解释像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均">
+<meta name="twitter:description" content="前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？   参考网址：https://developer.android.com/guide/practices/screens_support.html 名词解释像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均">
 <meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-03-09-dp/yingmu.png">
 
 
@@ -329,34 +325,34 @@
 
       
         <p>前些日子做了几个嵌入安卓的 webview，找安卓同事要素材的时候，总是跟我提 dpdp 的，作为前端工程狮，常年和 px 打交道，有时也会用 rem 和 em。dp 是个啥？  </p>
-<p>参考网址：<a href="https://developer.android.com/guide/practices/screens_support.html" target="_blank" rel="external">https://developer.android.com/guide/practices/screens_support.html</a></p>
+<p>参考网址：<a href="https://developer.android.com/guide/practices/screens_support.html" target="_blank" rel="noopener">https://developer.android.com/guide/practices/screens_support.html</a></p>
 <h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>像素和分辨率可以用于形容【图像】或【屏幕】，如不做特别说明，这里均指屏幕，图像情况类似。<br><a id="more"></a></p>
 <h4 id="像素（px）"><a href="#像素（px）" class="headerlink" title="像素（px）"></a>像素（px）</h4><p>表示组成图像的最小单位。我们看到的图像都是由色点组成的，假如我们在屏幕上看到一个樱木花道，放大看会发现它其实是由很多个纯色色块拼成的，其中最小的色块就是一个像素。</p>
-<img src="/programming/2017-03-09-dp/yingmu.png" alt="yingmu.png" title="">
+<img src="/programming/2017-03-09-dp/yingmu.png">
 <p>如果这里一个方格代表一像素的话，那么樱木的嘴和鼻子就是一像素。<br>在我们一贯的认知里，既然作为单位，那么一像素一定是固定大小吧！但是，像素大小真的不是确定的！它究竟多大，取决于分辨率的大小。</p>
 <h4 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h4><p>分辨率为 “屏幕每行的像素点数 <em> 每列的像素点数”。<br>我们经常会听到屏幕分辨率是 320 </em> 480 的，表示屏幕宽度上有 320 个像素点，高度上有 480 个像素点。</p>
-<h4 id="屏幕尺寸"><a href="#屏幕尺寸" class="headerlink" title="屏幕尺寸"></a>屏幕尺寸</h4><p>屏幕尺寸 4.0 英寸是指对角线 (敲黑板) 的长度为 4.0 英寸。1 英寸 = 25.4 毫米。<br><img src="/programming/2017-03-09-dp/screen-size.png" alt="screen-size.png" title=""></p>
+<h4 id="屏幕尺寸"><a href="#屏幕尺寸" class="headerlink" title="屏幕尺寸"></a>屏幕尺寸</h4><p>屏幕尺寸 4.0 英寸是指对角线 (敲黑板) 的长度为 4.0 英寸。1 英寸 = 25.4 毫米。<br><img src="/programming/2017-03-09-dp/screen-size.png"></p>
 <h4 id="dpi"><a href="#dpi" class="headerlink" title="dpi"></a>dpi</h4><p>dpi 是 Dots Per Inch 的缩写，顾名思义，指每英寸的像素个数。   </p>
 <p>如果我们的屏幕是 4.0 英寸，屏幕分辨率为 480 ＊ 800，我们可以通过计算得到 dpi 的值。根据勾股定理，屏幕对角线的长度为 932.952 像素（101.6 毫米），那么每英寸有 932.952/4.0 = 233 个像素，工业切割屏会取整，即 dpi 为 240。</p>
 <p>顺手算一下像素大小，每个像素有 101.6/932.952 = 0.109 毫米。</p>
 <h4 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h4><p>终于说到主角儿了，dp是啥？dp 也写做 dip, 是 Density Independent Pixels（密度无关像素）的简写。简而言之，dp 是 Android 发明的长度单位，也称为密度无关像素。  </p>
 <p>你一定会想说这是什么鬼？  </p>
 <p>事实上，这种说法是最有助于理解的，因为 dp 本身是人们为了方便开发而人为定义出的单位。它甚至不是什么的缩写，只是为安卓开发而生的一个虚拟单位。</p>
-<h3 id="dp-的推算"><a href="#dp-的推算" class="headerlink" title="dp 的推算"></a>dp 的推算</h3><h4 id="为什么不用-px？"><a href="#为什么不用-px？" class="headerlink" title="为什么不用 px？"></a>为什么不用 px？</h4><p>px(像素)是我们开发过程中使用最广泛的单位之一，但是在 dpi 不同的设备中，由于每个像素的大小不同，如果我们画一条像素值同为 10px 的直线，就会产生下面的情况：<br><img src="/programming/2017-03-09-dp/px_comparison.png" alt="px_comparison.png" title=""></p>
-<p>如果使用 dp 单位呢？例如同样是 10dp 的直线，表现是这样的：<br><img src="/programming/2017-03-09-dp/dp_comparison.png" alt="dp_comparison.png" title=""></p>
+<h3 id="dp-的推算"><a href="#dp-的推算" class="headerlink" title="dp 的推算"></a>dp 的推算</h3><h4 id="为什么不用-px？"><a href="#为什么不用-px？" class="headerlink" title="为什么不用 px？"></a>为什么不用 px？</h4><p>px(像素)是我们开发过程中使用最广泛的单位之一，但是在 dpi 不同的设备中，由于每个像素的大小不同，如果我们画一条像素值同为 10px 的直线，就会产生下面的情况：<br><img src="/programming/2017-03-09-dp/px_comparison.png"></p>
+<p>如果使用 dp 单位呢？例如同样是 10dp 的直线，表现是这样的：<br><img src="/programming/2017-03-09-dp/dp_comparison.png"></p>
 <p>鹅妹子嘤！</p>
 <h4 id="dp-的推算过程"><a href="#dp-的推算过程" class="headerlink" title="dp 的推算过程"></a>dp 的推算过程</h4><p>见识了 dp 的神奇，那么 dp 到底是怎样得来的单位呢？</p>
-<p>首先先来说说安卓系统面临的碎片化问题。目前，下图中每一个矩形都代表着当前市场上的一种 Android 设备的尺寸。<br><img src="/programming/2017-03-09-dp/android-size.png" alt="android-size.png" title=""></p>
+<p>首先先来说说安卓系统面临的碎片化问题。目前，下图中每一个矩形都代表着当前市场上的一种 Android 设备的尺寸。<br><img src="/programming/2017-03-09-dp/android-size.png"></p>
 <p>面临爆炸式增长的屏幕大小，谷歌规定了一个屏幕密度作为标准（baseline），即 <strong>160 dpi</strong>。</p>
 <p>我们不如假设 A 手机恰好就是 160 dpi 的屏幕，B 手机的 dpi 就设为 dpi(B) 吧。在 A 手机上需要显示一条宽度为 X px 的直线，这个值在 B 手机上则为 Y。</p>
-<img src="/programming/2017-03-09-dp/how-to-calculate-dp.png" alt="how-to-calculate-dp.png" title="">
+<img src="/programming/2017-03-09-dp/how-to-calculate-dp.png">
 <p>那么，它们之间存在这样一种关系：</p>
 <p><code>X / 160 = Y / dpi(B)</code> </p>
 <p>经整理可得：</p>
 <p><code>X = Y * (160/dpi(B))</code></p>
 <p>这里，X 的单位就是 dp。</p>
 <h3 id="dp-与-px-的转换"><a href="#dp-与-px-的转换" class="headerlink" title="dp 与 px 的转换"></a>dp 与 px 的转换</h3><p>根据上述推算，我们知道，dp 与 px 之间的转换关系为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">px = dp * (dpi / 160)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">px = dp * (dpi / 160)</span><br></pre></td></tr></table></figure>
 <p>例如，在 240 dpi 屏幕上，1 dp = 1.5px。<br>我们始终使用 dp 单位，以确保在不同密度的屏幕上正常显示。</p>
 <h3 id="dp-的意义"><a href="#dp-的意义" class="headerlink" title="dp 的意义"></a>dp 的意义</h3><p>直观来讲，如果我们用绝对像素单位来定义一个图像，那么它很有可能在不同密度的屏幕上显示完全不同的大小，但 dp 单位则保证了在不同密度屏幕上“看起来”是一样的。</p>
 
@@ -390,16 +386,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-03-06-a-tag-with-onclick-event/" rel="next" title="a 标签的 href 属性和 onclick 事件">
-                <i class="fa fa-chevron-left"></i> a 标签的 href 属性和 onclick 事件
+              <a href="/programming/2017-03-09-slice/" rel="next" title="slice(0)">
+                <i class="fa fa-chevron-left"></i> slice(0)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-03-09-slice/" rel="prev" title="slice(0)">
-                slice(0) <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-04-01-transitionend/" rel="prev" title="transitionend">
+                transitionend <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -468,7 +464,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

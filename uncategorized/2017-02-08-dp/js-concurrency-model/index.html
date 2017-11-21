@@ -84,45 +84,19 @@
 
 
 
-<meta name="description" content="1.1 JavaScript 是单线程的JavaScript 是单线程运行的，从上到下执行。  
-1.2 任务队列任务队列分为同步任务和异步任务。执行过程中，异步任务要挂起，先执行同步任务，所有同步任务执行完成后，才会执行异步任务。
-异步任务包含：
-
-setTimeout 和 setInterval
-DOM 事件(click 等)
-ES6 中的 Promise 
-
-例题1：以下代码的输出结果：
-1">
+<meta name="description" content="1.1 JavaScript 是单线程的JavaScript 是单线程运行的，从上到下执行。   1.2 任务队列任务队列分为同步任务和异步任务。执行过程中，异步任务要挂起，先执行同步任务，所有同步任务执行完成后，才会执行异步任务。 异步任务包含：  setTimeout 和 setInterval DOM 事件(cl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="昕小阳的博客">
 <meta property="og:url" content="http://www.xinxiaoyang/uncategorized/2017-02-08-dp/js-concurrency-model/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="1.1 JavaScript 是单线程的JavaScript 是单线程运行的，从上到下执行。  
-1.2 任务队列任务队列分为同步任务和异步任务。执行过程中，异步任务要挂起，先执行同步任务，所有同步任务执行完成后，才会执行异步任务。
-异步任务包含：
-
-setTimeout 和 setInterval
-DOM 事件(click 等)
-ES6 中的 Promise 
-
-例题1：以下代码的输出结果：
-1">
-<meta property="og:image" content="http://www.xinxiaoyang/js-concurrency-model-1.png">
+<meta property="og:description" content="1.1 JavaScript 是单线程的JavaScript 是单线程运行的，从上到下执行。   1.2 任务队列任务队列分为同步任务和异步任务。执行过程中，异步任务要挂起，先执行同步任务，所有同步任务执行完成后，才会执行异步任务。 异步任务包含：  setTimeout 和 setInterval DOM 事件(click 等) ES6 中的 Promise   例题1：以下代码的输出结果： 1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/uncategorized/2017-02-08-dp/js-concurrency-model/js-concurrency-model-1.png">
 <meta property="og:updated_time" content="2017-10-22T14:08:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="昕小阳的博客">
-<meta name="twitter:description" content="1.1 JavaScript 是单线程的JavaScript 是单线程运行的，从上到下执行。  
-1.2 任务队列任务队列分为同步任务和异步任务。执行过程中，异步任务要挂起，先执行同步任务，所有同步任务执行完成后，才会执行异步任务。
-异步任务包含：
-
-setTimeout 和 setInterval
-DOM 事件(click 等)
-ES6 中的 Promise 
-
-例题1：以下代码的输出结果：
-1">
-<meta name="twitter:image" content="http://www.xinxiaoyang/js-concurrency-model-1.png">
+<meta name="twitter:description" content="1.1 JavaScript 是单线程的JavaScript 是单线程运行的，从上到下执行。   1.2 任务队列任务队列分为同步任务和异步任务。执行过程中，异步任务要挂起，先执行同步任务，所有同步任务执行完成后，才会执行异步任务。 异步任务包含：  setTimeout 和 setInterval DOM 事件(click 等) ES6 中的 Promise   例题1：以下代码的输出结果： 1">
+<meta name="twitter:image" content="http://www.xinxiaoyang/uncategorized/2017-02-08-dp/js-concurrency-model/js-concurrency-model-1.png">
 
 
 
@@ -334,13 +308,13 @@ ES6 中的 Promise
 <li>ES6 中的 Promise </li>
 </ul>
 <p>例题1：<br>以下代码的输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">console.log(1);</div><div class="line">setTimeout(function()&#123;</div><div class="line">  console.log(2);</div><div class="line">&#125;,0)</div><div class="line">console.log(3);</div><div class="line">console.log(4);</div><div class="line"></div><div class="line">// 答案：1 3 4 2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.log(1);</span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;,0)</span><br><span class="line">console.log(3);</span><br><span class="line">console.log(4);</span><br><span class="line"></span><br><span class="line">// 答案：1 3 4 2</span><br></pre></td></tr></table></figure>
 <p>解释：考察同步任务和异步任务的优先顺序。<code>setTimeout/setTimeInterval</code> 是异步任务，<code>console.log</code> 是同步任务。</p>
 <p>例题2:<br>以下代码的输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;A&apos;);</div><div class="line">while(true) &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">console.log(&apos;B&apos;);</div><div class="line"></div><div class="line">// 答案：A</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;A&apos;);</span><br><span class="line">while(true) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">console.log(&apos;B&apos;);</span><br><span class="line"></span><br><span class="line">// 答案：A</span><br></pre></td></tr></table></figure>
 <p>解释：考察同步任务和异步任务的优先顺序。因为均为同步任务，执行 <code>while</code> 语句时无法结束循环，因此不能执行 <code>console.log(&#39;B&#39;)</code> 的语句。</p>
 <p>例题3:<br>以下代码的输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;A&apos;);</div><div class="line">setTimeout(function()&#123;</div><div class="line">	console.log(&apos;B&apos;);</div><div class="line">&#125;)</div><div class="line">while(1)&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">// 答案：A</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;A&apos;);</span><br><span class="line">setTimeout(function()&#123;</span><br><span class="line">	console.log(&apos;B&apos;);</span><br><span class="line">&#125;)</span><br><span class="line">while(1)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 答案：A</span><br></pre></td></tr></table></figure>
 <p>解释：考察同步任务和异步任务的优先顺序。</p>
 <p>例题4:<br>以下代码的输出结果：</p>
 <pre><code>for(var i=0; i&lt;4; i++) {
@@ -461,7 +435,7 @@ ES6 中的 Promise
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

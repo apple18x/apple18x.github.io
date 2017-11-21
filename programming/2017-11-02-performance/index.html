@@ -84,55 +84,18 @@
 
 
 
-<meta name="description" content="1. 提升页面性能的方法
-资源压缩合并，减少 HTTP 请求
-非核心代码异步加载
-浏览器缓存
-使用 CDN
-预解析 DNS
-
-1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式
-动态脚本加载()  
-1document.createElement
-
-defer
-
-async">
+<meta name="description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS  1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式 动态脚本加载()   1document.createElement  defer  async">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="页面性能">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-02-performance/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="1. 提升页面性能的方法
-资源压缩合并，减少 HTTP 请求
-非核心代码异步加载
-浏览器缓存
-使用 CDN
-预解析 DNS
-
-1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式
-动态脚本加载()  
-1document.createElement
-
-defer
-
-async">
+<meta property="og:description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS  1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式 动态脚本加载()   1document.createElement  defer  async">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-11-18T07:51:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面性能">
-<meta name="twitter:description" content="1. 提升页面性能的方法
-资源压缩合并，减少 HTTP 请求
-非核心代码异步加载
-浏览器缓存
-使用 CDN
-预解析 DNS
-
-1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式
-动态脚本加载()  
-1document.createElement
-
-defer
-
-async">
+<meta name="twitter:description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS  1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式 动态脚本加载()   1document.createElement  defer  async">
 
 
 
@@ -363,7 +326,7 @@ async">
 </ul>
 <h4 id="1-1-资源压缩合并，减少-HTTP-请求"><a href="#1-1-资源压缩合并，减少-HTTP-请求" class="headerlink" title="1.1 资源压缩合并，减少 HTTP 请求"></a>1.1 资源压缩合并，减少 HTTP 请求</h4><h4 id="1-2-非核心代码异步加载"><a href="#1-2-非核心代码异步加载" class="headerlink" title="1.2 非核心代码异步加载"></a>1.2 非核心代码异步加载</h4><h5 id="1-2-1-异步加载的方式"><a href="#1-2-1-异步加载的方式" class="headerlink" title="1.2.1 异步加载的方式"></a>1.2.1 异步加载的方式</h5><ul>
 <li><p>动态脚本加载()  </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.createElement</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.createElement</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>defer</p>
 </li>
@@ -375,12 +338,12 @@ async">
 <li><code>async</code> 是在加载完之后立即执行，如果是多个，执行顺序和加载顺序<strong>无关</strong></li>
 </ul>
 <p>举个栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">&lt;script src=&quot;./defer1.js&quot; defer&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;./defer2.js&quot; defer&gt;&lt;/script&gt;</div><div class="line">...</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">  console.log(&apos;write&apos;);</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">  for(var i=1; i&lt;=40000; i++)&#123;</div><div class="line">    if(i%20000 === 0) &#123;</div><div class="line">      console.log(i);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">&lt;script src=&quot;./defer1.js&quot; defer&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./defer2.js&quot; defer&gt;&lt;/script&gt;</span><br><span class="line">...</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">  console.log(&apos;write&apos;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">  for(var i=1; i&lt;=40000; i++)&#123;</span><br><span class="line">    if(i%20000 === 0) &#123;</span><br><span class="line">      console.log(i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">write  </div><div class="line">20000  </div><div class="line">40000  </div><div class="line">defer1  </div><div class="line">defer2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">write  </span><br><span class="line">20000  </span><br><span class="line">40000  </span><br><span class="line">defer1  </span><br><span class="line">defer2</span><br></pre></td></tr></table></figure>
 <p>标记了 <code>defer</code> 属性的 script 标签是按照加载顺序执行的。如果将：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer1.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer2.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>修改为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer1.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer2.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer1.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer2.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer1.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./defer2.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>且将 <code>defer1.js</code> 的内容增加，则有可能出现 defer2 先于 defer1 打印的情况。</p>
 <h4 id="1-3-浏览器缓存"><a href="#1-3-浏览器缓存" class="headerlink" title="1.3 浏览器缓存"></a>1.3 浏览器缓存</h4><ul>
 <li>强缓存：不管是否有更新，都用本地缓存<ul>
@@ -408,7 +371,7 @@ async">
 <h4 id="1-5-预解析-DNS"><a href="#1-5-预解析-DNS" class="headerlink" title="1.5 预解析 DNS"></a>1.5 预解析 DNS</h4><p>DNS: Domain Name System，即域名系统，是域名和IP地址相互映射的一个分布式数据库。域名解析即通过主机名，最终得到该主机名对应的IP地址的过程。</p>
 <p>DNS 请求需要的带宽非常小，但是延迟却有点高，这点在手机网络上特别明显。DNS预解析 能让延迟明显减少一些，例如用户点击链接时。在某些情况下，延迟能减少一秒钟。</p>
 <p>DNS预解析是浏览器试图在用户访问链接之前解析域名，这是计算机的正常DNS解析机制。域名解析后，如果用户确实访问该域名，那么DNS解析时间将不会有延迟。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"on"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//host_name_to_prefetch.com"</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"on"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//host_name_to_prefetch.com"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -518,7 +481,7 @@ async">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

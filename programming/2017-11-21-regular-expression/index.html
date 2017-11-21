@@ -1,0 +1,895 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="什么是正则表达式正则表达式（Regular Expression）是是用耽搁字符串来描述、匹配一些列夫和某个句法规则的字符串。 简单来说，就是按照某种规则去匹配符合条件的字符串。 一个可视化的工具推荐一个很好用的可视化网站：https://regexper.com/ 偶尔会有被墙打不开的情况，可以从 github 上把">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="什么是正则表达式正则表达式（Regular Expression）是是用耽搁字符串来描述、匹配一些列夫和某个句法规则的字符串。 简单来说，就是按照某种规则去匹配符合条件的字符串。 一个可视化的工具推荐一个很好用的可视化网站：https://regexper.com/ 偶尔会有被墙打不开的情况，可以从 github 上把源码下载下来在本地运行： https://github.com/javallon">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/one.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/+.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/*.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/n.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/n,m.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/n,.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-8.png">
+<meta property="og:updated_time" content="2017-11-21T14:50:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式">
+<meta name="twitter:description" content="什么是正则表达式正则表达式（Regular Expression）是是用耽搁字符串来描述、匹配一些列夫和某个句法规则的字符串。 简单来说，就是按照某种规则去匹配符合条件的字符串。 一个可视化的工具推荐一个很好用的可视化网站：https://regexper.com/ 偶尔会有被墙打不开的情况，可以从 github 上把源码下载下来在本地运行： https://github.com/javallon">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/"/>
+
+
+  <title> 正则表达式 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                正则表达式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-21T00:00:00+08:00" content="2017-11-21">
+              2017-11-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是正则表达式"><a href="#什么是正则表达式" class="headerlink" title="什么是正则表达式"></a>什么是正则表达式</h3><p>正则表达式（Regular Expression）是是用耽搁字符串来描述、匹配一些列夫和某个句法规则的字符串。</p>
+<p>简单来说，就是按照某种规则去匹配符合条件的字符串。</p>
+<h3 id="一个可视化的工具"><a href="#一个可视化的工具" class="headerlink" title="一个可视化的工具"></a>一个可视化的工具</h3><p>推荐一个很好用的可视化网站：<a href="https://regexper.com/" target="_blank" rel="noopener">https://regexper.com/</a></p>
+<p>偶尔会有被墙打不开的情况，可以从 github 上把源码下载下来在本地运行： <a href="https://github.com/javallone/regexper-static" target="_blank" rel="noopener">https://github.com/javallone/regexper-static</a></p>
+<a id="more"></a>
+<p>可以把正则表达式通过图形的方式进行表示，比代码直观了很多。</p>
+<p>例如： <code>\d+</code><br><img src="regExp-1.png" width="104px"></p>
+<p>对于复杂一些的情况，可视化工具更能突显它的优势，比如：<code>http:(\/\/.+\.jpg)</code><br><img src="regExp-2.png" width="325px"></p>
+<h3 id="实例化正则表达式"><a href="#实例化正则表达式" class="headerlink" title="实例化正则表达式"></a>实例化正则表达式</h3><h4 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var reg = /\bis\b/g;</span><br></pre></td></tr></table></figure>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var reg = new RegExp(&apos;\\bis\\b&apos;, &apos;g&apos;);</span><br></pre></td></tr></table></figure>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><ul>
+<li>g: global 全局搜索，如果不添加该修饰符，则搜索到第一个匹配字符则停止</li>
+<li>i: ignore case 忽略大小写，默认大小写敏感</li>
+<li>m: multiple lines 多行搜索</li>
+</ul>
+<h4 id="g-全局搜索"><a href="#g-全局搜索" class="headerlink" title="g 全局搜索"></a>g 全局搜索</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;Hello world! Hello RegExp!&apos;.replace(/Hello/, &apos;x&apos;)</span><br><span class="line">// &quot;x world! Hello RegExp!&quot;</span><br><span class="line"></span><br><span class="line">&apos;Hello world! Hello RegExp!&apos;.replace(/Hello/g, &apos;x&apos;)</span><br><span class="line">// &quot;x world! x RegExp!&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="i-忽略大小写"><a href="#i-忽略大小写" class="headerlink" title="i 忽略大小写"></a>i 忽略大小写</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;Hello World! hello world!&apos;.replace(/hello\b/g, &apos;x&apos;)</span><br><span class="line">// &quot;Hello World! x world!&quot;</span><br><span class="line"></span><br><span class="line">&apos;Hello World! hello world!&apos;.replace(/hello\b/gi, &apos;x&apos;)</span><br><span class="line">// &quot;x World! x world!&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="多行搜索"><a href="#多行搜索" class="headerlink" title="多行搜索"></a>多行搜索</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&quot;@123</span><br><span class="line">@456</span><br><span class="line">@789</span><br><span class="line">&quot;.replace(/^@\d/g, &apos;X&apos;)</span><br><span class="line"></span><br><span class="line">输出</span><br><span class="line">&quot;X123</span><br><span class="line">@456</span><br><span class="line">@789</span><br><span class="line">&quot;</span><br><span class="line"></span><br><span class="line">&quot;@123</span><br><span class="line">@456</span><br><span class="line">@789</span><br><span class="line">&quot;.replace(/^@\d/gm, &apos;X&apos;)</span><br><span class="line"></span><br><span class="line">输出</span><br><span class="line">&quot;X123</span><br><span class="line">X456</span><br><span class="line">X789</span><br></pre></td></tr></table></figure>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p>正则表达式由两种基本字符类型组成：</p>
+<ul>
+<li>原义文本字符：表示本意的字符</li>
+<li>元字符：在正则表达式中有特殊含义的非字母字符，包括：<code>*</code>、<code>+</code>、<code>?</code>、<code>$</code>、<code>^</code>、<code>.</code>、<code>|</code>、<code>\</code>、<code>()</code>、<code>{}</code>、<code>[]</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\t</td>
+<td>水平制表符</td>
+</tr>
+<tr>
+<td style="text-align:center">\v</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td style="text-align:center">\0</td>
+<td>空字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td style="text-align:center">\cX</td>
+<td>与X对应的控制字符(Ctrl+X)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="字符类"><a href="#字符类" class="headerlink" title="[] 字符类"></a>[] 字符类</h4><p>一般情况下正则表达式的一个字符对应字符串的一个字符。</p>
+<p>例如 <code>ab\t</code>的含义是：<br><img src="regExp-3.png" width="177px"></p>
+<p>在很多情况下，我们希望符合某些特征的一类字符，而不是特指某个字符。  </p>
+<p>我们可以使用元字符 [] 来构建一个简单的类。<br>[abc] 表示字符 a 或 b 或 c 归为一类，表达式表示匹配这类中的某个字符即可，即“或“的概念。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;a1b2c3d4&quot;.replace(/[abc]/g, &apos;X&apos;)</span><br><span class="line">// &quot;X1X2X3d4&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="反向类"><a href="#反向类" class="headerlink" title="^ 反向类"></a>^ 反向类</h4><p>反向类的意思是不属于某类的内容。<br>[^abc] 表示不是字符 a 或 b 或 c.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;a1b2c3d4&quot;.replace(/[^abc]/g, &apos;X&apos;)</span><br><span class="line">// &quot;aXbXcXXX&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="范围类"><a href="#范围类" class="headerlink" title="- 范围类"></a>- 范围类</h4><p>如果我们使用上面的方法匹配数字，只能写成 [0123456789]，对于字母，只能通过枚举 26 个字母表示一类。</p>
+<p>正则表达式提供了范围类，可以用 [a-z] 来表示 a 到 z 的任意字符。<br><img src="regExp-4.png" width="137px"></p>
+<p>在 [] 组成的类内部可以连写，例如 <code>[a-zA-Z]</code> 表示所有大小写字母<br><img src="regExp-5.png" width="126px"></p>
+<p>注：’-‘ 只有在两个字符或字母中间时才表示为范围。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;2016-09-12&apos;.replace(/[0-9-]/g, &apos;A&apos;)</span><br><span class="line">// &quot;AAAAAAAAAA&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="预定义类"><a href="#预定义类" class="headerlink" title="预定义类"></a>预定义类</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th>等价类</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.</td>
+<td>[^\r\n］</td>
+<td>除了回车符和换行符之外的所有字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\d</td>
+<td>[0-9]</td>
+<td>数字字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\D</td>
+<td>[^0-9]</td>
+<td>非数字字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td>[\t\n\x0B\f\r]</td>
+<td>空白符</td>
+</tr>
+<tr>
+<td style="text-align:center">\S</td>
+<td>[^\t\n\x0B\f\r]</td>
+<td>非空白符</td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td>[a-zA-Z_0-9]</td>
+<td>单词字符（字母、数字下划线）</td>
+</tr>
+<tr>
+<td style="text-align:center">\W</td>
+<td>[^a-zA-Z_0-9]</td>
+<td>非单词字符</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子：<code>ab[0-9][^\r\n]</code> 等价于 <code>ab\d.</code>。</p>
+<h4 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">^</td>
+<td>以xxx开始</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td>以xxx结束</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td>单词边界(boundary)</td>
+</tr>
+<tr>
+<td style="text-align:center">\B</td>
+<td>非单词边界</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;This is mine&quot;.replace(/is/g, &apos;0&apos;);</span><br><span class="line">\\ &quot;Th0 0 mine&quot;</span><br><span class="line"></span><br><span class="line">&quot;This is mine&quot;.replace(/\bis\b/g, &apos;0&apos;);</span><br><span class="line">\\&quot;This 0 mine&quot;</span><br><span class="line"></span><br><span class="line">&quot;This is mine&quot;.replace(/\Bis\b/g, &apos;0&apos;);</span><br><span class="line">\\ &quot;Th0 is mine&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&apos;@123@abc@&apos;.replace(/@./g, &apos;Q&apos;)</span><br><span class="line">// &quot;Q23Qbc@&quot;</span><br><span class="line"></span><br><span class="line">&apos;@123@abc@&apos;.replace(/^@./g, &apos;Q&apos;)</span><br><span class="line">// &quot;Q23@abc@&quot;</span><br><span class="line"></span><br><span class="line">&apos;@123@abc@&apos;.replace(/.@$/g, &apos;Q&apos;)</span><br><span class="line">// &quot;@123@abQ&quot;</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li>^ 在字符类（方括号中）表示取反</li>
+<li>^ 表示”以xxx开头”时必须放在开头，$ 表示”以xxx结束”时放在结尾</li>
+</ul>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><p>如果我们希望匹配一个连续出现「20次」数字的字符串，用已知的方法只能写成如下形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d</span><br></pre></td></tr></table></figure>
+<p>为了便于表示多个相同规则的字符，提出了量词的表示方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th>含义</th>
+<th>图形表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">?</td>
+<td>出现零次或一次（最多出现一次）</td>
+<td><img src="one.png"></td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td>出现一次或多次（至少出现一次）</td>
+<td><img src="+.png"></td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td>出现零次或多次（任意次）</td>
+<td><img src="*.png"></td>
+</tr>
+<tr>
+<td style="text-align:center">{n}</td>
+<td>出现n次</td>
+<td>n=3 <img src="n.png"></td>
+</tr>
+<tr>
+<td style="text-align:center">{n,m}</td>
+<td>出现n到m次</td>
+<td>{3,5}<img src="n,m.png"></td>
+</tr>
+<tr>
+<td style="text-align:center">{n,}</td>
+<td>至少出现n次</td>
+<td><img src="n,.png"></td>
+</tr>
+</tbody>
+</table>
+<p>如果想表示最多 10 次，写法为：<code>\d{0,10}</code></p>
+<h5 id="量词的贪婪模式与非贪婪模式"><a href="#量词的贪婪模式与非贪婪模式" class="headerlink" title="量词的贪婪模式与非贪婪模式"></a>量词的贪婪模式与非贪婪模式</h5><p>思考一个问题，下面这个正则表达式会匹配出什么呢：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;12345678&apos;.match(/\d&#123;3,6&#125;/)</span><br></pre></td></tr></table></figure></p>
+<p>正则表达式用来匹配 3-6 个数字字符，字符串既可以匹配 3 个（最少）数字字符，也可以匹配 6 个（最多）字符，那么会执行哪个呢？输出的结果如下：</p>
+<p><code>[&quot;123456&quot;, index: 0, input: &quot;12345678&quot;]</code></p>
+<p>正则表达式会尽可能多的匹配，即贪婪模式，直到匹配失败！</p>
+<p>如果想让正则表达式尽可能少的匹配，即非贪婪模式，只要在量词后加上 ? 即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;12345678&apos;.match(/\d&#123;3,6&#125;?/)</span><br><span class="line">// [&quot;123&quot;, index: 0, input: &quot;12345678&quot;]</span><br><span class="line"></span><br><span class="line">&apos;123456789&apos;.match(/\d&#123;3,6&#125;?/g)</span><br><span class="line">// [&quot;123&quot;, &quot;456&quot;, &quot;789&quot;]</span><br></pre></td></tr></table></figure>
+<h4 id="分组"><a href="#分组" class="headerlink" title="() 分组"></a>() 分组</h4><p>假设我们希望匹配字符串 Hello 连续出现 3 次，下面的写法并不能实现我们的需求：</p>
+<p><code>Hello{3}</code></p>
+<p>因为它所代表的含义只是匹配字母 o 三次：</p>
+<p><img src="regExp-6.png" width="164px"></p>
+<p>如何作用于整个单词呢？这里引入了分组的概念，即用小括号可以实现匹配字符的分组：</p>
+<p><code>(Hello){3}</code></p>
+<p><img src="regExp-7.png" width="134px"></p>
+<p>举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;HelloHelloHello World!&apos;.replace(/(Hello)&#123;3&#125;/, &apos;X&apos;)</span><br><span class="line">// &quot;X World!&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="分组中的或（-）"><a href="#分组中的或（-）" class="headerlink" title="分组中的或（ | ）"></a>分组中的或（ | ）</h5><p>或（｜）配合分组使用，可以获得分组中的多个状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;Hello World!&apos;.replace(/(Hello|World)/g,&apos;X&apos;)</span><br><span class="line">\\ &quot;X X!&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;Hellorld HelWorld!&apos;.replace(/Hel(lo|Wo)rld/g,&apos;X&apos;)</span><br><span class="line">\\ &quot;X X!&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="分组中的反向引用（-）"><a href="#分组中的反向引用（-）" class="headerlink" title="分组中的反向引用（$）"></a>分组中的反向引用（$）</h5><p>提个需求，如何使用正则表达式实现下面的格式转换：</p>
+<p>2015-12-25 =&gt; 12/25/2015</p>
+<p>反向引用的意义在于可以让我们获得匹配到的字符串，可以捕获到分组的内容！</p>
+<p>上面的需求可以用下面的方法实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;2015-12-25&apos;.replace(/(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)/g, &apos;$2/$3/$1&apos;)</span><br><span class="line">// &quot;12/25/2015&quot;</span><br></pre></td></tr></table></figure>
+<p>其中，$1, $2, $3 分别代表着第1个、第2个和第3个分组内容，即匹配到的\d{4}，\d{2}和\d{2}。</p>
+<h5 id="分组中忽略分组"><a href="#分组中忽略分组" class="headerlink" title="分组中忽略分组"></a>分组中忽略分组</h5><p>不希望捕获某些分组，只需要在分组内加上 ?: 即可。</p>
+<p>例如：</p>
+<p><code>(?:Hello) (World)</code></p>
+<p><img src="regExp-8.png" width="206px"></p>
+<p>我们发现这里只有 <code>World</code> 成为了一个分组，<code>Hello</code> 并没有成为一个分组。</p>
+<h4 id="前瞻与后顾"><a href="#前瞻与后顾" class="headerlink" title="前瞻与后顾"></a>前瞻与后顾</h4><p>正则表达式从文本头部向尾部开始解析，文本尾部方向，称为“前”。前瞻是在正则表达式匹配到规则的时候，向前检查是否符合断言，后顾反之。</p>
+<p>JavaScript 不支持后顾！</p>
+<p>符合和不符合特定断言称为 肯定／正向 匹配和 否定／负向 匹配。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th>正则</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">正向前瞻</td>
+<td>exp(?=assert)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">负向前瞻</td>
+<td>exp(?!assert)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">正向后顾</td>
+<td>exp(?&lt;=assert)</td>
+<td>JavaScript 不支持</td>
+</tr>
+<tr>
+<td style="text-align:center">负向后顾</td>
+<td>exp(?&lt;!assert)</td>
+<td>JavaScript 不支持</td>
+</tr>
+</tbody>
+</table>
+<p>举个栗子：</p>
+<p><code>\w(?=\d)</code> 表示匹配一个字符(<code>\w</code>)，但是该字符的后面必须是一个数字(<code>\d</code>)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;a2*3&quot;.replace(/\w(?=\d)/g, &apos;X&apos;)</span><br><span class="line">//  &quot;X2*3&quot;</span><br></pre></td></tr></table></figure>
+<p>注：断言是不做匹配的，只是用来做匹配的条件！</p>
+<p><code>\w(?!\d)</code> 表示匹配一个字符(<code>\w</code>)，但是该字符的后面必须不是数字(<code>\d</code>)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;a2*3&quot;.replace(/\w(?!\d)/g, &apos;X&apos;)</span><br><span class="line">// &quot;aX*X&quot;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-11-20-array/" rel="next" title="数组">
+                <i class="fa fa-chevron-left"></i> 数组
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是正则表达式"><span class="nav-number">1.</span> <span class="nav-text">什么是正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个可视化的工具"><span class="nav-number">2.</span> <span class="nav-text">一个可视化的工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例化正则表达式"><span class="nav-number">3.</span> <span class="nav-text">实例化正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字面量"><span class="nav-number">3.1.</span> <span class="nav-text">字面量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数"><span class="nav-number">3.2.</span> <span class="nav-text">构造函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰符"><span class="nav-number">4.</span> <span class="nav-text">修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#g-全局搜索"><span class="nav-number">4.1.</span> <span class="nav-text">g 全局搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#i-忽略大小写"><span class="nav-number">4.2.</span> <span class="nav-text">i 忽略大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多行搜索"><span class="nav-number">4.3.</span> <span class="nav-text">多行搜索</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符"><span class="nav-number">5.</span> <span class="nav-text">元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符类"><span class="nav-number">5.1.</span> <span class="nav-text">[] 字符类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向类"><span class="nav-number">5.2.</span> <span class="nav-text">^ 反向类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范围类"><span class="nav-number">5.3.</span> <span class="nav-text">- 范围类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预定义类"><span class="nav-number">5.4.</span> <span class="nav-text">预定义类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边界"><span class="nav-number">5.5.</span> <span class="nav-text">边界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#量词"><span class="nav-number">5.6.</span> <span class="nav-text">量词</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#量词的贪婪模式与非贪婪模式"><span class="nav-number">5.6.1.</span> <span class="nav-text">量词的贪婪模式与非贪婪模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组"><span class="nav-number">5.7.</span> <span class="nav-text">() 分组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分组中的或（-）"><span class="nav-number">5.7.1.</span> <span class="nav-text">分组中的或（ | ）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分组中的反向引用（-）"><span class="nav-number">5.7.2.</span> <span class="nav-text">分组中的反向引用（$）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分组中忽略分组"><span class="nav-number">5.7.3.</span> <span class="nav-text">分组中忽略分组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前瞻与后顾"><span class="nav-number">5.8.</span> <span class="nav-text">前瞻与后顾</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
