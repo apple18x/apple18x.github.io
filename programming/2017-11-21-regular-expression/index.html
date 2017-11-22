@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-6.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-7.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-21-regular-expression/regExp-8.png">
-<meta property="og:updated_time" content="2017-11-21T15:06:48.000Z">
+<meta property="og:updated_time" content="2017-11-22T14:39:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="1. 什么是正则表达式正则表达式（Regular Expression）是用单个字符串来描述、匹配一系列和某个句法规则的字符串。 简单来说，就是按照某种规则去匹配符合条件的字符串。 2. 一个可视化的工具推荐一个很好用的可视化网站：https://regexper.com/ 偶尔会有被墙打不开的情况，可以从 github 上把源码下载下来在本地运行： https://github.com/java">
@@ -547,8 +547,8 @@
 <p>举个栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;HelloHelloHello World!&apos;.replace(/(Hello)&#123;3&#125;/, &apos;X&apos;)</span><br><span class="line">// &quot;X World!&quot;</span><br></pre></td></tr></table></figure>
 <h5 id="5-7-1-或（-）"><a href="#5-7-1-或（-）" class="headerlink" title="5.7.1 或（ | ）"></a>5.7.1 或（ | ）</h5><p>或（｜）配合分组使用，可以获得分组中的多个状态。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;Hello World!&apos;.replace(/(Hello|World)/g,&apos;X&apos;)</span><br><span class="line">\\ &quot;X X!&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;Hellorld HelWorld!&apos;.replace(/Hel(lo|Wo)rld/g,&apos;X&apos;)</span><br><span class="line">\\ &quot;X X!&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;Hello World!&apos;.replace(/(Hello|World)/g,&apos;X&apos;)</span><br><span class="line">// &quot;X X!&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;Hellorld HelWorld!&apos;.replace(/Hel(lo|Wo)rld/g,&apos;X&apos;)</span><br><span class="line">// &quot;X X!&quot;</span><br></pre></td></tr></table></figure>
 <h5 id="5-7-2-反向引用（-）"><a href="#5-7-2-反向引用（-）" class="headerlink" title="5.7.2 反向引用（$）"></a>5.7.2 反向引用（$）</h5><p>提个需求，如何使用正则表达式实现下面的格式转换：</p>
 <p>2015-12-25 =&gt; 12/25/2015</p>
 <p>反向引用的意义在于可以让我们获得匹配到的字符串，可以捕获到分组的内容！</p>
