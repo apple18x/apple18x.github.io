@@ -1,0 +1,723 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Angular," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="从 2.0 开始 Angular.js 已经不叫 AngularJS 了，就叫 Angular（少了.js）只是版本号是 2.x。而日常我们为了区别 Angular.js 1.x 和 Angular 的 2.x 的版本，称之为 Angular2。 以下我们将 Angular 1.x 版本称之为 AngularJS，An">
+<meta name="keywords" content="Angular">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular 初认识">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-22-angular-introduction/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="从 2.0 开始 Angular.js 已经不叫 AngularJS 了，就叫 Angular（少了.js）只是版本号是 2.x。而日常我们为了区别 Angular.js 1.x 和 Angular 的 2.x 的版本，称之为 Angular2。 以下我们将 Angular 1.x 版本称之为 AngularJS，Angular 2.x 以上的版本称之为 Angular。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-22-angular-introduction/angular-introduction-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-22-angular-introduction/angular-introduction-2.png">
+<meta property="og:updated_time" content="2017-11-22T14:25:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular 初认识">
+<meta name="twitter:description" content="从 2.0 开始 Angular.js 已经不叫 AngularJS 了，就叫 Angular（少了.js）只是版本号是 2.x。而日常我们为了区别 Angular.js 1.x 和 Angular 的 2.x 的版本，称之为 Angular2。 以下我们将 Angular 1.x 版本称之为 AngularJS，Angular 2.x 以上的版本称之为 Angular。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-11-22-angular-introduction/angular-introduction-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-22-angular-introduction/"/>
+
+
+  <title> Angular 初认识 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular 初认识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-22T00:00:00+08:00" content="2017-11-22">
+              2017-11-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>从 2.0 开始 Angular.js 已经不叫 AngularJS 了，就叫 Angular（少了.js）只是版本号是 2.x。而日常我们为了区别 Angular.js 1.x 和 Angular 的 2.x 的版本，称之为 Angular2。</p>
+<p>以下我们将 Angular 1.x 版本称之为 AngularJS，Angular 2.x 以上的版本称之为 Angular。</p>
+<a id="more"></a>
+<h3 id="1-AngularJS"><a href="#1-AngularJS" class="headerlink" title="1. AngularJS"></a>1. AngularJS</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li><p>模版功能强大丰富</p>
+</li>
+<li><p>比较完善的前端 MVC 框架  </p>
+</li>
+</ul>
+<p>AngularJS 包含了「模版」、「双向数据绑定」、「路由」、「模块化」、「服务」、「过滤器」、「依赖注入」等功能，提供了基本所有的 web 开发所需要的工具。  </p>
+<p>相对于只关注某一方面的框架来说，AngularJS 只需要一个框架就能完成所有功能。</p>
+<ul>
+<li>比较大胆地引入了 Java 的一些概念  </li>
+</ul>
+<p>比如「依赖注入」、「单元测试」等，能够很容易地写出可复用的代码。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>性能  </li>
+</ul>
+<p>这里必须要提到的就是「双向数据绑定」，双向数据绑定可谓是一把双刃剑。  </p>
+<p>JavaScript 并没有监控变量改变的功能，因此为了实现双向数据绑定的功能，AngularJS 使用的是 Dirty Checking(脏值检查)。在 AngularJS 作用域中，任何的操作都可以引发 Dirty Checking。随着注册的变量越来越多，性能也会随之降低。</p>
+<p>相比于 AngularJS，Angular 废弃了该做法，双向绑定不再是默认写法，而改为了单向绑定方式。</p>
+<p>其次，整个检查机制进行了重写，性能得到提升。</p>
+<ul>
+<li>路由  </li>
+</ul>
+<p>AngularJS 中用于路由功能的 ng-view 指令只能有一个，不能嵌套多个视图。虽然第三方模块 UI-Router 可以解决这一问题，但是对 url 的控制也并不够灵活，必须是嵌套模式才可以。</p>
+<p>相比于 AngularJS，Angular 将路由模块作为核心模块进行巨大的提升。</p>
+<ul>
+<li>作用域 </li>
+</ul>
+<p>AngularJS 中，作用域的概念非常重要。作用域 执行环境和浏览器的 隔离开，所有的原生事件在 AngularJS 的作用域都无法得到响应。例如，无法使用 click 事件，选择框的 select 事件，而必须用 ng-click 的 AngularJS 事件来代替。如果要使用原生事件，必须使用 $scope.$apply() 的方式告诉浏览器数据有了更新，然后更新 UI。</p>
+<p>相比于 AngularJS，Angular 废弃了 $scope。任何原生的事件都可以直接进行绑定和处理。</p>
+<ul>
+<li>表单验证</li>
+</ul>
+<p>AngularJS 中，错误验证信息功能相对薄弱，需要写很多模版标签才来完成该项功能。</p>
+<p>相比于 AngularJS，Angular 提供了一套全新的模版 API。尤其是「响应式表单」，非常方便地进行复杂的校验和显示错误信息。</p>
+<ul>
+<li>JavaScript 语言</li>
+</ul>
+<p>没有类型系统，面向对象开发的能力很差。</p>
+<p>相比于 AngularJS，Angular 使用了 TypeScript 语言进行开发，它具有很完善的类型系统。在编译阶段解决 bug，减少运行时的 bug。配套的 IDE 可以提供更好的代码提示和更快的性能。</p>
+<ul>
+<li>学习成本高</li>
+</ul>
+<p>如果学习 AngularJS，可能要学习很多东西，它并没有一个核心的概念。<br>例如，React 最核心的概念就是虚拟 DOM，但是很难在 AngularJS 中提出一个很核心的东西。</p>
+<p>相比于 AngularJS，Angular 的核心概念就是组件，所有的东西都是为组件而服务的。</p>
+<p>Angular 的组件非常容易编写，类似于 React 的 jsx。</p>
+<h3 id="2-Angular"><a href="#2-Angular" class="headerlink" title="2. Angular"></a>2. Angular</h3><p>在 Angular 2.x 版本中，AngularJS 的所有优点都被继承下来。另外还提供了一些新特性：</p>
+<ul>
+<li><p>全新的命令行工具 AngularCLI</p>
+</li>
+<li><p>服务器端渲染</p>
+<ul>
+<li>提高了渲染时间  </li>
+<li>为单页应用（SPA）提供了 SEO 功能，针对不同的视图提供 SEO</li>
+</ul>
+</li>
+<li><p>移动和桌面兼容</p>
+<ul>
+<li>官方的 UI 库 Angular Metro</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-AngularJS-架构"><a href="#3-AngularJS-架构" class="headerlink" title="3. AngularJS 架构"></a>3. AngularJS 架构</h3><p>AngularJS<br><img src="/programming/2017-11-22-angular-introduction/angular-introduction-1.png"></p>
+<p>Angular</p>
+<img src="/programming/2017-11-22-angular-introduction/angular-introduction-2.png">
+<p>Angular 采用了完全不同的架构，整个应用就是一个组件树。用户看到的页面是由组件树被激活的组件构成的。</p>
+<p>从一个组件路由到另一个组件，路由到另一个组件上，由于被激活的组件不同，因此用户看到的页面也是不相同的。</p>
+<p>用户可以与某个组件进行交互，完全由组件进行处理。组件可以通过依赖注入的方式引入服务，并用服务处理用户的操作或实现与服务器的通讯。</p>
+<h3 id="3-Angular、React-和-Vue-的对比"><a href="#3-Angular、React-和-Vue-的对比" class="headerlink" title="3. Angular、React 和 Vue 的对比"></a>3. Angular、React 和 Vue 的对比</h3><h4 id="3-1-与-React-对比"><a href="#3-1-与-React-对比" class="headerlink" title="3.1 与 React 对比"></a>3.1 与 React 对比</h4><ul>
+<li>速度</li>
+</ul>
+<p>React 采用虚拟 DOM 的方式处理 DOM，React 只会在 setState 时更新 DOM。更新时，先更新虚拟 DOM，与实际 DOM 比较后再更新实际的 DOM。</p>
+<p>这一过程保证更新次数少、内容少，大大提高了性能。</p>
+<p>而 Angular 中采用了类似的方法，实现了新的变更检测算法，速度上可与 React 相比较。</p>
+<ul>
+<li>FLUX 架构</li>
+</ul>
+<p>数据的单向更新</p>
+<p>React 可以直接使用 ES6 语法，webpack 的工具编译成浏览器识别的 JavaScript，这些是以前 Angular 所不具备的。</p>
+<p>但是 Angular 已经完全实现了。</p>
+<ul>
+<li>服务器渲染</li>
+</ul>
+<p>单页应用对搜索引擎优化是有限制的，React 的解决方案在服务器上预渲染应用再发送到客户端的，恢复一样的纪录到动态应用程序中。</p>
+<p>搜索引擎的爬虫依赖于服务器的响应，而不是 JavaScript 的执行。</p>
+<p>目前 Angular 也支持服务器渲染。</p>
+<h4 id="3-2-与-Vue-对比"><a href="#3-2-与-Vue-对比" class="headerlink" title="3.2 与 Vue 对比"></a>3.2 与 Vue 对比</h4><ul>
+<li>简单</li>
+</ul>
+<p>vue 的目标是用尽可能少的代码实现数据绑定和组合的视图组件，vue 是由国内团队开发的，中文文档非常完善，很容易上手。</p>
+<ul>
+<li>灵活</li>
+</ul>
+<p>vue 官方提供了一个构建工具协助构建，但是不限制如何构建。</p>
+<p>而 AngularCLI 包办了所有非开发工作，包括编译、构建等。</p>
+<p>不过喜欢哪一种因人而异。</p>
+<ul>
+<li>性能</li>
+</ul>
+<p>vue 尺寸很小，类似 React 的方式来处理组件，响应速度较快。vue 框架只有 10+k 大小，而 Angular 基本框架有 50+k。</p>
+<ul>
+<li>其他  </li>
+</ul>
+<p>vue 个人主导的项目，而 Angular 是 Google 团队项目，在世界范围内有庞大的社区和生态环境。</p>
+<p>vue 只关注 web，而 Angular 不仅可以开发 web 项目，也可以配合 iOS 等客户端开发。</p>
+<p>vue 只能通过第三方库或服务实现 SEO，而 Angular 提供官方的服务器端渲染支持，可以解决 vue 这种纯前端框架无法解决的痛点。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular/" rel="tag">#Angular</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-11-21-regular-expression/" rel="next" title="正则表达式">
+                <i class="fa fa-chevron-left"></i> 正则表达式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-AngularJS"><span class="nav-number">1.</span> <span class="nav-text">1. AngularJS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Angular"><span class="nav-number">2.</span> <span class="nav-text">2. Angular</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-AngularJS-架构"><span class="nav-number">3.</span> <span class="nav-text">3. AngularJS 架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Angular、React-和-Vue-的对比"><span class="nav-number">4.</span> <span class="nav-text">3. Angular、React 和 Vue 的对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-与-React-对比"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 与 React 对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-与-Vue-对比"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 与 Vue 对比</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
