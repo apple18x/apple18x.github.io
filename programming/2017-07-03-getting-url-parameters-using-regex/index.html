@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quo">
+<meta name="description" content="获取 url 中的某个参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=">
 <meta name="keywords" content="正则表达式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用正则表达式获取 url 中的参数">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-07-03-getting-url-parameters-using-regex/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search">
+<meta property="og:description" content="获取 url 中的某个参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search.su">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-11T14:01:13.000Z">
+<meta property="og:updated_time" content="2017-11-25T08:40:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用正则表达式获取 url 中的参数">
-<meta name="twitter:description" content="利用正则表达式获取url中的参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search">
+<meta name="twitter:description" content="获取 url 中的某个参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search.su">
 
 
 
@@ -317,7 +317,7 @@
       
 
       
-        <h3 id="利用正则表达式获取url中的参数"><a href="#利用正则表达式获取url中的参数" class="headerlink" title="利用正则表达式获取url中的参数"></a>利用正则表达式获取url中的参数</h3><p>获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：</p>
+        <h3 id="获取-url-中的某个参数"><a href="#获取-url-中的某个参数" class="headerlink" title="获取 url 中的某个参数"></a>获取 url 中的某个参数</h3><p>获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">par</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + par + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</span><br><span class="line">  <span class="keyword">var</span> result = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg)[<span class="number">2</span>];</span><br><span class="line">	</span><br><span class="line">  <span class="keyword">if</span> (result &amp;&amp; result[<span class="number">2</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> result[<span class="number">2</span>];</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>假如我们想获得下面地址的 id 参数值：</p>
@@ -336,6 +336,9 @@
 <p>调用方法的返回结果为：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&quot;id=myId&amp;&quot;, &quot;&quot;, &quot;myId&quot;, &quot;&amp;&quot;, index: 0, input: &quot;id=myId&amp;name=myName&quot;]</span><br></pre></td></tr></table></figure>
 <p>取数组中第三个值即可。</p>
+<h3 id="将所有参数转换为对象类型"><a href="#将所有参数转换为对象类型" class="headerlink" title="将所有参数转换为对象类型"></a>将所有参数转换为对象类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var parseQueryString = function (param) &#123;</span><br><span class="line">  var regExp = /([^&amp;=]+)=([\w\W]*?)(&amp;|$)/g;</span><br><span class="line">	    </span><br><span class="line">  while ((result = regExp.exec(param)) != null) &#123;</span><br><span class="line">    ret[result[1]] = result[2];</span><br><span class="line">  &#125;</span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var param = location.search.slice(1);</span><br><span class="line">obj = parseQueryString(param);</span><br></pre></td></tr></table></figure>
+<p>使用 <a href="http://127.0.0.1/test.html?id=myId&amp;name=myName" target="_blank" rel="noopener">http://127.0.0.1/test.html?id=myId&amp;name=myName</a> 地址进行检测，得到的返回值为：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  id: &quot;myId&quot;,    </span><br><span class="line">  name: &quot;myName&quot;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -367,16 +370,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-07-03-picload/" rel="next" title="设置了 "display:none" 图片是否加载？">
-                <i class="fa fa-chevron-left"></i> 设置了 "display:none" 图片是否加载？
+              <a href="/programming/2017-06-05-deepcopy/" rel="next" title="深拷贝">
+                <i class="fa fa-chevron-left"></i> 深拷贝
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-07-18-grid/" rel="prev" title="Grid Layout 入门">
-                Grid Layout 入门 <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-07-03-picload/" rel="prev" title="设置了 "display:none" 图片是否加载？">
+                设置了 "display:none" 图片是否加载？ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -491,7 +494,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用正则表达式获取url中的参数"><span class="nav-number">1.</span> <span class="nav-text">利用正则表达式获取url中的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式解析"><span class="nav-number">2.</span> <span class="nav-text">正则表达式解析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取-url-中的某个参数"><span class="nav-number">1.</span> <span class="nav-text">获取 url 中的某个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式解析"><span class="nav-number">2.</span> <span class="nav-text">正则表达式解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将所有参数转换为对象类型"><span class="nav-number">3.</span> <span class="nav-text">将所有参数转换为对象类型</span></a></li></ol></div>
             
           </div>
         </section>
