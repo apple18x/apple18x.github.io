@@ -1,0 +1,678 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Angular2," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="websocket 是低负载的二进制协议，目前主流浏览器都已经实现了对 websocket 的支持。 在使用 HTTP 协议进行通讯中，客户端与服务器在连接时同一时间数据传递方向只能有一个。要么在发送请求数据，要么在接受响应数据，是不能在同一时间既发送请求数据，又接收响应数据的。 而 websocket 协议允许在同一">
+<meta name="keywords" content="Angular2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular2 的 websocket 通讯">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-26-angular-websocket/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="websocket 是低负载的二进制协议，目前主流浏览器都已经实现了对 websocket 的支持。 在使用 HTTP 协议进行通讯中，客户端与服务器在连接时同一时间数据传递方向只能有一个。要么在发送请求数据，要么在接受响应数据，是不能在同一时间既发送请求数据，又接收响应数据的。 而 websocket 协议允许在同一时间内进行双向数据传递。在发送数据的同时，也能接收数据。由于 websocket">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-websocket/websocket1.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-websocket/websocket2.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-websocket/websocket3.gif">
+<meta property="og:updated_time" content="2017-11-26T13:33:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular2 的 websocket 通讯">
+<meta name="twitter:description" content="websocket 是低负载的二进制协议，目前主流浏览器都已经实现了对 websocket 的支持。 在使用 HTTP 协议进行通讯中，客户端与服务器在连接时同一时间数据传递方向只能有一个。要么在发送请求数据，要么在接受响应数据，是不能在同一时间既发送请求数据，又接收响应数据的。 而 websocket 协议允许在同一时间内进行双向数据传递。在发送数据的同时，也能接收数据。由于 websocket">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-websocket/websocket1.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-26-angular-websocket/"/>
+
+
+  <title> Angular2 的 websocket 通讯 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular2 的 websocket 通讯
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-26T00:00:00+08:00" content="2017-11-26">
+              2017-11-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>websocket 是低负载的二进制协议，目前主流浏览器都已经实现了对 websocket 的支持。</p>
+<p>在使用 HTTP 协议进行通讯中，客户端与服务器在连接时同一时间数据传递方向只能有一个。要么在发送请求数据，要么在接受响应数据，是不能在同一时间既发送请求数据，又接收响应数据的。</p>
+<p>而 websocket 协议允许在同一时间内进行双向数据传递。在发送数据的同时，也能接收数据。由于 websocket 是一个长连接协议，不需要在每次发送数据时建立链接，所以 websocket 的延迟比 HTTP 要低。其次，由于长连接的存在，请求时不需要每次都携带连接相关信息，所以使用 websocket 协议请求时携带的数据比 HTTP 要少。</p>
+<a id="more"></a>
+<h3 id="一个简单的-websoket-服务器"><a href="#一个简单的-websoket-服务器" class="headerlink" title="一个简单的 websoket 服务器"></a>一个简单的 websoket 服务器</h3><p>下面用 ws 实现一个 websoket 服务器，以下是我们即将实现的一个场景：</p>
+<p>客户端连接到服务器时，服务器主动推送一个消息给客户端。图中国年可以不是一个基于请求和响应的通讯协议，客户端和服务器都可以主动发送数据，而不需要明确的请求。</p>
+<p>整个案例的架构：</p>
+<p>服务器端声明一个 socket，客户端用 Angular 写一个服务，服务中同样声明一个 socket 与服务器进行通讯。整个服务会作为一个被观察者，通过依赖注入的方式放到组件中，组件作为一个观察者，观察 socket 产生的流，当有服务器端 socket 推送到达客户端时，组件会将消息展现在模版上。</p>
+<h4 id="相关工具的安装"><a href="#相关工具的安装" class="headerlink" title="相关工具的安装"></a>相关工具的安装</h4><p>首先安装 ws 依赖库及类型定义文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install ws --save</span><br><span class="line">npm install @types/ws --save-dev</span><br></pre></td></tr></table></figure>
+<h4 id="websocket-服务器"><a href="#websocket-服务器" class="headerlink" title="websocket 服务器"></a>websocket 服务器</h4><p>服务器的写法非常简单，下面几行代码就实现了一个 websocet 服务器</p>
+<p>websocket_server.ts </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Server&#125; from &apos;ws&apos;;</span><br><span class="line"></span><br><span class="line">const wsServer = new Server(&#123;port:8081&#125;);</span><br><span class="line">wsServer.on(&apos;connection&apos;, websocket =&gt; &#123;</span><br><span class="line">  // 向客户端发送消息</span><br><span class="line">  websocket.send(&apos;欢迎连接服务器&apos;);</span><br><span class="line">  // 接收到客户端发送的消息</span><br><span class="line">  websocket.on(&apos;message&apos;, message =&gt; &#123;</span><br><span class="line">    console.log(&apos;接收到客户端发送的消息，消息内容时：&apos;+ message);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>服务器在端口 8081 启动后，如果有客户端连接上，那么执行函数 <code>websocket.send(&#39;欢迎连接服务器&#39;)</code>，即发送消息给客户端。</p>
+<p>我们希望客户端将 websocket 推送过来的消息变成一个流，这样 Angular 可以通过订阅这个流来获取服务器推送的消息。</p>
+<p>在<a href="http://www.xinxiaoyang.com/programming/2017-11-26-webserver/" target="_blank" rel="noopener">《Angular2 的 HTTP 服务》</a> 一文中，我们知道如果使用 Angular 的 HTTP 服务，可以通过订阅 <code>http.get()</code> 方法来处理服务器的响应数据。但 Angular 并没有在 websocket 中有类似 HTTP 服务的类来实现产生一个流，所以需要我们自己写！然后我们就可以用同样的方法（响应式编程）来处理返回的数据。</p>
+<h4 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h4><p>创建一个服务，在服务中，我们将会处理服务器连接和发送／接收数据等相关内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng g service service/webSocket</span><br></pre></td></tr></table></figure>
+<p>下面我们要实现两个方法：</p>
+<ul>
+<li>第一个方法：连接服务器，接收服务器消息</li>
+<li>第二个方法：向服务器发送消息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Injectable &#125; from &apos;@angular/core&apos;;</span><br><span class="line">import &#123; Observable &#125; from &apos;rxjs&apos;;</span><br><span class="line"></span><br><span class="line">@Injectable()</span><br><span class="line">export class WebSocketService &#123;</span><br><span class="line"></span><br><span class="line">  ws: WebSocket;</span><br><span class="line"></span><br><span class="line">  constructor() &#123; &#125;</span><br><span class="line"></span><br><span class="line">  // 第一个方法：连接服务器，接收服务器消息，返回可观测的流</span><br><span class="line">  connect(url: string): Observable&lt;any&gt; &#123;</span><br><span class="line">    this.ws = new WebSocket(url);</span><br><span class="line">    return new Observable(</span><br><span class="line">      // 定义行为</span><br><span class="line">      // 什么时候发送数据</span><br><span class="line">      // 什么时候发送异常</span><br><span class="line">      // websocket 关闭时</span><br><span class="line">      observer =&gt; &#123;</span><br><span class="line">        this.ws.onmessage =  (event) =&gt; observer.next(event.data);</span><br><span class="line">        this.ws.onerror = (event) =&gt; observer.error(event);</span><br><span class="line">        this.ws.onclose = (event) =&gt; observer.complete;</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 第二个方法：向服务器发送消息</span><br><span class="line">  send(message: string) &#123;</span><br><span class="line">    this.ws.send(message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解析：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(url: string): Observable&lt;any&gt; &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p>创建 websocket 连接，返回一个 <code>Observable&lt;any&gt;</code> 类型的流，这样我们就可以使用类似 HTTP 的方法对流进行处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.ws = new WebSocket(url);</span><br></pre></td></tr></table></figure>
+<p>使用参数 url 创建了一个 websocket 对象，创建连接。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">return new Observable(</span><br><span class="line">  observer =&gt; &#123;</span><br><span class="line">    this.ws.onmessage =  (event) =&gt; observer.next(event.data);</span><br><span class="line">    this.ws.onerror = (event) =&gt; observer.error(event);</span><br><span class="line">    this.ws.onclose = (event) =&gt; observer.complete;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>在返回的 Observable 中定义了一个匿名函数。匿名函数决定了返回流的行为，包括：1、什么时候发送数据 2、什么时候抛出异常（websocket 出现异常时） 3、什么时候发送流结束的信号。这三个行为均与 websocket 事件有关，分别是 <code>onmessage</code>、<code>onerror</code>和<code>onclose</code>。</p>
+<p>相当于重写了 websocket 方法，使其实现返回一个流。</p>
+<h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><p>首先生成一个 websocket 组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng g component websocket</span><br></pre></td></tr></table></figure>
+<p>websocket.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, OnInit &#125; from &apos;@angular/core&apos;;</span><br><span class="line">import &#123; WebSocketService &#125; from &apos;../service/web-socket.service&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br><span class="line">export class WebsocketComponent implements OnInit &#123;</span><br><span class="line"></span><br><span class="line">  constructor(public wsService: WebSocketService) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    this.wsService.connect(&apos;ws://localhost:8081&apos;)</span><br><span class="line">    .subscribe(</span><br><span class="line">      data =&gt; console.log(data),</span><br><span class="line">      error =&gt; console.log(error),</span><br><span class="line">      () =&gt; console.log(&apos;服务器连接已经断开&apos;)</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  send() &#123;</span><br><span class="line">    this.wsService.send(&apos;这是从客户端发来的消息&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解析：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">constructor(public wsService: WebSocketService) &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>使用依赖注入，将 WebSocketService 注进组件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.wsService.connect(&apos;ws://localhost:8081&apos;)</span><br></pre></td></tr></table></figure>
+<p>连接服务器。</p>
+<p>由于我们在服务器中重写了方法，因此连接后会返回一个流。我们在组件中订阅返回的流，并对流的行为进行定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 收到消息时</span><br><span class="line">data =&gt; console.log(data),</span><br><span class="line">// 发生异常时</span><br><span class="line">error =&gt; console.log(error),</span><br><span class="line">// 流结束时</span><br><span class="line">() =&gt; console.log(&apos;服务器连接已经断开&apos;)</span><br></pre></td></tr></table></figure>
+<p>websockt.component.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;button (click)=&quot;send()&quot;&gt;向服务器发送消息&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>用户点击按钮时，向服务器发送数据。</p>
+<h3 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h3><p>启动服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodemon build/websocket_server.js</span><br></pre></td></tr></table></figure>
+<p>启动客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<p>在浏览器中查看效果，我们发现当建立 websocket 连接时，会打印出“欢迎连接服务器”字样。</p>
+<p><img src="websocket1.gif"></p>
+<p>如果我们点击按钮，会发现服务器接收到了客户端的消息：<br><img src="websocket2.gif"></p>
+<h3 id="服务器主动推送消息"><a href="#服务器主动推送消息" class="headerlink" title="服务器主动推送消息"></a>服务器主动推送消息</h3><p>在上面完成的例子中，服务器只能在客户端连接上以后接受客户端推送的消息，如何让服务器主动向客户端推送消息呢？</p>
+<p>下面我们模拟一个定时推送，在服务器端添加如下代码：</p>
+<p>websockt_server.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">setInterval(() =&gt; &#123;</span><br><span class="line">  // 服务器连上的所有客户端</span><br><span class="line">  if(wsServer.clients) &#123;</span><br><span class="line">    wsServer.clients.forEach(client =&gt; &#123;</span><br><span class="line">        client.send(&apos;这是定时推送的消息&apos;);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,2000)</span><br></pre></td></tr></table></figure>
+<p>打开浏览器查看效果：</p>
+<p><img src="websocket3.gif"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular2/" rel="tag">#Angular2</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-11-26-webserver/" rel="next" title="Angular2 的 HTTP 服务">
+                <i class="fa fa-chevron-left"></i> Angular2 的 HTTP 服务
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-11-26-providers&injector/" rel="prev" title="Angular2 依赖注入的注入器与提供器">
+                Angular2 依赖注入的注入器与提供器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个简单的-websoket-服务器"><span class="nav-number">1.</span> <span class="nav-text">一个简单的 websoket 服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关工具的安装"><span class="nav-number">1.1.</span> <span class="nav-text">相关工具的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#websocket-服务器"><span class="nav-number">1.2.</span> <span class="nav-text">websocket 服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务"><span class="nav-number">1.3.</span> <span class="nav-text">服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件"><span class="nav-number">1.4.</span> <span class="nav-text">组件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现效果"><span class="nav-number">2.</span> <span class="nav-text">实现效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器主动推送消息"><span class="nav-number">3.</span> <span class="nav-text">服务器主动推送消息</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
