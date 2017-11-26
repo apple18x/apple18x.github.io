@@ -1,0 +1,664 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Angular2," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="依赖注入是 Angular 自动处理对象的创建过程。 任何一个 Angular 程序都是组件、指令和一堆彼此依赖的类的集合。虽然每个组件内部都可以自己实现实例化的过程，但 Angular 内部引入依赖注入机制来完成这种工作。 依赖注入是一种设计模式。 依赖注入模式依赖注入，Dependency Injection，简称">
+<meta name="keywords" content="Angular2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular2 依赖注入">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-26-dependency injection/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="依赖注入是 Angular 自动处理对象的创建过程。 任何一个 Angular 程序都是组件、指令和一堆彼此依赖的类的集合。虽然每个组件内部都可以自己实现实例化的过程，但 Angular 内部引入依赖注入机制来完成这种工作。 依赖注入是一种设计模式。 依赖注入模式依赖注入，Dependency Injection，简称 DI。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-26T02:31:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular2 依赖注入">
+<meta name="twitter:description" content="依赖注入是 Angular 自动处理对象的创建过程。 任何一个 Angular 程序都是组件、指令和一堆彼此依赖的类的集合。虽然每个组件内部都可以自己实现实例化的过程，但 Angular 内部引入依赖注入机制来完成这种工作。 依赖注入是一种设计模式。 依赖注入模式依赖注入，Dependency Injection，简称 DI。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-26-dependency injection/"/>
+
+
+  <title> Angular2 依赖注入 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Angular2 依赖注入
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-26T00:00:00+08:00" content="2017-11-26">
+              2017-11-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>依赖注入是 Angular 自动处理对象的创建过程。</p>
+<p>任何一个 Angular 程序都是组件、指令和一堆彼此依赖的类的集合。虽然每个组件内部都可以自己实现实例化的过程，但 Angular 内部引入依赖注入机制来完成这种工作。</p>
+<p>依赖注入是一种设计模式。</p>
+<h3 id="依赖注入模式"><a href="#依赖注入模式" class="headerlink" title="依赖注入模式"></a>依赖注入模式</h3><p>依赖注入，Dependency Injection，简称 DI。</p>
+<a id="more"></a>
+<p>考虑一种情景。我们写了一个方法，方法的参数是一个对象，当我们调用这个方法时，需要实例化这个对象并传递给方法。</p>
+<p>比如在下面这个方法中，product 是一个商品对象，createShipment 需要传入商品信息，也就是 product 实例对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var product = new Product();</span><br><span class="line">createShipment(product);</span><br></pre></td></tr></table></figure>
+<p>换句话说，createShipment 「依赖」 product 这个类，但是 createShipment 本身并不知道如何创建一个 product 实例。调用 createShipment() 方法需要以某种方式创建 product，并将其作为函数的参数传递给这个方法，也可以称为「注入」给该方法。</p>
+<p>如果我们需要修改 product 的构造函数，只需要将代码做一些小的改动，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var product = new MockProduct();</span><br><span class="line">createShipment(product);</span><br></pre></td></tr></table></figure>
+<p>但设想如果 createShipement 有三个参数，每个参数都是一个实例，而每个参数对象又有自己的依赖，那么代码的关系可能会变成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var product = new Product();</span><br><span class="line">var shipCompany = new shipCompay();</span><br><span class="line">var address = new Address();</span><br><span class="line"></span><br><span class="line">var order = new Order();</span><br><span class="line">order.setAddress(address);</span><br><span class="line"></span><br><span class="line">createShipment(product, shipCompany, order);</span><br></pre></td></tr></table></figure>
+<p>在上面的逻辑中，我们需要手工实例化多个对象，非常麻烦。</p>
+<p>能否有一种工具，只需要我们写 <code>createShipment(product, shipCompany, order);</code>，而工具可以替我们创建 createShipment 依赖的对象，以及这些对象各自依赖的对象呢？</p>
+<p>这正是依赖注入帮我们解决的问题！</p>
+<h4 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h4><p>控制反转，Inversion of Control，简称 IOC。</p>
+<p>控制反转是指依赖的控制权从代码的内部转为代码的外部，以上边的例子为例： </p>
+<p>依赖注入是实现控制反转的目的。<br>控制反转的实现手段是依赖注入。</p>
+<h3 id="依赖注入的好处"><a href="#依赖注入的好处" class="headerlink" title="依赖注入的好处"></a>依赖注入的好处</h3><ul>
+<li>松耦合和可重用性</li>
+<li>可测性更高</li>
+</ul>
+<h4 id="松耦合和可重用性"><a href="#松耦合和可重用性" class="headerlink" title="松耦合和可重用性"></a>松耦合和可重用性</h4><p>假设我们有一个商品组件 ProductComponent，需要使用商品服务 ProductService 获取商品服务，如果没有依赖注入，我们需要知道如何实例化这个服务。</p>
+<p>有很多方法可以实现，比如使用 new 运算符、调用一个单例模式的 getInstance 方法、调用工厂模式的 createProduct 方法等：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> productService = <span class="keyword">new</span> ProductService();</span><br></pre></td></tr></table></figure>
+<p>但无论用哪种方式，ProductComponenent 都将于 ProductService 紧密地耦合在一起。</p>
+<p>如果想在另一个项目中重用 ProductComponent，但是使用不同的服务对象获取商品信息， 必须把下面的代码 </p>
+<p>product.component.ts</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> productService = <span class="keyword">new</span> ProductService();</span><br></pre></td></tr></table></figure>
+<p>改成：</p>
+<p>product.component.ts</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> productService = <span class="keyword">new</span> AnotherProductService();</span><br></pre></td></tr></table></figure>
+<p>用另一个商品服务对象获取商品服务信息，这说明 ProductComponent 与 ProductService 是紧密耦合在一起的。</p>
+<p>如果想在别的项目中使用 ProductComponent，必须进行修改才行。而依赖注入帮助你解除 ProductComponent 与 ProductService 的紧耦合关系，从而在项目中可以重用 ProductComponent 而不用修改组件代码。</p>
+<p>下面举个栗子：</p>
+<p>app.module.ts</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">	providers: [ProductService]</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 上边代码等价于</span></span><br><span class="line">	providers: [&#123;<span class="attr">provide</span>: ProductService, <span class="attr">useClass</span>: ProductService&#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>product.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Coponent(&#123;</span><br><span class="line"> ... // 省略组件配置</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export class ProductComponent &#123;</span><br><span class="line">  product: Product;</span><br><span class="line">  constructor(productService: ProductService)&#123;</span><br><span class="line">    this.product = productService.getProduct();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>声明：</strong></p>
+<p>使用 providers 声明。</p>
+<p>下面两段代码是等价的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">providers: [ProductService]</span><br><span class="line">// 等价于</span><br><span class="line">providers: [&#123;provide: ProductService, useClass: ProductService&#125;]</span><br></pre></td></tr></table></figure>
+<p>这是一个 Token，一个 Token 代表一个可注入对象的类型。Token 的类型由 provider 配置对象的 provide 属性来决定。</p>
+<p>上面这段代码表示注册一个类型是 ProductService（provide 字段） 的 Token，当组件或指令声明自己需要一个类型是 ProductService 的token 时，实例化一个 ProductService（useClass 字段），并将其注入目标对象。</p>
+<p><strong>使用：</strong></p>
+<p>在组件的构造函数中声明使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">constructor(productService: ProductService)&#123;</span><br><span class="line">  this.product = productService.getProduct();</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">上面的代码代表需要一个 ProductService 类型的 Token，看到这个声明后，会在 providers 中去找 ProductService (provide 字段)对应的类是哪个(useClass 字段)。</span><br><span class="line"></span><br><span class="line">而组件本身并不知道传入的是哪个实现，更不需要明确地去实现实例化，只需要调用 Angular 为其创建好的对象即可。</span><br><span class="line"></span><br><span class="line">如果希望在其他项目中使用 ProductService 类，那么只需要在那个项目中修改 app.module.ts 中的 provider 声明，组件本身并不需要修改。</span><br></pre></td></tr></table></figure>
+<p>providers: [{provide: ProductService, useClass: AnotherProductService}]<br>```</p>
+<h4 id="可测性"><a href="#可测性" class="headerlink" title="可测性"></a>可测性</h4><p>当真实的对象还没有被创建好时，可以添加一个虚拟的对象作为测试数据。</p>
+<p>例如：LoginComponent 需要一个服务 LoginService，你可以先创建一个 MockLoginService。等认证服务器开发好之前，都可以注入 MockLoginService，开发完成后，只需要修改服务的引用即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular2/" rel="tag">#Angular2</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-11-22-angular-introduction/" rel="next" title="Angular 初认识">
+                <i class="fa fa-chevron-left"></i> Angular 初认识
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖注入模式"><span class="nav-number">1.</span> <span class="nav-text">依赖注入模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#控制反转"><span class="nav-number">1.1.</span> <span class="nav-text">控制反转</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖注入的好处"><span class="nav-number">2.</span> <span class="nav-text">依赖注入的好处</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#松耦合和可重用性"><span class="nav-number">2.1.</span> <span class="nav-text">松耦合和可重用性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可测性"><span class="nav-number">2.2.</span> <span class="nav-text">可测性</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
