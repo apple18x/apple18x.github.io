@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-webserver/webserver1.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-webserver/webserver2.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-webserver/webserver3.png">
-<meta property="og:updated_time" content="2017-11-26T10:29:18.000Z">
+<meta property="og:updated_time" content="2017-11-26T10:32:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular2 的 HTTP 服务">
 <meta name="twitter:description" content="为了实现 Angular2 与服务器的通讯，我们使用 Nodejs 搭建一个简单的服务器，并使用 express 框架做相关的业务处理。 搭建环境搭建一个简单的 Nodejs 服务器首先初始化一个 node 项目，引入 node 类型定义文件 12npm init -ynpm i @types/node --save">
@@ -383,34 +383,20 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">import &#123; HttpModule &#125; from &apos;@angular/http&apos;;</span><br><span class="line">import &#123; UserComponent &#125; from &apos;./user/user.component&apos;;</span><br><span class="line"></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  declarations: [</span><br><span class="line">	...</span><br><span class="line">    UserComponent,</span><br><span class="line">  ],</span><br><span class="line">  imports: [</span><br><span class="line">    ...</span><br><span class="line">    HttpModule</span><br><span class="line">  ],</span><br><span class="line">  providers: [</span><br><span class="line">    ...</span><br><span class="line">  ],</span><br><span class="line">  bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
 <p>以上我们完成了所需要的业务逻辑</p>
 <p>但由于服务器端口是 8080，而组件所在服务端口号是 4200，因此需要增加网络代理才能实现服务器的请求。</p>
-<ol>
-<li>proxy.conf.json  </li>
-</ol>
-<p>首先，在 package.json 目录同级新建一个文件 <code>proxy.conf.json</code>。这样，Angular 就知道以 “/api” 开头的请求都发往 <code>//localhost:8080</code>，如果 Angular 中有请求地址是 <code>/api/...</code> 则会转到 <code>localhost:8080/...</code> 上：</p>
+<h4 id="1-proxy-conf-json"><a href="#1-proxy-conf-json" class="headerlink" title="1. proxy.conf.json"></a>1. proxy.conf.json</h4><p>首先，在 package.json 目录同级新建一个文件 <code>proxy.conf.json</code>。这样，Angular 就知道以 “/api” 开头的请求都发往 <code>//localhost:8080</code>，如果 Angular 中有请求地址是 <code>/api/...</code> 则会转到 <code>localhost:8080/...</code> 上：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;/api&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: &quot;http://localhost:8080&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>info.server.ts<br>服务器文件添加 <code>/api</code> 路径收到请求：</li>
-</ol>
+<h4 id="2-info-server-ts"><a href="#2-info-server-ts" class="headerlink" title="2. info.server.ts"></a>2. info.server.ts</h4><p>服务器文件添加 <code>/api</code> 路径收到请求：</p>
 <p>info.server.ts </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.get(&apos;/api/info&apos;, function (request, response) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&apos;/api/info/:id&apos;, function (request, response) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<ol>
-<li>package.json</li>
-</ol>
-<p>package.json 文件需要做相应的处理，保证 start 启动时加入代理配置：</p>
+<h4 id="3-package-json"><a href="#3-package-json" class="headerlink" title="3. package.json"></a>3. package.json</h4><p>package.json 文件需要做相应的处理，保证 start 启动时加入代理配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">  	...</span><br><span class="line">    &quot;start&quot;: &quot;ng serve --proxy-config proxy.conf.json&quot;,</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
 <p>重启服务后生效。访问 <code>localhost:4200/user</code> 效果如下：</p>
 <p><img src="webserver2.png"></p>
 <h4 id="异步管道"><a href="#异步管道" class="headerlink" title="异步管道"></a>异步管道</h4><p>异步管道可以接收一个流作为输入并且自动订阅输入。</p>
-<ol>
-<li>user.component.html </li>
-</ol>
-<p>首先，我们将模版中的循环经过一个异步管道管道 <code>async</code>。</p>
+<h4 id="1-user-component-html"><a href="#1-user-component-html" class="headerlink" title="1. user.component.html"></a>1. user.component.html</h4><p>首先，我们将模版中的循环经过一个异步管道管道 <code>async</code>。</p>
 <p>user.component.html </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li *ngFor=&quot;let info of info | async &quot;&gt;</span><br><span class="line">    &#123;&#123;info.name&#125;&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>user.component.ts</li>
-</ol>
-<p>将本地变量 info 设置为 Observable<any> 格式，然后将请求返回的数据直接赋给该变量即可。</any></p>
+<h4 id="2-user-component-ts"><a href="#2-user-component-ts" class="headerlink" title="2. user.component.ts"></a>2. user.component.ts</h4><p>将本地变量 info 设置为 Observable<any> 格式，然后将请求返回的数据直接赋给该变量即可。</any></p>
 <p>user.component.ts</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, OnInit &#125; from &apos;@angular/core&apos;;</span><br><span class="line">import &#123; Http &#125; from &apos;@angular/http&apos;;</span><br><span class="line">import &apos;rxjs/Rx&apos;</span><br><span class="line">import &#123; Observable &#125; from &apos;rxjs&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export class UserComponent&#123;</span><br><span class="line"></span><br><span class="line">  info : Observable&lt;any&gt;;</span><br><span class="line"></span><br><span class="line">  constructor(public http: Http) &#123; </span><br><span class="line">    // 本地变量接收返回的流</span><br><span class="line">    this.info = this.http.get(&apos;/api/info&apos;).map(response =&gt; response.json());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>相比上面的方法，管道方法的代码相对简洁很多。</p>
@@ -450,16 +436,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-11-26-dependency injection/" rel="next" title="Angular2 依赖注入">
-                <i class="fa fa-chevron-left"></i> Angular2 依赖注入
+              <a href="/programming/2017-11-26-providers&injector/" rel="next" title="Angular2 依赖注入的注入器与提供器">
+                <i class="fa fa-chevron-left"></i> Angular2 依赖注入的注入器与提供器
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-11-26-providers&injector/" rel="prev" title="Angular2 依赖注入的注入器与提供器">
-                Angular2 依赖注入的注入器与提供器 <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-11-26-dependency injection/" rel="prev" title="Angular2 依赖注入">
+                Angular2 依赖注入 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -574,7 +560,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建环境"><span class="nav-number">1.</span> <span class="nav-text">搭建环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建一个简单的-Nodejs-服务器"><span class="nav-number">2.</span> <span class="nav-text">搭建一个简单的 Nodejs 服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-express-框架"><span class="nav-number">3.</span> <span class="nav-text">安装 express 框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-nodemon-小工具"><span class="nav-number">4.</span> <span class="nav-text">安装 nodemon 小工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个小栗子"><span class="nav-number">5.</span> <span class="nav-text">一个小栗子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-服务"><span class="nav-number">6.</span> <span class="nav-text">HTTP 服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#发送-HTTP-请求"><span class="nav-number">6.1.</span> <span class="nav-text">发送 HTTP 请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步管道"><span class="nav-number">6.2.</span> <span class="nav-text">异步管道</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递请求头"><span class="nav-number">7.</span> <span class="nav-text">传递请求头</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建环境"><span class="nav-number">1.</span> <span class="nav-text">搭建环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建一个简单的-Nodejs-服务器"><span class="nav-number">2.</span> <span class="nav-text">搭建一个简单的 Nodejs 服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-express-框架"><span class="nav-number">3.</span> <span class="nav-text">安装 express 框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-nodemon-小工具"><span class="nav-number">4.</span> <span class="nav-text">安装 nodemon 小工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个小栗子"><span class="nav-number">5.</span> <span class="nav-text">一个小栗子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-服务"><span class="nav-number">6.</span> <span class="nav-text">HTTP 服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#发送-HTTP-请求"><span class="nav-number">6.1.</span> <span class="nav-text">发送 HTTP 请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-proxy-conf-json"><span class="nav-number">6.2.</span> <span class="nav-text">1. proxy.conf.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-info-server-ts"><span class="nav-number">6.3.</span> <span class="nav-text">2. info.server.ts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-package-json"><span class="nav-number">6.4.</span> <span class="nav-text">3. package.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步管道"><span class="nav-number">6.5.</span> <span class="nav-text">异步管道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-user-component-html"><span class="nav-number">6.6.</span> <span class="nav-text">1. user.component.html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-user-component-ts"><span class="nav-number">6.7.</span> <span class="nav-text">2. user.component.ts</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递请求头"><span class="nav-number">7.</span> <span class="nav-text">传递请求头</span></a></li></ol></div>
             
           </div>
         </section>
