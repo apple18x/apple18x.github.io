@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS  1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式 动态脚本加载()   1document.createElement  defer  async">
+<meta name="description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="页面性能">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-02-performance/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS  1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式 动态脚本加载()   1document.createElement  defer  async">
+<meta property="og:description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-18T07:51:05.000Z">
+<meta property="og:updated_time" content="2017-11-26T04:01:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面性能">
-<meta name="twitter:description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS  1.1 资源压缩合并，减少 HTTP 请求1.2 非核心代码异步加载1.2.1 异步加载的方式 动态脚本加载()   1document.createElement  defer  async">
+<meta name="twitter:description" content="1. 提升页面性能的方法 资源压缩合并，减少 HTTP 请求 非核心代码异步加载 浏览器缓存 使用 CDN 预解析 DNS">
 
 
 
@@ -324,6 +324,7 @@
 <li>使用 CDN</li>
 <li>预解析 DNS</li>
 </ul>
+<a id="more"></a>
 <h4 id="1-1-资源压缩合并，减少-HTTP-请求"><a href="#1-1-资源压缩合并，减少-HTTP-请求" class="headerlink" title="1.1 资源压缩合并，减少 HTTP 请求"></a>1.1 资源压缩合并，减少 HTTP 请求</h4><h4 id="1-2-非核心代码异步加载"><a href="#1-2-非核心代码异步加载" class="headerlink" title="1.2 非核心代码异步加载"></a>1.2 非核心代码异步加载</h4><h5 id="1-2-1-异步加载的方式"><a href="#1-2-1-异步加载的方式" class="headerlink" title="1.2.1 异步加载的方式"></a>1.2.1 异步加载的方式</h5><ul>
 <li><p>动态脚本加载()  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.createElement</span><br></pre></td></tr></table></figure>
@@ -332,7 +333,6 @@
 </li>
 <li>async</li>
 </ul>
-<a id="more"></a>
 <h5 id="1-2-2-异步加载的区别"><a href="#1-2-2-异步加载的区别" class="headerlink" title="1.2.2 异步加载的区别"></a>1.2.2 异步加载的区别</h5><ul>
 <li><code>defer</code> 是在 HTML 解析完之后才会执行，如果是多个，<strong>按照加载</strong>的顺序依次执行</li>
 <li><code>async</code> 是在加载完之后立即执行，如果是多个，执行顺序和加载顺序<strong>无关</strong></li>
