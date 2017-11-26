@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="依赖注入是 Angular 自动处理对象的创建过程。 任何一个 Angular 程序都是组件、指令和一堆彼此依赖的类的集合。虽然每个组件内部都可以自己实现实例化的过程，但 Angular 内部引入依赖注入机制来完成这种工作。 依赖注入是一种设计模式。 依赖注入模式依赖注入，Dependency Injection，简称 DI。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-26T02:31:05.000Z">
+<meta property="og:updated_time" content="2017-11-26T02:33:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular2 依赖注入">
 <meta name="twitter:description" content="依赖注入是 Angular 自动处理对象的创建过程。 任何一个 Angular 程序都是组件、指令和一堆彼此依赖的类的集合。虽然每个组件内部都可以自己实现实例化的过程，但 Angular 内部引入依赖注入机制来完成这种工作。 依赖注入是一种设计模式。 依赖注入模式依赖注入，Dependency Injection，简称 DI。">
@@ -354,7 +354,7 @@
 <p>如果想在别的项目中使用 ProductComponent，必须进行修改才行。而依赖注入帮助你解除 ProductComponent 与 ProductService 的紧耦合关系，从而在项目中可以重用 ProductComponent 而不用修改组件代码。</p>
 <p>下面举个栗子：</p>
 <p>app.module.ts</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">	providers: [ProductService]</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 上边代码等价于</span></span><br><span class="line">	providers: [&#123;<span class="attr">provide</span>: ProductService, <span class="attr">useClass</span>: ProductService&#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@NgModule(&#123;</span><br><span class="line">  providers: [ProductService]</span><br><span class="line">	</span><br><span class="line">  <span class="comment">// 上边代码等价于</span></span><br><span class="line">  providers: [&#123;<span class="attr">provide</span>: ProductService, <span class="attr">useClass</span>: ProductService&#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>product.component.ts</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Coponent(&#123;</span><br><span class="line"> ... // 省略组件配置</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export class ProductComponent &#123;</span><br><span class="line">  product: Product;</span><br><span class="line">  constructor(productService: ProductService)&#123;</span><br><span class="line">    this.product = productService.getProduct();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>声明：</strong></p>
@@ -362,11 +362,14 @@
 <p>下面两段代码是等价的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">providers: [ProductService]</span><br><span class="line">// 等价于</span><br><span class="line">providers: [&#123;provide: ProductService, useClass: ProductService&#125;]</span><br></pre></td></tr></table></figure>
 <p>这是一个 Token，一个 Token 代表一个可注入对象的类型。Token 的类型由 provider 配置对象的 provide 属性来决定。</p>
-<p>上面这段代码表示注册一个类型是 ProductService（provide 字段） 的 Token，当组件或指令声明自己需要一个类型是 ProductService 的token 时，实例化一个 ProductService（useClass 字段），并将其注入目标对象。</p>
+<p>上面这段代码表示注册一个类型是 ProductService（provide 字段） 的 Token，当组件或指令声明自己需要一个类型是 ProductService 的 token 时，实例化一个 ProductService（useClass 字段），并将其注入目标对象。</p>
 <p><strong>使用：</strong></p>
 <p>在组件的构造函数中声明使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">constructor(productService: ProductService)&#123;</span><br><span class="line">  this.product = productService.getProduct();</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">上面的代码代表需要一个 ProductService 类型的 Token，看到这个声明后，会在 providers 中去找 ProductService (provide 字段)对应的类是哪个(useClass 字段)。</span><br><span class="line"></span><br><span class="line">而组件本身并不知道传入的是哪个实现，更不需要明确地去实现实例化，只需要调用 Angular 为其创建好的对象即可。</span><br><span class="line"></span><br><span class="line">如果希望在其他项目中使用 ProductService 类，那么只需要在那个项目中修改 app.module.ts 中的 provider 声明，组件本身并不需要修改。</span><br></pre></td></tr></table></figure>
-<p>providers: [{provide: ProductService, useClass: AnotherProductService}]<br>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">constructor(productService: ProductService)&#123;</span><br><span class="line">  this.product = productService.getProduct();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码代表需要一个 ProductService 类型的 Token，看到这个声明后，会在 providers 中去找 ProductService (provide 字段)对应的类是哪个(useClass 字段)。</p>
+<p>而组件本身并不知道传入的是哪个实现，更不需要明确地去实现实例化，只需要调用 Angular 为其创建好的对象即可。</p>
+<p>如果希望在其他项目中使用 ProductService 类，那么只需要在那个项目中修改 app.module.ts 中的 provider 声明，组件本身并不需要修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">providers: [&#123;provide: ProductService, useClass: AnotherProductService&#125;]</span><br></pre></td></tr></table></figure>
 <h4 id="可测性"><a href="#可测性" class="headerlink" title="可测性"></a>可测性</h4><p>当真实的对象还没有被创建好时，可以添加一个虚拟的对象作为测试数据。</p>
 <p>例如：LoginComponent 需要一个服务 LoginService，你可以先创建一个 MockLoginService。等认证服务器开发好之前，都可以注入 MockLoginService，开发完成后，只需要修改服务的引用即可。</p>
 
