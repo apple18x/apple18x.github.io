@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-28-dom/dom2-3.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-28-dom/dom2-4.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-28-dom/dom2-1.png">
-<meta property="og:updated_time" content="2017-11-28T16:00:07.000Z">
+<meta property="og:updated_time" content="2017-11-28T16:17:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM 对象及其属性方法">
 <meta name="twitter:description" content="1. 节点类型每个节点有一个类型（Node Type）属性，它通常有数值常量和字符常量两种表示方式，IE 只支持数值常量方式。 节点类型有 12 种，下图中只展示了其中 7 种。">
@@ -333,32 +333,32 @@
         <h3 id="1-节点类型"><a href="#1-节点类型" class="headerlink" title="1. 节点类型"></a>1. 节点类型</h3><p>每个节点有一个类型（Node Type）属性，它通常有数值常量和字符常量两种表示方式，IE 只支持数值常量方式。</p>
 <p>节点类型有 12 种，下图中只展示了其中 7 种。</p>
 <a id="more"></a>
-<p><img src="dom1.jpg" width="300px"></p>
+<p><img src="dom1.jpg" width="400px"></p>
 <h4 id="1-1-元素节点-Element"><a href="#1-1-元素节点-Element" class="headerlink" title="1.1 元素节点 Element"></a>1.1 元素节点 Element</h4><p>元素节点是组成文档树的重要组成部分，数值常量为 1，字符常量为 ELEMENT_NODE。</p>
 <p>该节点通常拥有子元素、文本节点，或二者的结合，是唯一具有属性的节点类型。</p>
 <h4 id="1-2-属性节点-Attr"><a href="#1-2-属性节点-Attr" class="headerlink" title="1.2 属性节点 Attr"></a>1.2 属性节点 Attr</h4><p>属性节点数值常量为 2，字符常量为 ATTRIBUTE_NODE。</p>
 <p>由于属性是附属于元素的，因此不能视为元素节点的子节点。所以属性并不被认为是 DOM 的一部分。</p>
 <p>例如下图中的 <code>lang</code>、<code>charset</code>、<code>id</code>等</p>
-<p><img src="dom3.png" width="300px"></p>
+<p><img src="dom3.png" width="400px"></p>
 <h4 id="1-3-文本节点-Text"><a href="#1-3-文本节点-Text" class="headerlink" title="1.3 文本节点 Text"></a>1.3 文本节点 Text</h4><p>文本节点数值常量为 3，字符常量为 TEXT_NODE。</p>
 <p>文本节点是包含文本内容的节点，它可以只包含空白或文本内容。</p>
 <p>例如下图中的 <code>DOM 操作</code>、<code>您目前已登陆账号</code>：</p>
-<p><img src="dom4.png" width="300px"></p>
+<p><img src="dom4.png" width="400px"></p>
 <p>另外，标签后面的空白也被认为是文本节点。例如:</p>
-<p><img src="dom5.png" width="300px"></p>
+<p><img src="dom5.png" width="400px"></p>
 <h4 id="1-4-注释节点-Comment"><a href="#1-4-注释节点-Comment" class="headerlink" title="1.4 注释节点 Comment"></a>1.4 注释节点 Comment</h4><p>注释节点数值常量为 8，字符常量为 COMMENT_NODE，是包含注释内容的节点。例如：</p>
-<p><img src="dom6.png" width="300px"></p>
+<p><img src="dom6.png" width="400px"></p>
 <h4 id="1-5-注释节点-Comment"><a href="#1-5-注释节点-Comment" class="headerlink" title="1.5 注释节点 Comment"></a>1.5 注释节点 Comment</h4><p>注释节点数值常量为 9，字符常量为 DOCUMENT_NODE，是文档树的根节点，是其它所有节点的父节点。</p>
 <p>注：它并不是 HTML 的根元素。由于处理指令、注释等可以出现在根元素之外，因此构造 DOM 树时根元素并不适合做文档节点。根元素是作为文档节点的子节点出现的。</p>
 <p>如图，我们认为代码之上是文档节点。文档节点包含一个「文档类型节点」<code>&lt;!DOCTYPE html&gt;</code>和「元素节点」 <code>&lt;html&gt;</code>：</p>
-<p><img src="dom7.png" width="300px"></p>
+<p><img src="dom7.png" width="400px"></p>
 <h4 id="1-6-文档类型节点-DocumentType"><a href="#1-6-文档类型节点-DocumentType" class="headerlink" title="1.6 文档类型节点 DocumentType"></a>1.6 文档类型节点 DocumentType</h4><p>文档类型节点数值常量为 10，字符常量为 DOCUMENT_TYPE_NODE。</p>
 <p>每一个文档都有一个 DocType 属性，或者为 Null 或者为 DocType 对象。</p>
-<p><img src="dom8.png" width="300px"></p>
+<p><img src="dom8.png" width="400px"></p>
 <h4 id="1-7-文档片段节点-DocumentFragment"><a href="#1-7-文档片段节点-DocumentFragment" class="headerlink" title="1.7 文档片段节点 DocumentFragment"></a>1.7 文档片段节点 DocumentFragment</h4><p>文档类型节点数值常量为 11，字符常量为 DOCUMENT_TYPE_NODE。</p>
 <p>文档片段代表文档中的一部分或一段，是轻量级的 document 对象，但不属于 DOM 树。但它有一种特殊的行为，比如当请求把 DocumentFragment 节点插入文档时，会将其子孙节点插入。同时有利于实现文档的复制、剪切等操作。</p>
 <p>例如下图的 <code>frag</code> 保存了文档片段节点：</p>
-<p><img src="dom9.png" width="300px"></p>
+<p><img src="dom9.png" width="400px"></p>
 <h3 id="2-Document-对象属性及方法"><a href="#2-Document-对象属性及方法" class="headerlink" title="2. Document 对象属性及方法"></a>2. Document 对象属性及方法</h3><h4 id="2-1-属性"><a href="#2-1-属性" class="headerlink" title="2.1 属性"></a>2.1 属性</h4><h4 id="2-1-1-documentElement"><a href="#2-1-1-documentElement" class="headerlink" title="2.1.1 documentElement"></a>2.1.1 documentElement</h4><p>返回文档最外层元素的引用，即根元素，它总是指 <code>&lt;html&gt;</code> 元素。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement;</span><br><span class="line">// &lt;html&gt;...&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(document.documentElement)</span><br><span class="line">// [object HTMLHtmlElement]</span><br></pre></td></tr></table></figure>
 <h4 id="2-2-方法"><a href="#2-2-方法" class="headerlink" title="2.2 方法"></a>2.2 方法</h4><h4 id="2-2-1-getElementById"><a href="#2-2-1-getElementById" class="headerlink" title="2.2.1 getElementById()"></a>2.2.1 getElementById()</h4><p>返回带有指定 ID 的元素，如果不存在，则返回 null。</p>
@@ -368,12 +368,11 @@
 <p>注：该方法返回的是类数组，而非数组。可以用下面的方法将其转化为数组：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var array = Array.prototype.slice.call(fakeArray);</span><br></pre></td></tr></table></figure>
 <h4 id="2-2-3-querySelector-cssSelector"><a href="#2-2-3-querySelector-cssSelector" class="headerlink" title="2.2.3 querySelector(cssSelector)"></a>2.2.3 querySelector(cssSelector)</h4><p>返回与给定 css 选择器匹配的第一个元素的引用（节点），如果不存在，则返回 null。</p>
-<p>注：只有第一个</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var firstLi = document.querySelector(&apos;#list li&apos;);</span><br><span class="line">// &lt;li&gt;1&lt;/li&gt;</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(firstLi)</span><br><span class="line">//[object HTMLLIElement]</span><br><span class="line"></span><br><span class="line">document.querySelector(&apos;#list ul&apos;);</span><br><span class="line">// null</span><br></pre></td></tr></table></figure>
 <h4 id="2-2-4-querySelectorAll-cssSelector"><a href="#2-2-4-querySelectorAll-cssSelector" class="headerlink" title="2.2.4 querySelectorAll(cssSelector)"></a>2.2.4 querySelectorAll(cssSelector)</h4><p>返回与给定 css 选择器匹配的一组元素的引用（节点列表）。</p>
 <p>注：该方法返回的是类数组 <code>[HTMLCollection]</code>，而非数组。转换方式同上。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var list = document.querySelectorAll(&apos;#list li&apos;);</span><br><span class="line">// [li, li, li, li, li]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(list);  </span><br><span class="line">// [object NodeList]</span><br><span class="line"></span><br><span class="line">document.querySelectorAll(&apos;#list ul&apos;);</span><br><span class="line">// []</span><br></pre></td></tr></table></figure>
-<p>注：<code>querySelectorAll</code> 返回的虽然是 NodeList ，但是实际上是元素集合，并且是静态的（其他接口返回的HTMLCollection和NodeList都是live的）</p>
+<p>注：<code>querySelectorAll</code> 返回的虽然是 NodeList ，但是实际上是元素集合，并且是静态的（其他接口返回的 HTMLCollection 和 NodeList 都是 live 的）</p>
 <h4 id="2-2-5-createElement-elementName"><a href="#2-2-5-createElement-elementName" class="headerlink" title="2.2.5 createElement(elementName)"></a>2.2.5 createElement(elementName)</h4><p>创建一个新的元素节点。</p>
 <p>创建后通常配合 <code>appendChild()</code>、<code>insertChild()</code> 方法一起使用。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
@@ -439,6 +438,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let childnodes = document.getElementById(&apos;list&apos;).childNodes;</span><br><span class="line">console.log(childnodes)</span><br><span class="line">  for (var i = 0; i &lt; childnodes.length; i++) &#123;</span><br><span class="line">    console.log(&quot;nodeType:&quot; + childnodes[i].nodeType);</span><br><span class="line">    console.log(&quot;nodeName:&quot; + childnodes[i].nodeName);</span><br><span class="line">    console.log(&quot;nodeValue:&apos;&quot; + childnodes[i].nodeValue + &quot;&apos;&quot;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">nodeType:3</span><br><span class="line">nodeName:#text</span><br><span class="line">nodeValue:&apos;</span><br><span class="line">      &apos;</span><br><span class="line">nodeType:1</span><br><span class="line">nodeName:LI</span><br><span class="line">nodeValue:&apos;null&apos;</span><br><span class="line">nodeType:3</span><br><span class="line">nodeName:#text</span><br><span class="line">nodeValue:&apos;</span><br><span class="line">      &apos;</span><br><span class="line">nodeType:1</span><br><span class="line">nodeName:LI</span><br><span class="line">nodeValue:&apos;null&apos;</span><br><span class="line">nodeType:3</span><br><span class="line">nodeName:#text</span><br><span class="line">nodeValue:&apos;</span><br><span class="line">      &apos;</span><br><span class="line">nodeType:1</span><br><span class="line">nodeName:LI</span><br><span class="line">nodeValue:&apos;null&apos;</span><br><span class="line">nodeType:3</span><br><span class="line">nodeName:#text</span><br><span class="line">nodeValue:&apos;</span><br><span class="line">    &apos;</span><br></pre></td></tr></table></figure>
+<p>与 childNodes 类似的有一个 children 属性，它返回指定元素的子元素集合。但它只返回 HTML 节点，甚至不返回文本节点。虽然不是标准的 DOM 属性，但它和 innerHTML 方法一样，得到了几乎所有浏览器的支持。</p>
+<p>因此如果想获取指定元素的第一个元素节点，可以使用 children[0] 来替代上面的 firstChild。</p>
+<p>注：childNodes 是标准属性，而 children 不是标准属性，</p>
 <h4 id="4-1-8-nodeName"><a href="#4-1-8-nodeName" class="headerlink" title="4.1.8 nodeName"></a>4.1.8 nodeName</h4><p>获得节点名称。</p>
 <ul>
 <li>如果节点是元素节点，返回节点的名字。此时，相当于 tagName 属性</li>
