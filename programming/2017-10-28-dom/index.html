@@ -1,0 +1,820 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="1. 节点类型 每个节点有一个类型（Node Type）属性，它通常有数值常量和字符常量两种表示方式，IE 只支持数值常量方式。 节点类型有 12 种，上图中只展示了其中 7 种。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM 对象及其事件">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-10-28-dom/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="1. 节点类型 每个节点有一个类型（Node Type）属性，它通常有数值常量和字符常量两种表示方式，IE 只支持数值常量方式。 节点类型有 12 种，上图中只展示了其中 7 种。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom1.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom2-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom2-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom2-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom2-1.png">
+<meta property="og:updated_time" content="2017-11-28T15:52:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM 对象及其事件">
+<meta name="twitter:description" content="1. 节点类型 每个节点有一个类型（Node Type）属性，它通常有数值常量和字符常量两种表示方式，IE 只支持数值常量方式。 节点类型有 12 种，上图中只展示了其中 7 种。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-10-28-dom/dom1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-10-28-dom/"/>
+
+
+  <title> DOM 对象及其事件 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DOM 对象及其事件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-28T00:00:00+08:00" content="2017-10-28">
+              2017-10-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-节点类型"><a href="#1-节点类型" class="headerlink" title="1. 节点类型"></a>1. 节点类型</h3><p><img src="dom1.jpg" width="300px"></p>
+<p>每个节点有一个类型（Node Type）属性，它通常有数值常量和字符常量两种表示方式，IE 只支持数值常量方式。</p>
+<p>节点类型有 12 种，上图中只展示了其中 7 种。</p>
+<a id="more"></a>
+<h4 id="1-1-元素节点-Element"><a href="#1-1-元素节点-Element" class="headerlink" title="1.1 元素节点 Element"></a>1.1 元素节点 Element</h4><p>元素节点是组成文档树的重要组成部分，数值常量为 1，字符常量为 ELEMENT_NODE。</p>
+<p>该节点通常拥有子元素、文本节点，或二者的结合，是唯一具有属性的节点类型。</p>
+<h4 id="1-2-属性节点-Attr"><a href="#1-2-属性节点-Attr" class="headerlink" title="1.2 属性节点 Attr"></a>1.2 属性节点 Attr</h4><p>属性节点数值常量为 2，字符常量为 ATTRIBUTE_NODE。</p>
+<p>由于属性是附属于元素的，因此不能视为元素节点的子节点。所以属性并不被认为是 DOM 的一部分。</p>
+<p>例如下图中的 <code>lang</code>、<code>charset</code>、<code>id</code>等</p>
+<p><img src="dom3.png" width="300px"></p>
+<h4 id="1-3-文本节点-Text"><a href="#1-3-文本节点-Text" class="headerlink" title="1.3 文本节点 Text"></a>1.3 文本节点 Text</h4><p>文本节点数值常量为 3，字符常量为 TEXT_NODE。</p>
+<p>文本节点是包含文本内容的节点，它可以只包含空白或文本内容。</p>
+<p>例如下图中的 <code>DOM 操作</code>、<code>您目前已登陆账号</code>：</p>
+<p><img src="dom4.png" width="300px"></p>
+<p>另外，标签后面的空白也被认为是文本节点。例如:</p>
+<p><img src="dom5.png" width="300px"></p>
+<h4 id="1-4-注释节点-Comment"><a href="#1-4-注释节点-Comment" class="headerlink" title="1.4 注释节点 Comment"></a>1.4 注释节点 Comment</h4><p>注释节点数值常量为 8，字符常量为 COMMENT_NODE，是包含注释内容的节点。例如：</p>
+<p><img src="dom6.png" width="300px"></p>
+<h4 id="1-5-注释节点-Comment"><a href="#1-5-注释节点-Comment" class="headerlink" title="1.5 注释节点 Comment"></a>1.5 注释节点 Comment</h4><p>注释节点数值常量为 9，字符常量为 DOCUMENT_NODE，是文档树的根节点，是其它所有节点的父节点。</p>
+<p>注：它并不是 HTML 的根元素。由于处理指令、注释等可以出现在根元素之外，因此构造 DOM 树时根元素并不适合做文档节点。根元素是作为文档节点的子节点出现的。</p>
+<p>如图，我们认为代码之上是文档节点。文档节点包含一个「文档类型节点」<code>&lt;!DOCTYPE html&gt;</code>和「元素节点」 <code>&lt;html&gt;</code>：</p>
+<p><img src="dom7.png" width="300px"></p>
+<h4 id="1-6-文档类型节点-DocumentType"><a href="#1-6-文档类型节点-DocumentType" class="headerlink" title="1.6 文档类型节点 DocumentType"></a>1.6 文档类型节点 DocumentType</h4><p>文档类型节点数值常量为 10，字符常量为 DOCUMENT_TYPE_NODE。</p>
+<p>每一个文档都有一个 DocType 属性，或者为 Null 或者为 DocType 对象。</p>
+<p><img src="dom8.png" width="300px"></p>
+<h4 id="1-7-文档片段节点-DocumentFragment"><a href="#1-7-文档片段节点-DocumentFragment" class="headerlink" title="1.7 文档片段节点 DocumentFragment"></a>1.7 文档片段节点 DocumentFragment</h4><p>文档类型节点数值常量为 11，字符常量为 DOCUMENT_TYPE_NODE。</p>
+<p>文档片段代表文档中的一部分或一段，是轻量级的 document 对象，但不属于 DOM 树。但它有一种特殊的行为，比如当请求把 DocumentFragment 节点插入文档时，会将其子孙节点插入。同时有利于实现文档的复制、剪切等操作。</p>
+<p>例如下图的 <code>frag</code> 保存了文档片段节点：</p>
+<p><img src="dom9.png" width="300px"></p>
+<h3 id="2-Document-对象属性及方法"><a href="#2-Document-对象属性及方法" class="headerlink" title="2. Document 对象属性及方法"></a>2. Document 对象属性及方法</h3><h4 id="2-1-属性"><a href="#2-1-属性" class="headerlink" title="2.1 属性"></a>2.1 属性</h4><h4 id="2-1-1-documentElement"><a href="#2-1-1-documentElement" class="headerlink" title="2.1.1 documentElement"></a>2.1.1 documentElement</h4><p>返回文档最外层元素的引用，即根元素，它总是指 <code>&lt;html&gt;</code> 元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement;</span><br><span class="line">// &lt;html&gt;...&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(document.documentElement)</span><br><span class="line">// [object HTMLHtmlElement]</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-方法"><a href="#2-2-方法" class="headerlink" title="2.2 方法"></a>2.2 方法</h4><h4 id="2-2-1-getElementById"><a href="#2-2-1-getElementById" class="headerlink" title="2.2.1 getElementById()"></a>2.2.1 getElementById()</h4><p>返回带有指定 ID 的元素，如果不存在，则返回 null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var tip = document.getElementById(&apos;tip&apos;); //</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(tip)</span><br><span class="line">//[object HTMLDivElement];</span><br><span class="line"></span><br><span class="line">document.getElementById(&apos;tips&apos;); // null</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-2-getElementsByTagName"><a href="#2-2-2-getElementsByTagName" class="headerlink" title="2.2.2 getElementsByTagName()"></a>2.2.2 getElementsByTagName()</h4><p>返回包含带有指定标签名称的所有元素的节点数组，如果不存在，返回空的类数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var eleList = document.getElementsByTagName(&apos;div&apos;);</span><br><span class="line">// [div#tip, div, tip: div#tip]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(eleList) </span><br><span class="line">// [object HTMLCollection]</span><br><span class="line"></span><br><span class="line">document.getElementsByTagName(&apos;p&apos;);</span><br><span class="line">// []</span><br></pre></td></tr></table></figure>
+<p>注：该方法返回的是类数组，而非数组。可以用下面的方法将其转化为数组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var array = Array.prototype.slice.call(fakeArray);</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-3-querySelector-cssSelector"><a href="#2-2-3-querySelector-cssSelector" class="headerlink" title="2.2.3 querySelector(cssSelector)"></a>2.2.3 querySelector(cssSelector)</h4><p>返回与给定 css 选择器匹配的第一个元素的引用（节点），如果不存在，则返回 null。</p>
+<p>注：只有第一个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var firstLi = document.querySelector(&apos;#list li&apos;);</span><br><span class="line">// &lt;li&gt;1&lt;/li&gt;</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(firstLi)</span><br><span class="line">//[object HTMLLIElement]</span><br><span class="line"></span><br><span class="line">document.querySelector(&apos;#list ul&apos;);</span><br><span class="line">// null</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-4-querySelectorAll-cssSelector"><a href="#2-2-4-querySelectorAll-cssSelector" class="headerlink" title="2.2.4 querySelectorAll(cssSelector)"></a>2.2.4 querySelectorAll(cssSelector)</h4><p>返回与给定 css 选择器匹配的一组元素的引用（节点列表）。</p>
+<p>注：该方法返回的是类数组 <code>[HTMLCollection]</code>，而非数组。转换方式同上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var list = document.querySelectorAll(&apos;#list li&apos;);</span><br><span class="line">// [li, li, li, li, li]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(list);  </span><br><span class="line">// [object NodeList]</span><br><span class="line"></span><br><span class="line">document.querySelectorAll(&apos;#list ul&apos;);</span><br><span class="line">// []</span><br></pre></td></tr></table></figure>
+<p>注：<code>querySelectorAll</code> 返回的虽然是 NodeList ，但是实际上是元素集合，并且是静态的（其他接口返回的HTMLCollection和NodeList都是live的）</p>
+<h4 id="2-2-5-createElement-elementName"><a href="#2-2-5-createElement-elementName" class="headerlink" title="2.2.5 createElement(elementName)"></a>2.2.5 createElement(elementName)</h4><p>创建一个新的元素节点。</p>
+<p>创建后通常配合 <code>appendChild()</code>、<code>insertChild()</code> 方法一起使用。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var newEle = document.createElement(&quot;li&quot;);</span><br><span class="line">newEle.innerHTML = &quot;Juice&quot;</span><br><span class="line">document.getElementById(&apos;list&apos;).appendChild(newEle);</span><br></pre></td></tr></table></figure>
+<p>上面代码实现了创建一个元素后加入到列表中，结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Juice&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-6-createTextNode-text"><a href="#2-2-6-createTextNode-text" class="headerlink" title="2.2.6 createTextNode(text)"></a>2.2.6 createTextNode(text)</h4><p>创建新的文本节点。<code>createTextNode</code> 通常配合 <code>createElement</code> 一起使用，实现为某个元素节点添加文本节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let newNode = document.createElement(&apos;li&apos;);</span><br><span class="line">let text = document.createTextNode(&apos;Juice&apos;);</span><br><span class="line">newNode.appendChild(text);</span><br></pre></td></tr></table></figure>
+<p>上述代码会创建一个 <code>&lt;li&gt;Juice&lt;/li&gt;</code> 的节点。</p>
+<p>注：<code>innerHTML</code> 和 <code>createTextNode</code> 的区别</p>
+<p>下面两种写法的结果是一样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ele.innerHTML = &quot;Juice&quot;</span><br><span class="line"></span><br><span class="line">// 等价于</span><br><span class="line">var textNode = document.createTextNode(&quot;Juice&quot;);</span><br><span class="line">ele.appendChild(textNode);</span><br></pre></td></tr></table></figure>
+<p>二者的区别在于 innerHTML 可以添加 HTML 标签，会被当做 HTML 语法进行解析。对比以下两种情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.createTextNode(&apos;&lt;br&gt;Juice&lt;/br&gt;&apos;);</span><br><span class="line">newNode.innerHTML = &apos;&lt;br&gt;Juice&lt;/br&gt;&apos;;</span><br></pre></td></tr></table></figure>
+<p>得到的结果是：</p>
+<p>createTextNode 方法：<br><img src="dom2-2.png"></p>
+<p>innerHTML 方法：<br><img src="dom2-3.png"></p>
+<h4 id="2-2-7-createAttribute-name"><a href="#2-2-7-createAttribute-name" class="headerlink" title="2.2.7 createAttribute(name)"></a>2.2.7 createAttribute(name)</h4><p>创建新的属性节点。</p>
+<p>通常需要配合 <code>value</code> 属性、<code>setAttributeNode</code> 方法和 <code>setAttribute(name, value)</code> 方法一起使用，实现为某个元素节点添加属性节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li id=&quot;item1&quot;&gt;Coffee&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let att = document.createAttribute(&quot;class&quot;);</span><br><span class="line">att.value = &quot;red-color&quot;;</span><br><span class="line"></span><br><span class="line">document.getElementById(&quot;item1&quot;).setAttributeNode(att);</span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li id=&quot;item1&quot; class=&quot;red-color&quot;&gt;Coffee&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="一些需要注意的点"><a href="#一些需要注意的点" class="headerlink" title="一些需要注意的点"></a>一些需要注意的点</h4><p>HTMLCollection 与 NodeList</p>
+<blockquote>
+<p>HTMLCollection 是元素集合而 NodeList 是节点集合（既可以包含元素，也可以包含文本节点）。</p>
+</blockquote>
+<h3 id="3-Element-对象属性及方法"><a href="#3-Element-对象属性及方法" class="headerlink" title="3. Element 对象属性及方法"></a>3. Element 对象属性及方法</h3><h4 id="3-1-属性"><a href="#3-1-属性" class="headerlink" title="3.1 属性"></a>3.1 属性</h4><h4 id="3-1-1-tagName"><a href="#3-1-1-tagName" class="headerlink" title="3.1.1 tagName"></a>3.1.1 tagName</h4><p>获取元素的标签名称，返回值为 String 类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;tip&quot;).tagName; </span><br><span class="line">// DIV</span><br></pre></td></tr></table></figure>
+<p>注：在 HTML 中，tagName 属性的返回值始终是大写的。</p>
+<h4 id="3-2-方法"><a href="#3-2-方法" class="headerlink" title="3.2 方法"></a>3.2 方法</h4><h4 id="3-2-1-getAttribute-attributeName"><a href="#3-2-1-getAttribute-attributeName" class="headerlink" title="3.2.1 getAttribute(attributeName)"></a>3.2.1 getAttribute(attributeName)</h4><p>获取属性的值，类型为 String。如果该属性不存在，则返回 null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;tip&quot;).getAttribute(&apos;id&apos;);</span><br><span class="line">// tip</span><br><span class="line"></span><br><span class="line">document.getElementById(&quot;tip&quot;).getAttribute(&apos;a&apos;);</span><br><span class="line">// null</span><br></pre></td></tr></table></figure>
+<p>另外，有 <code>getAttributeNode(attributename)</code> 方法，用于获取属性节点。</p>
+<h4 id="3-2-2-setAttribute-attributeName-attributeValue"><a href="#3-2-2-setAttribute-attributeName-attributeValue" class="headerlink" title="3.2.2 setAttribute(attributeName, attributeValue)"></a>3.2.2 setAttribute(attributeName, attributeValue)</h4><p>用指定的值设置属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;tip&quot;).setAttribute(&apos;align&apos;, &apos;center&apos;);</span><br></pre></td></tr></table></figure>
+<p>设置后 DOM 中增加了 align 属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;tip&quot; align=&quot;center&quot;&gt;您目前已登陆账号&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>另外，还有一个类似的方法 <code>setAttributeNode()</code>，功能与 <code>setAttribute()</code> 相同，但传入的参数不相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let att = document.createAttribute(&quot;align&quot;);</span><br><span class="line">att.value = &quot;center&quot;;</span><br><span class="line"></span><br><span class="line">document.getElementById(&quot;tip&quot;).setAttributeNode(att);</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-3-removeAttribute-attributeName"><a href="#3-2-3-removeAttribute-attributeName" class="headerlink" title="3.2.3 removeAttribute(attributeName)"></a>3.2.3 removeAttribute(attributeName)</h4><p>从元素中删除指定的属性及其值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;tip&quot;).removeAttribute(&apos;align&apos;, &apos;center&apos;);</span><br></pre></td></tr></table></figure>
+<p>执行后 DOM 中删除了 align 属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;tip&quot;&gt;您目前已登陆账号&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-Node-对象属性及方法"><a href="#4-Node-对象属性及方法" class="headerlink" title="4. Node 对象属性及方法"></a>4. Node 对象属性及方法</h3><h4 id="4-1-属性"><a href="#4-1-属性" class="headerlink" title="4.1 属性"></a>4.1 属性</h4><h4 id="4-1-1-firstChild"><a href="#4-1-1-firstChild" class="headerlink" title="4.1.1 firstChild"></a>4.1.1 firstChild</h4><p>获取指定节点的首个子节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li id=&quot;item1&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item2&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item3&quot;&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;list&apos;).firstChild;</span><br><span class="line">// &lt;li id=&quot;item1&quot;&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+<p>注：在现代浏览器下，比如 Chrome、 FF 和 IE11 等会把 <code>&lt;ul&gt;</code> 与 <code>&lt;li&gt;</code> 两个标签之间的空白节点也解析出来，所以获取到的是 #text，即空白字符会被作为文本节点，如下：</p>
+<p><img src="dom2-4.png" width="200px"></p>
+<p>所以如果你的结构是上面那样，用 <code>document.getElementById(&quot;list&quot;).firstChild;</code> 取到的只能是一个空的文本节点，而不是期望的 <code>&lt;li&gt;</code> 元素节点。 </p>
+<p>如果你想实现上面的效果，正确的写法应该是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;&lt;li id=&quot;item1&quot;&gt;&lt;/li&gt;&lt;li id=&quot;item2&quot;&gt;&lt;/li&gt;&lt;li id=&quot;item3&quot;&gt;&lt;/li&gt;&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>或者可以用 children[0] 方法代替：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;list&apos;).children[0];</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-2-lastChild"><a href="#4-1-2-lastChild" class="headerlink" title="4.1.2 lastChild"></a>4.1.2 lastChild</h4><p>获取指定节点的最后一个子节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li id=&quot;item1&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item2&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item3&quot;&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;list&apos;).lastChild;</span><br><span class="line">// &lt;li id=&quot;item3&quot;&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+<p><code>lastChild</code> 同样存在返回空的文本节点的问题，问题原因与解决方法同 <code>firstChild</code>。</p>
+<h4 id="4-1-3-previousSibling"><a href="#4-1-3-previousSibling" class="headerlink" title="4.1.3 previousSibling"></a>4.1.3 previousSibling</h4><h4 id="4-1-4-nextSibling"><a href="#4-1-4-nextSibling" class="headerlink" title="4.1.4 nextSibling"></a>4.1.4 nextSibling</h4><h4 id="4-1-5-ownerDocument"><a href="#4-1-5-ownerDocument" class="headerlink" title="4.1.5 ownerDocument"></a>4.1.5 ownerDocument</h4><h4 id="4-1-6-parentNode"><a href="#4-1-6-parentNode" class="headerlink" title="4.1.6 parentNode"></a>4.1.6 parentNode</h4><p>节点（元素）的父节点</p>
+<h4 id="4-1-7-childNodes"><a href="#4-1-7-childNodes" class="headerlink" title="4.1.7 childNodes"></a>4.1.7 childNodes</h4><p>获得元素的子节点集合，返回类型为一个数组。</p>
+<p>由 childNodes 属性返回的数组中包含着所有类型的节点，所有的文本节点也包含在其中。</p>
+<p>注：属性不是节点，因此不会出现在数组里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li id=&quot;item1&quot; align=&quot;center&quot;&gt;aaa&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item2&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item3&quot;&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let childnodes = document.getElementById(&apos;list&apos;).childNodes;</span><br><span class="line">console.log(childnodes)</span><br><span class="line">  for (var i = 0; i &lt; childnodes.length; i++) &#123;</span><br><span class="line">    console.log(&quot;nodeType:&quot; + childnodes[i].nodeType);</span><br><span class="line">    console.log(&quot;nodeName:&quot; + childnodes[i].nodeName);</span><br><span class="line">    console.log(&quot;nodeValue:&apos;&quot; + childnodes[i].nodeValue + &quot;&apos;&quot;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">nodeType:3</span><br><span class="line">nodeName:#text</span><br><span class="line">nodeValue:&apos;</span><br><span class="line">      &apos;</span><br><span class="line">nodeType:1</span><br><span class="line">nodeName:LI</span><br><span class="line">nodeValue:&apos;null&apos;</span><br><span class="line">nodeType:3</span><br><span class="line">nodeName:#text</span><br><span class="line">nodeValue:&apos;</span><br><span class="line">      &apos;</span><br><span class="line">nodeType:1</span><br><span class="line">nodeName:LI</span><br><span class="line">nodeValue:&apos;null&apos;</span><br><span class="line">nodeType:3</span><br><span class="line">nodeName:#text</span><br><span class="line">nodeValue:&apos;</span><br><span class="line">      &apos;</span><br><span class="line">nodeType:1</span><br><span class="line">nodeName:LI</span><br><span class="line">nodeValue:&apos;null&apos;</span><br><span class="line">nodeType:3</span><br><span class="line">nodeName:#text</span><br><span class="line">nodeValue:&apos;</span><br><span class="line">    &apos;</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-8-nodeName"><a href="#4-1-8-nodeName" class="headerlink" title="4.1.8 nodeName"></a>4.1.8 nodeName</h4><p>获得节点名称。</p>
+<ul>
+<li>如果节点是元素节点，返回节点的名字。此时，相当于 tagName 属性</li>
+<li>如果是属性节点，nodeName 将返回这个属性的名字</li>
+<li>如果是文本节点，nodeName 将返回一个 #text 的字符串</li>
+</ul>
+<p>下面是个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li id=&quot;item1&quot; align=&quot;center&quot;&gt;aaa&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 元素节点</span><br><span class="line">document.getElementById(&apos;item1&apos;).nodeName; </span><br><span class="line">// LI</span><br><span class="line"></span><br><span class="line">// 文本节点</span><br><span class="line">document.getElementById(&apos;item1&apos;).childNodes[0].nodeName; </span><br><span class="line">// #text</span><br><span class="line"></span><br><span class="line">// 属性节点</span><br><span class="line">document.getElementById(&apos;item1&apos;).getAttributeNode(&apos;align&apos;).nodeName;</span><br><span class="line">// align</span><br></pre></td></tr></table></figure>
+<p>注：nodeName 返回的元素节点名称为大写字母。</p>
+<h4 id="4-1-9-nodeType"><a href="#4-1-9-nodeType" class="headerlink" title="4.1.9 nodeType"></a>4.1.9 nodeType</h4><p>获取节点类型的数值常量，各节点数值常量参见第一节内容。</p>
+<p>下面是个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li id=&quot;item1&quot; align=&quot;center&quot;&gt;aaa&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;item1&apos;).nodeType; // 1</span><br><span class="line">document.getElementById(&apos;item1&apos;).childNodes[0].nodeType; // 3</span><br><span class="line">document.getElementById(&apos;item1&apos;).getAttributeNode(&quot;id&quot;).nodeType; // 2</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-10-nodeValue"><a href="#4-1-10-nodeValue" class="headerlink" title="4.1.10 nodeValue"></a>4.1.10 nodeValue</h4><p>获取节点的值</p>
+<ul>
+<li>document 文档：返回 null</li>
+<li>元素节点：返回 null</li>
+<li>文本节点：返回其节点的内容</li>
+<li>注释节点：返回其节点的内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">document.nodeValue; // null</span><br><span class="line">document.getElementById(&apos;item1&apos;).nodeValue; // null</span><br><span class="line">document.getElementById(&apos;item1&apos;).childNodes[0].nodeValue; // aaa</span><br><span class="line">document.getElementById(&apos;item1&apos;).getAttributeNode(&quot;id&quot;).nodeValue; // item1</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-方法"><a href="#4-2-方法" class="headerlink" title="4.2 方法"></a>4.2 方法</h4><h4 id="4-2-1-appendChild-newNode"><a href="#4-2-1-appendChild-newNode" class="headerlink" title="4.2.1 appendChild(newNode)"></a>4.2.1 appendChild(newNode)</h4><p>将一个新 node 对象添加到自节点列表的末尾，返回追加的节点。</p>
+<p>假如当前页面有以下 DOM 结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li id=&quot;item1&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item2&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item3&quot;&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>用法一：添加文本/元素节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var text = document.createTextNode(&quot;我是文本&quot;);</span><br><span class="line">document.getElementById(&quot;item3&quot;).appendChild(text);</span><br><span class="line"></span><br><span class="line">var ele = document.createElement(&apos;li&apos;);</span><br><span class="line">document.getElementById(&quot;list&quot;).appendChild(ele);</span><br></pre></td></tr></table></figure>
+<p>执行上述代码后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li id=&quot;item1&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item2&quot;&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item3&quot;&gt;我是文本&lt;/li&gt;</span><br><span class="line">  &lt;!-- 下面新添加的 DOM 节点 --&gt;</span><br><span class="line">  &lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>用法二：转移某个列表项到另外一个列表项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list1&quot;&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul id=&quot;list2&quot;&gt;</span><br><span class="line">  &lt;li id=&quot;item1&quot;&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item2&quot;&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item3&quot;&gt;Water&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var node = document.getElementById(&quot;list1&quot;).lastChild;</span><br><span class="line">document.getElementById(&quot;list2&quot;).appendChild(node);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list1&quot;&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul id=&quot;list2&quot;&gt;</span><br><span class="line">  &lt;li id=&quot;item1&quot;&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item2&quot;&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item3&quot;&gt;Water&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>注：<br>1、如果被插入的节点已经存在，则从当前父节点中删除，添加到新的父节点。<br>2、空白字符会被作为文本节点，如下：</p>
+<p><img src="dom2-1.png" width="200px"></p>
+<p>所以如果你的结构是上面那样，用 <code>document.getElementById(&quot;list1&quot;).lastChild;</code> 取到的只能是一个空的文本节点，而不是期望的 <code>&lt;li&gt;</code> 元素节点。 </p>
+<p>如果你想实现上面的效果，正确的写法应该是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list1&quot;&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;/ul&gt;</span><br><span class="line">&lt;ul id=&quot;list2&quot;&gt;&lt;li id=&quot;item1&quot;&gt;Coffee&lt;/li&gt;&lt;li id=&quot;item2&quot;&gt;Tea&lt;/li&gt;&lt;li id=&quot;item3&quot;&gt;Water&lt;/li&gt;&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>当然，这种写法很变态，所以如果你想取元素，可以用 <code>lastElementChild</code> 代替 <code>lastChild</code>。</p>
+<h4 id="4-2-2-removeChild-childNode"><a href="#4-2-2-removeChild-childNode" class="headerlink" title="4.2.2 removeChild(childNode)"></a>4.2.2 removeChild(childNode)</h4><p>删除子节点</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item1"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item2"</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item3"</span>&gt;</span>Water<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list = <span class="built_in">document</span>.getElementById(<span class="string">"list"</span>);</span><br><span class="line">list.removeChild(list.childNodes[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<p>执行上面的代码后，DOM 结构发生了改变，我们如愿删除了第一个子元素：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item2"</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item3"</span>&gt;</span>Water<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>事实上，<code>childNodes[0]</code> 和 <code>firstChild</code> 面临着相同的问题，都会取到文本节点。我们可以用 <code>list.children[0]</code> 来代替。需要注意的是，firstChild 和 childNodes 才是标准的，而 children 不是标准的。</p>
+<h4 id="4-2-3-replaceChild"><a href="#4-2-3-replaceChild" class="headerlink" title="4.2.3 replaceChild()"></a>4.2.3 replaceChild()</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item1"</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item2"</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item3"</span>&gt;</span>Water<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newNode = <span class="built_in">document</span>.createTextNode(<span class="string">'Juice'</span>);</span><br><span class="line"><span class="keyword">let</span> item = <span class="built_in">document</span>.getElementById(<span class="string">"list"</span>).childNodes[<span class="number">0</span>];</span><br><span class="line">item.replaceChild(newNode, item.childNodes[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item1"</span>&gt;</span>Juice<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item2"</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item3"</span>&gt;</span>Water<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面是替换文本节点，另外还可以替换元素节点。</p>
+<p>注：如果替换的节点是已存在的节点，则原节点被删除，替换新的节点。如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Water<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newNode = <span class="built_in">document</span>.getElementById(<span class="string">"list1"</span>).childNodes[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"list2"</span>);</span><br><span class="line"><span class="keyword">let</span> item = <span class="built_in">document</span>.getElementById(<span class="string">"list2"</span>).childNodes[<span class="number">0</span>];</span><br><span class="line">list.replaceChild(newNode, item);</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Water<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-2-4-cloneNode-deep"><a href="#4-2-4-cloneNode-deep" class="headerlink" title="4.2.4 cloneNode(deep)"></a>4.2.4 cloneNode(deep)</h4><p>创建节点的拷贝，并返回该副本。该方法会克隆所有属性以及它们的值。</p>
+<p>参数： deep</p>
+<ul>
+<li>true，克隆节点及其属性，以及后代</li>
+<li>false，默认值，只克隆节点及其后代，不复制属性。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Water<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = <span class="built_in">document</span>.getElementById(<span class="string">"list1"</span>).childNodes[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> cln = node.cloneNode(<span class="literal">true</span>);</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"list2"</span>).appendChild(cln);</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list1&quot;&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul id=&quot;list2&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>如果将 <code>true</code> 改为 <code>false</code>，那么将不会把它的文本子节点克隆过来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list1&quot;&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul id=&quot;list2&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-5-hasChildNodes"><a href="#4-2-5-hasChildNodes" class="headerlink" title="4.2.5 hasChildNodes()"></a>4.2.5 hasChildNodes()</h4><p>检查元素是否有子节点。如果指定节点拥有子节点返回 true，否则返回 false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list1&quot;&gt;</span><br><span class="line">  &lt;li id=&quot;item1&quot;&gt;1&lt;/li&gt;</span><br><span class="line">  &lt;li id=&quot;item2&quot;&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;list1&apos;).hasChildNodes(); // true</span><br><span class="line">document.getElementById(&apos;item1&apos;).hasChildNodes(); // true</span><br><span class="line">document.getElementById(&apos;item2&apos;).hasChildNodes(); // false</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-6-insertBefore-newNode-referenceNode"><a href="#4-2-6-insertBefore-newNode-referenceNode" class="headerlink" title="4.2.6 insertBefore(newNode, referenceNode)"></a>4.2.6 insertBefore(newNode, referenceNode)</h4><p>在指定的子节点前面插入新的子节点。</p>
+<ul>
+<li>newNode：被插入的节点</li>
+<li>referenceNode：需插入哪个节点之前</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 创建新节点</span><br><span class="line">let newNode = document.createElement(&apos;li&apos;);</span><br><span class="line">let newTextNode = document.createTextNode(&apos;Juice&apos;);</span><br><span class="line">newNode.appendChild(newTextNode);</span><br><span class="line"></span><br><span class="line">let referenceNode = document.getElementById(&apos;list&apos;).lastChild;</span><br><span class="line">list2.insertBefore(newNode, referenceNode)</span><br></pre></td></tr></table></figure>
+<p>添加子节点后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Juice&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>如果插入的新节点是原来已存在的节点，那么原节点会被删除，增加到新的位置上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list1&quot;&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul id=&quot;list2&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let newNode = document.getElementById(&apos;list1&apos;).lastChild;</span><br><span class="line"></span><br><span class="line">let referenceNode = document.getElementById(&apos;list2&apos;).lastChild;</span><br><span class="line">list2.insertBefore(newNode, referenceNode)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;list1&quot;&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul id=&quot;list2&quot;&gt;</span><br><span class="line">  &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Tea&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;Water&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-10-26-communication/" rel="next" title="通信类">
+                <i class="fa fa-chevron-left"></i> 通信类
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-10-29-prototype/" rel="prev" title="原型链">
+                原型链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-节点类型"><span class="nav-number">1.</span> <span class="nav-text">1. 节点类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-元素节点-Element"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 元素节点 Element</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-属性节点-Attr"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 属性节点 Attr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-文本节点-Text"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 文本节点 Text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-注释节点-Comment"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 注释节点 Comment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-注释节点-Comment"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 注释节点 Comment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-文档类型节点-DocumentType"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 文档类型节点 DocumentType</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-文档片段节点-DocumentFragment"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 文档片段节点 DocumentFragment</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Document-对象属性及方法"><span class="nav-number">2.</span> <span class="nav-text">2. Document 对象属性及方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-属性"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-documentElement"><span class="nav-number">2.2.</span> <span class="nav-text">2.1.1 documentElement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-方法"><span class="nav-number">2.3.</span> <span class="nav-text">2.2 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-getElementById"><span class="nav-number">2.4.</span> <span class="nav-text">2.2.1 getElementById()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-getElementsByTagName"><span class="nav-number">2.5.</span> <span class="nav-text">2.2.2 getElementsByTagName()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-querySelector-cssSelector"><span class="nav-number">2.6.</span> <span class="nav-text">2.2.3 querySelector(cssSelector)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-querySelectorAll-cssSelector"><span class="nav-number">2.7.</span> <span class="nav-text">2.2.4 querySelectorAll(cssSelector)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-5-createElement-elementName"><span class="nav-number">2.8.</span> <span class="nav-text">2.2.5 createElement(elementName)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-6-createTextNode-text"><span class="nav-number">2.9.</span> <span class="nav-text">2.2.6 createTextNode(text)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-7-createAttribute-name"><span class="nav-number">2.10.</span> <span class="nav-text">2.2.7 createAttribute(name)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些需要注意的点"><span class="nav-number">2.11.</span> <span class="nav-text">一些需要注意的点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Element-对象属性及方法"><span class="nav-number">3.</span> <span class="nav-text">3. Element 对象属性及方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-属性"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-tagName"><span class="nav-number">3.2.</span> <span class="nav-text">3.1.1 tagName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-方法"><span class="nav-number">3.3.</span> <span class="nav-text">3.2 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-getAttribute-attributeName"><span class="nav-number">3.4.</span> <span class="nav-text">3.2.1 getAttribute(attributeName)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-setAttribute-attributeName-attributeValue"><span class="nav-number">3.5.</span> <span class="nav-text">3.2.2 setAttribute(attributeName, attributeValue)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-removeAttribute-attributeName"><span class="nav-number">3.6.</span> <span class="nav-text">3.2.3 removeAttribute(attributeName)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Node-对象属性及方法"><span class="nav-number">4.</span> <span class="nav-text">4. Node 对象属性及方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-属性"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-firstChild"><span class="nav-number">4.2.</span> <span class="nav-text">4.1.1 firstChild</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-lastChild"><span class="nav-number">4.3.</span> <span class="nav-text">4.1.2 lastChild</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-previousSibling"><span class="nav-number">4.4.</span> <span class="nav-text">4.1.3 previousSibling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-4-nextSibling"><span class="nav-number">4.5.</span> <span class="nav-text">4.1.4 nextSibling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-5-ownerDocument"><span class="nav-number">4.6.</span> <span class="nav-text">4.1.5 ownerDocument</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-6-parentNode"><span class="nav-number">4.7.</span> <span class="nav-text">4.1.6 parentNode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-7-childNodes"><span class="nav-number">4.8.</span> <span class="nav-text">4.1.7 childNodes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-8-nodeName"><span class="nav-number">4.9.</span> <span class="nav-text">4.1.8 nodeName</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-9-nodeType"><span class="nav-number">4.10.</span> <span class="nav-text">4.1.9 nodeType</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-10-nodeValue"><span class="nav-number">4.11.</span> <span class="nav-text">4.1.10 nodeValue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-方法"><span class="nav-number">4.12.</span> <span class="nav-text">4.2 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-appendChild-newNode"><span class="nav-number">4.13.</span> <span class="nav-text">4.2.1 appendChild(newNode)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-removeChild-childNode"><span class="nav-number">4.14.</span> <span class="nav-text">4.2.2 removeChild(childNode)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-3-replaceChild"><span class="nav-number">4.15.</span> <span class="nav-text">4.2.3 replaceChild()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-4-cloneNode-deep"><span class="nav-number">4.16.</span> <span class="nav-text">4.2.4 cloneNode(deep)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-5-hasChildNodes"><span class="nav-number">4.17.</span> <span class="nav-text">4.2.5 hasChildNodes()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-6-insertBefore-newNode-referenceNode"><span class="nav-number">4.18.</span> <span class="nav-text">4.2.6 insertBefore(newNode, referenceNode)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
