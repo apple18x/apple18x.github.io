@@ -88,27 +88,27 @@
 <meta name="keywords" content="Angular2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular2 路由">
-<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/index.html">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="路由的一个作用在于实现 SPA 单页应用。它能保证当用户切换到不同路由时，浏览器不会跳转，只是把页面中的部分内容替换掉。Angular 就是一种 SPA 框架。 另一个作用时为每一个视图状态分配一个 url。或者说，SPA 是一组视图状态列表。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-1.jpg">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-2.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-5.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-6.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-7.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-8.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-1.gif">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-9.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-10.png">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-2.gif">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-6.gif">
-<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-14.png">
-<meta property="og:updated_time" content="2017-11-30T15:30:39.000Z">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-1.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-1.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-2.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-6.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-14.png">
+<meta property="og:updated_time" content="2017-11-30T15:33:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular2 路由">
 <meta name="twitter:description" content="路由的一个作用在于实现 SPA 单页应用。它能保证当用户切换到不同路由时，浏览器不会跳转，只是把页面中的部分内容替换掉。Angular 就是一种 SPA 框架。 另一个作用时为每一个视图状态分配一个 url。或者说，SPA 是一组视图状态列表。">
-<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-11-26-angular-router/router-1.jpg">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-11-30-angular-router/router-1.jpg">
 
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-26-angular-router/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-11-30-angular-router/"/>
 
 
   <title> Angular2 路由 | 昕小阳的博客 </title>
@@ -283,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-11-26T00:00:00+08:00" content="2017-11-26">
-              2017-11-26
+            <time itemprop="dateCreated" datetime="2017-11-30T00:00:00+08:00" content="2017-11-30">
+              2017-11-30
             </time>
           </span>
 
@@ -418,7 +418,7 @@
 <p><img src="router-10.png"></p>
 <p>我们在浏览器中查看效果，会发现点击按钮也实现了完全相同的路由切换效果：</p>
 <p><img src="router-2.gif"></p>
-<h4 id="ts-路由-1"><a href="#ts-路由-1" class="headerlink" title="ts 路由"></a>ts 路由</h4><p>如果当我们输入一个不存在的路由，需要使用通配符：</p>
+<p>如果当我们输入一个不存在的路由，需要使用通配符：</p>
 <p>app-routing.module.ts</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const routes: Routes = [</span><br><span class="line">  &#123;path: &apos;&apos;, component: HomeComponent&#125;,</span><br><span class="line">  &#123;path: &apos;home2&apos;, component: Home2Component&#125;,</span><br><span class="line">  &#123;path: &apos;**&apos;, component: Code404Component&#125; // 通配符</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
 <p>这里的 ** 代表任何路径，如果不匹配上边的路由，则会跳转到 Code404Component 组件。</p>
@@ -514,16 +514,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-11-26-providers&injector/" rel="next" title="Angular2 依赖注入的注入器与提供器">
-                <i class="fa fa-chevron-left"></i> Angular2 依赖注入的注入器与提供器
+              <a href="/programming/2017-11-28-dom/" rel="next" title="DOM 对象及其属性方法">
+                <i class="fa fa-chevron-left"></i> DOM 对象及其属性方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-11-28-dom/" rel="prev" title="DOM 对象及其属性方法">
-                DOM 对象及其属性方法 <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-11-30-layout/" rel="prev" title="CSS 实现布局的几种方法">
+                CSS 实现布局的几种方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -638,7 +638,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#路由基础知识"><span class="nav-number">1.</span> <span class="nav-text">路由基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个简单的小例子"><span class="nav-number">2.</span> <span class="nav-text">一个简单的小例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模版路由"><span class="nav-number">2.1.</span> <span class="nav-text">模版路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ts-路由"><span class="nav-number">2.2.</span> <span class="nav-text">ts 路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ts-路由-1"><span class="nav-number">2.3.</span> <span class="nav-text">ts 路由</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由时传递数据"><span class="nav-number">3.</span> <span class="nav-text">路由时传递数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CanDeactivate"><span class="nav-number">3.1.</span> <span class="nav-text">CanDeactivate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resolve"><span class="nav-number">3.2.</span> <span class="nav-text">Resolve</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#路由基础知识"><span class="nav-number">1.</span> <span class="nav-text">路由基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个简单的小例子"><span class="nav-number">2.</span> <span class="nav-text">一个简单的小例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模版路由"><span class="nav-number">2.1.</span> <span class="nav-text">模版路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ts-路由"><span class="nav-number">2.2.</span> <span class="nav-text">ts 路由</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由时传递数据"><span class="nav-number">3.</span> <span class="nav-text">路由时传递数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CanDeactivate"><span class="nav-number">3.1.</span> <span class="nav-text">CanDeactivate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resolve"><span class="nav-number">3.2.</span> <span class="nav-text">Resolve</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
