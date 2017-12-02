@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="参考页面：http://blog.csdn.net/matrix_laboratory/article/details/9304043    分类 基础排序O(n^2) 高级排序O(nlogn)     交换 冒泡排序 快速排序   插入 插入排序 希尔排序   选择 选择排序 [堆排序]   其它 归并排序    基">
+<meta name="description" content="参考网址：http://blog.csdn.net/matrix_laboratory/article/details/9304043    分类 基础排序O(n^2) 高级排序O(nlogn)     交换 冒泡排序 快速排序   插入 插入排序 希尔排序   选择 选择排序 [堆排序]   其它 归并排序 －">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常见的排序算法">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-02-sort/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="参考页面：http://blog.csdn.net/matrix_laboratory/article/details/9304043    分类 基础排序O(n^2) 高级排序O(nlogn)     交换 冒泡排序 快速排序   插入 插入排序 希尔排序   选择 选择排序 [堆排序]   其它 归并排序    基础排序 1. 冒泡排序原理：比较相邻两个数，如果前者小于后者，就把两个数交换位置">
+<meta property="og:description" content="参考网址：http://blog.csdn.net/matrix_laboratory/article/details/9304043    分类 基础排序O(n^2) 高级排序O(nlogn)     交换 冒泡排序 快速排序   插入 插入排序 希尔排序   选择 选择排序 [堆排序]   其它 归并排序 －">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-02-sort/quick%20sort.gif">
-<meta property="og:updated_time" content="2017-12-02T11:25:54.000Z">
+<meta property="og:updated_time" content="2017-12-02T11:39:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见的排序算法">
-<meta name="twitter:description" content="参考页面：http://blog.csdn.net/matrix_laboratory/article/details/9304043    分类 基础排序O(n^2) 高级排序O(nlogn)     交换 冒泡排序 快速排序   插入 插入排序 希尔排序   选择 选择排序 [堆排序]   其它 归并排序    基础排序 1. 冒泡排序原理：比较相邻两个数，如果前者小于后者，就把两个数交换位置">
+<meta name="twitter:description" content="参考网址：http://blog.csdn.net/matrix_laboratory/article/details/9304043    分类 基础排序O(n^2) 高级排序O(nlogn)     交换 冒泡排序 快速排序   插入 插入排序 希尔排序   选择 选择排序 [堆排序]   其它 归并排序 －">
 <meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-12-02-sort/quick%20sort.gif">
 
 
@@ -319,7 +319,7 @@
       
 
       
-        <p>参考页面：<a href="http://blog.csdn.net/matrix_laboratory/article/details/9304043" target="_blank" rel="noopener">http://blog.csdn.net/matrix_laboratory/article/details/9304043</a></p>
+        <p>参考网址：<a href="http://blog.csdn.net/matrix_laboratory/article/details/9304043" target="_blank" rel="noopener">http://blog.csdn.net/matrix_laboratory/article/details/9304043</a></p>
 <table>
 <thead>
 <tr>
@@ -347,9 +347,11 @@
 <tr>
 <td>其它</td>
 <td style="text-align:center"><a href="#merge">归并排序</a></td>
+<td style="text-align:center">－</td>
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <h3 id="基础排序"><a href="#基础排序" class="headerlink" title="基础排序"></a>基础排序</h3><p><span id="bubble"></span></p>
 <h4 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1. 冒泡排序"></a>1. 冒泡排序</h4><p>原理：比较相邻两个数，如果前者小于后者，就把两个数交换位置；那么第一轮就可以选出一个最小的数放在最后面；经过 n-1 轮，就完成了所有数的排序。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function bubbleSort(array)&#123;</span><br><span class="line">    var temp;</span><br><span class="line"> 	for(var i=0;i&lt;array.length;i++)&#123;</span><br><span class="line">	   	for(var j=array.length-1;j&gt;i;j--)&#123;</span><br><span class="line">	    	if(array[j]&lt;array[j-1])&#123;</span><br><span class="line">	    		temp = array[j];</span><br><span class="line">	    		array[j]=array[j-1];</span><br><span class="line">	    		array[j-1]=temp;</span><br><span class="line">	    	&#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -381,30 +383,31 @@
 </tbody>
 </table>
 <p><span id="insert"></span></p>
-<h4 id="2-插入排序"><a href="#2-插入排序" class="headerlink" title="2. 插入排序"></a>2. 插入排序</h4><p>原理：从数组第二个值开始，依次将后续的数值与前面排序后的序列比较后插入。如下图：<br><img src="quick sort.gif" alt="quick sort.gif"></p>
+<h4 id="2-插入排序"><a href="#2-插入排序" class="headerlink" title="2. 插入排序"></a>2. 插入排序</h4><p>原理：从数组第二个值开始，依次将后续的数值与前面排序后的序列比较后插入。如下图：</p>
+<p><img src="quick sort.gif" alt="quick sort.gif"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function insertSort(array) &#123;  </span><br><span class="line">    var key;</span><br><span class="line">  	for(var i=1; i&lt;array.length ; i++)&#123; </span><br><span class="line">		var j=i-1;</span><br><span class="line">		key = array[i];</span><br><span class="line">		while(j&gt;=0 &amp;&amp;	 array[j]&gt;key)&#123;  </span><br><span class="line">			array[j+1] = array[j];       </span><br><span class="line">			j--;        </span><br><span class="line">		&#125;</span><br><span class="line">		array[j+1] = key;</span><br><span class="line">	&#125;</span><br><span class="line">	return	array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>时间复杂度</p>
 <table>
 <thead>
 <tr>
-<th></th>
+<th style="text-align:center"></th>
 <th style="text-align:center">比较次数</th>
 <th style="text-align:center">移动次数</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>最好</td>
+<td style="text-align:center">最好</td>
 <td style="text-align:center">n/2 = o(n)</td>
 <td style="text-align:center">0</td>
 </tr>
 <tr>
-<td>最坏</td>
+<td style="text-align:center">最坏</td>
 <td style="text-align:center">n(n-1)/2 = o(n^2)</td>
 <td style="text-align:center">n(n-1)/2 = o(n^2)</td>
 </tr>
 <tr>
-<td>平均</td>
+<td style="text-align:center">平均</td>
 <td style="text-align:center">o(n^2)</td>
 <td style="text-align:center">n(n-1)/4 = o(n^2)</td>
 </tr>
@@ -416,24 +419,24 @@
 <table>
 <thead>
 <tr>
-<th></th>
+<th style="text-align:center"></th>
 <th style="text-align:center">比较次数</th>
 <th style="text-align:center">移动次数</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>最好</td>
+<td style="text-align:center">最好</td>
 <td style="text-align:center">n(n-1)/2 = o(n^2)</td>
 <td style="text-align:center">0</td>
 </tr>
 <tr>
-<td>最坏</td>
+<td style="text-align:center">最坏</td>
 <td style="text-align:center">n(n-1)/2 = o(n^2)</td>
 <td style="text-align:center">n-1</td>
 </tr>
 <tr>
-<td>平均</td>
+<td style="text-align:center">平均</td>
 <td style="text-align:center">n(n-1)/2 = o(n^2)</td>
 <td style="text-align:center">n-1</td>
 </tr>
@@ -448,29 +451,29 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];</span><br></pre></td></tr></table></figure>
 <p>增量为 5，则分割为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[3,15,46]</span><br><span class="line">[44,36,4]</span><br><span class="line">[38,26,19]</span><br><span class="line">[5,27,50]</span><br><span class="line">[47,2,48]</span><br></pre></td></tr></table></figure>
-<p>对每一组进行直接插入排序。再把增量变为2(减半),再进行分割,直到增量为 1，再对全体进行一次直接插入排序就可以了.</p>
+<p>对每一组进行直接插入排序。再把增量变为 2(减半)，再进行分割，直到增量为 1，再对全体进行一次直接插入排序就可以了.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var len =arr.length;</span><br><span class="line">    gap = Math.floor(len/2);</span><br><span class="line">    while(gap!==0)&#123;</span><br><span class="line">        for(var i = gap;i&lt;len;i++)&#123;</span><br><span class="line">            var temp = arr[i];</span><br><span class="line">            var j;</span><br><span class="line">            for(j=i-gap;j&gt;=0&amp;&amp;temp&lt;arr[j];j-=gap)&#123;</span><br><span class="line">                arr[j+gap] = arr[j];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j+gap] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        gap=Math.floor(gap/2);</span><br><span class="line">    &#125;</span><br><span class="line">  return arr;</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th></th>
+<th style="text-align:center"></th>
 <th style="text-align:center">比较次数</th>
 <th style="text-align:center">移动次数</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>最好</td>
+<td style="text-align:center">最好</td>
 <td style="text-align:center">n*log2 n</td>
 <td style="text-align:center">0</td>
 </tr>
 <tr>
-<td>最坏</td>
+<td style="text-align:center">最坏</td>
 <td style="text-align:center">n*log2 n</td>
 <td style="text-align:center">n-1</td>
 </tr>
 <tr>
-<td>平均</td>
+<td style="text-align:center">平均</td>
 <td style="text-align:center">n*log n</td>
 <td style="text-align:center">n-1</td>
 </tr>
@@ -488,6 +491,32 @@
 <p>3.然后从下层往上层不断合并数组，每一层合并相邻的两个子数组，合并的过程是每次从待合并的两个子数组中选取一个最小的元素，然后把这个元素放到合并后的数组中，不断重复直到把两个子数组的元素都放到合并后的数组为止。</p>
 <p>4.依次类推，直到合并到最上层结束，这时数据的排序已经完成了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span>(<span class="params">arr</span>)</span>&#123;  </span><br><span class="line">  <span class="keyword">if</span>(arr.length==<span class="number">1</span>) &#123;<span class="keyword">return</span> arr&#125;;  </span><br><span class="line">  <span class="keyword">var</span> mid=<span class="built_in">Math</span>.floor(arr.length/<span class="number">2</span>);  </span><br><span class="line">  <span class="keyword">var</span> left_arr=arr.slice(<span class="number">0</span>,mid), right_arr=arr.slice(mid);  </span><br><span class="line">  <span class="keyword">return</span> merge(mergeSort(left_arr), mergeSort(right_arr));  </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">left, right</span>) </span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> result = [];  </span><br><span class="line">  <span class="keyword">while</span>(left.length &gt; <span class="number">0</span> &amp;&amp; right.length &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">     <span class="keyword">if</span>(left[<span class="number">0</span>] &lt; right[<span class="number">0</span>]) &#123;  </span><br><span class="line">       result.push(left.shift());  </span><br><span class="line">     &#125;  </span><br><span class="line">     <span class="keyword">else</span> &#123;  </span><br><span class="line">       result.push(right.shift());  </span><br><span class="line">     &#125;  </span><br><span class="line">   &#125;  </span><br><span class="line">  </span><br><span class="line">   <span class="comment">/* 当左右数组长度不等.将比较完后剩下的数组项链接起来即可 */</span>  </span><br><span class="line">   <span class="keyword">return</span> result.concat(left).concat(right);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">比较次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">最好</td>
+<td style="text-align:center">n*log2 n</td>
+</tr>
+<tr>
+<td style="text-align:center">最坏</td>
+<td style="text-align:center">n*log2 n</td>
+</tr>
+<tr>
+<td style="text-align:center">平均</td>
+<td style="text-align:center">n*log2 n</td>
+</tr>
+</tbody>
+</table>
+<p>归并的时间复杂度分析：主要是考虑两个函数的时间花销，</p>
+<p>一、数组划分函数 mergeSort()；<br>二、有序数组归并函数 merge()；</p>
+<p>mergeSort() 函数的时间复杂度为 O(n)，因为代码中有 2 个长度为 n 的循环（非嵌套），所以时间复杂度则为 O(n)；</p>
+<p>简单的分析下元素长度为 n 的归并排序所消耗的时间 T[n]：调用 mergeSort() 函数划分两部分，那每一小部分排序好所花时间则为  T[n/2]，而最后把这两部分有序的数组合并成一个有序的数组 mergeSort() 函数所花的时间为 O(n)；</p>
 
       
     </div>
