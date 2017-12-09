@@ -1,0 +1,1032 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SQL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
+<meta name="keywords" content="SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL 基础（一）">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-09-sql-1/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-09-sql-1/sql-1.png">
+<meta property="og:updated_time" content="2017-12-09T11:48:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL 基础（一）">
+<meta name="twitter:description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-12-09-sql-1/sql-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-12-09-sql-1/"/>
+
+
+  <title> SQL 基础（一） | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SQL 基础（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-09T00:00:00+08:00" content="2017-12-09">
+              2017-12-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>以下为 MYSQL 数据库的语法，部分不适用于其他数据库。</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。</p>
+<a id="more"></a>
+<p>Text 类型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CHAR(size)</td>
+<td style="text-align:left">保存固定长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的长度。最多 255 个字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">VARCHAR(size)</td>
+<td style="text-align:left">保存可变长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的最大长度。最多 255 个字符。<br>注释：如果值的长度大于 255，则被转换为 TEXT 类型。</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYTEXT</td>
+<td style="text-align:left">存放最大长度为 255 个字符的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">TEXT</td>
+<td style="text-align:left">存放最大长度为 65,535 个字符的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">BLOB</td>
+<td style="text-align:left">用于 BLOBs (Binary Large OBjects)。存放最多 65,535 字节的数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMTEXT</td>
+<td style="text-align:left">存放最大长度为 16,777,215 个字符的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMBLOB</td>
+<td style="text-align:left">用于 BLOBs (Binary Large OBjects)。存放最多 16,777,215 字节的数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGTEXT</td>
+<td style="text-align:left">存放最大长度为 4,294,967,295 个字符的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGBLOB</td>
+<td style="text-align:left">用于 BLOBs (Binary Large OBjects)。存放最多 4,294,967,295 字节的数据。</td>
+</tr>
+<tr>
+<td style="text-align:left">ENUM(x,y,z,etc.)</td>
+<td style="text-align:left">允许你输入可能值的列表。可以在 ENUM 列表中列出最大 65535 个值。如果列表中不存在插入的值，则插入空值。<br>注释：这些值是按照你输入的顺序存储的。可以按照此格式输入可能的值：ENUM(‘X’,’Y’,’Z’)</td>
+</tr>
+<tr>
+<td style="text-align:left">SET</td>
+<td style="text-align:left">与 ENUM 类似，SET 最多只能包含 64 个列表项，不过 SET 可存储一个以上的值。</td>
+</tr>
+</tbody>
+</table>
+<p>Number 类型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">TINYINT(size)</td>
+<td style="text-align:left">-128 到 127 常规。0 到 255 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">SMALLINT(size)</td>
+<td style="text-align:left">-32768 到 32767 常规。0 到 65535 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMINT(size)</td>
+<td style="text-align:left">-8388608 到 8388607 普通。0 to 16777215 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">INT(size)</td>
+<td style="text-align:left">-2147483648 到 2147483647 常规。0 到 4294967295 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">BIGINT(size)</td>
+<td style="text-align:left">-9223372036854775808 到 9223372036854775807 常规。0 到 18446744073709551615 无符号*。在括号中规定最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOAT(size,d)</td>
+<td style="text-align:left">带有浮动小数点的小数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">DOUBLE(size,d)</td>
+<td style="text-align:left">带有浮动小数点的大数字。在括号中规定最大位数。在 d 参数中规定小数点右侧的最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">DECIMAL(size,d)</td>
+<td style="text-align:left">作为字符串存储的 DOUBLE 类型，允许固定的小数点。</td>
+</tr>
+</tbody>
+</table>
+<p>注：这些整数类型拥有额外的选项 UNSIGNED。通常，整数可以是负数或正数。如果添加 UNSIGNED 属性，那么范围将从 0 开始，而不是某个负数。</p>
+<p>Date 类型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DATE()</td>
+<td style="text-align:left">日期。格式：YYYY-MM-DD<br>注释：支持的范围是从 ‘1000-01-01’ 到 ‘9999-12-31’</td>
+</tr>
+<tr>
+<td style="text-align:left">DATETIME()</td>
+<td style="text-align:left">*日期和时间的组合。格式：YYYY-MM-DD HH:MM:SS<br>注释：支持的范围是从 ‘1000-01-01 00:00:00’ 到 ‘9999-12-31 23:59:59’</td>
+</tr>
+<tr>
+<td style="text-align:left">TIMESTAMP()</td>
+<td style="text-align:left">*时间戳。TIMESTAMP 值使用 Unix 纪元(‘1970-01-01 00:00:00’ UTC) 至今的描述来存储。格式：YYYY-MM-DD HH:MM:SS<br>注释：支持的范围是从 ‘1970-01-01 00:00:01’ UTC 到 ‘2038-01-09 03:14:07’ UTC</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME()</td>
+<td style="text-align:left">时间。格式：HH:MM:SS 注释：支持的范围是从 ‘-838:59:59’ 到 ‘838:59:59’</td>
+</tr>
+<tr>
+<td style="text-align:left">YEAR()</td>
+<td style="text-align:left">2 位或 4 位格式的年。<br>注释：4 位格式所允许的值：1901 到 2155。2 位格式所允许的值：70 到 69，表示从 1970 到 2069。</td>
+</tr>
+</tbody>
+</table>
+<p>注：即便 DATETIME 和 TIMESTAMP 返回相同的格式，它们的工作方式很不同。在 INSERT 或 UPDATE 查询中，TIMESTAMP 自动把自身设置为当前的日期和时间。TIMESTAMP 也接受不同的格式，比如 YYYYMMDDHHMMSS、YYMMDDHHMMSS、YYYYMMDD 或 YYMMDD。</p>
+<h3 id="选取数据"><a href="#选取数据" class="headerlink" title="选取数据"></a>选取数据</h3><h4 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称  </span><br><span class="line">SELECT DISTINCT 列名称 FROM 表名称</span><br></pre></td></tr></table></figure>
+<h3 id="SELECT-…-LIMIT"><a href="#SELECT-…-LIMIT" class="headerlink" title="SELECT … LIMIT"></a>SELECT … LIMIT</h3><p>等价于其他数据库中的 SELECT TOP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 LIMIT 开始行的下标 行数</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM TABLE LIMIT 5; // 返回前 5 行</span><br><span class="line">SELECT * FROM TABLE LIMIT 5,10; // 返回 6-15 行</span><br></pre></td></tr></table></figure>
+<h4 id="INSERT-INTO"><a href="#INSERT-INTO" class="headerlink" title="INSERT INTO"></a>INSERT INTO</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名称 VALUES (值1, 值2,....)  </span><br><span class="line">INSERT INTO 表名称 (列1, 列2,...) VALUES (值1, 值2,....)</span><br></pre></td></tr></table></figure>
+<h4 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</span><br></pre></td></tr></table></figure>
+<h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名称 WHERE 列名称 = 值</span><br><span class="line">DELETE * FROM 表名称 WHERE 列名称 = 值</span><br></pre></td></tr></table></figure>
+<h4 id="WHERE-子句"><a href="#WHERE-子句" class="headerlink" title="WHERE 子句"></a>WHERE 子句</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 表达式 </span><br><span class="line">其中，表达式 = 列 运算符 值</span><br></pre></td></tr></table></figure>
+<p>运算符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;&gt;    或!=</td>
+<td style="text-align:center">不等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">大于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">小于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">大于等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">小于等于</td>
+</tr>
+<tr>
+<td style="text-align:center">BETWEEN</td>
+<td style="text-align:center">在某个范围内</td>
+</tr>
+<tr>
+<td style="text-align:center">LIKE</td>
+<td style="text-align:center">匹配某种模式</td>
+</tr>
+<tr>
+<td style="text-align:center">IN()</td>
+<td style="text-align:center">多个值中的一个</td>
+</tr>
+<tr>
+<td style="text-align:center">IS NULL</td>
+<td style="text-align:center">值为 NULL</td>
+</tr>
+</tbody>
+</table>
+<p>注：NULL 的列作为查询条件时，无论使用 &gt;、&lt;、&gt;=、&lt;= 都是不符合条件的，只能使用 IS NULL 来判断。  </p>
+<h4 id="1-1-BETWEEN"><a href="#1-1-BETWEEN" class="headerlink" title="1.1 BETWEEN"></a>1.1 BETWEEN</h4><p>WHERE 操作符用于选取介于两个值之间的数据范围，可以是数值、文本或者日期。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 列名称 BETWEEN 值1 AND 值2</span><br></pre></td></tr></table></figure>
+<p>注：MySql 数据库会列出介于值 1 和值 2 之间并包括值 1 和值 2 的纪录</p>
+<h4 id="1-2-LIKE"><a href="#1-2-LIKE" class="headerlink" title="1.2 LIKE"></a>1.2 LIKE</h4><p>LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 列名称 [NOT] LIKE 模式</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">通配符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:center">替代零个或多个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">_</td>
+<td style="text-align:center">仅替代一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[charlist]</td>
+<td style="text-align:center">字符列中的任何单一字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[^charlist]或[!charlist]</td>
+<td style="text-align:center">不在字符列中的任何单一字符</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-3-IN"><a href="#1-3-IN" class="headerlink" title="1.3 IN()"></a>1.3 IN()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 列名称 IN (值1, 值2, ...)</span><br></pre></td></tr></table></figure>
+<p>注：IN() 和 OR 在逻辑上是完全相等的，多数据库服务器都把它们看作同义词。</p>
+<p>但 MYSQL 不是这样的，它会对 IN() 里面的数据进行排序，然后用二分法查找个是否在列表中，这个算法的效率是 O(logN)，而等同的 OR 子句的查找效率是 O(n)。因此在列表很大的时候，OR 子句会比 IN() 慢得多，应优先使用 IN()。 </p>
+<p>可参考：<a href="http://m.blog.chinaunix.net/uid-20639775-id-3416737.html" target="_blank" rel="noopener">http://m.blog.chinaunix.net/uid-20639775-id-3416737.html</a></p>
+<h4 id="2-AND-amp-OR"><a href="#2-AND-amp-OR" class="headerlink" title="2. AND &amp; OR"></a>2. AND &amp; OR</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 表达式 连接运算符 表达式</span><br></pre></td></tr></table></figure>
+<p>运算符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AND</td>
+<td style="text-align:center">连接条件：同时成立</td>
+</tr>
+<tr>
+<td style="text-align:center">OR</td>
+<td style="text-align:center">连接条件：有一个成立</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-ORDER-BY"><a href="#3-ORDER-BY" class="headerlink" title="3. ORDER BY"></a>3. ORDER BY</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 ORDER BY 列名称 [DESC]</span><br></pre></td></tr></table></figure>
+<p>注：  </p>
+<ol>
+<li>只有 ORDER BY 的列是按顺序排列的，剩下列是自然排序的  </li>
+<li>数值为 NULL 的记录，被认为是最小的。因此升序排列时 null 值默认排在最前，反之相反</li>
+</ol>
+<h4 id="AS"><a href="#AS" class="headerlink" title="AS"></a>AS</h4><p>AS 为列名称和表名称指定别名（Alias）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 表名的别名</span><br><span class="line">SELECT 列名称 FROM 表名称 AS 别名</span><br><span class="line"></span><br><span class="line">// 列名的别名</span><br><span class="line">SELECT 列名称 AS 别名 FROM 表名称</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 表名的别名</span><br><span class="line">SELECT po.OrderID, p.LastName, p.FirstName</span><br><span class="line">FROM Persons AS p, Product_Orders AS po</span><br><span class="line">WHERE p.LastName=&apos;Adams&apos; AND p.FirstName=&apos;John&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 列名的别名</span><br><span class="line">SELECT LastName AS Family, FirstName AS Name</span><br><span class="line">FROM Persons</span><br></pre></td></tr></table></figure>
+<p><img src="sql-1.png"></p>
+<p>注：  </p>
+<ol>
+<li>如果对表设置了别名，那么只能用别名访问表，用原始名称是无法访问的  </li>
+<li>如果对列设置了别名，那么返回的结果中，列名被修改为别名</li>
+</ol>
+<h3 id="合并数据"><a href="#合并数据" class="headerlink" title="合并数据"></a>合并数据</h3><h4 id="INNER-JOIN-…-ON"><a href="#INNER-JOIN-…-ON" class="headerlink" title="INNER JOIN … ON"></a>INNER JOIN … ON</h4><p>JOIN 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 表1名称.表1列名称, 表2名称.表2列名称 FROM 表1名称 INNER JOIN 表2名称 ON 表1名称.表1列名称 ＝ 表2名称.表2列名称</span><br></pre></td></tr></table></figure>
+<p>例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT PERSONS.LASTNAME, PERSONS.FIRSTNAME, ORDERJOIN.ORDERNO FROM PERSONS INNER JOIN ORDERJOIN ON PERSONS.ID_P = ORDERJOIN.ID_P</span><br></pre></td></tr></table></figure></p>
+<p>INNER JOIN … ON 也可以用 WHERE 来代替，例如下面的语句与上面的语句是等价的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT PERSONS.LASTNAME, PERSONS.FIRSTNAME, ORDERJOIN.ORDERNO FROM PERSONS, ORDERJOIN WHERE PERSONS.ID_P = ORDERJOIN.ID_P</span><br></pre></td></tr></table></figure>
+<h4 id="LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON"><a href="#LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON" class="headerlink" title="LEFT JOIN … ON ／ RIGHT JOIN … ON"></a>LEFT JOIN … ON ／ RIGHT JOIN … ON</h4><p>LEFT JOIN 关键字会从左表返回所有的行，即使在右表中没有匹配的行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 表1名称.表1列名称, 表2名称.表2列名称 FROM 表1名称 LEFT JOIN 表2名称 </span><br><span class="line">ON 表1名称.表1列名称 ＝ 表2名称.表2列名称</span><br></pre></td></tr></table></figure>
+<p>返回的顺序以表 2 为准？</p>
+<p>RIGHT JOIN 关键字会右表返回所有的行，即使在左表中没有匹配的行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 表1列名称, 表2列名称 FROM 表1名称 RIGHT JOIN 表2名称 </span><br><span class="line">ON 表1名称.表1列名称 ＝ 表2名称.表2列名称</span><br></pre></td></tr></table></figure>
+<h4 id="FULL-JOIN"><a href="#FULL-JOIN" class="headerlink" title="FULL JOIN"></a>FULL JOIN</h4><p>MYSQL 不支持！</p>
+<p>FULL JOIN 会从左表和右表返回所有行。如果左表中的行在右表中没有匹配，或者右表中的行在左表中没有匹配，这些行同样会列出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 表1列名称, 表2列名称 FROM 表1名称 FULL JOIN 表2名称 </span><br><span class="line">ON 表1名称.表1列名称 ＝ 表2名称.表2列名称</span><br></pre></td></tr></table></figure>
+<h4 id="UNION-／-UNION-ALL"><a href="#UNION-／-UNION-ALL" class="headerlink" title="UNION ／ UNION ALL"></a>UNION ／ UNION ALL</h4><p>UNION 操作符用于合并两个或多个 SELECT 语句的结果集，即合并索引的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表1</span><br><span class="line">UNION</span><br><span class="line">SELECT 列名称 FROM 表2</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT E_ID, E_NAME FROM EMPLOYEES_USA </span><br><span class="line">UNION </span><br><span class="line">SELECT E_ID, E_NAME FROM EMPLOYEES_CHINA</span><br></pre></td></tr></table></figure>
+<p>注：  </p>
+<ol>
+<li>UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。</li>
+</ol>
+<p>例如下面的情况会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT E_NAME, E_ID FROM EMPLOYEES_USA </span><br><span class="line">UNION </span><br><span class="line">SELECT E_NAME FROM EMPLOYEES_CHINA</span><br></pre></td></tr></table></figure>
+<ol>
+<li>如果表1和表2的某个索引下有相同的值，则只保留表1的，即 UNION 命令只会选取唯一的值。如果希望保留所有值，则必须使用 <code>UNION ALL</code> 命令：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表1</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT 列名称 FROM 表2</span><br></pre></td></tr></table></figure>
+<h3 id="创建数据库／表"><a href="#创建数据库／表" class="headerlink" title="创建数据库／表"></a>创建数据库／表</h3><h4 id="CREATE-DATABASE"><a href="#CREATE-DATABASE" class="headerlink" title="CREATE DATABASE"></a>CREATE DATABASE</h4><p>CREATE DATABASE 用于创建数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名称</span><br></pre></td></tr></table></figure>
+<h4 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h4><p>CREATE TABLE 语句用于创建数据库中的表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称1 数据类型,</span><br><span class="line">  列名称2 数据类型,</span><br><span class="line">  列名称3 数据类型,</span><br><span class="line">  ....</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">integer(size)<br>int(size)<br>smallint(size)<br>tinyint(size)</td>
+<td style="text-align:left">仅容纳整数。在括号内规定数字的最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">decimal(size,d)<br>numeric(size,d)</td>
+<td style="text-align:left">带有小数的数字。<br> “size” 规定数字的最大位数。”d” 规定小数点右侧的最大位数。</td>
+</tr>
+<tr>
+<td style="text-align:left">char(size)</td>
+<td style="text-align:left">固定长度的字符串（可容纳字母、数字以及特殊字符）。<br>在括号中规定字符串的长度。</td>
+</tr>
+<tr>
+<td style="text-align:left">varchar(size)</td>
+<td style="text-align:left">可变长度的字符串（可容纳字母、数字以及特殊的字符）。<br>在括号中规定字符串的最大长度。</td>
+</tr>
+<tr>
+<td style="text-align:left">date(yyyymmdd)</td>
+<td style="text-align:left">日期。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h4><p>约束用于限制加入表的数据的类型。</p>
+<p>可以在创建表时规定约束（通过 CREATE TABLE 语句），或者在表创建之后也可以（通过 ALTER TABLE 语句）。</p>
+<ul>
+<li>NOT NULL</li>
+<li>UNIQUE</li>
+<li>PRIMARY KEY</li>
+<li>FOREIGN KEY</li>
+<li>CHECK</li>
+<li>DEFAULT</li>
+</ul>
+<h4 id="1-NOT-NULL"><a href="#1-NOT-NULL" class="headerlink" title="1. NOT NULL"></a>1. NOT NULL</h4><p>NOT NULL 约束强制列不接受 NULL 值。</p>
+<p>NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录。否则，会报错 <code>Field xxx doesn&#39;t have a default value</code></p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Persons</span><br><span class="line">(</span><br><span class="line">  列名称1 数据类型 NOT NULL,</span><br><span class="line">  ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="2-UNIQUE"><a href="#2-UNIQUE" class="headerlink" title="2. UNIQUE"></a>2. UNIQUE</h4><p>UNIQUE 约束唯一标识数据库表中的每条记录，即设置了 UNIQUE 约束的列只能有唯一的值，无法添加重复的值。</p>
+<p>UNIQUE 和 PRIMARY KEY 约束均为列或列集合提供了唯一性的保证。</p>
+<p>PRIMARY KEY 拥有自动定义的 UNIQUE 约束。</p>
+<p>注：每个表可以有多个 UNIQUE 约束，但是每个表只能有一个 PRIMARY KEY 约束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">	列名称 数据类型,</span><br><span class="line">	...</span><br><span class="line">	UNIQUE (列名称1, 列名称2, ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>创建表时，为 UNIQUE 约束命名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">	列名称 数据类型,</span><br><span class="line">	...</span><br><span class="line">	CONSTRAINT 约束名称 UNIQUE (列名称1, 列名称2, ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>当表已创建，为某个列添加 UNIQUE 约束，并命名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] UNIQUE (列名称1, 列名称2, ...)</span><br></pre></td></tr></table></figure>
+<p>注：如果添加 UNIQUE 之前，索引已经具有重复的值，则无法为其添加 UNIQUE 约束</p>
+<p>删除 UNIQUE： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP INDEX 约束名称</span><br></pre></td></tr></table></figure>
+<h4 id="3-PRIMARY-KEY"><a href="#3-PRIMARY-KEY" class="headerlink" title="3. PRIMARY KEY"></a>3. PRIMARY KEY</h4><p>PRIMARY KEY（主键）约束唯一标识数据库表中的每条记录。</p>
+<p>主键必须包含唯一的值。</p>
+<p>主键列不能包含 NULL 值。</p>
+<p>每个表都应该有一个主键，并且每个表只能有一个主键。</p>
+<p>创建表时，为 PRIMARY KEY 约束命名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  [CONSTRAINT 约束名称] PRIMARY KEY (列名称1, 列名称2, ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>当表已创建，为某个列添加 PRIMARY KEY 约束，并命名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] PRIMARY KEY (列名称1, 列名称2, ...)</span><br></pre></td></tr></table></figure>
+<p>删除 PRIMARY KEY： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP PRIMARY KEY</span><br></pre></td></tr></table></figure>
+<h4 id="4-FOREIGN-KEY"><a href="#4-FOREIGN-KEY" class="headerlink" title="4. FOREIGN KEY"></a>4. FOREIGN KEY</h4><p>FOREIGN KEY(外键) 约束了它的值必须为指向的那个表中的值之一，用于预防破坏表之间连接的动作。</p>
+<p>表中的 FOREIGN KEY 必须指向另一个表中的 PRIMARY KEY。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表2名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  [CONSTRAINT 约束名称] FOREIGN KEY (外键列名称1, 外键列名称2, ...) REFERENCES 表2名称(主键列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>当表已创建，为某个列添加 FOREIGN KEY 约束，并命名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] FOREIGN KEY (外键列名称1, 外键列名称2, ...) REFERENCES 表2名称(主键列名称)</span><br></pre></td></tr></table></figure>
+<p>删除 FOREIGN KEY： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP FOREIGN KEY 约束名称</span><br></pre></td></tr></table></figure>
+<h4 id="5-CHECK"><a href="#5-CHECK" class="headerlink" title="5. CHECK"></a>5. CHECK</h4><p>CHECK 约束用于限制列中的值的范围。</p>
+<p>如果对单个列定义 CHECK 约束，那么该列只允许特定的值。</p>
+<p>如果对一个表定义 CHECK 约束，那么此约束会在特定的列中对值进行限制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">	列名称 数据类型,</span><br><span class="line">	...</span><br><span class="line">	[CONSTRAINT 约束名称] CHECK (表达式)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>当表已创建，为某个列添加 CHECK 约束，并命名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] CHECK (表达式)</span><br></pre></td></tr></table></figure>
+<p>删除 CHECK： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP CHECK 约束名称</span><br></pre></td></tr></table></figure>
+<p>注：<br>所有的存储引擎均对 CHECK 子句进行分析，但是忽略 CHECK 子句。因此，CHECK 语句并不起作用。<br>解决方法就是用 Trigger 触发器, 在触发器中利用一个出错的语句来中断代码的执行.</p>
+<h4 id="6-DEFAULT"><a href="#6-DEFAULT" class="headerlink" title="6. DEFAULT"></a>6. DEFAULT</h4><p>DEFAULT 约束用于向列中插入默认值。<br>如果没有规定其他的值，那么会将默认值添加到所有的新记录。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">	列名称 数据类型 DEFAULT 默认值／函数,</span><br><span class="line">	...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>当表已创建，为某个列添加 DEFAULT 约束：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ALTER 列名称 SET DEFAULT 默认值</span><br></pre></td></tr></table></figure>
+<p>删除 DEFAULT： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ALTER 列名称 DROP DEFAULT</span><br></pre></td></tr></table></figure>
+<h4 id="CREATE-INDEX-CREATE-UNIQUE-INDEX"><a href="#CREATE-INDEX-CREATE-UNIQUE-INDEX" class="headerlink" title="CREATE INDEX / CREATE UNIQUE INDEX"></a>CREATE INDEX / CREATE UNIQUE INDEX</h4><p>CREATE INDEX 语句用于在表中创建索引。<br>在不读取整个表的情况下，索引使数据库应用程序可以更快地查找数据。<br>注释：更新一个包含索引的表需要比更新一个没有索引的表更多的时间，这是由于索引本身也需要更新。因此，理想的做法是仅仅在常常被搜索的列（以及表）上面创建索引。</p>
+<p>创建表时，可以用 KEY 关键词来创建索引：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">	列名称 数据类型,</span><br><span class="line">	...</span><br><span class="line">	KEY (列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>如果表已经存在，则使用 CREATE 关键字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX 索引名称 ON 表名称 (列名称)</span><br></pre></td></tr></table></figure>
+<p>CREATE UNIQUE INDEX 表示创建唯一的索引。唯一的索引意味着两个行不能拥有相同的索引值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX 索引名称 ON 表名称 (列名称)</span><br></pre></td></tr></table></figure>
+<h4 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h4><p>删除索引：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP INDEX 索引名称</span><br></pre></td></tr></table></figure>
+<p>删除表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE 表名称</span><br></pre></td></tr></table></figure>
+<p>删除数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE 数据库名称</span><br></pre></td></tr></table></figure>
+<h4 id="TRUNCATE-TABLE"><a href="#TRUNCATE-TABLE" class="headerlink" title="TRUNCATE TABLE"></a>TRUNCATE TABLE</h4><p>TRUNCATE TABLE 清空表内的数据，但并不删除表本身。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRUNCATE TABLE 表名称</span><br></pre></td></tr></table></figure>
+<h4 id="ALTER-TABLE"><a href="#ALTER-TABLE" class="headerlink" title="ALTER TABLE"></a>ALTER TABLE</h4><p>ALTER TABLE 语句用于在已有的表中添加、修改或删除列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 添加列</span><br><span class="line">ALTER TABLE 表名称 ADD 列名称 数据类型</span><br><span class="line"></span><br><span class="line">// 删除列</span><br><span class="line">ALTER TABLE 表名称 DROP COLUMN 列名称</span><br><span class="line"></span><br><span class="line">// 修改列类型</span><br><span class="line">ALTER TABLE 表名称 MODIFY COLUMN 列名称 数据类型</span><br></pre></td></tr></table></figure>
+<h4 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO INCREMENT"></a>AUTO INCREMENT</h4><p>AUTO INCREMENT 自动地创建（主）键字段的值。  </p>
+<ul>
+<li>AUTO INCREMENT 的字段必须为索引（KEY）</li>
+<li>AUTO INCREMENT 的字段必须为 INT 类型</li>
+<li>一个表只能有一个 AUTO INCREMENT 字段</li>
+<li>默认地，AUTO_INCREMENT 的开始值是 1，每条新记录递增 1。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">	列名称 数据类型 AUTO_INCREMENT,</span><br><span class="line">	...</span><br><span class="line">	[PRIMARY] KEY (列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>要让 AUTO_INCREMENT 序列以其他的值起始，使用下列 SQL 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 AUTO_INCREMENT=起始值</span><br></pre></td></tr></table></figure>
+<h4 id="CREATE-VIEW"><a href="#CREATE-VIEW" class="headerlink" title="CREATE VIEW"></a>CREATE VIEW</h4><p>VIEW（视图）是基于 SQL 语句的结果集的可视化的表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 创建视图</span><br><span class="line">CREATE VIEW 视图名称 AS SELECT 列名称 FROM 表名称 WHERE 表达式</span><br><span class="line"></span><br><span class="line">// 使用视图</span><br><span class="line">SELECT * FROM 视图名称</span><br><span class="line"></span><br><span class="line">// 更新视图</span><br><span class="line">CREATE OR REPLACE VIEW 视图名称 AS SELECT 列名称1, [列名称2 ...] FROM 表名称 WHERE 表达式</span><br><span class="line"></span><br><span class="line">// 删除</span><br><span class="line">DROP VIEW [IF EXISTS] 视图名称1 [,视图名称2 ...]</span><br></pre></td></tr></table></figure>
+<h4 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h4><p>NULL 用作未知的或不适用的值的占位符。<br>如果表中的某个列是可选的且未赋值，则该字段将以 NULL 值保存。</p>
+<p>无法使用比较运算符来测试 NULL 值，比如 =, &lt;, 或者 &lt;&gt;。必须使用 IS NULL 和 IS NOT NULL 操作符。</p>
+<p>注：NULL 和 0 是不等价的。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL/" rel="tag">#SQL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-12-03-angular-form-1/" rel="next" title="Angular 表单（一）">
+                <i class="fa fa-chevron-left"></i> Angular 表单（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选取数据"><span class="nav-number">2.</span> <span class="nav-text">选取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SELECT"><span class="nav-number">2.1.</span> <span class="nav-text">SELECT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT-…-LIMIT"><span class="nav-number">3.</span> <span class="nav-text">SELECT … LIMIT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#INSERT-INTO"><span class="nav-number">3.1.</span> <span class="nav-text">INSERT INTO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UPDATE"><span class="nav-number">3.2.</span> <span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DELETE"><span class="nav-number">3.3.</span> <span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE-子句"><span class="nav-number">3.4.</span> <span class="nav-text">WHERE 子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-BETWEEN"><span class="nav-number">3.5.</span> <span class="nav-text">1.1 BETWEEN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-LIKE"><span class="nav-number">3.6.</span> <span class="nav-text">1.2 LIKE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-IN"><span class="nav-number">3.7.</span> <span class="nav-text">1.3 IN()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-AND-amp-OR"><span class="nav-number">3.8.</span> <span class="nav-text">2. AND & OR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-ORDER-BY"><span class="nav-number">3.9.</span> <span class="nav-text">3. ORDER BY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AS"><span class="nav-number">3.10.</span> <span class="nav-text">AS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并数据"><span class="nav-number">4.</span> <span class="nav-text">合并数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#INNER-JOIN-…-ON"><span class="nav-number">4.1.</span> <span class="nav-text">INNER JOIN … ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON"><span class="nav-number">4.2.</span> <span class="nav-text">LEFT JOIN … ON ／ RIGHT JOIN … ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FULL-JOIN"><span class="nav-number">4.3.</span> <span class="nav-text">FULL JOIN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNION-／-UNION-ALL"><span class="nav-number">4.4.</span> <span class="nav-text">UNION ／ UNION ALL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库／表"><span class="nav-number">5.</span> <span class="nav-text">创建数据库／表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-DATABASE"><span class="nav-number">5.1.</span> <span class="nav-text">CREATE DATABASE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-TABLE"><span class="nav-number">5.2.</span> <span class="nav-text">CREATE TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#约束"><span class="nav-number">5.3.</span> <span class="nav-text">约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-NOT-NULL"><span class="nav-number">5.4.</span> <span class="nav-text">1. NOT NULL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-UNIQUE"><span class="nav-number">5.5.</span> <span class="nav-text">2. UNIQUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-PRIMARY-KEY"><span class="nav-number">5.6.</span> <span class="nav-text">3. PRIMARY KEY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-FOREIGN-KEY"><span class="nav-number">5.7.</span> <span class="nav-text">4. FOREIGN KEY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-CHECK"><span class="nav-number">5.8.</span> <span class="nav-text">5. CHECK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-DEFAULT"><span class="nav-number">5.9.</span> <span class="nav-text">6. DEFAULT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-INDEX-CREATE-UNIQUE-INDEX"><span class="nav-number">5.10.</span> <span class="nav-text">CREATE INDEX / CREATE UNIQUE INDEX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DROP"><span class="nav-number">5.11.</span> <span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TRUNCATE-TABLE"><span class="nav-number">5.12.</span> <span class="nav-text">TRUNCATE TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ALTER-TABLE"><span class="nav-number">5.13.</span> <span class="nav-text">ALTER TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AUTO-INCREMENT"><span class="nav-number">5.14.</span> <span class="nav-text">AUTO INCREMENT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-VIEW"><span class="nav-number">5.15.</span> <span class="nav-text">CREATE VIEW</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NULL"><span class="nav-number">5.16.</span> <span class="nav-text">NULL</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
