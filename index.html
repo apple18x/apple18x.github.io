@@ -1230,8 +1230,8 @@
             
               
                 
-                <a class="post-title-link" href="/programming/2017-11-26-webserver/" itemprop="url">
-                  Angular2 的 HTTP 服务
+                <a class="post-title-link" href="/programming/2017-11-26-angular-websocket/" itemprop="url">
+                  Angular2 的 websocket 通讯
                 </a>
               
             
@@ -1292,11 +1292,11 @@
 
       
         
-          <p>为了实现 Angular2 与服务器的通讯，我们使用 Nodejs 搭建一个简单的服务器，并使用 express 框架做相关的业务处理。</p>
-<h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><h3 id="搭建一个简单的-Nodejs-服务器"><a href="#搭建一个简单的-Nodejs-服务器" class="headerlink" title="搭建一个简单的 Nodejs 服务器"></a>搭建一个简单的 Nodejs 服务器</h3><p>首先初始化一个 node 项目，引入 node 类型定义文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm i @types/node --save</span><br></pre></td></tr></table></figure>
+          <p>websocket 是低负载的二进制协议，目前主流浏览器都已经实现了对 websocket 的支持。</p>
+<p>在使用 HTTP 协议进行通讯中，客户端与服务器在连接时同一时间数据传递方向只能有一个。要么在发送请求数据，要么在接受响应数据，是不能在同一时间既发送请求数据，又接收响应数据的。</p>
+<p>而 websocket 协议允许在同一时间内进行双向数据传递。在发送数据的同时，也能接收数据。由于 websocket 是一个长连接协议，不需要在每次发送数据时建立链接，所以 websocket 的延迟比 HTTP 要低。其次，由于长连接的存在，请求时不需要每次都携带连接相关信息，所以使用 websocket 协议请求时携带的数据比 HTTP 要少。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2017-11-26-webserver/#more" rel="contents">
+            <a class="btn" href="/programming/2017-11-26-angular-websocket/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1347,8 +1347,8 @@
             
               
                 
-                <a class="post-title-link" href="/programming/2017-11-26-dependency injection/" itemprop="url">
-                  Angular2 依赖注入
+                <a class="post-title-link" href="/programming/2017-11-26-providers&injector/" itemprop="url">
+                  Angular2 依赖注入的注入器与提供器
                 </a>
               
             
@@ -1409,12 +1409,13 @@
 
       
         
-          <p>依赖注入是 Angular 自动处理对象的创建过程。</p>
-<p>任何一个 Angular 程序都是组件、指令和一堆彼此依赖的类的集合。虽然每个组件内部都可以自己实现实例化的过程，但 Angular 内部引入依赖注入机制来完成这种工作。</p>
-<p>依赖注入是一种设计模式。</p>
-<h3 id="依赖注入模式"><a href="#依赖注入模式" class="headerlink" title="依赖注入模式"></a>依赖注入模式</h3><p>依赖注入，Dependency Injection，简称 DI。</p>
+          <p>注入器（provider）与提供器（injector）是依赖注入必不可少的两个方面。</p>
+<h3 id="注入器（injector）"><a href="#注入器（injector）" class="headerlink" title="注入器（injector）"></a>注入器（injector）</h3><p>注入器的作用是将实例化的对象注入到组件中。</p>
+<p>Angular 提供的服务类，一般情况下不需要直接调用注入器的方法，而是通过组件的构造函数将服务对象</p>
+<p>product.component.ts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">constructor(productService: ProductService)&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2017-11-26-dependency injection/#more" rel="contents">
+            <a class="btn" href="/programming/2017-11-26-providers&injector/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
