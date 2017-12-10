@@ -259,6 +259,124 @@
             
               
                 
+                <a class="post-title-link" href="/programming/2017-11-26-dependency injection/" itemprop="url">
+                  Angular2 依赖注入
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-26T00:00:00+08:00" content="2017-11-26">
+              2017-11-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>依赖注入是 Angular 自动处理对象的创建过程。</p>
+<p>任何一个 Angular 程序都是组件、指令和一堆彼此依赖的类的集合。虽然每个组件内部都可以自己实现实例化的过程，但 Angular 内部引入依赖注入机制来完成这种工作。</p>
+<p>依赖注入是一种设计模式。</p>
+<h3 id="依赖注入模式"><a href="#依赖注入模式" class="headerlink" title="依赖注入模式"></a>依赖注入模式</h3><p>依赖注入，Dependency Injection，简称 DI。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/programming/2017-11-26-dependency injection/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/programming/2017-11-22-angular-introduction/" itemprop="url">
                   Angular 初认识
                 </a>
@@ -1299,121 +1417,6 @@
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/programming/2017-10-26-communication/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/programming/2017-10-25-oop/" itemprop="url">
-                  面向对象
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-10-25T00:00:00+08:00" content="2017-10-25">
-              2017-10-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="1、类与实例"><a href="#1、类与实例" class="headerlink" title="1、类与实例"></a>1、类与实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**  </span><br><span class="line"> * 类的声明</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">function Animal()&#123;</span><br><span class="line">  this.name = &apos;name&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*  </span><br><span class="line"> * ES6 中的声明</span><br><span class="line"> */</span><br><span class="line">class Animal2&#123;</span><br><span class="line">  constructor()&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*  </span><br><span class="line"> * 实例化</span><br><span class="line"> */</span><br><span class="line">console.log(new Animal(), new Animal2());</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2017-10-25-oop/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
