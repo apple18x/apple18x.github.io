@@ -93,7 +93,7 @@
 <meta property="og:description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-09-sql-1/sql-1.png">
-<meta property="og:updated_time" content="2017-12-09T12:00:56.000Z">
+<meta property="og:updated_time" content="2017-12-11T15:02:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 基础（一）">
 <meta name="twitter:description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
@@ -662,13 +662,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 创建视图</span><br><span class="line">CREATE VIEW 视图名称 AS SELECT 列名称 FROM 表名称 WHERE 表达式</span><br><span class="line"></span><br><span class="line">// 使用视图</span><br><span class="line">SELECT * FROM 视图名称</span><br><span class="line"></span><br><span class="line">// 更新视图</span><br><span class="line">CREATE OR REPLACE VIEW 视图名称 AS SELECT 列名称1, [列名称2 ...] FROM 表名称 WHERE 表达式</span><br><span class="line"></span><br><span class="line">// 删除</span><br><span class="line">DROP VIEW [IF EXISTS] 视图名称1 [,视图名称2 ...]</span><br></pre></td></tr></table></figure>
 <h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><p>约束用于限制加入表的数据的类型。</p>
 <p>可以在创建表时规定约束（通过 CREATE TABLE 语句），或者在表创建之后也可以（通过 ALTER TABLE 语句）。</p>
+<p><strong>列级约束：</strong><br>对一个数据建立的约束<br>列级约束既可以在列定义时声明，也可以在列定义后声明</p>
 <ul>
-<li>NOT NULL</li>
-<li>UNIQUE</li>
-<li>PRIMARY KEY</li>
-<li>FOREIGN KEY</li>
+<li>PRIMARY KEY（主键）</li>
+<li>FOREIGN KEY（外键）</li>
+<li>UNIQUE（唯一值）</li>
 <li>CHECK</li>
-<li>DEFAULT</li>
+</ul>
+<p><strong>表级约束：</strong><br>对多个数据建立的约束<br>列级约束只能在列定义后声明</p>
+<ul>
+<li>NOT NULL（非空约束）</li>
+<li>DEFAULT（默认值）</li>
 </ul>
 <h4 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h4><p>NOT NULL 约束强制列不接受 NULL 值。</p>
 <p>NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录。否则，会报错 <code>Field xxx doesn&#39;t have a default value</code></p>
@@ -681,43 +685,83 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  UNIQUE (列名称1, 列名称2, ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>创建表时，为 UNIQUE 约束命名：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  CONSTRAINT 约束名称 UNIQUE (列名称1, 列名称2, ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>当表已创建，为某个列添加 UNIQUE 约束，并命名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] UNIQUE (列名称1, 列名称2, ...)</span><br></pre></td></tr></table></figure>
-<p>注：如果添加 UNIQUE 之前，索引已经具有重复的值，则无法为其添加 UNIQUE 约束</p>
-<p>删除 UNIQUE： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP INDEX 约束名称</span><br></pre></td></tr></table></figure>
-<h4 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h4><p>PRIMARY KEY（主键）约束唯一标识数据库表中的每条记录。</p>
+<h4 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h4><p>PRIMARY KEY（主键）约束唯一标识数据库表中的每条记录。注：主键创建的同时会自动创建索引</p>
 <p>主键必须包含唯一的值。</p>
 <p>主键列不能包含 NULL 值。</p>
 <p>每个表都应该有一个主键，并且每个表只能有一个主键。</p>
 <p>创建表时，为 PRIMARY KEY 约束命名：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  [CONSTRAINT 约束名称] PRIMARY KEY (列名称1, 列名称2, ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>当表已创建，为某个列添加 PRIMARY KEY 约束，并命名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] PRIMARY KEY (列名称1, 列名称2, ...)</span><br></pre></td></tr></table></figure>
-<p>删除 PRIMARY KEY： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP PRIMARY KEY</span><br></pre></td></tr></table></figure>
 <h4 id="FOREIGN-KEY"><a href="#FOREIGN-KEY" class="headerlink" title="FOREIGN KEY"></a>FOREIGN KEY</h4><p>FOREIGN KEY(外键) 约束了它的值必须为指向的那个表中的值之一，用于预防破坏表之间连接的动作。</p>
 <p>表中的 FOREIGN KEY 必须指向另一个表中的 PRIMARY KEY。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表2名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  [CONSTRAINT 约束名称] FOREIGN KEY (外键列名称1, 外键列名称2, ...) REFERENCES 表2名称(主键列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>当表已创建，为某个列添加 FOREIGN KEY 约束，并命名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] FOREIGN KEY (外键列名称1, 外键列名称2, ...) REFERENCES 表2名称(主键列名称)</span><br></pre></td></tr></table></figure>
-<p>删除 FOREIGN KEY： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP FOREIGN KEY 约束名称</span><br></pre></td></tr></table></figure>
+<p>外键约束：</p>
+<ul>
+<li>父表（参照列所在表）和子表（外键列所在表）必须使用相同的存储引擎，禁止使用临时表</li>
+<li>数据表的存储引擎只能为 InnoDB</li>
+<li>外键列和参照列必须具有相似的数据类型。其中数字的长度或是否有富豪为必需相同，而字符的长度则可以不同</li>
+<li>外键列和参照列必须创建索引，如果参照列不存在索引的话，MySQL 将自动创建索引，但外键列不存在索引的话，MySQL 不会创建索引。</li>
+</ul>
+<p>外键约束的参照操作：</p>
+<ul>
+<li>CASCADE：从父表删除或更新且自动删除更新字表中匹配的行</li>
+<li>SET NULL：从父表删除或更新行，并设置字表中的外键列为 NULL。如果使用该选项，必须保证字表列没有指定 NOT NULL</li>
+<li>RESTRICT：拒绝对父表的删除或更新操作</li>
+<li>NO ACTION：标准 SQL 的关键字，在 MySQL 中与 RESTRICT 相同</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表2名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  [CONSTRAINT 约束名称] </span><br><span class="line">  FOREIGN KEY (外键列名称1, 外键列名称2, ...) </span><br><span class="line">  REFERENCES 表1名称(主键列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <h4 id="CHECK"><a href="#CHECK" class="headerlink" title="CHECK"></a>CHECK</h4><p>CHECK 约束用于限制列中的值的范围。</p>
 <p>如果对单个列定义 CHECK 约束，那么该列只允许特定的值。</p>
 <p>如果对一个表定义 CHECK 约束，那么此约束会在特定的列中对值进行限制。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  [CONSTRAINT 约束名称] CHECK (表达式)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>当表已创建，为某个列添加 CHECK 约束，并命名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] CHECK (表达式)</span><br></pre></td></tr></table></figure>
-<p>删除 CHECK： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP CHECK 约束名称</span><br></pre></td></tr></table></figure>
 <p>注：<br>所有的存储引擎均对 CHECK 子句进行分析，但是忽略 CHECK 子句。因此，CHECK 语句并不起作用。<br>解决方法就是用 Trigger 触发器, 在触发器中利用一个出错的语句来中断代码的执行.</p>
 <h4 id="DEFAULT"><a href="#DEFAULT" class="headerlink" title="DEFAULT"></a>DEFAULT</h4><p>DEFAULT 约束用于向列中插入默认值。<br>如果没有规定其他的值，那么会将默认值添加到所有的新记录。 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型 DEFAULT 默认值／函数,</span><br><span class="line">  ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>当表已创建，为某个列添加 DEFAULT 约束：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ALTER 列名称 SET DEFAULT 默认值</span><br></pre></td></tr></table></figure>
+<h3 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h3><h4 id="添加-删除列"><a href="#添加-删除列" class="headerlink" title="添加/删除列"></a>添加/删除列</h4><p>ALTER TABLE 语句用于在已有的表中添加、修改或删除列。</p>
+<p>添加单列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [COLUMN] 列名称 数据类型 [FIRST|AFTER 列名称]</span><br></pre></td></tr></table></figure>
+<p>添加多列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [COLUMN] (列名称1，数据类型1, 列名称2，数据类型2, ...)</span><br></pre></td></tr></table></figure>
+<p>注：添加多列时无法指定插入的位置，只能插入表的最后</p>
+<p>删除单列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP [COLUMN] 列名称</span><br></pre></td></tr></table></figure>
+<p>删除多列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP [COLUMN] 列名称1, DROP [COLUMN] 列名称2, ...</span><br></pre></td></tr></table></figure>
+<h4 id="添加-删除约束"><a href="#添加-删除约束" class="headerlink" title="添加/删除约束"></a>添加/删除约束</h4><p>添加 PRIMARY KEY:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] PRIMARY KEY [索引类型] (列名称1, 列名称2, ...)</span><br></pre></td></tr></table></figure>
+<p>注：索引类型包括 hash 索引和 B-tree 索引</p>
+<p>添加 UNIQUE:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] UNIQUE [INDEX|KEY] [索引名称] [索引类型] (列名称1, 列名称2, ...)</span><br></pre></td></tr></table></figure>
+<p>注：如果添加 UNIQUE 之前，索引已经具有重复的值，则无法为其添加 UNIQUE 约束</p>
+<p>添加 FOREIGN KEY:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] FOREIGN KEY [索引名称] (外键列名称1, 外键列名称2, ...) REFERENCES 表2名称(主键列名称)</span><br></pre></td></tr></table></figure>
+<p>外键约束与参照要求与创建时相同。</p>
+<p>添加 DEFAULT:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ALTER [COLUMN] 列名称 SET DEFAULT 默认值</span><br></pre></td></tr></table></figure>
+<p>添加 CHECK:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] CHECK (表达式)</span><br></pre></td></tr></table></figure></p>
+<p>删除 PRIMARY KEY： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP PRIMARY KEY</span><br></pre></td></tr></table></figure>
+<p>删除 UNIQUE： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP &#123;INDEX|KEY&#125; 索引名称</span><br></pre></td></tr></table></figure>
+<p>删除 FOREIGN KEY： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP FOREIGN KEY 外键约束名称</span><br></pre></td></tr></table></figure>
+<p>注：我们可以通过 <code>SHOW CREATE TABLE 表名称</code>来查看 FOREIGN KEY</p>
 <p>删除 DEFAULT： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ALTER 列名称 DROP DEFAULT</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ALTER [COLUMN] 列名称 DROP DEFAULT</span><br></pre></td></tr></table></figure>
+<p>删除 CHECK： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP CHECK 约束名称</span><br></pre></td></tr></table></figure>
+<h4 id="修改列定义"><a href="#修改列定义" class="headerlink" title="修改列定义"></a>修改列定义</h4><p>列定义包括数据类型、位置等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 MODIFY [COLUMN] 列名称 数据类型 [FIRST|AFTER 列名称]</span><br></pre></td></tr></table></figure>
+<p>修改列名称：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 CHANGE [COLUMN] 原列名称 新列名称 数据类型 [FIRST|AFTER 列名称]</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li>修改数据类型后可能导致数据丢失。</li>
+<li>CHANGE 比 MODIFIY 功能更强大</li>
+</ul>
+<h4 id="修改数据表-1"><a href="#修改数据表-1" class="headerlink" title="修改数据表"></a>修改数据表</h4><p>修改表名称</p>
+<p>方法一：修改单个表名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 RENAME [TO|AS] 新表名称</span><br></pre></td></tr></table></figure>
+<p>方法二：修改单个或多个表名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 TO 新表名称 [, 表2名称，新表2名称, ...]</span><br></pre></td></tr></table></figure>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h4><p>删除索引：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP INDEX 索引名称</span><br></pre></td></tr></table></figure>
 <p>删除表：</p>
@@ -726,8 +770,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE 数据库名称</span><br></pre></td></tr></table></figure>
 <h4 id="TRUNCATE-TABLE"><a href="#TRUNCATE-TABLE" class="headerlink" title="TRUNCATE TABLE"></a>TRUNCATE TABLE</h4><p>TRUNCATE TABLE 清空表内的数据，但并不删除表本身。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRUNCATE TABLE 表名称</span><br></pre></td></tr></table></figure>
-<h4 id="ALTER-TABLE"><a href="#ALTER-TABLE" class="headerlink" title="ALTER TABLE"></a>ALTER TABLE</h4><p>ALTER TABLE 语句用于在已有的表中添加、修改或删除列。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 添加列</span><br><span class="line">ALTER TABLE 表名称 ADD 列名称 数据类型</span><br><span class="line"></span><br><span class="line">// 删除列</span><br><span class="line">ALTER TABLE 表名称 DROP COLUMN 列名称</span><br><span class="line"></span><br><span class="line">// 修改列类型</span><br><span class="line">ALTER TABLE 表名称 MODIFY COLUMN 列名称 数据类型</span><br></pre></td></tr></table></figure>
 <h4 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO INCREMENT"></a>AUTO INCREMENT</h4><p>AUTO INCREMENT 自动地创建（主）键字段的值。  </p>
 <ul>
 <li>AUTO INCREMENT 的字段必须为索引（KEY）</li>
@@ -780,8 +822,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-12-10-angular-form-2/" rel="prev" title="Angular 表单（二）">
-                Angular 表单（二） <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-12-10-sql-2/" rel="prev" title="SQL 基础（二）">
+                SQL 基础（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -896,7 +938,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选取数据"><span class="nav-number">2.</span> <span class="nav-text">选取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SELECT"><span class="nav-number">2.1.</span> <span class="nav-text">SELECT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SELECT-…-LIMIT"><span class="nav-number">2.2.</span> <span class="nav-text">SELECT … LIMIT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#INSERT-INTO"><span class="nav-number">2.3.</span> <span class="nav-text">INSERT INTO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UPDATE"><span class="nav-number">2.4.</span> <span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DELETE"><span class="nav-number">2.5.</span> <span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE-子句"><span class="nav-number">2.6.</span> <span class="nav-text">WHERE 子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AS"><span class="nav-number">2.7.</span> <span class="nav-text">AS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并数据"><span class="nav-number">3.</span> <span class="nav-text">合并数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#INNER-JOIN-…-ON"><span class="nav-number">3.1.</span> <span class="nav-text">INNER JOIN … ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON"><span class="nav-number">3.2.</span> <span class="nav-text">LEFT JOIN … ON ／ RIGHT JOIN … ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FULL-JOIN"><span class="nav-number">3.3.</span> <span class="nav-text">FULL JOIN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNION-／-UNION-ALL"><span class="nav-number">3.4.</span> <span class="nav-text">UNION ／ UNION ALL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">4.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-DATABASE"><span class="nav-number">4.1.</span> <span class="nav-text">CREATE DATABASE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-TABLE"><span class="nav-number">4.2.</span> <span class="nav-text">CREATE TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-INDEX-CREATE-UNIQUE-INDEX"><span class="nav-number">4.3.</span> <span class="nav-text">CREATE INDEX / CREATE UNIQUE INDEX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-VIEW"><span class="nav-number">4.4.</span> <span class="nav-text">CREATE VIEW</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束"><span class="nav-number">5.</span> <span class="nav-text">约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NOT-NULL"><span class="nav-number">5.1.</span> <span class="nav-text">NOT NULL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNIQUE"><span class="nav-number">5.2.</span> <span class="nav-text">UNIQUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PRIMARY-KEY"><span class="nav-number">5.3.</span> <span class="nav-text">PRIMARY KEY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FOREIGN-KEY"><span class="nav-number">5.4.</span> <span class="nav-text">FOREIGN KEY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CHECK"><span class="nav-number">5.5.</span> <span class="nav-text">CHECK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DEFAULT"><span class="nav-number">5.6.</span> <span class="nav-text">DEFAULT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DROP"><span class="nav-number">6.1.</span> <span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TRUNCATE-TABLE"><span class="nav-number">6.2.</span> <span class="nav-text">TRUNCATE TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ALTER-TABLE"><span class="nav-number">6.3.</span> <span class="nav-text">ALTER TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AUTO-INCREMENT"><span class="nav-number">6.4.</span> <span class="nav-text">AUTO INCREMENT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NULL"><span class="nav-number">6.5.</span> <span class="nav-text">NULL</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选取数据"><span class="nav-number">2.</span> <span class="nav-text">选取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SELECT"><span class="nav-number">2.1.</span> <span class="nav-text">SELECT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SELECT-…-LIMIT"><span class="nav-number">2.2.</span> <span class="nav-text">SELECT … LIMIT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#INSERT-INTO"><span class="nav-number">2.3.</span> <span class="nav-text">INSERT INTO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UPDATE"><span class="nav-number">2.4.</span> <span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DELETE"><span class="nav-number">2.5.</span> <span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE-子句"><span class="nav-number">2.6.</span> <span class="nav-text">WHERE 子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AS"><span class="nav-number">2.7.</span> <span class="nav-text">AS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并数据"><span class="nav-number">3.</span> <span class="nav-text">合并数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#INNER-JOIN-…-ON"><span class="nav-number">3.1.</span> <span class="nav-text">INNER JOIN … ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON"><span class="nav-number">3.2.</span> <span class="nav-text">LEFT JOIN … ON ／ RIGHT JOIN … ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FULL-JOIN"><span class="nav-number">3.3.</span> <span class="nav-text">FULL JOIN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNION-／-UNION-ALL"><span class="nav-number">3.4.</span> <span class="nav-text">UNION ／ UNION ALL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">4.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-DATABASE"><span class="nav-number">4.1.</span> <span class="nav-text">CREATE DATABASE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-TABLE"><span class="nav-number">4.2.</span> <span class="nav-text">CREATE TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-INDEX-CREATE-UNIQUE-INDEX"><span class="nav-number">4.3.</span> <span class="nav-text">CREATE INDEX / CREATE UNIQUE INDEX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-VIEW"><span class="nav-number">4.4.</span> <span class="nav-text">CREATE VIEW</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束"><span class="nav-number">5.</span> <span class="nav-text">约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NOT-NULL"><span class="nav-number">5.1.</span> <span class="nav-text">NOT NULL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNIQUE"><span class="nav-number">5.2.</span> <span class="nav-text">UNIQUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PRIMARY-KEY"><span class="nav-number">5.3.</span> <span class="nav-text">PRIMARY KEY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FOREIGN-KEY"><span class="nav-number">5.4.</span> <span class="nav-text">FOREIGN KEY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CHECK"><span class="nav-number">5.5.</span> <span class="nav-text">CHECK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DEFAULT"><span class="nav-number">5.6.</span> <span class="nav-text">DEFAULT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改数据表"><span class="nav-number">6.</span> <span class="nav-text">修改数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-删除列"><span class="nav-number">6.1.</span> <span class="nav-text">添加/删除列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-删除约束"><span class="nav-number">6.2.</span> <span class="nav-text">添加/删除约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改列定义"><span class="nav-number">6.3.</span> <span class="nav-text">修改列定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改数据表-1"><span class="nav-number">6.4.</span> <span class="nav-text">修改数据表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DROP"><span class="nav-number">7.1.</span> <span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TRUNCATE-TABLE"><span class="nav-number">7.2.</span> <span class="nav-text">TRUNCATE TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AUTO-INCREMENT"><span class="nav-number">7.3.</span> <span class="nav-text">AUTO INCREMENT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NULL"><span class="nav-number">7.4.</span> <span class="nav-text">NULL</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
