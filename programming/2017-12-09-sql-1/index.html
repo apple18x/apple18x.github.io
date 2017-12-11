@@ -93,7 +93,7 @@
 <meta property="og:description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-09-sql-1/sql-1.png">
-<meta property="og:updated_time" content="2017-12-11T15:02:28.000Z">
+<meta property="og:updated_time" content="2017-12-11T15:54:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 基础（一）">
 <meta name="twitter:description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
@@ -458,7 +458,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 LIMIT 开始行的下标 行数</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM TABLE LIMIT 5; // 返回前 5 行</span><br><span class="line">SELECT * FROM TABLE LIMIT 5,10; // 返回 6-15 行</span><br></pre></td></tr></table></figure>
-<h4 id="INSERT-INTO"><a href="#INSERT-INTO" class="headerlink" title="INSERT INTO"></a>INSERT INTO</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名称 VALUES (值1, 值2,....)  </span><br><span class="line">INSERT INTO 表名称 (列1, 列2,...) VALUES (值1, 值2,....)</span><br></pre></td></tr></table></figure>
+<h4 id="INSERT-INTO"><a href="#INSERT-INTO" class="headerlink" title="INSERT INTO"></a>INSERT INTO</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名称 VALUE[S] (值1, 值2,....)  </span><br><span class="line">INSERT INTO 表名称 (列1, 列2,...) VALUE[S] (值1, 值2,....)</span><br></pre></td></tr></table></figure>
+<p>注：可以写做 VALUES，也可以写做 VALUE。当数据量较少时，使用 VALUES 效率较高，反之相反。</p>
 <h4 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</span><br></pre></td></tr></table></figure>
 <h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名称 WHERE 列名称 = 值</span><br><span class="line">DELETE * FROM 表名称 WHERE 列名称 = 值</span><br></pre></td></tr></table></figure>
 <h4 id="WHERE-子句"><a href="#WHERE-子句" class="headerlink" title="WHERE 子句"></a>WHERE 子句</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 表达式 </span><br><span class="line">其中，表达式 = 列 运算符 值</span><br></pre></td></tr></table></figure>
@@ -719,7 +720,7 @@
 <p>添加单列</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [COLUMN] 列名称 数据类型 [FIRST|AFTER 列名称]</span><br></pre></td></tr></table></figure>
 <p>添加多列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [COLUMN] (列名称1，数据类型1, 列名称2，数据类型2, ...)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [COLUMN] (列名称1 数据类型1, 列名称2 数据类型2, ...)</span><br></pre></td></tr></table></figure>
 <p>注：添加多列时无法指定插入的位置，只能插入表的最后</p>
 <p>删除单列</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP [COLUMN] 列名称</span><br></pre></td></tr></table></figure>
