@@ -93,7 +93,7 @@
 <meta property="og:description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-09-sql-1/sql-1.png">
-<meta property="og:updated_time" content="2017-12-13T14:29:20.000Z">
+<meta property="og:updated_time" content="2017-12-13T15:51:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 基础（一）">
 <meta name="twitter:description" content="以下为 MYSQL 数据库的语法，部分不适用于其他数据库。 数据类型在 MySQL 中，有三种主要的类型：文本、数字和日期/时间类型。">
@@ -453,16 +453,12 @@
 </tbody>
 </table>
 <p>注：即便 DATETIME 和 TIMESTAMP 返回相同的格式，它们的工作方式很不同。在 INSERT 或 UPDATE 查询中，TIMESTAMP 自动把自身设置为当前的日期和时间。TIMESTAMP 也接受不同的格式，比如 YYYYMMDDHHMMSS、YYMMDDHHMMSS、YYYYMMDD 或 YYMMDD。</p>
-<h3 id="选取数据"><a href="#选取数据" class="headerlink" title="选取数据"></a>选取数据</h3><h4 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称  </span><br><span class="line">SELECT DISTINCT 列名称 FROM 表名称</span><br></pre></td></tr></table></figure>
-<h4 id="SELECT-…-LIMIT"><a href="#SELECT-…-LIMIT" class="headerlink" title="SELECT … LIMIT"></a>SELECT … LIMIT</h4><p>等价于其他数据库中的 SELECT TOP</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 LIMIT 开始行的下标 行数</span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM TABLE LIMIT 5; // 返回前 5 行</span><br><span class="line">SELECT * FROM TABLE LIMIT 5,10; // 返回 6-15 行</span><br></pre></td></tr></table></figure>
-<h4 id="INSERT-INTO"><a href="#INSERT-INTO" class="headerlink" title="INSERT INTO"></a>INSERT INTO</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名称 VALUE[S] (值1, 值2,....)  </span><br><span class="line">INSERT INTO 表名称 (列1, 列2,...) VALUE[S] (值1, 值2,....)</span><br></pre></td></tr></table></figure>
+<h2 id="选取数据"><a href="#选取数据" class="headerlink" title="选取数据"></a>选取数据</h2><h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称  </span><br><span class="line">SELECT DISTINCT 列名称 FROM 表名称</span><br></pre></td></tr></table></figure>
+<h3 id="INSERT-INTO"><a href="#INSERT-INTO" class="headerlink" title="INSERT INTO"></a>INSERT INTO</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名称 VALUE[S] (值1, 值2,....)  </span><br><span class="line">INSERT INTO 表名称 (列1, 列2,...) VALUE[S] (值1, 值2,....)</span><br></pre></td></tr></table></figure>
 <p>注：可以写做 VALUES，也可以写做 VALUE。当数据量较少时，使用 VALUES 效率较高，反之相反。</p>
-<h4 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</span><br></pre></td></tr></table></figure>
-<h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名称 WHERE 列名称 = 值</span><br><span class="line">DELETE * FROM 表名称 WHERE 列名称 = 值</span><br></pre></td></tr></table></figure>
-<h4 id="WHERE-子句"><a href="#WHERE-子句" class="headerlink" title="WHERE 子句"></a>WHERE 子句</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 表达式 </span><br><span class="line">其中，表达式 = 列 运算符 值</span><br></pre></td></tr></table></figure>
+<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</span><br></pre></td></tr></table></figure>
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名称 WHERE 列名称 = 值</span><br><span class="line">DELETE * FROM 表名称 WHERE 列名称 = 值</span><br></pre></td></tr></table></figure>
+<h3 id="WHERE-子句"><a href="#WHERE-子句" class="headerlink" title="WHERE 子句"></a>WHERE 子句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 WHERE 表达式 </span><br><span class="line">其中，表达式 = 列 运算符 值</span><br></pre></td></tr></table></figure>
 <p>运算符：</p>
 <table>
 <thead>
@@ -573,13 +569,31 @@
 </tr>
 </tbody>
 </table>
+<p><strong>GROUP BY</strong></p>
+<p>GROUP BY 语句根据一个或多个列对结果集进行分组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[GROUP BY &#123;列名称|位置&#125; [ASD|DESC], ...]</span><br></pre></td></tr></table></figure>
+<p>多个分组条件以逗号分隔。<br>位置是指字段的顺序位置，建议使用列名称。</p>
+<p><strong>HAVING</strong></p>
+<p>HAVING 与 GROUP BY 搭配使用，指明了分组的条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[HAVING where &#123;列名称|位置&#125; [ASD|DESC], ...]</span><br></pre></td></tr></table></figure>
+<p>注：使用 HAVING 进行分组时，要么为聚合函数，要么字段必须出现在 SELECT 语句中。即必须保证返回结果为一个数，而非一列。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 会报错</span><br><span class="line">SELECT sex FROM users GROUP BY 1 HAVING age &gt; 35</span><br><span class="line"></span><br><span class="line">// 使用聚合函数</span><br><span class="line">SELECT sex FROM users GROUP BY 1 HAVING count(id) &gt; 35</span><br></pre></td></tr></table></figure>
 <p><strong>ORDER BY</strong>   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 ORDER BY 列名称 [DESC]</span><br></pre></td></tr></table></figure>
+<p>对查询结果进行排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ORDER BY &#123;列名称｜表达式｜位置&#125;] [ASD｜DESC], ...]</span><br></pre></td></tr></table></figure>
 <p>注：  </p>
 <ol>
-<li>只有 ORDER BY 的列是按顺序排列的，剩下列是自然排序的  </li>
-<li>数值为 NULL 的记录，被认为是最小的。因此升序排列时 null 值默认排在最前，反之相反</li>
+<li>只有 ORDER BY 的列是按顺序排列的，剩下列是按插入顺序排列的  </li>
+<li>数值为 NULL 的记录，被认为是最小的。因此升序排列时 NULL 值默认排在最前，反之相反</li>
 </ol>
+<p><strong>LIMIT</strong></p>
+<p>限制查询结果返回的数量，等价于其他数据库中的 SELECT TOP。</p>
+<p>LIMIT 共有两种语法结构，两种方式是等价的。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[LIMIT &#123;[偏移量,] 记录个数|记录个数 OFFSET 偏移量&#125;]</span><br></pre></td></tr></table></figure>
+<p>注：第一条记录的偏移量是 0。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM TABLE LIMIT 5; // 返回前 5 行</span><br><span class="line">SELECT * FROM TABLE LIMIT 5,10; // 返回 6-15 行</span><br></pre></td></tr></table></figure>
 <h4 id="AS"><a href="#AS" class="headerlink" title="AS"></a>AS</h4><p>AS 为列名称和表名称指定别名（Alias）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 表名的别名</span><br><span class="line">SELECT 列名称 FROM 表名称 AS 别名</span><br><span class="line"></span><br><span class="line">// 列名的别名</span><br><span class="line">SELECT 列名称 AS 别名 FROM 表名称</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
@@ -591,20 +605,20 @@
 <li>如果对表设置了别名，那么只能用别名访问表，用原始名称是无法访问的  </li>
 <li>如果对列设置了别名，那么返回的结果中，列名被修改为别名</li>
 </ol>
-<h3 id="合并数据"><a href="#合并数据" class="headerlink" title="合并数据"></a>合并数据</h3><h4 id="INNER-JOIN-…-ON"><a href="#INNER-JOIN-…-ON" class="headerlink" title="INNER JOIN … ON"></a>INNER JOIN … ON</h4><p>JOIN 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。</p>
+<h2 id="合并数据"><a href="#合并数据" class="headerlink" title="合并数据"></a>合并数据</h2><h3 id="INNER-JOIN-…-ON"><a href="#INNER-JOIN-…-ON" class="headerlink" title="INNER JOIN … ON"></a>INNER JOIN … ON</h3><p>JOIN 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 表1名称.表1列名称, 表2名称.表2列名称 FROM 表1名称 INNER JOIN 表2名称 ON 表1名称.表1列名称 ＝ 表2名称.表2列名称</span><br></pre></td></tr></table></figure>
 <p>例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT PERSONS.LASTNAME, PERSONS.FIRSTNAME, ORDERJOIN.ORDERNO FROM PERSONS INNER JOIN ORDERJOIN ON PERSONS.ID_P = ORDERJOIN.ID_P</span><br></pre></td></tr></table></figure></p>
 <p>INNER JOIN … ON 也可以用 WHERE 来代替，例如下面的语句与上面的语句是等价的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT PERSONS.LASTNAME, PERSONS.FIRSTNAME, ORDERJOIN.ORDERNO FROM PERSONS, ORDERJOIN WHERE PERSONS.ID_P = ORDERJOIN.ID_P</span><br></pre></td></tr></table></figure>
-<h4 id="LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON"><a href="#LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON" class="headerlink" title="LEFT JOIN … ON ／ RIGHT JOIN … ON"></a>LEFT JOIN … ON ／ RIGHT JOIN … ON</h4><p>LEFT JOIN 关键字会从左表返回所有的行，即使在右表中没有匹配的行。</p>
+<h3 id="LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON"><a href="#LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON" class="headerlink" title="LEFT JOIN … ON ／ RIGHT JOIN … ON"></a>LEFT JOIN … ON ／ RIGHT JOIN … ON</h3><p>LEFT JOIN 关键字会从左表返回所有的行，即使在右表中没有匹配的行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 表1名称.表1列名称, 表2名称.表2列名称 FROM 表1名称 LEFT JOIN 表2名称 </span><br><span class="line">ON 表1名称.表1列名称 ＝ 表2名称.表2列名称</span><br></pre></td></tr></table></figure>
 <p>返回的顺序以表 2 为准？</p>
 <p>RIGHT JOIN 关键字会右表返回所有的行，即使在左表中没有匹配的行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 表1列名称, 表2列名称 FROM 表1名称 RIGHT JOIN 表2名称 </span><br><span class="line">ON 表1名称.表1列名称 ＝ 表2名称.表2列名称</span><br></pre></td></tr></table></figure>
-<h4 id="FULL-JOIN"><a href="#FULL-JOIN" class="headerlink" title="FULL JOIN"></a>FULL JOIN</h4><p>MYSQL 不支持！</p>
+<h3 id="FULL-JOIN"><a href="#FULL-JOIN" class="headerlink" title="FULL JOIN"></a>FULL JOIN</h3><p>MYSQL 不支持！</p>
 <p>FULL JOIN 会从左表和右表返回所有行。如果左表中的行在右表中没有匹配，或者右表中的行在左表中没有匹配，这些行同样会列出。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 表1列名称, 表2列名称 FROM 表1名称 FULL JOIN 表2名称 </span><br><span class="line">ON 表1名称.表1列名称 ＝ 表2名称.表2列名称</span><br></pre></td></tr></table></figure>
-<h4 id="UNION-／-UNION-ALL"><a href="#UNION-／-UNION-ALL" class="headerlink" title="UNION ／ UNION ALL"></a>UNION ／ UNION ALL</h4><p>UNION 操作符用于合并两个或多个 SELECT 语句的结果集，即合并索引的值。</p>
+<h3 id="UNION-／-UNION-ALL"><a href="#UNION-／-UNION-ALL" class="headerlink" title="UNION ／ UNION ALL"></a>UNION ／ UNION ALL</h3><p>UNION 操作符用于合并两个或多个 SELECT 语句的结果集，即合并索引的值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表1</span><br><span class="line">UNION</span><br><span class="line">SELECT 列名称 FROM 表2</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT E_ID, E_NAME FROM EMPLOYEES_USA </span><br><span class="line">UNION </span><br><span class="line">SELECT E_ID, E_NAME FROM EMPLOYEES_CHINA</span><br></pre></td></tr></table></figure>
@@ -618,9 +632,9 @@
 <li>如果表1和表2的某个索引下有相同的值，则只保留表1的，即 UNION 命令只会选取唯一的值。如果希望保留所有值，则必须使用 <code>UNION ALL</code> 命令：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表1</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT 列名称 FROM 表2</span><br></pre></td></tr></table></figure>
-<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h4 id="CREATE-DATABASE"><a href="#CREATE-DATABASE" class="headerlink" title="CREATE DATABASE"></a>CREATE DATABASE</h4><p>CREATE DATABASE 用于创建数据库。</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><h3 id="CREATE-DATABASE"><a href="#CREATE-DATABASE" class="headerlink" title="CREATE DATABASE"></a>CREATE DATABASE</h3><p>CREATE DATABASE 用于创建数据库。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名称</span><br></pre></td></tr></table></figure>
-<h4 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h4><p>CREATE TABLE 语句用于创建数据库中的表。</p>
+<h3 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h3><p>CREATE TABLE 语句用于创建数据库中的表。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称1 数据类型,</span><br><span class="line">  列名称2 数据类型,</span><br><span class="line">  列名称3 数据类型,</span><br><span class="line">  ....</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -652,16 +666,16 @@
 </tr>
 </tbody>
 </table>
-<h4 id="CREATE-INDEX-CREATE-UNIQUE-INDEX"><a href="#CREATE-INDEX-CREATE-UNIQUE-INDEX" class="headerlink" title="CREATE INDEX / CREATE UNIQUE INDEX"></a>CREATE INDEX / CREATE UNIQUE INDEX</h4><p>CREATE INDEX 语句用于在表中创建索引。<br>在不读取整个表的情况下，索引使数据库应用程序可以更快地查找数据。<br>注释：更新一个包含索引的表需要比更新一个没有索引的表更多的时间，这是由于索引本身也需要更新。因此，理想的做法是仅仅在常常被搜索的列（以及表）上面创建索引。</p>
+<h3 id="CREATE-INDEX-CREATE-UNIQUE-INDEX"><a href="#CREATE-INDEX-CREATE-UNIQUE-INDEX" class="headerlink" title="CREATE INDEX / CREATE UNIQUE INDEX"></a>CREATE INDEX / CREATE UNIQUE INDEX</h3><p>CREATE INDEX 语句用于在表中创建索引。<br>在不读取整个表的情况下，索引使数据库应用程序可以更快地查找数据。<br>注释：更新一个包含索引的表需要比更新一个没有索引的表更多的时间，这是由于索引本身也需要更新。因此，理想的做法是仅仅在常常被搜索的列（以及表）上面创建索引。</p>
 <p>创建表时，可以用 KEY 关键词来创建索引：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  KEY (列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>如果表已经存在，则使用 CREATE 关键字：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX 索引名称 ON 表名称 (列名称)</span><br></pre></td></tr></table></figure>
 <p>CREATE UNIQUE INDEX 表示创建唯一的索引。唯一的索引意味着两个行不能拥有相同的索引值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX 索引名称 ON 表名称 (列名称)</span><br></pre></td></tr></table></figure>
-<h4 id="CREATE-VIEW"><a href="#CREATE-VIEW" class="headerlink" title="CREATE VIEW"></a>CREATE VIEW</h4><p>VIEW（视图）是基于 SQL 语句的结果集的可视化的表。</p>
+<h3 id="CREATE-VIEW"><a href="#CREATE-VIEW" class="headerlink" title="CREATE VIEW"></a>CREATE VIEW</h3><p>VIEW（视图）是基于 SQL 语句的结果集的可视化的表。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 创建视图</span><br><span class="line">CREATE VIEW 视图名称 AS SELECT 列名称 FROM 表名称 WHERE 表达式</span><br><span class="line"></span><br><span class="line">// 使用视图</span><br><span class="line">SELECT * FROM 视图名称</span><br><span class="line"></span><br><span class="line">// 更新视图</span><br><span class="line">CREATE OR REPLACE VIEW 视图名称 AS SELECT 列名称1, [列名称2 ...] FROM 表名称 WHERE 表达式</span><br><span class="line"></span><br><span class="line">// 删除</span><br><span class="line">DROP VIEW [IF EXISTS] 视图名称1 [,视图名称2 ...]</span><br></pre></td></tr></table></figure>
-<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><p>约束用于限制加入表的数据的类型。</p>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>约束用于限制加入表的数据的类型。</p>
 <p>可以在创建表时规定约束（通过 CREATE TABLE 语句），或者在表创建之后也可以（通过 ALTER TABLE 语句）。</p>
 <p><strong>列级约束：</strong><br>对一个数据建立的约束<br>列级约束既可以在列定义时声明，也可以在列定义后声明</p>
 <ul>
@@ -679,14 +693,14 @@
 <p>NOT NULL 约束强制字段始终包含值。这意味着，如果不向字段添加值，就无法插入新记录或者更新记录。否则，会报错 <code>Field xxx doesn&#39;t have a default value</code></p>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Persons</span><br><span class="line">(</span><br><span class="line">  列名称1 数据类型 NOT NULL,</span><br><span class="line">  ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="UNIQUE"><a href="#UNIQUE" class="headerlink" title="UNIQUE"></a>UNIQUE</h4><p>UNIQUE 约束唯一标识数据库表中的每条记录，即设置了 UNIQUE 约束的列只能有唯一的值，无法添加重复的值。</p>
+<h3 id="UNIQUE"><a href="#UNIQUE" class="headerlink" title="UNIQUE"></a>UNIQUE</h3><p>UNIQUE 约束唯一标识数据库表中的每条记录，即设置了 UNIQUE 约束的列只能有唯一的值，无法添加重复的值。</p>
 <p>UNIQUE 和 PRIMARY KEY 约束均为列或列集合提供了唯一性的保证。</p>
 <p>PRIMARY KEY 拥有自动定义的 UNIQUE 约束。</p>
 <p>注：每个表可以有多个 UNIQUE 约束，但是每个表只能有一个 PRIMARY KEY 约束。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  UNIQUE (列名称1, 列名称2, ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>创建表时，为 UNIQUE 约束命名：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  CONSTRAINT 约束名称 UNIQUE (列名称1, 列名称2, ...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h4><p>PRIMARY KEY（主键）约束唯一标识数据库表中的每条记录。注：主键创建的同时会自动创建索引</p>
+<h3 id="PRIMARY-KEY"><a href="#PRIMARY-KEY" class="headerlink" title="PRIMARY KEY"></a>PRIMARY KEY</h3><p>PRIMARY KEY（主键）约束唯一标识数据库表中的每条记录。注：主键创建的同时会自动创建索引</p>
 <p>主键必须包含唯一的值。</p>
 <p>主键列不能包含 NULL 值。</p>
 <p>每个表都应该有一个主键，并且每个表只能有一个主键。</p>
@@ -709,14 +723,14 @@
 <li>NO ACTION：标准 SQL 的关键字，在 MySQL 中与 RESTRICT 相同</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表2名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  [CONSTRAINT 约束名称] </span><br><span class="line">  FOREIGN KEY (外键列名称1, 外键列名称2, ...) </span><br><span class="line">  REFERENCES 表1名称(主键列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="CHECK"><a href="#CHECK" class="headerlink" title="CHECK"></a>CHECK</h4><p>CHECK 约束用于限制列中的值的范围。</p>
+<h3 id="CHECK"><a href="#CHECK" class="headerlink" title="CHECK"></a>CHECK</h3><p>CHECK 约束用于限制列中的值的范围。</p>
 <p>如果对单个列定义 CHECK 约束，那么该列只允许特定的值。</p>
 <p>如果对一个表定义 CHECK 约束，那么此约束会在特定的列中对值进行限制。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型,</span><br><span class="line">  ...</span><br><span class="line">  [CONSTRAINT 约束名称] CHECK (表达式)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>注：<br>所有的存储引擎均对 CHECK 子句进行分析，但是忽略 CHECK 子句。因此，CHECK 语句并不起作用。<br>解决方法就是用 Trigger 触发器, 在触发器中利用一个出错的语句来中断代码的执行.</p>
-<h4 id="DEFAULT"><a href="#DEFAULT" class="headerlink" title="DEFAULT"></a>DEFAULT</h4><p>DEFAULT 约束用于向列中插入默认值。<br>如果没有规定其他的值，那么会将默认值添加到所有的新记录。 </p>
+<h3 id="DEFAULT"><a href="#DEFAULT" class="headerlink" title="DEFAULT"></a>DEFAULT</h3><p>DEFAULT 约束用于向列中插入默认值。<br>如果没有规定其他的值，那么会将默认值添加到所有的新记录。 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型 DEFAULT 默认值／函数,</span><br><span class="line">  ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h3><h4 id="添加-删除列"><a href="#添加-删除列" class="headerlink" title="添加/删除列"></a>添加/删除列</h4><p>ALTER TABLE 语句用于在已有的表中添加、修改或删除列。</p>
+<h2 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h2><h3 id="添加-删除列"><a href="#添加-删除列" class="headerlink" title="添加/删除列"></a>添加/删除列</h3><p>ALTER TABLE 语句用于在已有的表中添加、修改或删除列。</p>
 <p>添加单列</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [COLUMN] 列名称 数据类型 [FIRST|AFTER 列名称]</span><br></pre></td></tr></table></figure>
 <p>添加多列</p>
@@ -726,7 +740,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP [COLUMN] 列名称</span><br></pre></td></tr></table></figure>
 <p>删除多列</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP [COLUMN] 列名称1, DROP [COLUMN] 列名称2, ...</span><br></pre></td></tr></table></figure>
-<h4 id="添加-删除约束"><a href="#添加-删除约束" class="headerlink" title="添加/删除约束"></a>添加/删除约束</h4><p>添加 PRIMARY KEY:</p>
+<h3 id="添加-删除约束"><a href="#添加-删除约束" class="headerlink" title="添加/删除约束"></a>添加/删除约束</h3><p>添加 PRIMARY KEY:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ADD [CONSTRAINT 约束名称] PRIMARY KEY [索引类型] (列名称1, 列名称2, ...)</span><br></pre></td></tr></table></figure>
 <p>注：索引类型包括 hash 索引和 B-tree 索引</p>
 <p>添加 UNIQUE:</p>
@@ -749,7 +763,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ALTER [COLUMN] 列名称 DROP DEFAULT</span><br></pre></td></tr></table></figure>
 <p>删除 CHECK： </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP CHECK 约束名称</span><br></pre></td></tr></table></figure>
-<h4 id="修改列定义"><a href="#修改列定义" class="headerlink" title="修改列定义"></a>修改列定义</h4><p>列定义包括数据类型、位置等</p>
+<h3 id="修改列定义"><a href="#修改列定义" class="headerlink" title="修改列定义"></a>修改列定义</h3><p>列定义包括数据类型、位置等</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 MODIFY [COLUMN] 列名称 数据类型 [FIRST|AFTER 列名称]</span><br></pre></td></tr></table></figure>
 <p>修改列名称：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 CHANGE [COLUMN] 原列名称 新列名称 数据类型 [FIRST|AFTER 列名称]</span><br></pre></td></tr></table></figure>
@@ -758,12 +772,12 @@
 <li>修改数据类型后可能导致数据丢失。</li>
 <li>CHANGE 比 MODIFIY 功能更强大</li>
 </ul>
-<h4 id="修改数据表-1"><a href="#修改数据表-1" class="headerlink" title="修改数据表"></a>修改数据表</h4><p>修改表名称</p>
+<h3 id="修改数据表-1"><a href="#修改数据表-1" class="headerlink" title="修改数据表"></a>修改数据表</h3><p>修改表名称</p>
 <p>方法一：修改单个表名称</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 RENAME [TO|AS] 新表名称</span><br></pre></td></tr></table></figure>
 <p>方法二：修改单个或多个表名称</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 TO 新表名称 [, 表2名称，新表2名称, ...]</span><br></pre></td></tr></table></figure>
-<h3 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h3><h4 id="插入记录"><a href="#插入记录" class="headerlink" title="插入记录"></a>插入记录</h4><p><strong>方法一: INSERT…VALUES </strong></p>
+<h2 id="记录操作-－-单表操作"><a href="#记录操作-－-单表操作" class="headerlink" title="记录操作 － 单表操作"></a>记录操作 － 单表操作</h2><h3 id="INSERT-插入记录"><a href="#INSERT-插入记录" class="headerlink" title="INSERT 插入记录"></a>INSERT 插入记录</h3><p><strong>方法一: INSERT…VALUES </strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT [INTO] 表名称 [(列名称1, 列名称2, ...)] </span><br><span class="line">&#123;VALUES|VALUE&#125; (&#123;数值|函数|数学表达式|DEFAULT&#125;, ...), (...)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果省略 <code>(列名称1, 列名称2, ...)</code>，则表示每个字段都需要被赋值。</li>
@@ -771,45 +785,25 @@
 </ul>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 赋值数学表达式</span><br><span class="line">INSERT table VALUES (&apos;1&apos;, 3*7-1, ...)</span><br><span class="line"></span><br><span class="line">// 赋值默认值</span><br><span class="line">INSERT table VALUES (DEFAULT, 3*7-1, ...)</span><br><span class="line"></span><br><span class="line">// 赋值多条记录</span><br><span class="line">INSERT table VALUES (DEFAULT, 3*7-1, ...),(&apos;1&apos;, md5(123), ...)</span><br></pre></td></tr></table></figure>
-<p><strong>方法二: INSERT…SET </strong></p>
+<p><strong>方法二: INSERT…SET</strong></p>
 <p>与第一种方式的区别在于此方法可以使用子查询（SubQuery），比较运算符的子查询，此外，该方法只能插入一条记录，无法插入多条记录。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT [INTO] 表名称 </span><br><span class="line">SET 列名称 = &#123;表达式 | DEFAULT&#125;, ...</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT table SET username=&apos;Ben&apos;, password=&apos;456&apos;</span><br></pre></td></tr></table></figure>
-<p><strong>方法三: INSERT…SELECT </strong></p>
-<p>此方法可以将查询结果插入到指定数据表。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT [INTO] 表名称 [(列1名称, 列2名称, ...)] </span><br><span class="line">SELECT ...</span><br></pre></td></tr></table></figure>
-<h4 id="修改记录-1"><a href="#修改记录-1" class="headerlink" title="修改记录"></a>修改记录</h4><p><strong>单表更新</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT table SET username=&apos;Ben&apos;, password=&apos;456&apos;;</span><br></pre></td></tr></table></figure>
+<p>注：可以引发子查询是因为使用了比较运算符，参见“子查询”部分内容。</p>
+<p><strong>方法三: INSERT…SELECT</strong></p>
+<p>此为多表操作！！！！<br>参见下面多表部分</p>
+<h3 id="UPDATE-修改记录"><a href="#UPDATE-修改记录" class="headerlink" title="UPDATE 修改记录"></a>UPDATE 修改记录</h3><p><strong>单表更新</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE [LOW_PRIORITY] [IGNORE] 表索引 </span><br><span class="line">SET 列1名称=&#123;表达式1｜DEFAULT&#125; [, 列2名称=&#123;表达式2｜DEFAULT&#125;, ... ] </span><br><span class="line">[WHERE 条件语句]</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 字段 age 每个记录加 5</span><br><span class="line">UPDATE table SET age = age + 5</span><br><span class="line"></span><br><span class="line">// 字段 age 每个记录 - id 的值，sex 设为 0</span><br><span class="line">UPDATE table SET age = age - id, sex = 0</span><br><span class="line"></span><br><span class="line">// id 字段为偶数的 age 字段每个记录+10</span><br><span class="line">UPDATE table SET age = age + 10 WHERE id % 2 = 0</span><br></pre></td></tr></table></figure>
-<p><strong>多表更新</strong></p>
-<h4 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h4><p><strong>单表删除</strong></p>
+<h3 id="DELETE-删除记录"><a href="#DELETE-删除记录" class="headerlink" title="DELETE 删除记录"></a>DELETE 删除记录</h3><p><strong>单表删除</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM 表名称 [WHERE 条件语句]</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 删除第 6 条记录</span><br><span class="line">DELETE FROM users WHERE id = 6</span><br></pre></td></tr></table></figure>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h4><p>删除索引：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP INDEX 索引名称</span><br></pre></td></tr></table></figure>
-<p>删除表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE 表名称</span><br></pre></td></tr></table></figure>
-<p>删除数据库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE 数据库名称</span><br></pre></td></tr></table></figure>
-<h4 id="TRUNCATE-TABLE"><a href="#TRUNCATE-TABLE" class="headerlink" title="TRUNCATE TABLE"></a>TRUNCATE TABLE</h4><p>TRUNCATE TABLE 清空表内的数据，但并不删除表本身。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRUNCATE TABLE 表名称</span><br></pre></td></tr></table></figure>
-<h4 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO INCREMENT"></a>AUTO INCREMENT</h4><p>AUTO INCREMENT 自动地创建（主）键字段的值。  </p>
-<ul>
-<li>AUTO INCREMENT 的字段必须为索引（KEY）</li>
-<li>AUTO INCREMENT 的字段必须为 INT 类型</li>
-<li>一个表只能有一个 AUTO INCREMENT 字段</li>
-<li>默认地，AUTO_INCREMENT 的开始值是 1，每条新记录递增 1。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型 AUTO_INCREMENT,</span><br><span class="line">  ...</span><br><span class="line">  [PRIMARY] KEY (列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>要让 AUTO_INCREMENT 序列以其他的值起始，使用下列 SQL 语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 AUTO_INCREMENT=起始值</span><br></pre></td></tr></table></figure>
-<h4 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h4><p>NULL 用作未知的或不适用的值的占位符。<br>如果表中的某个列是可选的且未赋值，则该字段将以 NULL 值保存。</p>
-<p>无法使用比较运算符来测试 NULL 值，比如 =, &lt;, 或者 &lt;&gt;。必须使用 IS NULL 和 IS NOT NULL 操作符。</p>
-<p>注：NULL 和 0 是不等价的。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="SELECT-1"><a href="#SELECT-1" class="headerlink" title="SELECT"></a>SELECT</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT 查询表达式 [, 查询表达式] </span><br><span class="line">[</span><br><span class="line">  FROM 表索引</span><br><span class="line">  [WHERE 条件语句]</span><br><span class="line">  [GROUP BY &#123;列名称|位置&#125; [ASC|DESC], ...]</span><br><span class="line">  [HAVING 条件语句]</span><br><span class="line">  [ORDER BY &#123;列名称｜表达式｜位置&#125; [ASC|DESC], ...]</span><br><span class="line">  [LIMIT &#123;[起始位置,] 行数| 行数 OFFSET 位置&#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>多表删除</strong></p>
+<h3 id="SELECT-查询记录"><a href="#SELECT-查询记录" class="headerlink" title="SELECT 查询记录"></a>SELECT 查询记录</h3><p>查询表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT 查询表达式 [, 查询表达式] </span><br><span class="line">[</span><br><span class="line">  FROM 表索引</span><br><span class="line">  [WHERE 条件语句]</span><br><span class="line">  [GROUP BY &#123;列名称|位置&#125; [ASC|DESC], ...]</span><br><span class="line">  [HAVING 条件语句]</span><br><span class="line">  [ORDER BY &#123;列名称｜表达式｜位置&#125; [ASC|DESC], ...]</span><br><span class="line">  [LIMIT &#123;[偏移位置,] 行数| 行数 OFFSET 位置&#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>查询表达式：</p>
 <ul>
 <li>每一个表达式表示想要的一列，必须至少有一个</li>
@@ -819,7 +813,94 @@
 </ul>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 查找函数</span><br><span class="line">SELECT NOW()</span><br><span class="line"></span><br><span class="line">// 查找表达式</span><br><span class="line">SELECT 3+5</span><br><span class="line"></span><br><span class="line">// 省略 AS，username 是 id 的别名，易混淆，不要省略 AS</span><br><span class="line">SELECT id username FROM users</span><br></pre></td></tr></table></figure>
-
+<h2 id="记录操作-－-多表操作"><a href="#记录操作-－-多表操作" class="headerlink" title="记录操作 － 多表操作"></a>记录操作 － 多表操作</h2><h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p>子查询（SubQuery）是指出现在其他 SQL 语句内的 SELECT 子句。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t1 WHERE col1 = (SELECT col2 FROM t2)</span><br></pre></td></tr></table></figure>
+<p>其中，<code>SELECT * FROM t1</code> 称为 Outer Query，<code>SELECT col2 FROM t2</code> 称为 SubQuery。</p>
+<ul>
+<li>子查询是指嵌套在查询内部，必须始终出现在圆括号内。</li>
+<li>子查询可以包含多个关键字或条件，如 DISTINCT, GROUP BY, ORDER BY, LIMIT, 函数等。</li>
+<li>子查询的外层查询可以是 SELECT, INSERT, UPDATE, SET 或 DO。</li>
+<li>子查询可以返回标量、一行、一列或子查询。</li>
+</ul>
+<h4 id="使用比较运算符的子查询"><a href="#使用比较运算符的子查询" class="headerlink" title="使用比较运算符的子查询"></a>使用比较运算符的子查询</h4><p>比较运算符包括 =、&gt;、&lt;、&gt;=、&lt;=、&lt;&gt;、!=、&lt;=&gt;。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT goods_id, goods_name, goods_price FROM tdb_goods WHERE goods_price &gt; (SELECT ROUND(AVG(goods_price)) FROM tdb_goods)</span><br></pre></td></tr></table></figure>
+<p>如果子查询的返回结果为多行，可以使用 ANY、SOME 或 ALL 关键字进行修饰。ANY 与 SOME 等价，表示符合其中之一即可。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">ANY</th>
+<th style="text-align:left">SOME</th>
+<th style="text-align:left">ALL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&gt;、&gt;=</td>
+<td style="text-align:left">最小值</td>
+<td style="text-align:left">最小值</td>
+<td style="text-align:left">最大值</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;、&lt;=</td>
+<td style="text-align:left">最大值</td>
+<td style="text-align:left">最大值</td>
+<td style="text-align:left">最小值</td>
+</tr>
+<tr>
+<td style="text-align:left">=</td>
+<td style="text-align:left">任意值</td>
+<td style="text-align:left">任意值</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;&gt;、!=</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">任意值</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT goods_id, goods_name, goods_price FROM tdb_goods</span><br><span class="line">WHERE goods_price &gt; SOME(SELECT goods_price FROM tdb_goods)</span><br></pre></td></tr></table></figure>
+<h4 id="使用-NOT-IN-的子查询"><a href="#使用-NOT-IN-的子查询" class="headerlink" title="使用 [NOT] IN 的子查询"></a>使用 [NOT] IN 的子查询</h4><p>=ANY 运算符与 IN 等价<br>!=ALL 或 &lt;&gt;ALL 与 NOT IN 等价</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 下面两种写法等价</span><br><span class="line">SELECT goods_id, goods_name, goods_price FROM tdb_goods</span><br><span class="line">WHERE goods_price != ALL(SELECT goods_price FROM tdb_goods)</span><br><span class="line"></span><br><span class="line">SELECT goods_id, goods_name, goods_price FROM tdb_goods</span><br><span class="line">WHERE goods_price NOT IN (SELECT goods_price FROM tdb_goods)</span><br></pre></td></tr></table></figure>
+<h4 id="使用-NOT-EXIST-的子查询"><a href="#使用-NOT-EXIST-的子查询" class="headerlink" title="使用 [NOT] EXIST 的子查询"></a>使用 [NOT] EXIST 的子查询</h4><p>如果子查询返回任何行，EXISTS 将返回 TRUE；否则返回 FALSE</p>
+<h3 id="INSERT-插入记录-1"><a href="#INSERT-插入记录-1" class="headerlink" title="INSERT 插入记录"></a>INSERT 插入记录</h3><p><strong>INSERT…SELECT</strong></p>
+<p>INSERT…SELECT 可以将一个表中的查询结果写入另一个表中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT [INTO] 表名称 [(列1名称, 列2名称, ...)] </span><br><span class="line">SELECT ...</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 将一个(users)表中的记录写入另一个(test)表</span><br><span class="line">INSERT test(username) SELECT username FROM users WHERE age &gt;=30</span><br></pre></td></tr></table></figure>
+<p>注：由于 test 是一个字段，因此必须保证 SELECT 得到的结果集也是一个字段。</p>
+<h3 id="UPDATE-修改记录-1"><a href="#UPDATE-修改记录-1" class="headerlink" title="UPDATE 修改记录"></a>UPDATE 修改记录</h3><p>多表的更新是指，参照一个表更新另一个表的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 参照表关系</span><br><span class="line">SET 列1名称 = &#123;表达式｜DEFAULT&#125;</span><br><span class="line">[, 列2名称 = &#123;表达式｜DEFAULT&#125; ...]</span><br><span class="line">[WHERE 条件语句]</span><br></pre></td></tr></table></figure>
+<p>其中，参照表关系的语法结构为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表1 </span><br><span class="line">&#123;[INNER|CROSS] JOIN | &#123;LEFT|RIGHT&#125; [OUTER] JOIN&#125;</span><br><span class="line">表2</span><br><span class="line">ON 条件表达式</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 将 tdb_goods 表的 goods_cate 字段更新为 tdb_goods_cates 表的 cate_id 字段值，其中两个表之间 goods_cate 与 goods_name 具有参照关系</span><br><span class="line">UPDATE tdb_goods INNER JOIN tdb_goods_cates ON goods_cate = goods_name </span><br><span class="line">SET goods_cate = cate_id</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h3><p>删除索引：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 DROP INDEX 索引名称</span><br></pre></td></tr></table></figure>
+<p>删除表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE 表名称</span><br></pre></td></tr></table></figure>
+<p>删除数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE 数据库名称</span><br></pre></td></tr></table></figure>
+<h3 id="TRUNCATE-TABLE"><a href="#TRUNCATE-TABLE" class="headerlink" title="TRUNCATE TABLE"></a>TRUNCATE TABLE</h3><p>TRUNCATE TABLE 清空表内的数据，但并不删除表本身。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRUNCATE TABLE 表名称</span><br></pre></td></tr></table></figure>
+<h3 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO INCREMENT"></a>AUTO INCREMENT</h3><p>AUTO INCREMENT 自动地创建（主）键字段的值。  </p>
+<ul>
+<li>AUTO INCREMENT 的字段必须为索引（KEY）</li>
+<li>AUTO INCREMENT 的字段必须为 INT 类型</li>
+<li>一个表只能有一个 AUTO INCREMENT 字段</li>
+<li>默认地，AUTO_INCREMENT 的开始值是 1，每条新记录递增 1。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称</span><br><span class="line">(</span><br><span class="line">  列名称 数据类型 AUTO_INCREMENT,</span><br><span class="line">  ...</span><br><span class="line">  [PRIMARY] KEY (列名称)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>要让 AUTO_INCREMENT 序列以其他的值起始，使用下列 SQL 语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 AUTO_INCREMENT=起始值</span><br></pre></td></tr></table></figure>
+<h3 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h3><p>NULL 用作未知的或不适用的值的占位符。<br>如果表中的某个列是可选的且未赋值，则该字段将以 NULL 值保存。</p>
+<p>无法使用比较运算符来测试 NULL 值，比如 =, &lt;, 或者 &lt;&gt;。必须使用 IS NULL 和 IS NOT NULL 操作符。</p>
+<p>注：NULL 和 0 是不等价的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
       
     </div>
 
@@ -974,7 +1055,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选取数据"><span class="nav-number">1.1.</span> <span class="nav-text">选取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SELECT"><span class="nav-number">1.1.1.</span> <span class="nav-text">SELECT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SELECT-…-LIMIT"><span class="nav-number">1.1.2.</span> <span class="nav-text">SELECT … LIMIT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#INSERT-INTO"><span class="nav-number">1.1.3.</span> <span class="nav-text">INSERT INTO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UPDATE"><span class="nav-number">1.1.4.</span> <span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DELETE"><span class="nav-number">1.1.5.</span> <span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE-子句"><span class="nav-number">1.1.6.</span> <span class="nav-text">WHERE 子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AS"><span class="nav-number">1.1.7.</span> <span class="nav-text">AS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并数据"><span class="nav-number">1.2.</span> <span class="nav-text">合并数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#INNER-JOIN-…-ON"><span class="nav-number">1.2.1.</span> <span class="nav-text">INNER JOIN … ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON"><span class="nav-number">1.2.2.</span> <span class="nav-text">LEFT JOIN … ON ／ RIGHT JOIN … ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FULL-JOIN"><span class="nav-number">1.2.3.</span> <span class="nav-text">FULL JOIN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNION-／-UNION-ALL"><span class="nav-number">1.2.4.</span> <span class="nav-text">UNION ／ UNION ALL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建"><span class="nav-number">1.3.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-DATABASE"><span class="nav-number">1.3.1.</span> <span class="nav-text">CREATE DATABASE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-TABLE"><span class="nav-number">1.3.2.</span> <span class="nav-text">CREATE TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-INDEX-CREATE-UNIQUE-INDEX"><span class="nav-number">1.3.3.</span> <span class="nav-text">CREATE INDEX / CREATE UNIQUE INDEX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE-VIEW"><span class="nav-number">1.3.4.</span> <span class="nav-text">CREATE VIEW</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束"><span class="nav-number">1.4.</span> <span class="nav-text">约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NOT-NULL"><span class="nav-number">1.4.1.</span> <span class="nav-text">NOT NULL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNIQUE"><span class="nav-number">1.4.2.</span> <span class="nav-text">UNIQUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PRIMARY-KEY"><span class="nav-number">1.4.3.</span> <span class="nav-text">PRIMARY KEY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FOREIGN-KEY"><span class="nav-number">1.4.4.</span> <span class="nav-text">FOREIGN KEY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CHECK"><span class="nav-number">1.4.5.</span> <span class="nav-text">CHECK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DEFAULT"><span class="nav-number">1.4.6.</span> <span class="nav-text">DEFAULT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改数据表"><span class="nav-number">1.5.</span> <span class="nav-text">修改数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-删除列"><span class="nav-number">1.5.1.</span> <span class="nav-text">添加/删除列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加-删除约束"><span class="nav-number">1.5.2.</span> <span class="nav-text">添加/删除约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改列定义"><span class="nav-number">1.5.3.</span> <span class="nav-text">修改列定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改数据表-1"><span class="nav-number">1.5.4.</span> <span class="nav-text">修改数据表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改记录"><span class="nav-number">1.6.</span> <span class="nav-text">修改记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入记录"><span class="nav-number">1.6.1.</span> <span class="nav-text">插入记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改记录-1"><span class="nav-number">1.6.2.</span> <span class="nav-text">修改记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除记录"><span class="nav-number">1.6.3.</span> <span class="nav-text">删除记录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.7.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DROP"><span class="nav-number">1.7.1.</span> <span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TRUNCATE-TABLE"><span class="nav-number">1.7.2.</span> <span class="nav-text">TRUNCATE TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AUTO-INCREMENT"><span class="nav-number">1.7.3.</span> <span class="nav-text">AUTO INCREMENT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NULL"><span class="nav-number">1.7.4.</span> <span class="nav-text">NULL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.8.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SELECT-1"><span class="nav-number">1.8.1.</span> <span class="nav-text">SELECT</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选取数据"><span class="nav-number">2.</span> <span class="nav-text">选取数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT"><span class="nav-number">2.1.</span> <span class="nav-text">SELECT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT-INTO"><span class="nav-number">2.2.</span> <span class="nav-text">INSERT INTO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UPDATE"><span class="nav-number">2.3.</span> <span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DELETE"><span class="nav-number">2.4.</span> <span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WHERE-子句"><span class="nav-number">2.5.</span> <span class="nav-text">WHERE 子句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AS"><span class="nav-number">2.5.1.</span> <span class="nav-text">AS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并数据"><span class="nav-number">3.</span> <span class="nav-text">合并数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#INNER-JOIN-…-ON"><span class="nav-number">3.1.</span> <span class="nav-text">INNER JOIN … ON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LEFT-JOIN-…-ON-／-RIGHT-JOIN-…-ON"><span class="nav-number">3.2.</span> <span class="nav-text">LEFT JOIN … ON ／ RIGHT JOIN … ON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FULL-JOIN"><span class="nav-number">3.3.</span> <span class="nav-text">FULL JOIN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNION-／-UNION-ALL"><span class="nav-number">3.4.</span> <span class="nav-text">UNION ／ UNION ALL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">4.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CREATE-DATABASE"><span class="nav-number">4.1.</span> <span class="nav-text">CREATE DATABASE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CREATE-TABLE"><span class="nav-number">4.2.</span> <span class="nav-text">CREATE TABLE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CREATE-INDEX-CREATE-UNIQUE-INDEX"><span class="nav-number">4.3.</span> <span class="nav-text">CREATE INDEX / CREATE UNIQUE INDEX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CREATE-VIEW"><span class="nav-number">4.4.</span> <span class="nav-text">CREATE VIEW</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#约束"><span class="nav-number">5.</span> <span class="nav-text">约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NOT-NULL"><span class="nav-number">5.0.1.</span> <span class="nav-text">NOT NULL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNIQUE"><span class="nav-number">5.1.</span> <span class="nav-text">UNIQUE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PRIMARY-KEY"><span class="nav-number">5.2.</span> <span class="nav-text">PRIMARY KEY</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FOREIGN-KEY"><span class="nav-number">5.2.1.</span> <span class="nav-text">FOREIGN KEY</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CHECK"><span class="nav-number">5.3.</span> <span class="nav-text">CHECK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEFAULT"><span class="nav-number">5.4.</span> <span class="nav-text">DEFAULT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改数据表"><span class="nav-number">6.</span> <span class="nav-text">修改数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-删除列"><span class="nav-number">6.1.</span> <span class="nav-text">添加/删除列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-删除约束"><span class="nav-number">6.2.</span> <span class="nav-text">添加/删除约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改列定义"><span class="nav-number">6.3.</span> <span class="nav-text">修改列定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改数据表-1"><span class="nav-number">6.4.</span> <span class="nav-text">修改数据表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记录操作-－-单表操作"><span class="nav-number">7.</span> <span class="nav-text">记录操作 － 单表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT-插入记录"><span class="nav-number">7.1.</span> <span class="nav-text">INSERT 插入记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UPDATE-修改记录"><span class="nav-number">7.2.</span> <span class="nav-text">UPDATE 修改记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DELETE-删除记录"><span class="nav-number">7.3.</span> <span class="nav-text">DELETE 删除记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SELECT-查询记录"><span class="nav-number">7.4.</span> <span class="nav-text">SELECT 查询记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记录操作-－-多表操作"><span class="nav-number">8.</span> <span class="nav-text">记录操作 － 多表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询"><span class="nav-number">8.1.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用比较运算符的子查询"><span class="nav-number">8.1.1.</span> <span class="nav-text">使用比较运算符的子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-NOT-IN-的子查询"><span class="nav-number">8.1.2.</span> <span class="nav-text">使用 [NOT] IN 的子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-NOT-EXIST-的子查询"><span class="nav-number">8.1.3.</span> <span class="nav-text">使用 [NOT] EXIST 的子查询</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INSERT-插入记录-1"><span class="nav-number">8.2.</span> <span class="nav-text">INSERT 插入记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UPDATE-修改记录-1"><span class="nav-number">8.3.</span> <span class="nav-text">UPDATE 修改记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">9.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DROP"><span class="nav-number">9.1.</span> <span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TRUNCATE-TABLE"><span class="nav-number">9.2.</span> <span class="nav-text">TRUNCATE TABLE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AUTO-INCREMENT"><span class="nav-number">9.3.</span> <span class="nav-text">AUTO INCREMENT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NULL"><span class="nav-number">9.4.</span> <span class="nav-text">NULL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
