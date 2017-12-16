@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="自定义函数自定义函数(user-defined function, UDF) 是对 MySQL 扩展的途径，其用法与内置函数相同 自定义函数的两个必要条件：  参数：可以有零个或多个 返回值：只能有一个  函数可以返回任意类型的值，同样可以接收这些类型的参数。参数数量不能超过 1024 个 123CREATE FUNC">
+<meta name="description" content="自定义函数自定义函数(user-defined function, UDF) 是对 MySQL 扩展的途径，其用法与内置函数相同 自定义函数的两个必要条件：  参数：可以有零个或多个 返回值：只能有一个  函数可以返回任意类型的值，同样可以接收这些类型的参数。参数数量不能超过 1024 个。">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL 基础（三）">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-16-sql-3/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="自定义函数自定义函数(user-defined function, UDF) 是对 MySQL 扩展的途径，其用法与内置函数相同 自定义函数的两个必要条件：  参数：可以有零个或多个 返回值：只能有一个  函数可以返回任意类型的值，同样可以接收这些类型的参数。参数数量不能超过 1024 个 123CREATE FUNCTION 函数名RETURNS &amp;#123;STRING | INTEGER |">
+<meta property="og:description" content="自定义函数自定义函数(user-defined function, UDF) 是对 MySQL 扩展的途径，其用法与内置函数相同 自定义函数的两个必要条件：  参数：可以有零个或多个 返回值：只能有一个  函数可以返回任意类型的值，同样可以接收这些类型的参数。参数数量不能超过 1024 个。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-16T13:17:12.000Z">
+<meta property="og:updated_time" content="2017-12-16T13:43:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 基础（三）">
-<meta name="twitter:description" content="自定义函数自定义函数(user-defined function, UDF) 是对 MySQL 扩展的途径，其用法与内置函数相同 自定义函数的两个必要条件：  参数：可以有零个或多个 返回值：只能有一个  函数可以返回任意类型的值，同样可以接收这些类型的参数。参数数量不能超过 1024 个 123CREATE FUNCTION 函数名RETURNS &amp;#123;STRING | INTEGER |">
+<meta name="twitter:description" content="自定义函数自定义函数(user-defined function, UDF) 是对 MySQL 扩展的途径，其用法与内置函数相同 自定义函数的两个必要条件：  参数：可以有零个或多个 返回值：只能有一个  函数可以返回任意类型的值，同样可以接收这些类型的参数。参数数量不能超过 1024 个。">
 
 
 
@@ -323,9 +323,10 @@
 <li>参数：可以有零个或多个</li>
 <li>返回值：只能有一个</li>
 </ul>
-<p>函数可以返回任意类型的值，同样可以接收这些类型的参数。<br>参数数量不能超过 1024 个</p>
+<p>函数可以返回任意类型的值，同样可以接收这些类型的参数。<br>参数数量不能超过 1024 个。</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE FUNCTION 函数名</span><br><span class="line">RETURNS &#123;STRING | INTEGER | REAL | DECIMAL&#125;</span><br><span class="line">函数体</span><br></pre></td></tr></table></figure>
-<p>其中，函数体：</p>
+<p>函数体的一些限制：</p>
 <ul>
 <li>由合法的 SQL 语句构成</li>
 <li>可以是简单的 SELECT 或 INSERT 语句</li>
@@ -430,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-12-10-angular-form-2/" rel="next" title="Angular 表单（二）">
-                <i class="fa fa-chevron-left"></i> Angular 表单（二）
+              <a href="/programming/2017-12-10-sql-2/" rel="next" title="SQL 基础（二）">
+                <i class="fa fa-chevron-left"></i> SQL 基础（二）
               </a>
             
           </div>
