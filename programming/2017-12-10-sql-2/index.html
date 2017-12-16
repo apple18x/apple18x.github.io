@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="内建 SQL 函数的语法是： 1SELECT function(列名称) FROM 表名称 函数类型在 SQL 中，基本的函数类型和种类有若干种。函数的基本类型是：  Aggregate （聚合）函数 Scalar 函数  注：以下为 MYSQL 数据库的语法，部分不适用于其他数据库。">
+<meta name="description" content="内建 SQL 函数的语法是： 1SELECT function(列名称) FROM 表名称 在 SQL 中，基本的函数类型和种类有若干种。函数的基本类型是：  Aggregate （聚合）函数 Scalar 函数  注：以下为 MYSQL 数据库的语法，部分不适用于其他数据库。">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL 基础（二）">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-10-sql-2/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="内建 SQL 函数的语法是： 1SELECT function(列名称) FROM 表名称 函数类型在 SQL 中，基本的函数类型和种类有若干种。函数的基本类型是：  Aggregate （聚合）函数 Scalar 函数  注：以下为 MYSQL 数据库的语法，部分不适用于其他数据库。">
+<meta property="og:description" content="内建 SQL 函数的语法是： 1SELECT function(列名称) FROM 表名称 在 SQL 中，基本的函数类型和种类有若干种。函数的基本类型是：  Aggregate （聚合）函数 Scalar 函数  注：以下为 MYSQL 数据库的语法，部分不适用于其他数据库。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-13T14:56:43.000Z">
+<meta property="og:updated_time" content="2017-12-16T10:20:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 基础（二）">
-<meta name="twitter:description" content="内建 SQL 函数的语法是： 1SELECT function(列名称) FROM 表名称 函数类型在 SQL 中，基本的函数类型和种类有若干种。函数的基本类型是：  Aggregate （聚合）函数 Scalar 函数  注：以下为 MYSQL 数据库的语法，部分不适用于其他数据库。">
+<meta name="twitter:description" content="内建 SQL 函数的语法是： 1SELECT function(列名称) FROM 表名称 在 SQL 中，基本的函数类型和种类有若干种。函数的基本类型是：  Aggregate （聚合）函数 Scalar 函数  注：以下为 MYSQL 数据库的语法，部分不适用于其他数据库。">
 
 
 
@@ -319,13 +319,243 @@
       
         <p>内建 SQL 函数的语法是：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT function(列名称) FROM 表名称</span><br></pre></td></tr></table></figure>
-<h3 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h3><p>在 SQL 中，基本的函数类型和种类有若干种。函数的基本类型是：</p>
+<p>在 SQL 中，基本的函数类型和种类有若干种。函数的基本类型是：</p>
 <ul>
 <li>Aggregate （聚合）函数</li>
 <li>Scalar 函数</li>
 </ul>
 <p>注：以下为 MYSQL 数据库的语法，部分不适用于其他数据库。</p>
 <a id="more"></a>
+<h3 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CONCAT(string1, string2,…)</td>
+<td style="text-align:left">字符连接</td>
+</tr>
+<tr>
+<td style="text-align:left">CONCAT_WS(seperator, string1, string2,…)</td>
+<td style="text-align:left">使用指定的分隔符进行字符连接</td>
+</tr>
+<tr>
+<td style="text-align:left">FORMAT(number, format)</td>
+<td style="text-align:left">数字格式化</td>
+</tr>
+<tr>
+<td style="text-align:left">LOWER(string)</td>
+<td style="text-align:left">转换成小写字母</td>
+</tr>
+<tr>
+<td style="text-align:left">UPPER(string)</td>
+<td style="text-align:left">转换成大写字母</td>
+</tr>
+<tr>
+<td style="text-align:left">MID(string, start [,length])</td>
+<td style="text-align:left">从文本字段中提取字符</td>
+</tr>
+<tr>
+<td style="text-align:left">LEFT(string, length)</td>
+<td style="text-align:left">获取左侧字符</td>
+</tr>
+<tr>
+<td style="text-align:left">RIGHT(string, length)</td>
+<td style="text-align:left">获取右侧字符</td>
+</tr>
+<tr>
+<td style="text-align:left">LENGTH(string)</td>
+<td style="text-align:left">获取字符串长度</td>
+</tr>
+<tr>
+<td style="text-align:left">LTRIM([ characters FROM ] string)</td>
+<td style="text-align:left">删除前导空格</td>
+</tr>
+<tr>
+<td style="text-align:left">RTRIM([ characters FROM ] string)</td>
+<td style="text-align:left">删除后续空格</td>
+</tr>
+<tr>
+<td style="text-align:left">TRIM([ characters FROM ] string)</td>
+<td style="text-align:left">删除前导和后续空格</td>
+</tr>
+<tr>
+<td style="text-align:left">SUBSTRING(expression, start [,length])</td>
+<td style="text-align:left">字符串截取</td>
+</tr>
+<tr>
+<td style="text-align:left">[NOT] LIKE</td>
+<td style="text-align:left">模式匹配</td>
+</tr>
+<tr>
+<td style="text-align:left">REPLACE(string_expression, string_pattern , string_replacement)</td>
+<td style="text-align:left">字符串替换</td>
+</tr>
+</tbody>
+</table>
+<h4 id="FORMAT"><a href="#FORMAT" class="headerlink" title="FORMAT()"></a>FORMAT()</h4><p>返回结果是字符型</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT FORMAT(12560.75,1) // 12560.8</span><br></pre></td></tr></table></figure>
+<h4 id="LEFT"><a href="#LEFT" class="headerlink" title="LEFT()"></a>LEFT()</h4><p>例如：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT LEFT(&apos;MySQL&apos;,2) // My</span><br></pre></td></tr></table></figure>
+<h4 id="LENGTH"><a href="#LENGTH" class="headerlink" title="LENGTH()"></a>LENGTH()</h4><p>LENGTH() 函数返回文本字段中值的长度。<br>UTF8 编码下，一个汉字是算三个字符，一个数字或字母算一个字符。其他编码下，一个汉字算两个字符，一个数字或字母算一个字符。</p>
+<p>注：数字、文本和日期类型均可使用 MID() 函数</p>
+<p>Scalar 函数的操作面向某个单一的值，并返回基于输入值的一个单一的值。</p>
+<h4 id="UCASE-LCASE"><a href="#UCASE-LCASE" class="headerlink" title="UCASE() / LCASE()"></a>UCASE() / LCASE()</h4><p>UCASE()、LCASE()函数分别把字段的值转换为大写和小写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT UCASE(列名称) FROM 表名称</span><br><span class="line">SELECT LCASE(列名称) FROM 表名称</span><br></pre></td></tr></table></figure>
+<h4 id="MID"><a href="#MID" class="headerlink" title="MID()"></a>MID()</h4><p>MID() 函数用于从文本字段中提取字符。</p>
+<ul>
+<li>起始下标的起始值是 1。</li>
+<li>长度可选。如果省略，则 MID() 函数返回剩余文本。</li>
+<li>数字、文本和日期类型均可使用 MID() 函数</li>
+</ul>
+<h4 id="ROUND"><a href="#ROUND" class="headerlink" title="ROUND()"></a>ROUND()</h4><ul>
+<li>“小数位数”可选，如果不写，默认值为0.</li>
+<li>“小数位数”（d）可以是负数，这时是指定小数点左边的 d 位整数位为 0,同时小数位均为0；</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select round(1123.26723); // 1123</span><br><span class="line">select round(1123.26723,-1); // 1120</span><br></pre></td></tr></table></figure>
+<h4 id="FORMAT-1"><a href="#FORMAT-1" class="headerlink" title="FORMAT()"></a>FORMAT()</h4><p>FORMAT 函数用于对字段的显示进行格式化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT FORMAT(列名称, 格式) FROM 表名称</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT ProductName, UnitPrice, FORMAT(Now(),&apos;YYYY-MM-DD&apos;) as PerDate</span><br><span class="line">FROM Products</span><br></pre></td></tr></table></figure>
+<h4 id="TRIM"><a href="#TRIM" class="headerlink" title="TRIM()"></a>TRIM()</h4><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TRIM(LEADING &apos;?&apos; FROM &apos;?MySQL???&apos;) // MySQL???</span><br><span class="line">TRIM(TRAILING &apos;?&apos; FROM &apos;?MySQL???&apos;) // ?MySQL</span><br><span class="line">TRIM(BOTH &apos;?&apos; FROM &apos;?MySQL???&apos;) // MySQL</span><br></pre></td></tr></table></figure>
+<h4 id="REPLACE"><a href="#REPLACE" class="headerlink" title="REPLACE()"></a>REPLACE()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT REPLACE(&apos;?MyS???QL???&apos;, &apos;?&apos;, &apos;&apos;) // MySQL</span><br></pre></td></tr></table></figure>
+<h4 id="SUBSTRING"><a href="#SUBSTRING" class="headerlink" title="SUBSTRING()"></a>SUBSTRING()</h4><p>注： MySQL 的编号从1开始</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SUBSTRING(&apos;MySQL&apos;, 1, 3) // MyS</span><br><span class="line">SUBSTRING(&apos;MySQL&apos;, -1) // L</span><br></pre></td></tr></table></figure>
+<p>start 可以为负数，表示倒数第几个，但长度不能为负。</p>
+<h3 id="数值运算符和函数"><a href="#数值运算符和函数" class="headerlink" title="数值运算符和函数"></a>数值运算符和函数</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CEIL(number)</td>
+<td style="text-align:left">上取整</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOOR(number)</td>
+<td style="text-align:left">下取整</td>
+</tr>
+<tr>
+<td style="text-align:left">ROUND(number)</td>
+<td style="text-align:left">四舍五入</td>
+</tr>
+<tr>
+<td style="text-align:left">DIV</td>
+<td style="text-align:left">整数出发</td>
+</tr>
+<tr>
+<td style="text-align:left">MOD或%</td>
+<td style="text-align:left">取余数</td>
+</tr>
+<tr>
+<td style="text-align:left">POWER(number ,y)</td>
+<td style="text-align:left">幂运算</td>
+</tr>
+<tr>
+<td style="text-align:left">TRUNCATE(number, decimal)</td>
+<td style="text-align:left">数字截取</td>
+</tr>
+</tbody>
+</table>
+<h4 id="DIV"><a href="#DIV" class="headerlink" title="DIV"></a>DIV</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 DIV 4 // 0</span><br></pre></td></tr></table></figure>
+<h4 id="TRUNCATE"><a href="#TRUNCATE" class="headerlink" title="TRUNCATE"></a>TRUNCATE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TRUNCATE(125.89, 1) // 125.8</span><br><span class="line">TRUNCATE(125.89, -1) // 120</span><br></pre></td></tr></table></figure>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">NOW()</td>
+<td style="text-align:left">返回当前的日期和时间</td>
+</tr>
+<tr>
+<td style="text-align:left">CURDATE()</td>
+<td style="text-align:left">返回当前的日期</td>
+</tr>
+<tr>
+<td style="text-align:left">CURTIME()</td>
+<td style="text-align:left">返回当前的时间</td>
+</tr>
+<tr>
+<td style="text-align:left">DATE()</td>
+<td style="text-align:left">提取日期或日期/时间表达式的日期部分</td>
+</tr>
+<tr>
+<td style="text-align:left">EXTRACT()</td>
+<td style="text-align:left">返回日期/时间按的单独部分</td>
+</tr>
+<tr>
+<td style="text-align:left">DATE_ADD(time, INTERVAL intervals)</td>
+<td style="text-align:left">给日期添加指定的时间间隔</td>
+</tr>
+<tr>
+<td style="text-align:left">DATE_SUB(time, INTERVAL intervals)</td>
+<td style="text-align:left">从日期减去指定的时间间隔</td>
+</tr>
+<tr>
+<td style="text-align:left">DATEDIFF(date1, date2)</td>
+<td style="text-align:left">返回两个日期之间的天数</td>
+</tr>
+<tr>
+<td style="text-align:left">DATE_FORMAT()</td>
+<td style="text-align:left">用不同的格式显示日期/时间</td>
+</tr>
+</tbody>
+</table>
+<p>数据类型:  </p>
+<ul>
+<li>DATE - 格式 YYYY-MM-DD</li>
+<li>DATETIME - 格式: YYYY-MM-DD HH:MM:SS</li>
+<li>TIMESTAMP - 格式: YYYY-MM-DD HH:MM:SS</li>
+<li>YEAR - 格式 YYYY 或 YY</li>
+<li>NOW - 格式: YYYY-MM-DD HH:MM:SS AM/PM</li>
+</ul>
+<p>注：只要数据包含的只是日期部分，运行查询就不会出问题。但是，如果涉及时间，情况就有点复杂了。</p>
+<h4 id="DATE-ADD"><a href="#DATE-ADD" class="headerlink" title="DATE_ADD()"></a>DATE_ADD()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DATE_ADD(&apos;2014-3-12&apos;, INTERVAL -365 DAY) // 2015-03-12 </span><br><span class="line">DATE_ADD(&apos;2014-3-12&apos;, INTERVAL 3 WEEK) // 2015-04-02</span><br></pre></td></tr></table></figure>
+<h4 id="DATEDIFF"><a href="#DATEDIFF" class="headerlink" title="DATEDIFF()"></a>DATEDIFF()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_ADD(&apos;2014-3-12&apos;, &apos;2014-3-12&apos;) // -365</span><br></pre></td></tr></table></figure>
+<h4 id="DATE-FORMAT"><a href="#DATE-FORMAT" class="headerlink" title="DATE_FORMAT()"></a>DATE_FORMAT()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE_FORMAT(&apos;2014-3-12&apos;, &apos;%m/%d/%Y&apos;) // 03/02/14</span><br></pre></td></tr></table></figure>
+<h3 id="信息函数"><a href="#信息函数" class="headerlink" title="信息函数"></a>信息函数</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CONNECTION_ID()</td>
+<td style="text-align:left">连接 ID</td>
+</tr>
+<tr>
+<td style="text-align:left">DATEBASE()</td>
+<td style="text-align:left">当前数据库</td>
+</tr>
+<tr>
+<td style="text-align:left">LAST_INSERT_ID()</td>
+<td style="text-align:left">最后插入记录的 ID</td>
+</tr>
+<tr>
+<td style="text-align:left">USER()</td>
+<td style="text-align:left">当前用户</td>
+</tr>
+<tr>
+<td style="text-align:left">VERSION()</td>
+<td style="text-align:left">数据库的版本信息</td>
+</tr>
+</tbody>
+</table>
 <h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><p>Aggregate 函数的操作面向一系列的值，并返回一个单一的值。</p>
 <table>
 <thead>
@@ -367,33 +597,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT MAX(列名称) FROM 表名称</span><br><span class="line">SELECT MIN(列名称) FROM 表名称</span><br></pre></td></tr></table></figure>
 <h4 id="SUM"><a href="#SUM" class="headerlink" title="SUM()"></a>SUM()</h4><p>SUM 函数返回数值列的总数（总额）。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT SUM(列名称) FROM 表名称</span><br></pre></td></tr></table></figure>
-<h3 id="Scalar-函数"><a href="#Scalar-函数" class="headerlink" title="Scalar 函数"></a>Scalar 函数</h3><p>Scalar 函数的操作面向某个单一的值，并返回基于输入值的一个单一的值。</p>
-<h4 id="UCASE-LCASE"><a href="#UCASE-LCASE" class="headerlink" title="UCASE() / LCASE()"></a>UCASE() / LCASE()</h4><p>UCASE()、LCASE()函数分别把字段的值转换为大写和小写。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT UCASE(列名称) FROM 表名称</span><br><span class="line">SELECT LCASE(列名称) FROM 表名称</span><br></pre></td></tr></table></figure>
-<h4 id="MID"><a href="#MID" class="headerlink" title="MID()"></a>MID()</h4><p>MID() 函数用于从文本字段中提取字符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT MID(列名称, 起始下标 [,长度]) FROM 表名称</span><br></pre></td></tr></table></figure>
-<ul>
-<li>起始下标的起始值是 1。</li>
-<li>长度可选。如果省略，则 MID() 函数返回剩余文本。</li>
-<li>数字、文本和日期类型均可使用 MID() 函数</li>
-</ul>
-<h4 id="LENGTH"><a href="#LENGTH" class="headerlink" title="LENGTH()"></a>LENGTH()</h4><p>LENGTH() 函数返回文本字段中值的长度。<br>UTF8 编码下，一个汉字是算三个字符，一个数字或字母算一个字符。其他编码下，一个汉字算两个字符，一个数字或字母算一个字符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT LENGTH(列名称) FROM 表名称</span><br></pre></td></tr></table></figure>
-<p>注：数字、文本和日期类型均可使用 MID() 函数</p>
-<h4 id="ROUND"><a href="#ROUND" class="headerlink" title="ROUND()"></a>ROUND()</h4><p>ROUND 函数用于把数值字段四舍五入为指定的小数位数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT ROUND(列名称, [小数位数]) FROM 表名称</span><br></pre></td></tr></table></figure>
-<ul>
-<li>“小数位数”可选，如果不写，默认值为0.</li>
-<li>“小数位数”（d）可以是负数，这时是指定小数点左边的 d 位整数位为 0,同时小数位均为0；</li>
-</ul>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select round(1123.26723); // 1123</span><br><span class="line">select round(1123.26723,-1); // 1120</span><br></pre></td></tr></table></figure>
-<h4 id="FORMAT"><a href="#FORMAT" class="headerlink" title="FORMAT()"></a>FORMAT()</h4><p>FORMAT 函数用于对字段的显示进行格式化。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT FORMAT(列名称, 格式) FROM 表名称</span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT ProductName, UnitPrice, FORMAT(Now(),&apos;YYYY-MM-DD&apos;) as PerDate</span><br><span class="line">FROM Products</span><br></pre></td></tr></table></figure>
-<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="DATE"><a href="#DATE" class="headerlink" title="DATE()"></a>DATE()</h4><p>内建日期函数：</p>
-<table>
+<h3 id="加密函数"><a href="#加密函数" class="headerlink" title="加密函数"></a>加密函数</h3><table>
 <thead>
 <tr>
 <th style="text-align:left">函数</th>
@@ -402,62 +606,29 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">NOW()</td>
-<td style="text-align:left">返回当前的日期和时间</td>
+<td style="text-align:left">MD5()</td>
+<td style="text-align:left">信息摘要算法</td>
 </tr>
 <tr>
-<td style="text-align:left">CURDATE()</td>
-<td style="text-align:left">返回当前的日期</td>
-</tr>
-<tr>
-<td style="text-align:left">CURTIME()</td>
-<td style="text-align:left">返回当前的时间</td>
-</tr>
-<tr>
-<td style="text-align:left">DATE()</td>
-<td style="text-align:left">提取日期或日期/时间表达式的日期部分</td>
-</tr>
-<tr>
-<td style="text-align:left">EXTRACT()</td>
-<td style="text-align:left">返回日期/时间按的单独部分</td>
-</tr>
-<tr>
-<td style="text-align:left">DATE_ADD()</td>
-<td style="text-align:left">给日期添加指定的时间间隔</td>
-</tr>
-<tr>
-<td style="text-align:left">DATE_SUB()</td>
-<td style="text-align:left">从日期减去指定的时间间隔</td>
-</tr>
-<tr>
-<td style="text-align:left">DATEDIFF()</td>
-<td style="text-align:left">返回两个日期之间的天数</td>
-</tr>
-<tr>
-<td style="text-align:left">DATE_FORMAT()</td>
-<td style="text-align:left">用不同的格式显示日期/时间</td>
+<td style="text-align:left">PASSWORD()</td>
+<td style="text-align:left">密码算法，用于修改密码</td>
 </tr>
 </tbody>
 </table>
-<p>数据类型:  </p>
-<ul>
-<li>DATE - 格式 YYYY-MM-DD</li>
-<li>DATETIME - 格式: YYYY-MM-DD HH:MM:SS</li>
-<li>TIMESTAMP - 格式: YYYY-MM-DD HH:MM:SS</li>
-<li>YEAR - 格式 YYYY 或 YY</li>
-<li>NOW - 格式: YYYY-MM-DD HH:MM:SS AM/PM</li>
-</ul>
-<p>注：只要数据包含的只是日期部分，运行查询就不会出问题。但是，如果涉及时间，情况就有点复杂了。</p>
-<h5 id="NOW"><a href="#NOW" class="headerlink" title="NOW()"></a>NOW()</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT NOW() FROM 表名称</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### 与 NULL 相关</span><br><span class="line"></span><br><span class="line">#### ISNULL()</span><br></pre></td></tr></table></figure>
-<p>ISNULL(表达式) FROM 表名称 WHERE ISNULL(列名称／表达式)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如表达式为 null，那么 ISNULL() 的返回值为 1，否则返回值为 0。 </span><br><span class="line"></span><br><span class="line">例如：</span><br></pre></td></tr></table></figure></p>
-<p>SELECT * FROM DATE WHERE ISNULL(dt);</p>
-<p>// 等价于<br>SELECT * FROM DATE WHERE dt IS NULL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### IFNULL()</span><br></pre></td></tr></table></figure></p>
-<p>SELECT IFNULL(列名称／表达式1, 表达式2) FROM 表名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假如表达式 1 不为 NULL，则 IFNULL() 的返回值为表达式 1; 否则其返回值为表达式 2。IFNULL() 的返回值是数字或是字符串，具体情况取决于其所使用的语境。</span><br><span class="line"></span><br><span class="line">例如:</span><br></pre></td></tr></table></figure></p>
-<p>SELECT IFNULL(dt, ‘9999-10-01’) FROM date<br>// 返回值包含 dt = NULL 的纪录，该纪录被替换为 ‘9999-10-01’</p>
-<p>SELECT IFNULL(1/0, ‘9999-10-01’) FROM date<br>// 返回值为一列，值均为 ‘9999-10-01’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### NULLIF()</span><br></pre></td></tr></table></figure></p>
-<p>SELECT NULLIF(表达式1, 表达式2) FROM 表名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果表达式 1 = 表达式 2 成立，那么返回值为 NULL，否则返回值为表达式 1。</span><br><span class="line"></span><br><span class="line">例如：</span><br></pre></td></tr></table></figure></p>
-<p>SELECT NULLIF(1,1) FROM date;<br>// 返回值为一列，值均为 NULL</p>
-<p>SELECT NULLIF(1,2) FROM date<br>// 返回值为一列，值均为 1<br>```</p>
+<h4 id="PASSWORD"><a href="#PASSWORD" class="headerlink" title="PASSWORD()"></a>PASSWORD()</h4><p>用于修改客户端密码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET PASSWORD=PASSWORD(&apos;dilimitar&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="与-NULL-相关"><a href="#与-NULL-相关" class="headerlink" title="与 NULL 相关"></a>与 NULL 相关</h3><h4 id="ISNULL"><a href="#ISNULL" class="headerlink" title="ISNULL()"></a>ISNULL()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISNULL(表达式) FROM 表名称 WHERE ISNULL(列名称／表达式)</span><br></pre></td></tr></table></figure>
+<p>如表达式为 null，那么 ISNULL() 的返回值为 1，否则返回值为 0。 </p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM DATE WHERE ISNULL(dt);</span><br><span class="line"></span><br><span class="line">// 等价于</span><br><span class="line">SELECT * FROM DATE WHERE dt IS NULL</span><br></pre></td></tr></table></figure>
+<h4 id="IFNULL"><a href="#IFNULL" class="headerlink" title="IFNULL()"></a>IFNULL()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT IFNULL(列名称／表达式1, 表达式2) FROM 表名称</span><br></pre></td></tr></table></figure>
+<p>假如表达式 1 不为 NULL，则 IFNULL() 的返回值为表达式 1; 否则其返回值为表达式 2。IFNULL() 的返回值是数字或是字符串，具体情况取决于其所使用的语境。</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT IFNULL(dt, &apos;9999-10-01&apos;) FROM date </span><br><span class="line">// 返回值包含 dt = NULL 的纪录，该纪录被替换为 &apos;9999-10-01&apos;</span><br><span class="line"></span><br><span class="line">SELECT IFNULL(1/0, &apos;9999-10-01&apos;) FROM date </span><br><span class="line">// 返回值为一列，值均为 &apos;9999-10-01&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="NULLIF"><a href="#NULLIF" class="headerlink" title="NULLIF()"></a>NULLIF()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT NULLIF(表达式1, 表达式2) FROM 表名称</span><br></pre></td></tr></table></figure>
+<p>如果表达式 1 = 表达式 2 成立，那么返回值为 NULL，否则返回值为表达式 1。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT NULLIF(1,1) FROM date;   </span><br><span class="line">// 返回值为一列，值均为 NULL</span><br><span class="line"></span><br><span class="line">SELECT NULLIF(1,2) FROM date</span><br><span class="line">// 返回值为一列，值均为 1</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -489,13 +660,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-12-10-angular-form-2/" rel="next" title="Angular 表单（二）">
-                <i class="fa fa-chevron-left"></i> Angular 表单（二）
+              <a href="/programming/2017-12-09-sql-1/" rel="next" title="SQL 基础（一）">
+                <i class="fa fa-chevron-left"></i> SQL 基础（一）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-12-10-angular-form-2/" rel="prev" title="Angular 表单（二）">
+                Angular 表单（二） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -609,7 +784,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数类型"><span class="nav-number">1.</span> <span class="nav-text">函数类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合函数"><span class="nav-number">2.</span> <span class="nav-text">聚合函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AVG"><span class="nav-number">2.1.</span> <span class="nav-text">AVG()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#COUNT"><span class="nav-number">2.2.</span> <span class="nav-text">COUNT()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAX-MIN"><span class="nav-number">2.3.</span> <span class="nav-text">MAX() / MIN()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SUM"><span class="nav-number">2.4.</span> <span class="nav-text">SUM()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scalar-函数"><span class="nav-number">3.</span> <span class="nav-text">Scalar 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UCASE-LCASE"><span class="nav-number">3.1.</span> <span class="nav-text">UCASE() / LCASE()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MID"><span class="nav-number">3.2.</span> <span class="nav-text">MID()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LENGTH"><span class="nav-number">3.3.</span> <span class="nav-text">LENGTH()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ROUND"><span class="nav-number">3.4.</span> <span class="nav-text">ROUND()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FORMAT"><span class="nav-number">3.5.</span> <span class="nav-text">FORMAT()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用函数"><span class="nav-number">4.</span> <span class="nav-text">常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DATE"><span class="nav-number">4.1.</span> <span class="nav-text">DATE()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#NOW"><span class="nav-number">4.1.1.</span> <span class="nav-text">NOW()</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符函数"><span class="nav-number">1.</span> <span class="nav-text">字符函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FORMAT"><span class="nav-number">1.1.</span> <span class="nav-text">FORMAT()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LEFT"><span class="nav-number">1.2.</span> <span class="nav-text">LEFT()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LENGTH"><span class="nav-number">1.3.</span> <span class="nav-text">LENGTH()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UCASE-LCASE"><span class="nav-number">1.4.</span> <span class="nav-text">UCASE() / LCASE()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MID"><span class="nav-number">1.5.</span> <span class="nav-text">MID()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ROUND"><span class="nav-number">1.6.</span> <span class="nav-text">ROUND()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FORMAT-1"><span class="nav-number">1.7.</span> <span class="nav-text">FORMAT()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TRIM"><span class="nav-number">1.8.</span> <span class="nav-text">TRIM()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REPLACE"><span class="nav-number">1.9.</span> <span class="nav-text">REPLACE()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBSTRING"><span class="nav-number">1.10.</span> <span class="nav-text">SUBSTRING()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值运算符和函数"><span class="nav-number">2.</span> <span class="nav-text">数值运算符和函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DIV"><span class="nav-number">2.1.</span> <span class="nav-text">DIV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TRUNCATE"><span class="nav-number">2.2.</span> <span class="nav-text">TRUNCATE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期函数"><span class="nav-number">3.</span> <span class="nav-text">日期函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DATE-ADD"><span class="nav-number">3.1.</span> <span class="nav-text">DATE_ADD()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DATEDIFF"><span class="nav-number">3.2.</span> <span class="nav-text">DATEDIFF()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DATE-FORMAT"><span class="nav-number">3.3.</span> <span class="nav-text">DATE_FORMAT()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息函数"><span class="nav-number">4.</span> <span class="nav-text">信息函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合函数"><span class="nav-number">5.</span> <span class="nav-text">聚合函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AVG"><span class="nav-number">5.1.</span> <span class="nav-text">AVG()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#COUNT"><span class="nav-number">5.2.</span> <span class="nav-text">COUNT()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAX-MIN"><span class="nav-number">5.3.</span> <span class="nav-text">MAX() / MIN()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SUM"><span class="nav-number">5.4.</span> <span class="nav-text">SUM()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密函数"><span class="nav-number">6.</span> <span class="nav-text">加密函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PASSWORD"><span class="nav-number">6.1.</span> <span class="nav-text">PASSWORD()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-NULL-相关"><span class="nav-number">7.</span> <span class="nav-text">与 NULL 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ISNULL"><span class="nav-number">7.1.</span> <span class="nav-text">ISNULL()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IFNULL"><span class="nav-number">7.2.</span> <span class="nav-text">IFNULL()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NULLIF"><span class="nav-number">7.3.</span> <span class="nav-text">NULLIF()</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
