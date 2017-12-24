@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="正则表达式," />
+  <meta name="keywords" content="SQL," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="获取 url 中的某个参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=">
-<meta name="keywords" content="正则表达式">
+<meta name="description" content="MySQL 可以将数据以不同的技术存储在文件（内存）中，这种技术就成为存储引擎。 每一种存储引擎使用不同的存储机制、索引技巧、锁定水平，最终提供广泛且不同的功能。 MySQL 支持的存储引擎：  MyISAM InnoDB Memeroy CSV Archive">
+<meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用正则表达式获取 url 中的参数">
-<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-07-03-getting-url-parameters-using-regex/index.html">
+<meta property="og:title" content="SQL 基础（四）">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-24-sql-4/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="获取 url 中的某个参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search.su">
+<meta property="og:description" content="MySQL 可以将数据以不同的技术存储在文件（内存）中，这种技术就成为存储引擎。 每一种存储引擎使用不同的存储机制、索引技巧、锁定水平，最终提供广泛且不同的功能。 MySQL 支持的存储引擎：  MyISAM InnoDB Memeroy CSV Archive">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-25T08:40:27.000Z">
+<meta property="og:updated_time" content="2017-12-24T05:20:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用正则表达式获取 url 中的参数">
-<meta name="twitter:description" content="获取 url 中的某个参数获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码： 12345678910function getUrlParam(par)&amp;#123;  var reg = new RegExp(&quot;(^|&amp;amp;)&quot; + par + &quot;=([^&amp;amp;]*)(&amp;amp;|$)&quot;);  var result = window.location.search.su">
+<meta name="twitter:title" content="SQL 基础（四）">
+<meta name="twitter:description" content="MySQL 可以将数据以不同的技术存储在文件（内存）中，这种技术就成为存储引擎。 每一种存储引擎使用不同的存储机制、索引技巧、锁定水平，最终提供广泛且不同的功能。 MySQL 支持的存储引擎：  MyISAM InnoDB Memeroy CSV Archive">
 
 
 
@@ -116,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-07-03-getting-url-parameters-using-regex/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-12-24-sql-4/"/>
 
 
-  <title> 利用正则表达式获取 url 中的参数 | 昕小阳的博客 </title>
+  <title> SQL 基础（四） | 昕小阳的博客 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +258,7 @@
             
             
               
-                利用正则表达式获取 url 中的参数
+                SQL 基础（四）
               
             
           </h1>
@@ -270,8 +270,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-03T00:00:00+08:00" content="2017-07-03">
-              2017-07-03
+            <time itemprop="dateCreated" datetime="2017-12-24T00:00:00+08:00" content="2017-12-24">
+              2017-12-24
             </time>
           </span>
 
@@ -317,28 +317,124 @@
       
 
       
-        <h3 id="获取-url-中的某个参数"><a href="#获取-url-中的某个参数" class="headerlink" title="获取 url 中的某个参数"></a>获取 url 中的某个参数</h3><p>获取 url 参数最便捷的方法当然是用正则表达式，废话不多说，直接上码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">par</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + par + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</span><br><span class="line">  <span class="keyword">var</span> result = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg)[<span class="number">2</span>];</span><br><span class="line">	</span><br><span class="line">  <span class="keyword">if</span> (result &amp;&amp; result[<span class="number">2</span>]) &#123;</span><br><span class="line">    <span class="keyword">return</span> result[<span class="number">2</span>];</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>MySQL 可以将数据以不同的技术存储在文件（内存）中，这种技术就成为存储引擎。</p>
+<p>每一种存储引擎使用不同的存储机制、索引技巧、锁定水平，最终提供广泛且不同的功能。</p>
+<p>MySQL 支持的存储引擎：</p>
+<ul>
+<li>MyISAM</li>
+<li>InnoDB</li>
+<li>Memeroy</li>
+<li>CSV</li>
+<li>Archive</li>
+</ul>
 <a id="more"></a>
-<p>假如我们想获得下面地址的 id 参数值：</p>
-<p><a href="http://127.0.0.1/test.html?id=myId&amp;name=myName" target="_blank" rel="noopener">http://127.0.0.1/test.html?id=myId&amp;name=myName</a></p>
-<p>调用该方法即可。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = getUrlParam(<span class="string">'id'</span>);</span><br></pre></td></tr></table></figure>
-<p>返回结果：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myId</span><br></pre></td></tr></table></figure>
-<h3 id="正则表达式解析"><a href="#正则表达式解析" class="headerlink" title="正则表达式解析"></a>正则表达式解析</h3><p>在这个例子中，正则表达式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(^|&amp;)id=([^&amp;]*)(&amp;|$)</span><br></pre></td></tr></table></figure>
-<p>(1) 参数通常在开头(^)或以 &amp; 进行连接<br>(^|&amp;)</p>
-<p>(2) 属性值设定<br>([^&amp;]*)</p>
-<p><code>[^]</code> 代表匹配未在方括号中指定的字符。添加 &amp;，这样，该正则表达式匹配任何非 &amp; 字符。<code>*</code> 代表出现 0 次或多次，因此只要不出现 &amp;，均被认为是属性值的一部分。</p>
-<p>(3) 以 &amp; 作为结束或遇到结尾 ($)<br>(&amp;|$)</p>
-<p><code>window.location.search.substr(1)</code> 是 url 当中的参数部分。</p>
-<p>调用方法的返回结果为：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&quot;id=myId&amp;&quot;, &quot;&quot;, &quot;myId&quot;, &quot;&amp;&quot;, index: 0, input: &quot;id=myId&amp;name=myName&quot;]</span><br></pre></td></tr></table></figure>
-<p>取数组中第三个值即可。</p>
-<h3 id="将所有参数转换为对象类型"><a href="#将所有参数转换为对象类型" class="headerlink" title="将所有参数转换为对象类型"></a>将所有参数转换为对象类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var parseQueryString = function (param) &#123;</span><br><span class="line">  var regExp = /([^&amp;=]+)=([\w\W]*?)(&amp;|$)/g;</span><br><span class="line">	    </span><br><span class="line">  while ((result = regExp.exec(param)) != null) &#123;</span><br><span class="line">    ret[result[1]] = result[2];</span><br><span class="line">  &#125;</span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var param = location.search.slice(1);</span><br><span class="line">obj = parseQueryString(param);</span><br></pre></td></tr></table></figure>
-<p>使用 <a href="http://127.0.0.1/test.html?id=myId&amp;name=myName" target="_blank" rel="noopener">http://127.0.0.1/test.html?id=myId&amp;name=myName</a> 地址进行检测，得到的返回值为：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  id: &quot;myId&quot;,    </span><br><span class="line">  name: &quot;myName&quot;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查看引擎</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE TABLE t</span><br><span class="line"></span><br><span class="line">// ...ENGIN = InnoDB DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure>
+<h3 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h3><h4 id="并发处理"><a href="#并发处理" class="headerlink" title="并发处理"></a>并发处理</h4><p>当多个连接对记录进行操作时，保证数据的一致性和完整性的技术，称为并发控制。 </p>
+<p>例如：</p>
+<p>表中存储着商品信息，两个用户 A 和 B 同时登录，用户 A 要删除 id = 22 的记录，而用户 B 要读取 id = 22 的记录。会发生什么结果呢？</p>
+<p>读取时报错或获得一条与实际记录不符合的信息。</p>
+<p>解决这类问题的方法就是并发控制。</p>
+<h4 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a>锁粒度</h4><p>在处理并发读和并发写时，系统会使用一套“锁系统”来解决这个问题，包括两类锁：共享锁（读锁）和排他锁（写锁）。</p>
+<ul>
+<li><p>共享锁：在同一个时间段内，多个用户可以读取同一个资源，读取过程中数据不会发生任何改变。</p>
+</li>
+<li><p>排他锁：在任何时候只能有一个用户写入资源，当进行写锁时会阻塞其他的读锁或者写锁操作。</p>
+</li>
+</ul>
+<p>MySQL 的锁策略（锁颗粒）：</p>
+<ul>
+<li>表锁：开销最小的锁策略</li>
+<li>行锁：开销最大的锁策略，但也是支持最大并发的策略</li>
+</ul>
+<h4 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h4><p>事务用于保证数据库的完整性。</p>
+<p>例如：用户 A 通过网银向用户 B 转账 200 元，实现步骤：</p>
+<p>1）从当前账户减掉 200 元 （账户余额大于等于 200 元）<br>2）在对方账户增加 200 元 </p>
+<p>这两个过程必须作为一个整体。</p>
+<p>事务的特性（ACID）：</p>
+<ul>
+<li>原子性（Atomicity）</li>
+<li>一致性（Consistency）</li>
+<li>隔离性（Isolation）</li>
+<li>持久性（Durability）</li>
+</ul>
+<h4 id="外键和索引"><a href="#外键和索引" class="headerlink" title="外键和索引"></a>外键和索引</h4><p>外键：</p>
+<ul>
+<li>保证数据一致性的策略</li>
+</ul>
+<p>索引：</p>
+<ul>
+<li>是对数据表中一列或多列的值进行排序的一种结构</li>
+</ul>
+<p>索引分为：普通索引、唯一索引、全文索引、btree 索引、hash 索引</p>
+<h3 id="存储引擎的特点"><a href="#存储引擎的特点" class="headerlink" title="存储引擎的特点"></a>存储引擎的特点</h3><table>
+<thead>
+<tr>
+<th>特点</th>
+<th>MyISAM</th>
+<th>InnoDB</th>
+<th>Memory</th>
+<th>Archive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存储限制</td>
+<td>256TB</td>
+<td>64TB</td>
+<td>有</td>
+<td>无</td>
+</tr>
+<tr>
+<td>事务安全</td>
+<td>－</td>
+<td>支持</td>
+<td>－</td>
+<td>－</td>
+</tr>
+<tr>
+<td>支持索引</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>锁颗粒</td>
+<td>表锁</td>
+<td>行锁</td>
+<td>表锁</td>
+<td>行锁</td>
+</tr>
+<tr>
+<td>数据压缩</td>
+<td>支持</td>
+<td>－</td>
+<td>－</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>支持外键</td>
+<td>－</td>
+<td>支持</td>
+<td>－</td>
+<td>－</td>
+</tr>
+</tbody>
+</table>
+<p>注：  </p>
+<ul>
+<li>Memory 的存储限制依赖于内存大小  </li>
+<li>CSV 为每一个数据行存储一个 CSV 文件，不支持索引  </li>
+<li>BlackHole:黑洞引擎，写入的数据会消失，一般用做数据复制的中继。</li>
+</ul>
+<h3 id="修改存储引擎"><a href="#修改存储引擎" class="headerlink" title="修改存储引擎"></a>修改存储引擎</h3><h4 id="通过修改-MySQL-配置文件"><a href="#通过修改-MySQL-配置文件" class="headerlink" title="通过修改 MySQL 配置文件"></a>通过修改 MySQL 配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default-storage-engine = 引擎名称</span><br></pre></td></tr></table></figure>
+<h4 id="通过创建数据表命令"><a href="#通过创建数据表命令" class="headerlink" title="通过创建数据表命令"></a>通过创建数据表命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称 (</span><br><span class="line">  ...</span><br><span class="line">) ENGINE = 引擎名称</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tp1 (</span><br><span class="line">	s1 VARCHAR(10)</span><br><span class="line">) ENGIN = MyISAM</span><br></pre></td></tr></table></figure>
+<p>查看方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLE &apos;tp1&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="通过修改数据表命令"><a href="#通过修改数据表命令" class="headerlink" title="通过修改数据表命令"></a>通过修改数据表命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ENGINE [=] 引擎名称</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -361,7 +457,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/正则表达式/" rel="tag">#正则表达式</a>
+            <a href="/tags/SQL/" rel="tag">#SQL</a>
           
         </div>
       
@@ -370,17 +466,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-06-05-deepcopy/" rel="next" title="深拷贝">
-                <i class="fa fa-chevron-left"></i> 深拷贝
+              <a href="/programming/2017-12-17-spss-1/" rel="next" title="SPSS 基础操作（一）">
+                <i class="fa fa-chevron-left"></i> SPSS 基础操作（一）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/programming/2017-07-03-picload/" rel="prev" title="设置了 "display:none" 图片是否加载？">
-                设置了 "display:none" 图片是否加载？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -494,7 +586,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取-url-中的某个参数"><span class="nav-number">1.</span> <span class="nav-text">获取 url 中的某个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式解析"><span class="nav-number">2.</span> <span class="nav-text">正则表达式解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将所有参数转换为对象类型"><span class="nav-number">3.</span> <span class="nav-text">将所有参数转换为对象类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些基本概念"><span class="nav-number">1.</span> <span class="nav-text">一些基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并发处理"><span class="nav-number">1.1.</span> <span class="nav-text">并发处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁粒度"><span class="nav-number">1.2.</span> <span class="nav-text">锁粒度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务处理"><span class="nav-number">1.3.</span> <span class="nav-text">事务处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外键和索引"><span class="nav-number">1.4.</span> <span class="nav-text">外键和索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储引擎的特点"><span class="nav-number">2.</span> <span class="nav-text">存储引擎的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改存储引擎"><span class="nav-number">3.</span> <span class="nav-text">修改存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过修改-MySQL-配置文件"><span class="nav-number">3.1.</span> <span class="nav-text">通过修改 MySQL 配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过创建数据表命令"><span class="nav-number">3.2.</span> <span class="nav-text">通过创建数据表命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过修改数据表命令"><span class="nav-number">3.3.</span> <span class="nav-text">通过修改数据表命令</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
