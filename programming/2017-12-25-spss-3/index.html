@@ -1,0 +1,723 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SPSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="卡方检验是一种针对「分类」变量进行统计假设检验的方法，可以分为两种：  卡方适合性检验：  检验一组分类变量的频数分布与期望的频数分布是否一致； 例如：检验交通路口从周一到周日发生交通事故的数量是否一致。  卡方独立性检验：  检验两个分类变量之间是否有关联，可以转换成适合性检验。 例如：性别和选择文理科之间是否存在关">
+<meta name="keywords" content="SPSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPSS 进行卡方检验">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="卡方检验是一种针对「分类」变量进行统计假设检验的方法，可以分为两种：  卡方适合性检验：  检验一组分类变量的频数分布与期望的频数分布是否一致； 例如：检验交通路口从周一到周日发生交通事故的数量是否一致。  卡方独立性检验：  检验两个分类变量之间是否有关联，可以转换成适合性检验。 例如：性别和选择文理科之间是否存在关联">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-1.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/chi.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-2.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-3.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-4.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-5.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-8.png">
+<meta property="og:updated_time" content="2017-12-25T08:16:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPSS 进行卡方检验">
+<meta name="twitter:description" content="卡方检验是一种针对「分类」变量进行统计假设检验的方法，可以分为两种：  卡方适合性检验：  检验一组分类变量的频数分布与期望的频数分布是否一致； 例如：检验交通路口从周一到周日发生交通事故的数量是否一致。  卡方独立性检验：  检验两个分类变量之间是否有关联，可以转换成适合性检验。 例如：性别和选择文理科之间是否存在关联">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-3/spss-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-12-25-spss-3/"/>
+
+
+  <title> SPSS 进行卡方检验 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SPSS 进行卡方检验
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-25T00:00:00+08:00" content="2017-12-25">
+              2017-12-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>卡方检验是一种针对「分类」变量进行统计假设检验的方法，可以分为两种：</p>
+<ul>
+<li>卡方适合性检验：</li>
+</ul>
+<p>检验一组分类变量的频数分布与期望的频数分布是否一致；</p>
+<p>例如：检验交通路口从周一到周日发生交通事故的数量是否一致。</p>
+<ul>
+<li>卡方独立性检验：</li>
+</ul>
+<p>检验两个分类变量之间是否有关联，可以转换成适合性检验。</p>
+<p>例如：性别和选择文理科之间是否存在关联</p>
+<a id="more"></a>
+<p>卡方检验需要使用卡方分布来作为统计量的理论统计分布；进行卡方检验前一般想要进行交叉分析或者进行数据透视操作，用来得到交叉表或者频率表；</p>
+<h4 id="透视表-交叉表"><a href="#透视表-交叉表" class="headerlink" title="透视表/交叉表"></a>透视表/交叉表</h4><p>例如：目前身份的实际频数。</p>
+<blockquote>
+<p>分析 － 描述 － 频率</p>
+</blockquote>
+<p><img src="spss-1.png"></p>
+<p>例如：不同性别学生就读的学校类型交叉表。</p>
+<blockquote>
+<p>分析 － 描述 － 交叉表</p>
+</blockquote>
+<p><img src="spss-2.png"></p>
+<h4 id="什么是分类数据？"><a href="#什么是分类数据？" class="headerlink" title="什么是分类数据？"></a>什么是分类数据？</h4><p>表示类别的数据：</p>
+<ul>
+<li>无序分类：性别</li>
+<li>有序分类：学历、年龄段、工资区间、问卷满意度调查</li>
+</ul>
+<p>分类数据的表示方法：</p>
+<ul>
+<li>一般在分析过程中用数字来表示这些类别；（值标签的作用）</li>
+<li>用数字表示类别的过程称为编码；</li>
+</ul>
+<p><img src="spss-1.gif"></p>
+<h4 id="卡方检验原理"><a href="#卡方检验原理" class="headerlink" title="卡方检验原理"></a>卡方检验原理</h4><p>卡方统计量：<br><img src="chi.png"><br>𝒇𝟎 表示理论频数，𝒇e 表示实际频数，两者之间相差越大，卡方也会越大。</p>
+<p>当理论分布与实际分布完全相同，卡方值为 0。</p>
+<p>卡方检验的步骤：</p>
+<p>第一步：建立假设（原假设为分类变量实际的频数分布与理论分布一致）<br>第二步：根据实际的频数与理论频数计算 𝝌𝟐 统计量，并根据卡方分布得到对应的 p 值（sig 值）；<br>第三步：根据 p 值决定是否接受原假设；如果 p 小于 0.05，则拒绝原假设，即认为变量的实际频数与理论分布不一致；  </p>
+<h4 id="卡方适合性检验"><a href="#卡方适合性检验" class="headerlink" title="卡方适合性检验"></a>卡方适合性检验</h4><p>检验实际的频数与给定的理论频数是否一致。一般给出的不是直接的理论频数，而是：</p>
+<ul>
+<li>理论的比率</li>
+<li>理论上的分布</li>
+</ul>
+<p><strong>例题1：</strong></p>
+<p>针对大学群体（包括研究生）的研究调查，样本来源于大一、大二、大三、大四、研究生的比例是否为 0.2:0.2:0.2:0.1:0.3 ？（期望频数不等）</p>
+<p><strong>SPSS 工具：</strong></p>
+<blockquote>
+<p>分析 － 非参数检验 － 旧对话框 － 卡方<br>期望值按照顺序依次填入期望的比例（需要根据值标签来查看）</p>
+</blockquote>
+<p><img src="spss-2.gif"></p>
+<p><strong>结论：</strong></p>
+<p><img src="spss-3.png"></p>
+<p>p = 0.000 &lt; 0.05，拒绝原假设，即实际分布与理论分布不一致。<br>具体来看，残差越大表明分布越不一致。大四残差最大，其次为大一、研究生，我们需要减少大四、大一和研究生样本。</p>
+<p><strong>例题2：</strong></p>
+<p>某奶制品厂商在某次对消费者对不同酸奶的口味调查中，对 1000 个人进行了调查，那么消费者对不同口味的酸奶的喜好是否有显著差异？（期望频数相等）</p>
+<p>原始数据格式：</p>
+<p><img src="spss-4.png"></p>
+<p><strong>SPSS 工具：</strong></p>
+<blockquote>
+<p>数据 － 个案加权</p>
+</blockquote>
+<p><img src="spss-3.gif"></p>
+<p>然后我们通过查看频率可以得到如下结果：</p>
+<p><img src="spss-5.png"></p>
+<p>注：如果不做加权处理，则得到的频率应该为 1。</p>
+<blockquote>
+<p>分析 － 非参数检验 － 旧对话框 － 卡方<br>期望值选择 “所有类别相等”</p>
+</blockquote>
+<p><img src="spss-4.gif"></p>
+<p><strong>结论：</strong></p>
+<p>p = 0.000 &lt; 0.05，拒绝原假设，即人们对于不同口味是存在差异的。<br>最喜欢的是草莓味，最不喜欢的是柠檬味。</p>
+<h4 id="卡方独立性检验"><a href="#卡方独立性检验" class="headerlink" title="卡方独立性检验"></a>卡方独立性检验</h4><p>检验两个分类变量之间是否相互独立，实际上独立性检验是通过转换成适合性检验而完成的。</p>
+<p>原假设：两个变量之间相互独立；<br>备择假设：两变量相互影响；</p>
+<p>卡方独立性检验的步骤：</p>
+<p>第一步：建立假设（原假设为两个分类变量之间相互独立）<br>第二步：基于原假设为真的情况，计算理论频数，然后计算卡方统计量；并根据卡方分布得到 p 值；<br>第三步：判断原假设是否成立；  </p>
+<p><strong>例题1：</strong></p>
+<p>某种植物在不同地形下栽培患病与否有关吗？</p>
+<p>原始数据格式：</p>
+<p><img src="spss-7.png"></p>
+<p><strong>SPSS 工具：</strong></p>
+<blockquote>
+<p>数据 － 个案加权</p>
+</blockquote>
+<p>对株数进行加权</p>
+<blockquote>
+<p>分析 － 描述 － 交叉表<br>统计 － 勾选“卡方”</p>
+</blockquote>
+<p><img src="spss-5.gif"></p>
+<p><strong>结论：</strong></p>
+<p><img src="spss-8.png"></p>
+<blockquote>
+<p>交叉表表明了实际频数，理论频数是根据交叉表计算比例得到的<br>自由度是 (行数-1)*(列数-1)<br>p = 0.002 &lt; 0.005，拒绝原假设，即地形与患病与否是有关的  </p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SPSS/" rel="tag">#SPSS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-12-25-sql-leetcode-2/" rel="next" title="MYSQL 语句执行顺序">
+                <i class="fa fa-chevron-left"></i> MYSQL 语句执行顺序
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-12-25-sql-leetcode-1/" rel="prev" title="SQL_MODE = ONLY_FULL_GROUP_BY">
+                SQL_MODE = ONLY_FULL_GROUP_BY <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#透视表-交叉表"><span class="nav-number">1.</span> <span class="nav-text">透视表/交叉表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是分类数据？"><span class="nav-number">2.</span> <span class="nav-text">什么是分类数据？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卡方检验原理"><span class="nav-number">3.</span> <span class="nav-text">卡方检验原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卡方适合性检验"><span class="nav-number">4.</span> <span class="nav-text">卡方适合性检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卡方独立性检验"><span class="nav-number">5.</span> <span class="nav-text">卡方独立性检验</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
