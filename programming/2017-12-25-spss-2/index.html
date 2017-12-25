@@ -1,0 +1,703 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SPSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="T 检验分类单样本 T 检验适用于一个样本群体某种属性的均值与某个特定值的比较；例如实验中，对做某种处理的一组小白鼠的体重与正常小白鼠体重（已知值）比较。 两独立样本 T 检验前提：方差的齐性检验。">
+<meta name="keywords" content="SPSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPSS 进行 T 检验">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="T 检验分类单样本 T 检验适用于一个样本群体某种属性的均值与某个特定值的比较；例如实验中，对做某种处理的一组小白鼠的体重与正常小白鼠体重（已知值）比较。 两独立样本 T 检验前提：方差的齐性检验。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/spss-1.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/spss-2.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/spss-3.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/spss-4.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/spss-5.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/spss-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/spss-5.png">
+<meta property="og:updated_time" content="2017-12-25T07:00:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPSS 进行 T 检验">
+<meta name="twitter:description" content="T 检验分类单样本 T 检验适用于一个样本群体某种属性的均值与某个特定值的比较；例如实验中，对做某种处理的一组小白鼠的体重与正常小白鼠体重（已知值）比较。 两独立样本 T 检验前提：方差的齐性检验。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-12-25-spss-2/spss-1.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-12-25-spss-2/"/>
+
+
+  <title> SPSS 进行 T 检验 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SPSS 进行 T 检验
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-25T00:00:00+08:00" content="2017-12-25">
+              2017-12-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="T-检验分类"><a href="#T-检验分类" class="headerlink" title="T 检验分类"></a>T 检验分类</h3><h4 id="单样本-T-检验"><a href="#单样本-T-检验" class="headerlink" title="单样本 T 检验"></a>单样本 T 检验</h4><p>适用于一个样本群体某种属性的均值与某个特定值的比较；例如实验中，对做某种处理的一组小白鼠的体重与正常小白鼠体重（已知值）比较。</p>
+<h4 id="两独立样本-T-检验"><a href="#两独立样本-T-检验" class="headerlink" title="两独立样本 T 检验"></a>两独立样本 T 检验</h4><p><strong>前提：</strong>方差的齐性检验。  </p>
+<a id="more"></a>
+<ul>
+<li>若方差相同，则使用同方差检验。  </li>
+<li>若方差不同，则使用异方差检验。  </li>
+</ul>
+<p>适用于两个相对独立的群体某个相同属性均值的比较，比如男性、女性群体的身高比较。</p>
+<h4 id="成对样本-T-检验"><a href="#成对样本-T-检验" class="headerlink" title="成对样本 T 检验"></a>成对样本 T 检验</h4><p>适用于成对的两组样本的比较，例如减肥前后两组体重值的比较。</p>
+<h3 id="SPSS-实现-T-检验"><a href="#SPSS-实现-T-检验" class="headerlink" title="SPSS 实现 T 检验"></a>SPSS 实现 T 检验</h3><h4 id="单样本-T-检验-1"><a href="#单样本-T-检验-1" class="headerlink" title="单样本 T 检验"></a>单样本 T 检验</h4><p><strong>例题：</strong></p>
+<p>常规种植条件下某玉米品种的平均穗重为<em>𝝁</em>𝟎_=300g。现在采用根外施肥（即将肥料制成液体养分，喷洒到玉米的叶面；常规种植是指将肥料施用于土壤中）后，调查了20个玉米棒，其穗重如下表所示。问：改用叶面施肥后，穗重是否显著（置信度为 95% 或者显著水平α=0.05）增加了？</p>
+<p><strong>分析步骤：</strong></p>
+<p><strong>第一步：</strong>提出假设（SPSS无法直接进行单尾检验，可以借助双尾检验来完成）</p>
+<p><code>𝐻_0 :μ=𝜇0=300  vs  𝐻_𝐴 :μ≠𝜇0=300</code></p>
+<p><strong>第二步：</strong>计算统计量t，并根据t分布的自由度和t值得到统计量p值</p>
+<p><code>t=_𝐸(𝑥)−𝜇_0 =5.486         
+自由度=n-1=40-1=39    查自由度为39的t分布得到p值&lt;0.001</code></p>
+<p><strong>第三步：</strong>根据p值判断原假设是否成立，并下结论</p>
+<p>因为 p&lt;0.001，所以 p&lt;0.01，所以拒绝原假设，即认为减肥药有效果，具体是什么效果呢？查看计算得到的样本均值=3.702.所以减肥药具有增肥效果。<br>注：SPSS 无法进行单侧检验，可以利用双侧检验进行转换。如果单侧检验的置信度为 95%，那么可将置信度设为 90%。</p>
+<p><strong>SPSS 工具：</strong></p>
+<blockquote>
+<p>分析 - 比较平均值 - 单样本 T 检验</p>
+</blockquote>
+<p><img src="spss-1.gif"></p>
+<p><strong>结论：</strong></p>
+<blockquote>
+<p>t 值对应的 3.124，小于临界值 3.13。或概率为 p = 0.006/2 = 0.003 &lt; 0.05，因此拒绝原假设。<br>原假设为 <code>μ=𝜇_0=300</code>，备择假设为 <code>μ≠𝜇_0=300</code>，又因为平均值为 307 &gt; 300，因此可以判断，μ 显著大于 300。</p>
+</blockquote>
+<h4 id="两独立样本-T-检验-1"><a href="#两独立样本-T-检验-1" class="headerlink" title="两独立样本 T 检验"></a>两独立样本 T 检验</h4><p><strong>例题：</strong></p>
+<p>某次调查研究中得到了一组关于甲、乙两个公司的员工的工资数据，想要比较甲乙两个公司的员工平均工资是否有显著差异。</p>
+<p><strong>分析步骤：</strong></p>
+<p>方差齐性检验  </p>
+<p>第一步：提出假设（原假设为方差相同）；<br>第二步：计算 F 统计量，并根据 F 分布得到相应的 p 值；<br>第三步：根据 p 值判断原假设是否成立，并下结论；如果 p 值大于 0.05 且比较大，认为方差是齐的，也就是说方差大致相等。  </p>
+<p>两独立样本t检验  </p>
+<p>第一步：提出假设（原假设为两个总体均值相同）；<br>第二步：计算 t 统计量，并根据 t 分布得到相应的 p 值；<br>第三步：根据 p 值判断原假设是否成立，并下结论；如果 p 值小于 0.05，那么拒绝原假设，即认为两个总体的均值存在显著的差异。  </p>
+<p><strong>SPSS 工具：</strong></p>
+<p>方差齐性检验：</p>
+<blockquote>
+<p>分析 - 比较平均值 - 独立样本 T 检验</p>
+</blockquote>
+<p><img src="spss-2.gif"></p>
+<p>注：在“独立样本检验”表格中有两行数据，第一行为方差齐性时参考的数据，第二行为方差不齐时参考的数据。</p>
+<p><strong>结论：</strong></p>
+<blockquote>
+<p>月收入水平均值乙公司比甲公司高了 400<br>考虑方差齐性检验，显著性水平 p ＝ 0.004 &lt; 0.05，拒绝原假设，即方差是不齐的。因此需要参考第二行数据。<br>显著性为 0.004 &lt; 0.05，拒绝原假设。因此认为甲乙公司的收入水平显著不同，又因为乙公司均值更高，因此我们认为乙公司的收入水平要显著高于甲公司。</p>
+</blockquote>
+<h4 id="成对样本-T-检验-1"><a href="#成对样本-T-检验-1" class="headerlink" title="成对样本 T 检验"></a>成对样本 T 检验</h4><p>成对样本 t 检验可以简化为单样本t检验：</p>
+<ul>
+<li>成对样本 t 检验一般是检验配对的两组样本之间是否存在差异；</li>
+<li>如果将配对的两组样本做减法，将得到一组数值，利用这组数据做与0进行比较的单样本 t 检验，所得结果与单样本t检验一致；</li>
+</ul>
+<p><strong>例题：</strong></p>
+<p>减肥药是否有效果<br><strong>分析步骤：</strong></p>
+<p><strong>第一步</strong>：提出假设（原假设为配对的两个总体均值相同）；<br><strong>第二步</strong>：先计算配对两组数据的差，再计算 t 统计量，并根据 t 分布得到相应的 p 值；<br><strong>第三步</strong>：根据 p 值判断原假设是否成立，并下结论；如果 p 值小于0.05，那么拒绝原假设，即认为两个配对总体的均值存在显著的差异。否则接受原假设。    </p>
+<p><strong>SPSS 工具：</strong></p>
+<p>方法一：成对样本 t 检验</p>
+<blockquote>
+<p>分析 - 比较平均值 - 成对样本 T 检验</p>
+</blockquote>
+<p><img src="spss-3.gif"></p>
+<p>方法二：单样本 t 检验</p>
+<p>我们可以通过计算中间变量，即减肥前－减肥后的差值直接用来做单样本 T 检验。</p>
+<blockquote>
+<p>转换 - 计算变量</p>
+</blockquote>
+<p><img src="spss-4.gif"></p>
+<p>再将差值与 0 进行单样本 t 检验。</p>
+<p><img src="spss-5.gif"></p>
+<p><strong>结论：</strong></p>
+<p>方法一的结论：</p>
+<p><img src="spss-3.png"></p>
+<blockquote>
+<p>减肥前平均值为 90.60，减肥后平均值为 80.60<br>p 值为 0.000 &lt; 0.05 ，拒绝原假设，即减肥前后的体重显著不同。又因为减肥后的均值更小，因此减肥后的体重显著小于减肥前的体重。</p>
+</blockquote>
+<p>方法二的结论：</p>
+<p><img src="spss-5.png"></p>
+<blockquote>
+<p>p 值为 0.000，拒绝原假设，差值与 0 存在明显差异，说明减肥后－减肥前体重显著小于 0，即减肥后的体重显著小于减肥前的体重。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SPSS/" rel="tag">#SPSS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-12-25-sql-leetcode-2/" rel="next" title="MYSQL 语句执行顺序">
+                <i class="fa fa-chevron-left"></i> MYSQL 语句执行顺序
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-12-25-sql-leetcode-3/" rel="prev" title="MYSQL 获取分组某字段最大的记录">
+                MYSQL 获取分组某字段最大的记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#T-检验分类"><span class="nav-number">1.</span> <span class="nav-text">T 检验分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单样本-T-检验"><span class="nav-number">1.1.</span> <span class="nav-text">单样本 T 检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两独立样本-T-检验"><span class="nav-number">1.2.</span> <span class="nav-text">两独立样本 T 检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成对样本-T-检验"><span class="nav-number">1.3.</span> <span class="nav-text">成对样本 T 检验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPSS-实现-T-检验"><span class="nav-number">2.</span> <span class="nav-text">SPSS 实现 T 检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单样本-T-检验-1"><span class="nav-number">2.1.</span> <span class="nav-text">单样本 T 检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两独立样本-T-检验-1"><span class="nav-number">2.2.</span> <span class="nav-text">两独立样本 T 检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成对样本-T-检验-1"><span class="nav-number">2.3.</span> <span class="nav-text">成对样本 T 检验</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
