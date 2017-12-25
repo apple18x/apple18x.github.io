@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="MySQL 可以将数据以不同的技术存储在文件（内存）中，这种技术就成为存储引擎。 每一种存储引擎使用不同的存储机制、索引技巧、锁定水平，最终提供广泛且不同的功能。 MySQL 支持的存储引擎：  MyISAM InnoDB Memeroy CSV Archive">
+<meta name="description" content="考虑这个问题源自 LeetCode 上的一道题：184. Department Highest Salary 大概意思就是用下面两张表(Employee、Department)合成最后的一张表，得到以 DepartmentId 分组的 Salary 值最大的记录：">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL 基础（四）">
-<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-24-sql-4/index.html">
+<meta property="og:title" content="MYSQL 获取分组某字段最大的记录">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-25-sql-leetcode-3/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="MySQL 可以将数据以不同的技术存储在文件（内存）中，这种技术就成为存储引擎。 每一种存储引擎使用不同的存储机制、索引技巧、锁定水平，最终提供广泛且不同的功能。 MySQL 支持的存储引擎：  MyISAM InnoDB Memeroy CSV Archive">
+<meta property="og:description" content="考虑这个问题源自 LeetCode 上的一道题：184. Department Highest Salary 大概意思就是用下面两张表(Employee、Department)合成最后的一张表，得到以 DepartmentId 分组的 Salary 值最大的记录：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-24T05:20:28.000Z">
+<meta property="og:updated_time" content="2017-12-25T03:54:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL 基础（四）">
-<meta name="twitter:description" content="MySQL 可以将数据以不同的技术存储在文件（内存）中，这种技术就成为存储引擎。 每一种存储引擎使用不同的存储机制、索引技巧、锁定水平，最终提供广泛且不同的功能。 MySQL 支持的存储引擎：  MyISAM InnoDB Memeroy CSV Archive">
+<meta name="twitter:title" content="MYSQL 获取分组某字段最大的记录">
+<meta name="twitter:description" content="考虑这个问题源自 LeetCode 上的一道题：184. Department Highest Salary 大概意思就是用下面两张表(Employee、Department)合成最后的一张表，得到以 DepartmentId 分组的 Salary 值最大的记录：">
 
 
 
@@ -116,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-12-24-sql-4/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-12-25-sql-leetcode-3/"/>
 
 
-  <title> SQL 基础（四） | 昕小阳的博客 </title>
+  <title> MYSQL 获取分组某字段最大的记录 | 昕小阳的博客 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +258,7 @@
             
             
               
-                SQL 基础（四）
+                MYSQL 获取分组某字段最大的记录
               
             
           </h1>
@@ -270,8 +270,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-12-24T00:00:00+08:00" content="2017-12-24">
-              2017-12-24
+            <time itemprop="dateCreated" datetime="2017-12-25T00:00:00+08:00" content="2017-12-25">
+              2017-12-25
             </time>
           </span>
 
@@ -317,124 +317,35 @@
       
 
       
-        <p>MySQL 可以将数据以不同的技术存储在文件（内存）中，这种技术就成为存储引擎。</p>
-<p>每一种存储引擎使用不同的存储机制、索引技巧、锁定水平，最终提供广泛且不同的功能。</p>
-<p>MySQL 支持的存储引擎：</p>
-<ul>
-<li>MyISAM</li>
-<li>InnoDB</li>
-<li>Memeroy</li>
-<li>CSV</li>
-<li>Archive</li>
-</ul>
+        <p>考虑这个问题源自 LeetCode 上的一道题：<a href="https://leetcode.com/problems/department-highest-salary/description/" target="_blank" rel="noopener">184. Department Highest Salary</a></p>
+<p>大概意思就是用下面两张表(Employee、Department)合成最后的一张表，得到以 DepartmentId 分组的 Salary 值最大的记录：</p>
 <a id="more"></a>
-<p>查看引擎</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE TABLE t</span><br><span class="line"></span><br><span class="line">// ...ENGIN = InnoDB DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure>
-<h3 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h3><h4 id="并发处理"><a href="#并发处理" class="headerlink" title="并发处理"></a>并发处理</h4><p>当多个连接对记录进行操作时，保证数据的一致性和完整性的技术，称为并发控制。 </p>
-<p>例如：</p>
-<p>表中存储着商品信息，两个用户 A 和 B 同时登录，用户 A 要删除 id = 22 的记录，而用户 B 要读取 id = 22 的记录。会发生什么结果呢？</p>
-<p>读取时报错或获得一条与实际记录不符合的信息。</p>
-<p>解决这类问题的方法就是并发控制。</p>
-<h4 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a>锁粒度</h4><p>在处理并发读和并发写时，系统会使用一套“锁系统”来解决这个问题，包括两类锁：共享锁（读锁）和排他锁（写锁）。</p>
-<ul>
-<li><p>共享锁：在同一个时间段内，多个用户可以读取同一个资源，读取过程中数据不会发生任何改变。</p>
-</li>
-<li><p>排他锁：在任何时候只能有一个用户写入资源，当进行写锁时会阻塞其他的读锁或者写锁操作。</p>
-</li>
-</ul>
-<p>MySQL 的锁策略（锁颗粒）：</p>
-<ul>
-<li>表锁：开销最小的锁策略</li>
-<li>行锁：开销最大的锁策略，但也是支持最大并发的策略</li>
-</ul>
-<h4 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h4><p>事务用于保证数据库的完整性。</p>
-<p>例如：用户 A 通过网银向用户 B 转账 200 元，实现步骤：</p>
-<p>1）从当前账户减掉 200 元 （账户余额大于等于 200 元）<br>2）在对方账户增加 200 元 </p>
-<p>这两个过程必须作为一个整体。</p>
-<p>事务的特性（ACID）：</p>
-<ul>
-<li>原子性（Atomicity）</li>
-<li>一致性（Consistency）</li>
-<li>隔离性（Isolation）</li>
-<li>持久性（Durability）</li>
-</ul>
-<h4 id="外键和索引"><a href="#外键和索引" class="headerlink" title="外键和索引"></a>外键和索引</h4><p>外键：</p>
-<ul>
-<li>保证数据一致性的策略</li>
-</ul>
-<p>索引：</p>
-<ul>
-<li>是对数据表中一列或多列的值进行排序的一种结构</li>
-</ul>
-<p>索引分为：普通索引、唯一索引、全文索引、btree 索引、hash 索引</p>
-<h3 id="存储引擎的特点"><a href="#存储引擎的特点" class="headerlink" title="存储引擎的特点"></a>存储引擎的特点</h3><table>
-<thead>
-<tr>
-<th>特点</th>
-<th>MyISAM</th>
-<th>InnoDB</th>
-<th>Memory</th>
-<th>Archive</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>存储限制</td>
-<td>256TB</td>
-<td>64TB</td>
-<td>有</td>
-<td>无</td>
-</tr>
-<tr>
-<td>事务安全</td>
-<td>－</td>
-<td>支持</td>
-<td>－</td>
-<td>－</td>
-</tr>
-<tr>
-<td>支持索引</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td></td>
-</tr>
-<tr>
-<td>锁颗粒</td>
-<td>表锁</td>
-<td>行锁</td>
-<td>表锁</td>
-<td>行锁</td>
-</tr>
-<tr>
-<td>数据压缩</td>
-<td>支持</td>
-<td>－</td>
-<td>－</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>支持外键</td>
-<td>－</td>
-<td>支持</td>
-<td>－</td>
-<td>－</td>
-</tr>
-</tbody>
-</table>
-<p>注：  </p>
-<ul>
-<li>Memory 的存储限制依赖于内存大小  </li>
-<li>CSV 为每一个数据行存储一个 CSV 文件，不支持索引  </li>
-<li>BlackHole:黑洞引擎，写入的数据会消失，一般用做数据复制的中继。</li>
-</ul>
-<h3 id="修改存储引擎"><a href="#修改存储引擎" class="headerlink" title="修改存储引擎"></a>修改存储引擎</h3><h4 id="通过修改-MySQL-配置文件"><a href="#通过修改-MySQL-配置文件" class="headerlink" title="通过修改 MySQL 配置文件"></a>通过修改 MySQL 配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default-storage-engine = 引擎名称</span><br></pre></td></tr></table></figure>
-<h4 id="通过创建数据表命令"><a href="#通过创建数据表命令" class="headerlink" title="通过创建数据表命令"></a>通过创建数据表命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名称 (</span><br><span class="line">  ...</span><br><span class="line">) ENGINE = 引擎名称</span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE tp1 (</span><br><span class="line">	s1 VARCHAR(10)</span><br><span class="line">) ENGIN = MyISAM</span><br></pre></td></tr></table></figure>
-<p>查看方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLE &apos;tp1&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="通过修改数据表命令"><a href="#通过修改数据表命令" class="headerlink" title="通过修改数据表命令"></a>通过修改数据表命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名称 ENGINE [=] 引擎名称</span><br></pre></td></tr></table></figure>
+<p>Employee</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| Id | Name  | Salary | DepartmentId |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| 1  | Joe   | 70000  | 1            |</span><br><span class="line">| 2  | Henry | 80000  | 2            |</span><br><span class="line">| 3  | Sam   | 60000  | 2            |</span><br><span class="line">| 4  | Max   | 90000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+<p>Department</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+----------+</span><br><span class="line">| Id | Name     |</span><br><span class="line">+----+----------+</span><br><span class="line">| 1  | IT       |</span><br><span class="line">| 2  | Sales    |</span><br><span class="line">+----+----------+</span><br></pre></td></tr></table></figure>
+<p>最终得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+------------+----------+--------+</span><br><span class="line">| Department | Employee | Salary |</span><br><span class="line">+------------+----------+--------+</span><br><span class="line">| IT         | Max      | 90000  |</span><br><span class="line">| Sales      | Henry    | 80000  |</span><br><span class="line">+------------+----------+--------+</span><br></pre></td></tr></table></figure>
+<p>思路其实很清晰：</p>
+<ol>
+<li>「找最大记录」Employee 表中找到以 DepartmentId 分组的 Salary 值最大的记录</li>
+<li>「连接」Employee 表与 Department 表连接</li>
+</ol>
+<p>或</p>
+<ol>
+<li>「连接」 Employee 表与 Department 表连接</li>
+<li>「找最大记录」连接后的表中找到以 DepartmentId 分组的 Salary 值最大的记录</li>
+</ol>
+<p>那么最大的问题就停留在：如何找到按字段 1 分组的字段 2 最大的记录？</p>
+<p>先后尝试了以下几种方法：</p>
+<p>方法一（不可行）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from (select * from table2 order by age desc) as a group by a.table1_id</span><br></pre></td></tr></table></figure></p>
+<p>方法二：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.* from table2 as a where age = (select max(age) from table2 where a.table1_id=table1_id)</span><br></pre></td></tr></table></figure></p>
+<p>方法三：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.* from table2 as a where not exists (select * from table2 where table1_id=a.table1_id and age&gt;a.age)</span><br></pre></td></tr></table></figure></p>
+<p>方法四：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.* from table2 as a where exists (select count(*) from table2 where table1_id=a.table1_id and age&gt;a.age having count(*)=0)</span><br></pre></td></tr></table></figure></p>
+<p>第一种方法不可行的原因是由于违反了 ONLY_FULL_GROUP_BY 模式要求，具体原因参见 <a href="http://www.xinxiaoyang.com/programming/2017-12-25-sql-leetcode-1/" target="_blank" rel="noopener">SQL_MODE = ONLY_FULL_GROUP_BY</a>。方法二三四亲测都是可行的，那么使用思路一，先找到 Employee 表中以 DepartmentId 分组的 Salary 值最大的记录，再连接的写法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 方法一</span><br><span class="line"><span class="keyword">select</span> b.Name <span class="keyword">as</span> Department, c.name <span class="keyword">as</span> Employee, Salary <span class="keyword">from</span> (</span><br><span class="line">  # 单表中找出分组最大</span><br><span class="line">  <span class="keyword">select</span> a.* <span class="keyword">from</span> Employee <span class="keyword">as</span> a <span class="keyword">where</span> salary = (<span class="keyword">select</span> <span class="keyword">max</span>(salary) <span class="keyword">from</span> Employee <span class="keyword">where</span> a.DepartmentId = DepartmentId) </span><br><span class="line">) c</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Department <span class="keyword">AS</span> b <span class="keyword">ON</span> c.DepartmentId = b.id</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 方法二</span><br><span class="line"><span class="keyword">select</span> b.Name <span class="keyword">as</span> Department, c.name <span class="keyword">as</span> Employee, Salary <span class="keyword">from</span> (</span><br><span class="line">  # 单表中找出分组最大</span><br><span class="line">  <span class="keyword">select</span> a.* <span class="keyword">from</span> Employee <span class="keyword">as</span> a <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> (<span class="keyword">select</span> * <span class="keyword">from</span> Employee <span class="keyword">where</span> DepartmentId=a.DepartmentId <span class="keyword">and</span> Salary &gt; a.Salary)</span><br><span class="line">) c</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Department <span class="keyword">AS</span> b <span class="keyword">ON</span> c.DepartmentId = b.id</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 方法三</span><br><span class="line"><span class="keyword">select</span> b.Name <span class="keyword">as</span> Department, c.name <span class="keyword">as</span> Employee, Salary <span class="keyword">from</span> (</span><br><span class="line">  # 单表中找出分组最大</span><br><span class="line">  <span class="keyword">select</span> a.* <span class="keyword">from</span> Employee <span class="keyword">as</span> a <span class="keyword">where</span> <span class="keyword">exists</span> (<span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> Employee <span class="keyword">where</span> DepartmentId=a.DepartmentId <span class="keyword">and</span> Salary &gt; a.Salary <span class="keyword">having</span> <span class="keyword">count</span>(*)=<span class="number">0</span>)</span><br><span class="line">) c</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Department <span class="keyword">AS</span> b <span class="keyword">ON</span> c.DepartmentId = b.id</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -466,16 +377,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2017-12-17-spss-1/" rel="next" title="SPSS 基础操作（一）">
-                <i class="fa fa-chevron-left"></i> SPSS 基础操作（一）
+              <a href="/programming/2017-12-24-sql-4/" rel="next" title="SQL 基础（四）">
+                <i class="fa fa-chevron-left"></i> SQL 基础（四）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2017-12-25-sql-leetcode-3/" rel="prev" title="MYSQL 获取分组某字段最大的记录">
-                MYSQL 获取分组某字段最大的记录 <i class="fa fa-chevron-right"></i>
+              <a href="/programming/2017-12-25-sql-leetcode-1/" rel="prev" title="SQL_MODE = ONLY_FULL_GROUP_BY">
+                SQL_MODE = ONLY_FULL_GROUP_BY <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -590,7 +501,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些基本概念"><span class="nav-number">1.</span> <span class="nav-text">一些基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并发处理"><span class="nav-number">1.1.</span> <span class="nav-text">并发处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁粒度"><span class="nav-number">1.2.</span> <span class="nav-text">锁粒度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务处理"><span class="nav-number">1.3.</span> <span class="nav-text">事务处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外键和索引"><span class="nav-number">1.4.</span> <span class="nav-text">外键和索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储引擎的特点"><span class="nav-number">2.</span> <span class="nav-text">存储引擎的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改存储引擎"><span class="nav-number">3.</span> <span class="nav-text">修改存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过修改-MySQL-配置文件"><span class="nav-number">3.1.</span> <span class="nav-text">通过修改 MySQL 配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过创建数据表命令"><span class="nav-number">3.2.</span> <span class="nav-text">通过创建数据表命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过修改数据表命令"><span class="nav-number">3.3.</span> <span class="nav-text">通过修改数据表命令</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
