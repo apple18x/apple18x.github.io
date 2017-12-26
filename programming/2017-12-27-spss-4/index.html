@@ -1,0 +1,840 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SPSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="方差分析的基本思路是将数据的总变异分解成为已知的若干「可控因素」引起的变异和「随机因素」引起的误差，比较这两者的相对大小。 如果「可控因素」引起的变异明显大于「随机因素」引起的变异，说明「可控因素」引起了不同群体之间的差异。 相反，如果「随机变异」与「可控因素」引起的变异大小相当，则说明「可控因素」和「随机因素」差不多">
+<meta name="keywords" content="SPSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPSS 进行方差分析">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="方差分析的基本思路是将数据的总变异分解成为已知的若干「可控因素」引起的变异和「随机因素」引起的误差，比较这两者的相对大小。 如果「可控因素」引起的变异明显大于「随机因素」引起的变异，说明「可控因素」引起了不同群体之间的差异。 相反，如果「随机变异」与「可控因素」引起的变异大小相当，则说明「可控因素」和「随机因素」差不多，就不能说明「可控因素」在起作用。 即： 「控制因素」引起的变异大于「随机因素」">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-2.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-1.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-3.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-4.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-5.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-6.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-11.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-13.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-14.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-15.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-16.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-7.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-8.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-17.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-18.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-19.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-20.png">
+<meta property="og:updated_time" content="2017-12-26T14:53:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPSS 进行方差分析">
+<meta name="twitter:description" content="方差分析的基本思路是将数据的总变异分解成为已知的若干「可控因素」引起的变异和「随机因素」引起的误差，比较这两者的相对大小。 如果「可控因素」引起的变异明显大于「随机因素」引起的变异，说明「可控因素」引起了不同群体之间的差异。 相反，如果「随机变异」与「可控因素」引起的变异大小相当，则说明「可控因素」和「随机因素」差不多，就不能说明「可控因素」在起作用。 即： 「控制因素」引起的变异大于「随机因素」">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-12-27-spss-4/spss-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-12-27-spss-4/"/>
+
+
+  <title> SPSS 进行方差分析 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SPSS 进行方差分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-27T00:00:00+08:00" content="2017-12-27">
+              2017-12-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>方差分析的基本思路是将数据的总变异分解成为已知的若干「可控因素」引起的变异和「随机因素」引起的误差，比较这两者的相对大小。</p>
+<p>如果「可控因素」引起的变异明显大于「随机因素」引起的变异，说明「可控因素」引起了不同群体之间的差异。</p>
+<p>相反，如果「随机变异」与「可控因素」引起的变异大小相当，则说明「可控因素」和「随机因素」差不多，就不能说明「可控因素」在起作用。</p>
+<p>即：</p>
+<p>「控制因素」引起的变异大于「随机因素」引起的变异，才能认为「控制因素」引起的变异起了作用。</p>
+<a id="more"></a>
+<h3 id="方差分析的分类"><a href="#方差分析的分类" class="headerlink" title="方差分析的分类"></a>方差分析的分类</h3><p>t 检验 vs 方差分析</p>
+<ul>
+<li>t 检验用于比较两个总体的均值是否有显著差异</li>
+<li>方差分析的目的是比较三个或者三个以上的总体均值是否有显著差异。</li>
+</ul>
+<p>方差分析的种类：</p>
+<ul>
+<li>单因素方差分析</li>
+<li>多因素主效应方差分析</li>
+<li>多因素包含交互效应的方差分析（多个因素变量相互作用，导致强者越强，弱者越弱）</li>
+</ul>
+<h3 id="方差分析的使用前提"><a href="#方差分析的使用前提" class="headerlink" title="方差分析的使用前提"></a>方差分析的使用前提</h3><ul>
+<li>线性可加(通常都满足)  </li>
+</ul>
+<p>方差分析是建立在一定的线性可加模型之上的，所谓线性可加模型是指每个观察值可以被视为若干个线性组成部分之和。也就是因变量的取值是由若干个已知自变量和随机因素影响的。这个条件一般是满足的，因此不用考虑。</p>
+<ul>
+<li>误差是随机的、彼此独立的、且都服从均数为 0 的正态分布  </li>
+</ul>
+<p>这要求在分析之前进行正态性检验。</p>
+<ul>
+<li>亚总体的方差相等  </li>
+</ul>
+<p>即不同组的方差相等。这样就能将亚总体的组内平方和合并成组间平方和。这要求在进行方差分析之前，检验组间方差是否具有齐性。</p>
+<p>理论依据是中心极限定理，因此建议抽取的亚总体样本数量也相等。</p>
+<p>依据以上三点，方差分析之前需进行：</p>
+<ul>
+<li>方差同质性检验，以保证用于比较的不同总体具有大致相同的方差；（SPSS 可自动检验同质性）</li>
+<li>对因变量进行探索性分析，观察因变量的分布情况；</li>
+</ul>
+<h3 id="方差分析的步骤"><a href="#方差分析的步骤" class="headerlink" title="方差分析的步骤"></a>方差分析的步骤</h3><ol>
+<li>探索因变量的分布，初步确定是否可以进行进行方差分析；</li>
+<li>进行方差同质性检验，确定不同总体的方差齐性；</li>
+<li><p>对于多个总体平均数的测验仍然和 t 检验一样，需要分为三个步骤：</p>
+<blockquote>
+<p>第一步：对所研究的问题提出一对假设；原假设：相同，备择假设：不完全相同<br>第二步：在无效假设 𝐻0 为正确的前提下，计算一个统计量；<br>第三步：根据小概率原理，选择接受还是拒绝原假设 𝐻0，如果拒绝原假设，认为不同总体的均值存在差异，那么还需进行多重比较；  </p>
+</blockquote>
+</li>
+<li><p>多重比较；</p>
+</li>
+</ol>
+<h3 id="单因素方差分析"><a href="#单因素方差分析" class="headerlink" title="单因素方差分析"></a>单因素方差分析</h3><p>单因素方差分析是指只有一个自变量的方差分析。从对数据的要求来讲，是一个作为自变量的分类变量（类别不小于 3）和一个连续变量（也可多个连续变量）。</p>
+<p><strong>例题1</strong><br>销售培训中，A,B,C 三组培训后的表现是否有显著差异？</p>
+<p><strong>分析</strong></p>
+<p><img src="spss-1.png"></p>
+<p><strong>SPSS 工具</strong></p>
+<p>首先进行探索性分析，以获得一些描述性统计分析的结果</p>
+<blockquote>
+<p>分析 － 描述统计 － 探索</p>
+</blockquote>
+<p><img src="spss-2.gif"></p>
+<blockquote>
+<p>分析 － 比较平均值 － 单因素 ANOVA 分析</p>
+</blockquote>
+<p><img src="spss-1.gif"></p>
+<p><strong>结论</strong></p>
+<p><img src="spss-3.png"></p>
+<blockquote>
+<p>根据探索性分析，我们可以看出 A 组存在很多异常值，C 组中位数较高，A 组中位数较低。</p>
+<p>A 组 Q-Q 图表示基本满足正态分布，B 组 Q-Q 图表示有一些偏态，C 组 Q-Q 图表示存在有异常值。数据大体成正态分布，可以做方差分析。</p>
+</blockquote>
+<p><img src="spss-2.png"></p>
+<blockquote>
+<p>F 值为 12.048，远大于1，P = 0.000 &lt; 0.05，拒绝原假设，即销售培训组培训后得分不完全相同。<br>但方差齐性检验结果显示，P = 0.014 &lt; 0.05，拒绝原假设，即方差是不齐的。因此，必须使用非参数分析检验，上面的分析均不可靠。</p>
+</blockquote>
+<p><strong>例题2</strong>  </p>
+<p>8个不同品种的水稻产量是否有显著差异？（多重比较）<br><strong>SPSS 工具</strong></p>
+<p>首先进行探索性分析，以获得一些描述性统计分析的结果</p>
+<blockquote>
+<p>分析 － 描述统计 － 探索</p>
+</blockquote>
+<p>方差同质性检验和方差分析：</p>
+<blockquote>
+<p>分析 － 比较平均值 － 单因素 ANOVA 分析</p>
+</blockquote>
+<p><strong>结论</strong></p>
+<blockquote>
+<p>从探索性分析的 Q-Q 图我们可以看出，点基本均匀分布在两侧，因此符合正态分布。</p>
+</blockquote>
+<p><img src="spss-4.png"></p>
+<blockquote>
+<p>P = 0.656 &gt; 0.05 通过方差齐性检验。<br>方差分析结果表示 P = 0.000 &lt; 0.05，拒绝原假设，说明水稻产量具有显著性差异。具体哪个组之间存在差异，需要进步进行多重方差分析。</p>
+</blockquote>
+<h3 id="多重方差分析"><a href="#多重方差分析" class="headerlink" title="多重方差分析"></a>多重方差分析</h3><p>由于方差分析的原假设为各组均值全相等，假设检验结果拒绝原假设后，得到的结论将是：各组均值不完全相等，那么结果可能就是有的组之间均值有明显差异，而有的组之间没有明显差异，那么到底是哪些组均值之间有明显差异呢？就需要再进行组与组之间的两两比较（多重比较）。</p>
+<p>多重比较有多种方法，常用方法的选用的原则是：</p>
+<ul>
+<li>如果需要将组间较为小的差异找出，就用 S-N-K 法；</li>
+<li>如果只有当组间差异够大时，才认为有差异，就选用 LSD 法；</li>
+<li>如果要求介于两种方法之间，则选用 Duncun 法。</li>
+</ul>
+<p><strong>例题</strong>  </p>
+<p>同上题，进一步进行两两之间的比较。</p>
+<p><strong>SPSS 工具</strong></p>
+<blockquote>
+<p>分析 － 比较平均值 － 单因素 ANOVA 分析</p>
+</blockquote>
+<p><img src="spss-3.gif"></p>
+<p><strong>结论</strong></p>
+<p>LSD 法：<br><img src="spss-5.png"></p>
+<p>表中的 * 表示显著差异，A 品种与 D、E、F、H 品种差异显著，而与 B、G 品种差异不显著，其他品种类似。</p>
+<p>S-N-K 法与邓肯法：</p>
+<p><img src="spss-6.png"></p>
+<p>如果第一列中显示数字的品种，表示差异不显著。在不同列中显示品种，表示差异显著。</p>
+<p>例如上表中，C 品种与 E 品种差异不显著，B、G、A 品种差异不显著等。</p>
+<h3 id="多因素主效应方差分析"><a href="#多因素主效应方差分析" class="headerlink" title="多因素主效应方差分析"></a>多因素主效应方差分析</h3><p>多因素方差分析，基本思想和方法与单因素方差分析相似，前提条件仍然是要满足独立、正态、方差齐性，所不同的是在多因素方差分析中，有时会出现交互作用，即多个因素的不同水平交叉搭配对指标产生的影响。</p>
+<p><strong>例题</strong></p>
+<p>六个水稻品种（A1 ,A2，A3，A4，A5，A6）种在四种不同类型的土壤中（B1 ,B2，B3，B4）。产量数据如下表所示，品种和土壤类型都是固定效应，分析品种和土壤类型对产量的影响。</p>
+<p><img src="spss-7.png"></p>
+<p><strong>分析</strong></p>
+<ol>
+<li>在方差分析之前，仍然要验证数据是否可以做方差分析</li>
+<li>做方差分析与假设检验（三步曲）</li>
+<li>如果有差异则需要进行两两比较</li>
+</ol>
+<p><strong>SPSS 工具</strong><br>将数据按照每一个变量占据一列的原则录入到SPSS</p>
+<p>首先绘制直方图以及进行探索性分析</p>
+<blockquote>
+<p>第一步： 图形 － 图表构建器<br>第二步： 分析 － 描述统计 － 探索</p>
+</blockquote>
+<p>其次进行方差齐性分析：</p>
+<blockquote>
+<p>第三步： 分析 － 一般线性模型 － 单变量</p>
+</blockquote>
+<p><img src="spss-4.gif"></p>
+<p>注：做齐性检验时，一次只能放入一个固定因子。</p>
+<p>方差分析：</p>
+<blockquote>
+<p>第四步： 分析 － 一般线性模型 － 单变量</p>
+</blockquote>
+<p><img src="spss-5.gif"></p>
+<p>使用邓肯法进行两两比较：</p>
+<blockquote>
+<p>第五步： 分析 － 一般线性模型 － 单变量</p>
+</blockquote>
+<p><img src="spss-6.gif"></p>
+<p><strong>结论</strong></p>
+<p>第一步：直方图</p>
+<p><img src="spss-8.png"></p>
+<p>我们发现产量分布并不太符合正态分布，但是也属于两侧低中间高的形状。</p>
+<p>第二步：探索性分析</p>
+<p><img src="spss-9.png"></p>
+<p>我们发现黑线都处于中间位置，因此可以认为是正态分布的。</p>
+<p><img src="spss-10.png"></p>
+<p>第三个数据可能存在一些问题。<br>但是方差分析对于正态分布的要求并不太严格，因此也可以进行方差检验。</p>
+<p>第三步：方差齐性检验</p>
+<p><img src="spss-11.png"></p>
+<p>我们发现检验不显著，即方差是齐性的。</p>
+<p>第四步：方差分析</p>
+<p><img src="spss-12.png"></p>
+<p>0.001 不同处理之间，差异是显著的。0.006 表示土壤类型是显著的</p>
+<p>第五步：两两比较</p>
+<p><img src="spss-13.png"></p>
+<p>A1、A3、A6 间差异不显著、A3、A5、A6、A4 间差异不显著。（顺序是根据从小到大排列的）</p>
+<p><img src="spss-14.png"></p>
+<p>B1、B3、B4 间差异不显著。</p>
+<h3 id="固定模型与随机模型"><a href="#固定模型与随机模型" class="headerlink" title="固定模型与随机模型"></a>固定模型与随机模型</h3><p>在 SPSS 中，可以在 “分析 － 一般线性模型 － 单变量” 中进行设置：</p>
+<p><img src="spss-15.png"></p>
+<h4 id="固定模型"><a href="#固定模型" class="headerlink" title="固定模型"></a>固定模型</h4><p>当重复进行试验时，因素的水平不变。如农业试验中，比较品种间产量差异时，每次试验都选用固定的几个品种，这种情况在分析数据时，选用固定模型。</p>
+<h4 id="随机模型"><a href="#随机模型" class="headerlink" title="随机模型"></a>随机模型</h4><p>当重复试验时，因素的水平不一定和上一次相同。还是用农业试验举例，有很多种品种可供选择，每次试验时，都随机选取几个品种，这种情况下，分析数据就需要选择随机模型。</p>
+<h4 id="混合模型"><a href="#混合模型" class="headerlink" title="混合模型"></a>混合模型</h4><p>混合模型只存在于多因素试验中，多个因素中，既有固定效应又有随机效应，则选择混合模型。如农业试验中，不同次试验中，品种是随机变化的，但是种植这些品种的试验田总是那几块，因此属于混合模型。</p>
+<h3 id="多因素包含交互效应的方差分析"><a href="#多因素包含交互效应的方差分析" class="headerlink" title="多因素包含交互效应的方差分析"></a>多因素包含交互效应的方差分析</h3><p>交互效应</p>
+<p>多个因素对同一个结果都有影响，那么它们在对结果施加影响时，就可能产生交互作用。强者越强就是一种正方向的交互作用。有钱人更有可能在商业上成功，有钱促成了商业的成功。自然界中，更好地作物品种搭配更好地土壤，得到的作物产量也比这两个因素单独起作用时的产量更高。</p>
+<p>如果存在多个因素对因变量产生影响，那么它们之间是否存在交互效应呢？</p>
+<p>在进行方差分析时，如果我们不确定是否存在交互作用，可以在分析建模时，纳入交互项，即先认为有交互作用，如果最后的模型结果显示交互项统计假设检验不显著，那么再将交互项移除即可。</p>
+<p>多因素包含交互效应的方差分析对数据的要求：</p>
+<p>记录的数据中，每一个处理下有多个数据。</p>
+<p><strong>例题</strong></p>
+<p>三个水稻品种（A1 、A2、 A3）种在四种不同的土壤中（B1 、B2  B3  B4），每个组合种了两块田（试验中所有天的面积相同），最终测得水稻的亩产量如下表所示。比较品种、土壤类型对产量是否有显著影响，并分析品种与土壤类型间的交互作用。</p>
+<p><img src="spss-16.png"></p>
+<p><strong>分析</strong></p>
+<ol>
+<li>在方差分析之前，仍然要验证数据是否可以做方差分析</li>
+<li>做方差分析与假设检验（三步曲）</li>
+<li>如果有差异则需要进行两两比较</li>
+</ol>
+<p><strong>SPSS 工具</strong></p>
+<blockquote>
+<p>第一步：探索性分析<br>分析 － 描述统计 － 探索  </p>
+<p>第二步：方差齐性检验<br>分析 － 一般线性模型 － 单变量</p>
+</blockquote>
+<p><img src="spss-7.gif"></p>
+<blockquote>
+<p>第三步：方差分析，注意此处纳入了交互项<br>分析 － 一般线性模型 － 单变量</p>
+</blockquote>
+<p><img src="spss-8.gif"></p>
+<p><strong>结论</strong></p>
+<p>通过探索性分析查看正态分布情况。由于方差分析对于正态分布的要求并不严格，因此在以下分布情况下，也是可以进行方差检验的。</p>
+<p><img src="spss-17.png"></p>
+<p>第二步进行方差齐性检验</p>
+<p><img src="spss-18.png"><br><img src="spss-19.png"></p>
+<p>两个自变量的 P 值均大于 0.05，因此均通过了齐性检验。</p>
+<p>第三步进行方差分析</p>
+<p><img src="spss-20.png"></p>
+<p>F 值是显著的，三个变量（含交互项）也是显著的，因此应该纳入交互项。说明两个变量作用产生了远高于单个变量的影响。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SPSS/" rel="tag">#SPSS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-12-26-spss-3/" rel="next" title="SPSS 进行卡方检验">
+                <i class="fa fa-chevron-left"></i> SPSS 进行卡方检验
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方差分析的分类"><span class="nav-number">1.</span> <span class="nav-text">方差分析的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方差分析的使用前提"><span class="nav-number">2.</span> <span class="nav-text">方差分析的使用前提</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方差分析的步骤"><span class="nav-number">3.</span> <span class="nav-text">方差分析的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单因素方差分析"><span class="nav-number">4.</span> <span class="nav-text">单因素方差分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多重方差分析"><span class="nav-number">5.</span> <span class="nav-text">多重方差分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多因素主效应方差分析"><span class="nav-number">6.</span> <span class="nav-text">多因素主效应方差分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#固定模型与随机模型"><span class="nav-number">7.</span> <span class="nav-text">固定模型与随机模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#固定模型"><span class="nav-number">7.1.</span> <span class="nav-text">固定模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机模型"><span class="nav-number">7.2.</span> <span class="nav-text">随机模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合模型"><span class="nav-number">7.3.</span> <span class="nav-text">混合模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多因素包含交互效应的方差分析"><span class="nav-number">8.</span> <span class="nav-text">多因素包含交互效应的方差分析</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
