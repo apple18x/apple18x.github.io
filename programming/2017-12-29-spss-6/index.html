@@ -1,0 +1,774 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SPSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="相关与回归的联系：  相关分析一般作为回归分析的基础，就是在进行回归分析之前，要先观察变量之间的关系，如果是线性关系，才能进一步做回归分析，如果不是线性关系，需要进行一定的数学变换； 回归分析侧重于变量之间的数量关系，需要通过一定的数学表达式将这种关系描述出来，进而确定一个或者几个变量（自变量）的变化对另外一个特定变量">
+<meta name="keywords" content="SPSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPSS 进行回归分析">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="相关与回归的联系：  相关分析一般作为回归分析的基础，就是在进行回归分析之前，要先观察变量之间的关系，如果是线性关系，才能进一步做回归分析，如果不是线性关系，需要进行一定的数学变换； 回归分析侧重于变量之间的数量关系，需要通过一定的数学表达式将这种关系描述出来，进而确定一个或者几个变量（自变量）的变化对另外一个特定变量（因变量）的影响程度。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-11.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-1.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-13.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-14.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-15.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-16.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-17.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-18.png">
+<meta property="og:updated_time" content="2017-12-29T03:19:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPSS 进行回归分析">
+<meta name="twitter:description" content="相关与回归的联系：  相关分析一般作为回归分析的基础，就是在进行回归分析之前，要先观察变量之间的关系，如果是线性关系，才能进一步做回归分析，如果不是线性关系，需要进行一定的数学变换； 回归分析侧重于变量之间的数量关系，需要通过一定的数学表达式将这种关系描述出来，进而确定一个或者几个变量（自变量）的变化对另外一个特定变量（因变量）的影响程度。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2017-12-29-spss-6/spss-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2017-12-29-spss-6/"/>
+
+
+  <title> SPSS 进行回归分析 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SPSS 进行回归分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-29T00:00:00+08:00" content="2017-12-29">
+              2017-12-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>相关与回归的联系：</p>
+<ul>
+<li>相关分析一般作为回归分析的基础，就是在进行回归分析之前，要先观察变量之间的关系，如果是线性关系，才能进一步做回归分析，如果不是线性关系，需要进行一定的数学变换；</li>
+<li>回归分析侧重于变量之间的数量关系，需要通过一定的数学表达式将这种关系描述出来，进而确定一个或者几个变量（自变量）的变化对另外一个特定变量（因变量）的影响程度。</li>
+<li><a id="more"></a>
+</li>
+</ul>
+<h3 id="一元线性回归分析"><a href="#一元线性回归分析" class="headerlink" title="一元线性回归分析"></a>一元线性回归分析</h3><p>一元线性回归模型可以表示为：<br><img src="spss-1.png"></p>
+<p>𝜷𝟎 表示的是截距，𝜷𝟏 表示斜率，𝜺 表示随机误差，也是后面提到的残差项。包括线性部分和随机误差两个部分。</p>
+<h4 id="回归方程的计算"><a href="#回归方程的计算" class="headerlink" title="回归方程的计算"></a>回归方程的计算</h4><p>最小二乘法（method of least squares）：是使因变量观测值与实际值之间距离的平方和最小的那条直线的方程。</p>
+<p><img src="spss-10.png">  </p>
+<h4 id="回归方程的拟合优度"><a href="#回归方程的拟合优度" class="headerlink" title="回归方程的拟合优度"></a>回归方程的拟合优度</h4><p>平方和的分解（变异的分解）：</p>
+<p><img src="spss-11.png">  </p>
+<p>判定系数计算公式：</p>
+<p><img src="spss-12.png">  </p>
+<p>由上述公式可知，当回归平方和占比越大（回归引起的变异越大）判定系数就会越大。表示回归方程的拟合效果越好。判定系数度量了回归直线的拟合效果。</p>
+<p>与相关系数的关系：</p>
+<ul>
+<li>在一元回归分析中，相关系数的平方就是判定系数；</li>
+<li>多元回归分析中，预测值与实际值相关系数的平方就是判定系数；</li>
+</ul>
+<h4 id="回归方程的显著性检验"><a href="#回归方程的显著性检验" class="headerlink" title="回归方程的显著性检验"></a>回归方程的显著性检验</h4><p>一元线性回归有三个假设检验：</p>
+<ul>
+<li>线性关系的的检验：检验是否存在线性关系（与散点图判断形成互补）</li>
+<li>斜率的检验：检验自变量对因变量的影响是否显著</li>
+<li>常数的检验：检验回归方程的常数是否为 0</li>
+</ul>
+<p>原假设分别是：</p>
+<ul>
+<li>线性关系检验：两个变量之间的线性关系不显著；</li>
+<li>斜率的检验：斜率等于 0；</li>
+<li>常数的检验：参数等于 0；</li>
+</ul>
+<p>以上检验均在 sig &lt; 0.05 时，拒绝原假设。  </p>
+<h4 id="模型的使用前提"><a href="#模型的使用前提" class="headerlink" title="模型的使用前提"></a>模型的使用前提</h4><ol>
+<li>因变量与自变量之间具有线性关系<br>可通过散点图来验证，如果非线性关系，可将其转换为线性。</li>
+<li>在重复抽样中，自变量 𝑥 是固定的，即假定 𝑥 是非随机的；<br>基于这两个假定，对于给定的 𝒙 的取值，𝒚 对应着一个分布，重复抽样时相当于从这个分布中抽出不同的 𝒚 值 。</li>
+<li>误差项是一个期望为 0 的随机变量；</li>
+<li>对于所有的 𝑥 的取值，误差𝜀的分布相同，满足相同的均值为零的正态分布；</li>
+<li>基于上述假定，要求进行回归分析时：<br>必须确定变量之间满足线性关系（通过散点图观察，不是线性关系关系要转换）<br>回归分析后要进行残差分析（检查残差是否正态分布，是否随自变量变化而变化）</li>
+</ol>
+<h4 id="SPSS-操作"><a href="#SPSS-操作" class="headerlink" title="SPSS 操作"></a>SPSS 操作</h4><p>第一步：散点图</p>
+<p><img src="spss-2.png">  </p>
+<p>第二步：如果我们认为散点图并不是呈线性分布，可以进行曲线估计：</p>
+<blockquote>
+<p>分析 － 回归 － 曲线估算<br>将所有模型勾选，再从多个模型中选择。</p>
+</blockquote>
+<p><img src="spss-1.gif"> </p>
+<p>模型效果主要依赖于 R 方的值，若 R 方的值越大，则代表模型的数据拟合效果越好。</p>
+<p><img src="spss-5.png"> </p>
+<p>从上面的结果来看，对数、二次、三次和 S 模型的 R 方值较大，因此我们单独对这四种模型进行实验。</p>
+<p><img src="spss-6.png"> </p>
+<p>从图表中我们发现，S 模型的模拟效果最好，然后我们可以查 S 模型的函数表达式，将其转换为线性模型。</p>
+<p>第四步：相关系数计算及相关性检验</p>
+<blockquote>
+<p>分析 － 相关 － 双变量相关性</p>
+</blockquote>
+<p><img src="spss-3.png">  </p>
+<p>相关性系数为 0.916，可知相关性很高。因此可进一步做回归分析。</p>
+<p>第五步：计算回归方程并检验</p>
+<blockquote>
+<p>分析 － 回归 － 线性</p>
+</blockquote>
+<p><img src="spss-4.png"> </p>
+<p>R 方的值为 0.839，说明回归系数可以很大程度上解释模型。方差分析和系数的 P 值均为 0.000 &lt; 0.05，因此说明该模型是个较好的模型。</p>
+<p>第六步：残差期望为 0 的检验</p>
+<blockquote>
+<p>分析 － 回归 － 线性<br>保存：勾选预测值 － 未标准化（得到预测销售额）<br>转换 － 计算变量<br>残差 = 预测值 - 真实值  </p>
+</blockquote>
+<p><img src="spss-7.png"> </p>
+<blockquote>
+<p>分析 － 描述统计 － P-P 图/Q-Q 图  </p>
+</blockquote>
+<p><img src="spss-8.png">  </p>
+<p>由于点是沿直线分布的，我们可以认为是正态分布的。若点全部在直线上，则说明点是标准正态分布的。</p>
+<p>查看直方图：</p>
+<p><img src="spss-9.png">  </p>
+<p>数据虽然有偏态，但是基本符合正态分布。<br>说明我们建立模型基本符合要求。</p>
+<h3 id="利用回归分析进行预测和控制"><a href="#利用回归分析进行预测和控制" class="headerlink" title="利用回归分析进行预测和控制"></a>利用回归分析进行预测和控制</h3><p>预测与控制：</p>
+<ul>
+<li>预测（predict）：通过自变量 𝒙 的取值来预测因变量 𝒚 的取值</li>
+<li>控制（control）：通过确定因变量 y 的取值来控制自变量 𝒙 的取值</li>
+</ul>
+<p>预测值的估计方法：</p>
+<ul>
+<li>点估计：直接利用回归方程计算出相应的因变量的取值</li>
+<li>区间估计：点估计的值加上预测误差</li>
+</ul>
+<p>注：注意进行预测或者控制时。使用的自变量或者因变量的值最好都不要超过原来样本数据的范围，超出的效果可能不会很好。</p>
+<p>回归分析结果评价，从以下几个角度考察模型的好坏：</p>
+<ul>
+<li>回归系数是否理论或者事先预期一致；</li>
+<li>统计检验的显著性；</li>
+<li>判定系数；</li>
+<li>残差项是否符合正态分布</li>
+</ul>
+<h4 id="SPSS-操作-1"><a href="#SPSS-操作-1" class="headerlink" title="SPSS 操作"></a>SPSS 操作</h4><blockquote>
+<p>分析 － 回归 － 线性<br>保存：勾选预测值 － 未标准化（得到预测销售额）  </p>
+</blockquote>
+<h3 id="多元线性回归分析"><a href="#多元线性回归分析" class="headerlink" title="多元线性回归分析"></a>多元线性回归分析</h3><p>自变量有多个，因变量只有一个的回归分析称为多元回归分析（multiple regression model）。</p>
+<p><img src="spss-13.png">  </p>
+<p>多元回归方程的计算方法仍然是最小二乘法。这些过程均由软件计算。在多元回归分析中需要注意的是，对于每个变量前的系数都要进行检验。</p>
+<p>多元回归分析的拟合优度：其实质是通过拟合出的回归方程计算出的预测值与实际值之间的拟合优度。</p>
+<p>往回归模型中增加变量，即使这个变量不是统计显著的，也会增加判定系数，因此要慎用判定系数。消除增加变量影响的判定系数是调整的多重判定系数。</p>
+<h4 id="多元线性回归分析-1"><a href="#多元线性回归分析-1" class="headerlink" title="多元线性回归分析"></a>多元线性回归分析</h4><p>多重共线性：回归模型中，两个或者两个以上的自变量彼此相关时，称回归模型中存在多重共线性。</p>
+<p>多重共线性导致的问题：</p>
+<ul>
+<li>线性关系显著，大部分回归系数却不显著；</li>
+<li>回归系数的符号与理论或者预期不符合；</li>
+</ul>
+<p>多重共线性的识别：</p>
+<ul>
+<li>各自变量之间显著相关（使用散点图矩阵和相关系数矩阵）</li>
+<li>线性关系检验显著（F 检验显著），各自变量系数却大多数不显著</li>
+<li>回归系数正负号与预期相反</li>
+<li>容忍度（tolerance）小于 0.1 或者方差扩大因子（VIF）大于 10，认为存在严重共线性</li>
+</ul>
+<p>多重共线性问题的处理</p>
+<ul>
+<li>删除相关性很强的两个自变量中的一个，或者删除多个相关性很强的自变量中的几个变量</li>
+<li>提取主成分，将多个相关性很强的变量包含的信息浓缩到一个变量中</li>
+<li>如果不删除变量：那就不用来建立解释现实事物间关系的模型，因此不用进行系数的检验；可利用回归方程在自变量样本值范围内预测因变量</li>
+</ul>
+<h4 id="多元线性回归的-SPSS-分析"><a href="#多元线性回归的-SPSS-分析" class="headerlink" title="多元线性回归的 SPSS 分析"></a>多元线性回归的 SPSS 分析</h4><p>第一步：自变量与因变量之间的散点图矩阵</p>
+<p><img src="spss-14.png">  </p>
+<p>总收入与点击率关系不大。此外，我们发现两个自变量：点击量和曝光量之间有很强的正相关，是否需要删除点击量或曝光量，需要进一步探讨。</p>
+<p>第二步：观察因变量与自变量之间的相关性<br>第三步：观察自变量之间的相关性（共线性问题）</p>
+<p><img src="spss-15.png">  </p>
+<p>总收入与曝光量、点击量有很强的正相关关系，点击率的相关性系数很小，且没有统计学意义。</p>
+<p>第四步：输出相关系数矩阵和统计检验的相伴概率</p>
+<p>由于通过上面的分析，点击率与总收入的相关性很弱，因此我们不将其纳入模型。</p>
+<p><img src="spss-16.png">  </p>
+<p>从上面的结果我们发现，R 方为 0.876，因此模型的可解释性较强。模型的总体具有显著性。<br>而自变量中的曝光量不具有统计学意义，点击量的显著性较强。因此我们考虑可能存在多重共线性。</p>
+<blockquote>
+<p>分析 － 回归 － 线性<br>选择“统计”， 勾选 “共线性诊断”</p>
+</blockquote>
+<p><img src="spss-17.png">  </p>
+<p>我们发现共线性因子均为 2.085，不存在明显的共线性问题，没必要删除其中的变量，但由于“曝光量”自变量不显著，因此考虑删除该变量。</p>
+<p>重新实现回归模型。</p>
+<p>第五步：将自变量逐步纳入模型<br>第六步：根据假设检验结果，专业解释，共线性识别决定保留那些变量</p>
+<p><img src="spss-18.png">  </p>
+<p>可以得到如下的回归模型： 总收入 = 0.475 * 点击量</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SPSS/" rel="tag">#SPSS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-12-27-spss-5/" rel="next" title="SPSS 进行相关分析">
+                <i class="fa fa-chevron-left"></i> SPSS 进行相关分析
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一元线性回归分析"><span class="nav-number">1.</span> <span class="nav-text">一元线性回归分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#回归方程的计算"><span class="nav-number">1.1.</span> <span class="nav-text">回归方程的计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回归方程的拟合优度"><span class="nav-number">1.2.</span> <span class="nav-text">回归方程的拟合优度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回归方程的显著性检验"><span class="nav-number">1.3.</span> <span class="nav-text">回归方程的显著性检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型的使用前提"><span class="nav-number">1.4.</span> <span class="nav-text">模型的使用前提</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SPSS-操作"><span class="nav-number">1.5.</span> <span class="nav-text">SPSS 操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用回归分析进行预测和控制"><span class="nav-number">2.</span> <span class="nav-text">利用回归分析进行预测和控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SPSS-操作-1"><span class="nav-number">2.1.</span> <span class="nav-text">SPSS 操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多元线性回归分析"><span class="nav-number">3.</span> <span class="nav-text">多元线性回归分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多元线性回归分析-1"><span class="nav-number">3.1.</span> <span class="nav-text">多元线性回归分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多元线性回归的-SPSS-分析"><span class="nav-number">3.2.</span> <span class="nav-text">多元线性回归的 SPSS 分析</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
