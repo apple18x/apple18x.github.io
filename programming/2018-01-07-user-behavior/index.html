@@ -1,0 +1,709 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="用户行为分析," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="流量的来源包括：  直流  推介  搜索引擎">
+<meta name="keywords" content="用户行为分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户行为分析">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2018-01-07-user-behavior/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="流量的来源包括：  直流  推介  搜索引擎">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-07T15:09:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用户行为分析">
+<meta name="twitter:description" content="流量的来源包括：  直流  推介  搜索引擎">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2018-01-07-user-behavior/"/>
+
+
+  <title> 用户行为分析 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用户行为分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-07T00:00:00+08:00" content="2018-01-07">
+              2018-01-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>流量的来源包括：</p>
+<ul>
+<li><p>直流</p>
+</li>
+<li><p>推介</p>
+</li>
+<li><p>搜索引擎</p>
+</li>
+</ul>
+<a id="more"></a>
+<p>流量的一些指标包括：</p>
+<ul>
+<li><p>PV(page view)：页面浏览量，用户每次对网站中的每个网页访问被记录为一个 PV。</p>
+</li>
+<li><p>UV(unique visitor)：访问页面的自然人个数。独立UV是以浏览器cookie为依据的。</p>
+</li>
+<li><p>IP(Internet Protocol)：访问过某站点的 IP 总数，以用户的 IP 地址作为统计依据。00:00-24:00 内相同 IP 地址之被计算一次。</p>
+</li>
+<li><p>VV(Visit View)：访客一天内访问网站的次数。当访客完成所有浏览并最终关掉该网站的所有页面时便完成了一次访问，同一访客一天内可能有多次访问行为，访问次数累计。或定义时间间隔为一次访问，例如十分钟为一次访问用户，如果用户访问了 40 分钟，则 VV 为 4。</p>
+</li>
+</ul>
+<p>用户行为常用的一些指标包括：</p>
+<ul>
+<li><p>用户停留时长</p>
+</li>
+<li><p>用户留存率（次日/7日/30日留存率）</p>
+</li>
+<li><p>日活</p>
+</li>
+<li><p>月活</p>
+</li>
+<li><p>用户行为路径</p>
+</li>
+<li><p>用户访问深度</p>
+</li>
+<li><p>用户停留页面</p>
+</li>
+<li><p>用户去向</p>
+</li>
+<li><p>用户黏性</p>
+</li>
+<li><p>用户活跃度</p>
+</li>
+<li><p>用户产出</p>
+</li>
+<li><p>用户点击行为研究：热图</p>
+</li>
+<li><p>新增用户数</p>
+</li>
+</ul>
+<h3 id="用户规模和质量"><a href="#用户规模和质量" class="headerlink" title="用户规模和质量"></a>用户规模和质量</h3><h4 id="用户活跃指标"><a href="#用户活跃指标" class="headerlink" title="用户活跃指标"></a>用户活跃指标</h4><h4 id="新增用户指标"><a href="#新增用户指标" class="headerlink" title="新增用户指标"></a>新增用户指标</h4><p>用于衡量推广效果的指标。</p>
+<p>新增用户数/活跃用户数 用于很亮产品的健康度。如果新用户占比高，则说明推广得来，为什么留不住老客户呢？</p>
+<p>首次启动应用的用户。下载和激活的转化率很高，因此我们可以监测下载数即可</p>
+<h4 id="用户构成指标"><a href="#用户构成指标" class="headerlink" title="用户构成指标"></a>用户构成指标</h4><p>周活跃用户作为分类的，回流用户，忠诚用户，连续活跃N周用户，本周启动应用的用户等。</p>
+<p>连续活跃 N 周用户：连续活跃<br>连续活跃用户：连续活跃 2 周以上的用户<br>忠诚用户：连续活跃 5 周以上的用户<br>近期流失用户：连续 1-4 周没有启动过用户</p>
+<h4 id="用户留存率指标"><a href="#用户留存率指标" class="headerlink" title="用户留存率指标"></a>用户留存率指标</h4><p>某一段时间内留存在产品中的用户比例，验证产品吸引用户的重要指标。</p>
+<p>次日，7日，14日，30日留存用户</p>
+<h4 id="每个用户总活跃天数指标"><a href="#每个用户总活跃天数指标" class="headerlink" title="每个用户总活跃天数指标"></a>每个用户总活跃天数指标</h4><p>统计周期内，用户在应用中活跃的天数。统计周期可以为年，例如<br>平均活跃天数为80，反应出用户流失之前在app上留存了多长时间。</p>
+<h3 id="用户参与度分析"><a href="#用户参与度分析" class="headerlink" title="用户参与度分析"></a>用户参与度分析</h3><h4 id="启动次数指标"><a href="#启动次数指标" class="headerlink" title="启动次数指标"></a>启动次数指标</h4><p>如果是社交产品，则需要以天为单位进行统计。<br>如果是在线教育性质的产品，则需要以周为单位进行统计。</p>
+<p>总体启动次数，用户人均启动次数。</p>
+<p>还要根据日活跃用户数进行比对，人均启动次数和人均启用时长，日活跃数一起分析。</p>
+<p>活跃用户的参与度是多少。</p>
+<h4 id="使用时长"><a href="#使用时长" class="headerlink" title="使用时长"></a>使用时长</h4><p>app 的启动到结束时间。</p>
+<p>包括：</p>
+<p>人均使用时长：统计周期内，总活跃时长／活跃用户<br>单次使用时长：统计周期内，总活跃时长／启动次数</p>
+<p>用于衡量产品的活跃度</p>
+<p>使用时长的值如果很大，说明黏性很好。社交、游戏类型的产品往往黏性比较好。</p>
+<h4 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h4><p>启动访问的页面数。</p>
+<p>访问页面的分布，一天／7天／30天，每一个访问页面的活跃用户数，</p>
+<p>了解访问页面的分布差异。<br>例如：</p>
+<p>6-9页的用户数为10w，10-20页的用户数2w，是不是两个页面设计风格<br>是否下行的按钮，考虑高亮按钮</p>
+<h4 id="使用时间间隔"><a href="#使用时间间隔" class="headerlink" title="使用时间间隔"></a>使用时间间隔</h4><p>同一个用户相邻两次启动用户的间隔</p>
+<p>例如某个社交产品，每天启动两次，每次间隔10个小时，可能用户不能拿手机，或每天无聊时消遣的产品。</p>
+<p>数据的意义：还原用户，还原场景。</p>
+<p>UV(unique visitor)：统计的是电脑的 cookies<br>PV(page view)：页面浏览量<br>IP(Internet Protocol)：根据IP了解用户的区域分布，由于不同区域的产品接受的信息不一样，可根据不同  根据主要产品人群设计产品（UI/UX）<br>VISIT：访问用户。一般情况下十分钟为一次访问用户，如果用户访问了40分钟，则 VISIT 为 4。间隔可自己设计，高频率产品计算 VISIT 时间会长一些。</p>
+<p>PV/UV =5或6，电商网站路径超过10步，那么需要考虑是否路径太长。通常电商网站的PV/UV 比较高</p>
+<h3 id="渠道分析"><a href="#渠道分析" class="headerlink" title="渠道分析"></a>渠道分析</h3><p>渠道分析的目的是研究推广渠道所带来的用户是否是真的“人”在用。</p>
+<p>用于判断用户的行为是否正常。<br>激活 APP 的时间是否正常<br>外卖产品超过五分钟未激活，是否是真的<br>设备是否是真实的，包括机型／操作系统</p>
+<h3 id="功能分析"><a href="#功能分析" class="headerlink" title="功能分析"></a>功能分析</h3><h4 id="功能活跃指标"><a href="#功能活跃指标" class="headerlink" title="功能活跃指标"></a>功能活跃指标</h4><p>关注某个功能的活跃用户，</p>
+<blockquote>
+<p>例如主推的功能。用于判断是否要保留某个功能，如果活跃用户非常少，可以考虑砍掉</p>
+</blockquote>
+<h4 id="用户访问路径（Path-Analysis）"><a href="#用户访问路径（Path-Analysis）" class="headerlink" title="用户访问路径（Path Analysis）"></a>用户访问路径（Path Analysis）</h4><p>访问路径是指用户从打开应用到离开应用的页面跳转情况，目的在于用户帮助我们完成产品的迭代。</p>
+<p>访问路径通常用于对用户的细分，然后返回到产品的迭代。例如：</p>
+<p>APP 用户身份的多样性：会员、同事、竞争对手等<br>APP 用户的目的的多样性：产品的使用目的<br>APP 用户访问路径的多样性：即使用户身份差不多，访问路径也有可能不同  </p>
+<blockquote>
+<p>某汽车 APP，对用户进行细分可以分为：关注、意向、购买，不同类型的用户访问路径可能不同。例如购买型用户通常会对同一价位，不同车型进行比较，而关注型用户关注的汽车类型差异比较大。</p>
+</blockquote>
+<h4 id="漏斗模型（Funnel-Model）"><a href="#漏斗模型（Funnel-Model）" class="headerlink" title="漏斗模型（Funnel Model）"></a>漏斗模型（Funnel Model）</h4><p>漏斗模型显示了用户从进入流程到实现目标的转化率，适用于网站中某些关键路径的转化率的分析，通常用于流量监控。</p>
+<p>较典型的案例就是电商网站的转化：</p>
+<p>第一步：进入首页<br>第二步：进入商品详情页<br>第三步：加入购物车<br>第四步：进入支付页面<br>第五步：成功支付  </p>
+<p>假如第二步的转化率很低，则可能说明首页产品不吸引人。若第五步转化率低，则可能是支付流程太复杂导致的。</p>
+<h3 id="用户属性分析"><a href="#用户属性分析" class="headerlink" title="用户属性分析"></a>用户属性分析</h3><h4 id="设备终端分析"><a href="#设备终端分析" class="headerlink" title="设备终端分析"></a>设备终端分析</h4><p>用户的经济层级分析。<br>例如用户使用人群大多数使用 iOS 系统，则说明用户层级较高。</p>
+<h4 id="网络及运营商分析"><a href="#网络及运营商分析" class="headerlink" title="网络及运营商分析"></a>网络及运营商分析</h4><p>2G/3G/4G 移动、联通和电信</p>
+<h4 id="地域分析"><a href="#地域分析" class="headerlink" title="地域分析"></a>地域分析</h4><h4 id="用户画像"><a href="#用户画像" class="headerlink" title="用户画像"></a>用户画像</h4><p>人口统计学特征（自然属性：性别、年龄、学历、收入、支出、职业）<br>商业兴趣（房产、金融）<br>个人兴趣（音乐、健身、养宠物）</p>
+<p>社交产品为什么火？社交收集的数据的维度是最广的，电商收集的是最容易变现的数据，称为消费数据。</p>
+<p>用户访谈可以用于收集数据。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/用户行为分析/" rel="tag">#用户行为分析</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2018-01-04-case-when/" rel="next" title="CASE...WHEN">
+                <i class="fa fa-chevron-left"></i> CASE...WHEN
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户规模和质量"><span class="nav-number">1.</span> <span class="nav-text">用户规模和质量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用户活跃指标"><span class="nav-number">1.1.</span> <span class="nav-text">用户活跃指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增用户指标"><span class="nav-number">1.2.</span> <span class="nav-text">新增用户指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户构成指标"><span class="nav-number">1.3.</span> <span class="nav-text">用户构成指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户留存率指标"><span class="nav-number">1.4.</span> <span class="nav-text">用户留存率指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#每个用户总活跃天数指标"><span class="nav-number">1.5.</span> <span class="nav-text">每个用户总活跃天数指标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户参与度分析"><span class="nav-number">2.</span> <span class="nav-text">用户参与度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动次数指标"><span class="nav-number">2.1.</span> <span class="nav-text">启动次数指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用时长"><span class="nav-number">2.2.</span> <span class="nav-text">使用时长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问页面"><span class="nav-number">2.3.</span> <span class="nav-text">访问页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用时间间隔"><span class="nav-number">2.4.</span> <span class="nav-text">使用时间间隔</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渠道分析"><span class="nav-number">3.</span> <span class="nav-text">渠道分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#功能分析"><span class="nav-number">4.</span> <span class="nav-text">功能分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#功能活跃指标"><span class="nav-number">4.1.</span> <span class="nav-text">功能活跃指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户访问路径（Path-Analysis）"><span class="nav-number">4.2.</span> <span class="nav-text">用户访问路径（Path Analysis）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#漏斗模型（Funnel-Model）"><span class="nav-number">4.3.</span> <span class="nav-text">漏斗模型（Funnel Model）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户属性分析"><span class="nav-number">5.</span> <span class="nav-text">用户属性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设备终端分析"><span class="nav-number">5.1.</span> <span class="nav-text">设备终端分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络及运营商分析"><span class="nav-number">5.2.</span> <span class="nav-text">网络及运营商分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地域分析"><span class="nav-number">5.3.</span> <span class="nav-text">地域分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户画像"><span class="nav-number">5.4.</span> <span class="nav-text">用户画像</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
