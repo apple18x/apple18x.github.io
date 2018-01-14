@@ -1,0 +1,695 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="用户行为," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="当我们对产品进行分析时，通常会关注各种各样的转化率。例如：注册转化率，电商网站关注购买转化率等。 如果注册转化率偏低，我们将面临着很多的问题，例如如何解释原因？该怎么做？哪些方案是有效的呢？ 通常情况下，我们对转化率的解释不应是一概而论的。">
+<meta name="keywords" content="用户行为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="转化率背后的原因剖析">
+<meta property="og:url" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="当我们对产品进行分析时，通常会关注各种各样的转化率。例如：注册转化率，电商网站关注购买转化率等。 如果注册转化率偏低，我们将面临着很多的问题，例如如何解释原因？该怎么做？哪些方案是有效的呢？ 通常情况下，我们对转化率的解释不应是一概而论的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion/mece.png">
+<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion/case-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion/case-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion/case-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion/case-4.png">
+<meta property="og:updated_time" content="2018-01-14T08:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="转化率背后的原因剖析">
+<meta name="twitter:description" content="当我们对产品进行分析时，通常会关注各种各样的转化率。例如：注册转化率，电商网站关注购买转化率等。 如果注册转化率偏低，我们将面临着很多的问题，例如如何解释原因？该怎么做？哪些方案是有效的呢？ 通常情况下，我们对转化率的解释不应是一概而论的。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion/mece.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/数据分析/2018-01-14-conversion/"/>
+
+
+  <title> 转化率背后的原因剖析 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                转化率背后的原因剖析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-14T00:00:00+08:00" content="2018-01-14">
+              2018-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据分析/" itemprop="url" rel="index">
+                    <span itemprop="name">数据分析</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>当我们对产品进行分析时，通常会关注各种各样的转化率。例如：注册转化率，电商网站关注购买转化率等。</p>
+<p>如果注册转化率偏低，我们将面临着很多的问题，例如如何解释原因？该怎么做？哪些方案是有效的呢？</p>
+<p>通常情况下，我们对转化率的解释不应是一概而论的。</p>
+<a id="more"></a>
+<h3 id="解决问题的方法"><a href="#解决问题的方法" class="headerlink" title="解决问题的方法"></a>解决问题的方法</h3><h4 id="第一步：理解问题"><a href="#第一步：理解问题" class="headerlink" title="第一步：理解问题"></a>第一步：理解问题</h4><ul>
+<li>是什么？</li>
+<li>是否足够具体？</li>
+<li>是否能够指导具体的行动？ </li>
+</ul>
+<p>例如我们想提高活跃度，那么应该思考：</p>
+<p>如何定义活跃度？究竟是用户来过网站，还是用户使用过某些功能，还是用户使用时长定义了活跃度？</p>
+<p>事实上，什么性质的体验决定了如何定义活跃度，例如：</p>
+<ul>
+<li>电商：浏览商品个数</li>
+<li>SAAS：浏览和下载简历的个数</li>
+<li>内容社区类：用户访问时长</li>
+</ul>
+<p>我们要时刻记得，提高活跃度的终极目的是为了提高核心转化。例如对于电商网站，我们还要关心用户从商品浏览，到购买页，到完成订单这一过程。</p>
+<p>此外很重要的一点是，我们应该抛开固有思维，不要一味地以为用户的转化路径一定是 A - B - C，而应该对用户路径有更多的关注。</p>
+<h4 id="第二步：问题空间的分类"><a href="#第二步：问题空间的分类" class="headerlink" title="第二步：问题空间的分类"></a>第二步：问题空间的分类</h4><p>对问题空间进行分类，我们可以使用管理咨询界常用的方法 —— MECE：</p>
+<p><img src="mece.png"></p>
+<ul>
+<li>相互独立：分类与分类之间不重叠  </li>
+<li>完全穷尽：所有分类要覆盖所有的问题空间</li>
+</ul>
+<p>MECE 方法保证了问题空间的不重不漏。</p>
+<p>举个栗子：</p>
+<p>对于 SAAS 企业的签单问题（与企业的盈利挂钩的核心问题），使用 MECE 方法我们可将问题拆分为两类：</p>
+<ul>
+<li>新用户签单问题</li>
+<li>老用户续单问题</li>
+</ul>
+<p>这样我们就可针对市场和运营提出针对性的改进方案，使问题更清晰。</p>
+<h4 id="第三步：合理假设，有效验证"><a href="#第三步：合理假设，有效验证" class="headerlink" title="第三步：合理假设，有效验证"></a>第三步：合理假设，有效验证</h4><p>当我们对问题进行若干分类后，每个分类下将会提出多个假设。此时，我们可能会应用一些经验，优先解决对结果影响最大的问题。</p>
+<p>此外，我们还要平衡全面性和有效性两者之间的关系。</p>
+<p>例如：我们通过统计发现某网站的注册转化率偏低的问题，但考虑到人员和时间成本。我们会优先对首页注册信息进行修改，由原来需要用户填写注册邮箱、手机号、密码修改为只需要注册邮箱。根据经验，填写的信息越复杂，用户越有可能放弃。</p>
+<p>注册问题被放到较高的优先级。</p>
+<p>最终通过验证，该网站的注册转化率提高了 25%。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>背景：某在线旅游平台，主要业务为短途自助游。在「产品页面」，有“立即购买”按钮，进入「订单页面」，填写信息后可点击“提交订单”按钮。这是常见的购买流程，但也是产品中核心的转化路径。</p>
+<p><img src="case-1.png"></p>
+<p>通过分析，我们发现进入「产品页面」到点击“立即购买”的转化率为 3.1%，进入「订单页面」，提交订单人数转化率为 4.2%。通过与行业数据进行对比发现行业的平均水平在 10% 左右，该指标偏低。</p>
+<p>那么问题来了，如何提高购买转化率呢？</p>
+<h3 id="第一步：理解问题-1"><a href="#第一步：理解问题-1" class="headerlink" title="第一步：理解问题"></a>第一步：理解问题</h3><p>转化率是什么？</p>
+<blockquote>
+<p>转化率 = 完成支付的人数 / 进入订单填写页面的人数</p>
+</blockquote>
+<ul>
+<li>是否足够具体? </li>
+<li>如何增加完成支付的人数?   </li>
+<li>是否能够指导具体的行动? </li>
+<li>如何变流失为转化?  </li>
+</ul>
+<p>进入订单填写页面的人数（分母）是无法提高，那么问题在于提高分子，将流失的人变成完成支付的人数？</p>
+<p>下一步问题就是，流失的原因是什么？</p>
+<p>注：此时我们不要被固有思维所限制，而应该切切实实地关注流失用户的行为。</p>
+<h3 id="第二步：问题空间解析"><a href="#第二步：问题空间解析" class="headerlink" title="第二步：问题空间解析"></a>第二步：问题空间解析</h3><p><img src="case-1.png"></p>
+<p>被动离开：死机、断网等（不可控因素）<br>主动离开：用户自己做的决定</p>
+<p>因此我们将目光关注在主动离开的用户上</p>
+<ul>
+<li>需求匹配，未完成</li>
+<li>需求不匹配</li>
+</ul>
+<h3 id="第三步：合理假设，有效验证-1"><a href="#第三步：合理假设，有效验证-1" class="headerlink" title="第三步：合理假设，有效验证"></a>第三步：合理假设，有效验证</h3><p><img src="case-3.png"></p>
+<p><strong>假设：</strong></p>
+<p>我们首先对两个问题提出假设：</p>
+<p>需求不匹配：到订单页只为看最终价格，实际价格与期望可能存在差距</p>
+<p>需求匹配，但未完成：设计不完善，页面功能有缺陷</p>
+<p><strong>验证：</strong></p>
+<p>以“需求匹配，但未完成”为例，我们进行用户细查，即查看用户真实的行为轨迹：</p>
+<p><img src="case-4.png"></p>
+<p>我们发现未支付的用户都存在类似的情况：当用户打开网页进行操作，点击“现在购买”按钮，到达信息填写页面，往往都会回退到产品页面，修改相关信息，再次点击“购买”按钮，以此往返多次。</p>
+<p>通过日常经验，我们不难理解，当我们预订旅游产品时，往往需要考虑多方面因素，因此需要不断修改订单的内容，例如酒店预订、日期等等。</p>
+<p>在这个产品中，当用户发现订单无法修改时，必须返回上一页进行信息的修改。多次反复后导致用户失去耐心，离开页面。</p>
+<p>最终，我们得出的结论是：</p>
+<p>由于订单页面无法修改，导致用户无法完成整个流程。<br>也印证了我们提出的假设：交互设计不完善。</p>
+<p>提出可行的方案：</p>
+<p>添加用户自由修改信息功能</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/用户行为/" rel="tag">#用户行为</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2018-01-08-sql-leetcode-4/" rel="next" title="MYSQL 获取中位数">
+                <i class="fa fa-chevron-left"></i> MYSQL 获取中位数
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题的方法"><span class="nav-number">1.</span> <span class="nav-text">解决问题的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步：理解问题"><span class="nav-number">1.1.</span> <span class="nav-text">第一步：理解问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步：问题空间的分类"><span class="nav-number">1.2.</span> <span class="nav-text">第二步：问题空间的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步：合理假设，有效验证"><span class="nav-number">1.3.</span> <span class="nav-text">第三步：合理假设，有效验证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步：理解问题-1"><span class="nav-number">3.</span> <span class="nav-text">第一步：理解问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步：问题空间解析"><span class="nav-number">4.</span> <span class="nav-text">第二步：问题空间解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步：合理假设，有效验证-1"><span class="nav-number">5.</span> <span class="nav-text">第三步：合理假设，有效验证</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
