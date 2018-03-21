@@ -1,0 +1,650 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FCPX," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="查看视频素材视频素材部分的快捷键如下： 缩放快捷键： cmd++/-完整显示快捷键： shift+z播放/暂停快捷键： space后退/暂停/前进快捷键： J/K/L后退/前进慢动作：J+K/K+L播放声音： s/shift+s显示主线上所有视频： shift+z">
+<meta name="keywords" content="FCPX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FCPX 入门（二） 之时间线操作">
+<meta property="og:url" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-3/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="查看视频素材视频素材部分的快捷键如下： 缩放快捷键： cmd++/-完整显示快捷键： shift+z播放/暂停快捷键： space后退/暂停/前进快捷键： J/K/L后退/前进慢动作：J+K/K+L播放声音： s/shift+s显示主线上所有视频： shift+z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-3/fcpx-3-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-3/fcpx-3-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-3/fcpx-3-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-3/fcpx-3-5.png">
+<meta property="og:updated_time" content="2018-03-21T09:10:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FCPX 入门（二） 之时间线操作">
+<meta name="twitter:description" content="查看视频素材视频素材部分的快捷键如下： 缩放快捷键： cmd++/-完整显示快捷键： shift+z播放/暂停快捷键： space后退/暂停/前进快捷键： J/K/L后退/前进慢动作：J+K/K+L播放声音： s/shift+s显示主线上所有视频： shift+z">
+<meta name="twitter:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-3/fcpx-3-3.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-3/"/>
+
+
+  <title> FCPX 入门（二） 之时间线操作 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                FCPX 入门（二） 之时间线操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-21T00:00:00+08:00" content="2017-03-21">
+              2017-03-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/视频剪辑/" itemprop="url" rel="index">
+                    <span itemprop="name">视频剪辑</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="查看视频素材"><a href="#查看视频素材" class="headerlink" title="查看视频素材"></a>查看视频素材</h3><p>视频素材部分的快捷键如下：</p>
+<p>缩放快捷键： cmd++/-<br>完整显示快捷键： shift+z<br>播放/暂停快捷键： space<br>后退/暂停/前进快捷键： J/K/L<br>后退/前进慢动作：J+K/K+L<br>播放声音： s/shift+s<br>显示主线上所有视频： shift+z</p>
+<a id="more"></a>
+<p>设定入点/出点： i/o<br>播放入点到出点的视频片段：/<br>注：播放入点到出点时，建议打开循环播放。打开方法为：显示-播放-循环播放<br>快捷键：cmd+L</p>
+<h3 id="添加视频素材"><a href="#添加视频素材" class="headerlink" title="添加视频素材"></a>添加视频素材</h3><p><img src="fcpx-3-3.png"></p>
+<p>无论插入到时间线的中间或结尾，都可以通过鼠标拖动的方式。</p>
+<p>添加到结尾处快捷键：e<br>添加到光标处快捷键：w</p>
+<p>注：如果设置了入点和出点，则只能将片段部分添加到时间线。</p>
+<h3 id="替换视频素材"><a href="#替换视频素材" class="headerlink" title="替换视频素材"></a>替换视频素材</h3><p>克隆项目：cmd+d<br>注：克隆项目通常用于对项目的保护  </p>
+<p>将视频素材设为入点位置替换：d<br>将视频素材设为出点位置替换：shift+d<br>将光标定位到需要插入视频片段的位置，按下快捷键 d/shift+d。原视频长度不变，插入的视频出现在光标位置。</p>
+<p><img src="fcpx-3-2.png"><br>选择需要被替换视频片段，将需要替换的视频用鼠标拖动到被替换的视频上，会出现多个选项。其中，“使用重新定是替换以合适”是保持原有长度不变，对新视频进行加速/降速处理。</p>
+<h3 id="删除视频素材"><a href="#删除视频素材" class="headerlink" title="删除视频素材"></a>删除视频素材</h3><p>在视频片段上设置入点和出点（i和o），直接按 DEL 键进行删除。后续视频向前补位。<br>注：此处可结合 JKL 进行精细化操作。</p>
+<p>若想将删除视频处的缝隙保留，则按下 SHIFT+DEL 即可。</p>
+<p><img src="fcpx-3-4.png">  </p>
+<h3 id="主线故事情节提取"><a href="#主线故事情节提取" class="headerlink" title="主线故事情节提取"></a>主线故事情节提取</h3><p>插入非主线快捷键：Q</p>
+<p>在主时间线上设置入点和出点，按下快捷键 Q，将视频片段插入到非主线上。非主线视频会截取为与入点和出点长度。播放时，会产生蒙太奇画面。<br>注：与主线故事连接，若移动主线视频，非主线视频会同时跟随移动。</p>
+<p>提取主线故事情节快捷键：OPT+CMD+↑<br>选择主线故事视频，右键-从故事情节中提取。</p>
+<p>选择多个视频插入非主线：<br>在多个视频片段中设置入点和出点，再按住 CMD 选择多个视频，按下快捷键 Q。 </p>
+<p>插入非主线快捷键（出点定位）：SHIFT+Q<br>使用 SHIFT+Q 可以将片段视频的结尾与当前光标位置对齐。</p>
+<p>将复制的视频片段插入到主线故事中：CMD+V<br>将复制的视频片段插入到非主线故事中：OPT+V</p>
+<h3 id="移动素材与克隆素材"><a href="#移动素材与克隆素材" class="headerlink" title="移动素材与克隆素材"></a>移动素材与克隆素材</h3><p>鼠标操作：将视频移动到需要的位置</p>
+<p>滑动操作：<code>,</code>和<code>。</code>，<code>shift+</code>,和<code>shift+</code>可进行十倍速度移动</p>
+<p>位置工具：移动时可能产生缝隙</p>
+<p>复制并拖动：按住 opt 后拖动视频</p>
+<h3 id="音频管理"><a href="#音频管理" class="headerlink" title="音频管理"></a>音频管理</h3><p>按住音频波形上下移动，可提高／降低声音大小。</p>
+<p>批量操作： 选择所有视频，按下 CMD+4，在右上角的窗口内可对所有视频/音频进行批量操作</p>
+<p>或右键－分离音频（快捷键：CMD+SHIFT+S）</p>
+<p><img src="fcpx-3-5.png"><br>仅插入视频快捷键：SHIFT+2<br>仅插入音频快捷键：SHIFT+3</p>
+<p>扩展音频：右键－展开音频，将音频拖动到需要的视频下，再右键－折叠音频即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FCPX/" rel="tag">#FCPX</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-03-09-dp/" rel="next" title="dp 与 px">
+                <i class="fa fa-chevron-left"></i> dp 与 px
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-04-01-transitionend/" rel="prev" title="transitionend">
+                transitionend <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看视频素材"><span class="nav-number">1.</span> <span class="nav-text">查看视频素材</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加视频素材"><span class="nav-number">2.</span> <span class="nav-text">添加视频素材</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换视频素材"><span class="nav-number">3.</span> <span class="nav-text">替换视频素材</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除视频素材"><span class="nav-number">4.</span> <span class="nav-text">删除视频素材</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主线故事情节提取"><span class="nav-number">5.</span> <span class="nav-text">主线故事情节提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动素材与克隆素材"><span class="nav-number">6.</span> <span class="nav-text">移动素材与克隆素材</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#音频管理"><span class="nav-number">7.</span> <span class="nav-text">音频管理</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
