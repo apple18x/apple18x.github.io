@@ -1,0 +1,694 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FCPX," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="视频变换打开面板右上角的检查器，快捷键：cmd+4">
+<meta name="keywords" content="FCPX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FCPX 入门（五） 之转场与颜色特效">
+<meta property="og:url" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="视频变换打开面板右上角的检查器，快捷键：cmd+4">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-11.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-13.png">
+<meta property="og:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-14.png">
+<meta property="og:updated_time" content="2018-03-24T00:59:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FCPX 入门（五） 之转场与颜色特效">
+<meta name="twitter:description" content="视频变换打开面板右上角的检查器，快捷键：cmd+4">
+<meta name="twitter:image" content="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/fcpx-5-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/视频剪辑/2017-03-21-fcpx-5/"/>
+
+
+  <title> FCPX 入门（五） 之转场与颜色特效 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                FCPX 入门（五） 之转场与颜色特效
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-21T00:00:00+08:00" content="2017-03-21">
+              2017-03-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/视频剪辑/" itemprop="url" rel="index">
+                    <span itemprop="name">视频剪辑</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="视频变换"><a href="#视频变换" class="headerlink" title="视频变换"></a>视频变换</h3><p>打开面板右上角的检查器，快捷键：<code>cmd+4</code></p>
+<a id="more"></a>
+<p><img src="fcpx-5-1.png"></p>
+<p>也可以通过视频左下角的按钮来进行变换、剪裁和变形，该种方法可以出现定界框，可以对视频进行鼠标缩放。最后点击“完成”保存。</p>
+<p><img src="fcpx-5-2.png"></p>
+<h4 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h4><p>变换包括以下功能：  </p>
+<p><img src="fcpx-5-3.png"></p>
+<h4 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h4><p>裁剪包括：修剪、裁剪和 Ken Burns。<br><img src="fcpx-5-4.png"></p>
+<ul>
+<li>修剪：将视频进行剪切，视频的长宽会随之减小。   </li>
+<li>裁剪：保持视频原宽高不变，裁剪部分自动放大填。    </li>
+<li>KB：控制开始与结束的显示窗口，会在播放时进行视频大小的动态变化。下图红框中的按钮可以实现开始结束的反向变换。<br><img src="fcpx-5-5.png"></li>
+</ul>
+<p>通过变换（缩小）和，粘贴属性，可以实现多视频的同时显示</p>
+<h4 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h4><p>变形包括以下功能：<br><img src="fcpx-5-6.png"></p>
+<h3 id="静止图像控制-Still-Image"><a href="#静止图像控制-Still-Image" class="headerlink" title="静止图像控制(Still Image)"></a>静止图像控制(Still Image)</h3><p>静止图像控制是指插入图片，可在“Final Cut Pro - 偏好设置 - 编辑”中设置静止图像的默认播放长度。</p>
+<p><img src="fcpx-5-7.png"></p>
+<p>批量修改长度：选中所有图片，快捷键：ctrl+d，输入时间，则所有图片的播放长度都将改为该时间长度。</p>
+<p>空间符合：选中图片，打开检查器（cmd+4），空间符合可选择“适合”和“填充”，对应于 background-size 中的 contain 和 cover。</p>
+<p>图片中配合变换、裁剪和变形实现静止图像的动态变化。</p>
+<h3 id="转场"><a href="#转场" class="headerlink" title="转场"></a>转场</h3><p>选中两个视频片段，按下 <code>cmd+t</code>，会在两个视频前后和中间添加三个转场<br>选中一个视频片段，按下 <code>cmd+t</code>，会在一个视频前后添加两个转场<br>选中开头([)或结尾(])，按下 <code>cmd+t</code>，会在当前视频的开头或结尾添加一个转场<br>选中多个视频片段，按下 <code>cmd+t</code>，会在多个视频前后和中间添加 N+1 个转场</p>
+<p>可以拖动修改专场时间长度，或 <code>ctrl+d</code> 手动输入长度。</p>
+<p>在“偏好设置 - 编辑”中，可以设置默认的转场长度。</p>
+<h4 id="修改转场参数"><a href="#修改转场参数" class="headerlink" title="修改转场参数"></a>修改转场参数</h4><p>打开转场目录，可以选择不同的效果拖入到已有转场中。<br><img src="fcpx-5-8.png"></p>
+<p>快捷键：<code>shift+cmd+5</code></p>
+<p>打开检查器，可以修改该转场效果的参数。  </p>
+<p>默认转场效果为：交叉溶解。<br>修改转场效果的方式为：在转场面板上选择某个转场效果-右键-设为默认</p>
+<p>注：转场只会加到视频上，默认不加到音频上。  </p>
+<p><code>cmd+4</code> 可以继续修改转场属性。</p>
+<p>注：当视频长度不够，无法创建转场效果</p>
+<h3 id="添加视频效果"><a href="#添加视频效果" class="headerlink" title="添加视频效果"></a>添加视频效果</h3><p><img src="fcpx-5-9.png"></p>
+<p>快捷键：<code>cmd+5</code></p>
+<p>将效果拖动到视频上，或双击，可将效果应用于视频片段。<br><code>cmd+4</code>打开检查器，可修改效果的参数。  </p>
+<p>效果可进行叠加。  </p>
+<p>多个片段添加效果时，可用如下方式：  </p>
+<ol>
+<li>选中需要添加效果的视频片段，双击效果  </li>
+<li>选中需要添加效果的视频片段，右键－建立复合片段，多个视频变为一个后再添加效果  </li>
+</ol>
+<p>删除效果的方法：  </p>
+<ol>
+<li>编辑 － 移除效果   </li>
+<li>编辑 － 移除属性  </li>
+</ol>
+<p>常用效果：暗角、着色等</p>
+<h3 id="添加音频效果"><a href="#添加音频效果" class="headerlink" title="添加音频效果"></a>添加音频效果</h3><p>音频效果菜单与视频相同。</p>
+<p>选择视频片段，再选择音频效果，按下 <code>space</code> 键试听效果。</p>
+<p>效果可进行叠加。</p>
+<p>拷贝效果：选中需要拷贝的视频（音）频文件，编辑－粘贴属性</p>
+<h3 id="关键帧"><a href="#关键帧" class="headerlink" title="关键帧"></a>关键帧</h3><p>关键帧用于实现过渡效果。首先打开效果面板，打开检查器面板。</p>
+<p><img src="fcpx-5-10.png"></p>
+<p>将效果应用于视频片段后，加入初始关键帧，在需要变换的位置设定不同的效果参数，即可实现效果的变换。</p>
+<p>查看当前视频片段的所有关键帧及效果：在视频片段上右键－显示视频动画，可拖动效果使多个效果对齐。<br>加入关键帧快捷键：opt+鼠标左键</p>
+<p><img src="fcpx-5-11.png"></p>
+<p>点击效果右侧小箭头，可展开查看效果变化曲线。<br><img src="fcpx-5-12.png"></p>
+<p>拷贝效果：选中视频片段，编辑－拷贝（cmd+c），选中另一个视频片段，编辑－粘贴效果（opt+cmd+v），此时可在新的视频片段中发现已经拥有了原视频的效果。<br>注：此种方式保持了原效果的长度，如果新视频片段的长度比原视频片段长度小，则效果只能展示一部分。</p>
+<p>若想使效果等比缩短，则需要编辑－粘贴属性（shift+cmd+v），选择“拉伸以适合”即可。</p>
+<p><img src="fcpx-5-13.png"></p>
+<p>将效果存为预设：在检查器面板中选择“存储效果预设”，点击存储，则会在效果面板中找到已存储的效果预设。</p>
+<p>音频操作类似。</p>
+<h3 id="内置预设字幕"><a href="#内置预设字幕" class="headerlink" title="内置预设字幕"></a>内置预设字幕</h3><p>字幕设置入口：</p>
+<p><img src="fcpx-5-14.png"></p>
+<p>选择字幕，按下 Q 键将字幕加入到视频中。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FCPX/" rel="tag">#FCPX</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-03-09-dp/" rel="next" title="dp 与 px">
+                <i class="fa fa-chevron-left"></i> dp 与 px
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-04-01-transitionend/" rel="prev" title="transitionend">
+                transitionend <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#视频变换"><span class="nav-number">1.</span> <span class="nav-text">视频变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变换"><span class="nav-number">1.1.</span> <span class="nav-text">变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#裁剪"><span class="nav-number">1.2.</span> <span class="nav-text">裁剪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变形"><span class="nav-number">1.3.</span> <span class="nav-text">变形</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静止图像控制-Still-Image"><span class="nav-number">2.</span> <span class="nav-text">静止图像控制(Still Image)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转场"><span class="nav-number">3.</span> <span class="nav-text">转场</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改转场参数"><span class="nav-number">3.1.</span> <span class="nav-text">修改转场参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加视频效果"><span class="nav-number">4.</span> <span class="nav-text">添加视频效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加音频效果"><span class="nav-number">5.</span> <span class="nav-text">添加音频效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键帧"><span class="nav-number">6.</span> <span class="nav-text">关键帧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置预设字幕"><span class="nav-number">7.</span> <span class="nav-text">内置预设字幕</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
