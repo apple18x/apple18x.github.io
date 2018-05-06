@@ -1,0 +1,692 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Python 包含以下几种基本类型：  布尔 数字 字符串 列表（List） 元组（Tuple） 集合（Set） 字典（Dict）">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 入门（一）">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2018-05-06-python-1/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="Python 包含以下几种基本类型：  布尔 数字 字符串 列表（List） 元组（Tuple） 集合（Set） 字典（Dict）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-06T14:32:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 入门（一）">
+<meta name="twitter:description" content="Python 包含以下几种基本类型：  布尔 数字 字符串 列表（List） 元组（Tuple） 集合（Set） 字典（Dict）">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2018-05-06-python-1/"/>
+
+
+  <title> Python 入门（一） | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python 入门（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-06T00:00:00+08:00" content="2018-05-06">
+              2018-05-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Python 包含以下几种基本类型：</p>
+<ul>
+<li>布尔</li>
+<li>数字</li>
+<li>字符串</li>
+<li>列表（List）</li>
+<li>元组（Tuple）</li>
+<li>集合（Set）</li>
+<li>字典（Dict）</li>
+</ul>
+<a id="more"></a>
+<h3 id="布尔-Boolean"><a href="#布尔-Boolean" class="headerlink" title="布尔(Boolean)"></a>布尔(Boolean)</h3><h3 id="数字-Int-Float"><a href="#数字-Int-Float" class="headerlink" title="数字(Int/Float)"></a>数字(Int/Float)</h3><p>数字类型分类：  </p>
+<ul>
+<li>整数（int）</li>
+<li>浮点数（float）  </li>
+</ul>
+<p>注：  </p>
+<ol>
+<li>在其他语言中，浮点数分为单精度（float）和双精度 （double）类型，但在 python 中，只有浮点数（即 float）类型。  </li>
+<li>在其他语言中，整数分为整数（int）和长整数（long）。</li>
+</ol>
+<p>可以通过函数 <code>type()</code> 来判断当前为哪种类型的数字，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">type(1)</span><br><span class="line">// &lt;class &apos;int&apos;&gt;</span><br><span class="line"></span><br><span class="line">type(1.1)</span><br><span class="line">// &lt;class &apos;float&apos;&gt;</span><br><span class="line"></span><br><span class="line">type(1.11111)</span><br><span class="line">// &lt;class &apos;float&apos;&gt;</span><br><span class="line"></span><br><span class="line">加法</span><br><span class="line">type(1 + 0.11111)</span><br><span class="line">// &lt;class &apos;float&apos;&gt;</span><br><span class="line"></span><br><span class="line">type(1 + 1.0)</span><br><span class="line">// &lt;class &apos;float&apos;&gt; 注：整数+浮点数 =&gt; 浮点数</span><br><span class="line"></span><br><span class="line">乘法. </span><br><span class="line">type(1 * 1)</span><br><span class="line">// &lt;class &apos;int&apos;&gt;</span><br><span class="line"></span><br><span class="line">type(1 * 1.0)</span><br><span class="line">// &lt;class &apos;float&apos;&gt; 注：整数*浮点数 =&gt; 浮点数</span><br><span class="line"></span><br><span class="line">除法</span><br><span class="line">type(1 / 1)</span><br><span class="line">// &lt;class &apos;float&apos;&gt; 特殊注：任何类型数字进行除法计算 =&gt; 浮点数</span><br><span class="line"></span><br><span class="line">type(1 // 2) </span><br><span class="line">// &lt;class &apos;int&apos;&gt; 特殊注：若想两「整数」相除后得到整型(结果必须为整型)，可通过该种方式</span><br><span class="line"></span><br><span class="line">1 // 2</span><br><span class="line">// 0</span><br></pre></td></tr></table></figure>
+<p>注：单斜杠自动转化，双斜杠为整除，只保留整数部分。</p>
+<h3 id="字符串-String"><a href="#字符串-String" class="headerlink" title="字符串(String)"></a>字符串(String)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type(&apos;1&apos;)</span><br><span class="line">// &lt;class &apos;str&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p><code>“”“</code> 或 <code>&#39;&#39;&#39;</code> 三引号可用于显示多行字符串，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">hello</span><br><span class="line">world</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">IDLE 下，单引号也可通过添加\实现换行</span><br><span class="line">&quot;hello\</span><br><span class="line">world&quot;</span><br><span class="line"></span><br><span class="line">IDLE 下：</span><br><span class="line">&quot;&quot;&quot;hello\nworld\nworld&quot;&quot;&quot;</span><br><span class="line">// hello\nworld\nworld</span><br><span class="line"></span><br><span class="line">print(&quot;&quot;&quot;hello\nworld\nworld&quot;&quot;&quot;)</span><br><span class="line">// hello</span><br><span class="line">world</span><br><span class="line">world</span><br></pre></td></tr></table></figure>
+<p><strong>转义字符</strong></p>
+<ul>
+<li>无法”看见“的字符：<code>\n(换行)</code>、<code>\t</code>、<code>\r(回车)</code></li>
+<li>与语法本身有冲突的字符：<code>\&#39;</code> </li>
+</ul>
+<p>问：如何输出（print）字符串中的 <code>\n</code>，而非被转义？<br>答：<br>方法一：<code>print(&quot;hello\\nworld\\nworld&quot;)</code><br>方法二：<code>print(r&quot;hello\nworld\\nworld&quot;)</code><br>注：<code>r</code> 表示后面的字符串为原始字符串，而非普通字符串  </p>
+<p><strong>字符串运算</strong></p>
+<p>加号： 实现拼接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;hello&apos;+&apos; world&apos;</span><br><span class="line">// hello world</span><br></pre></td></tr></table></figure>
+<p>乘号： 重复次数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&apos;hello&apos;*3</span><br><span class="line">// hellohellohello</span><br><span class="line"></span><br><span class="line">&apos;hello&apos;*&apos;world&apos;</span><br><span class="line">// 报错</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;./test.py&quot;, line 30, in &lt;module&gt;</span><br><span class="line">    print(&apos;hello&apos;*&apos;world&apos;)</span><br><span class="line">TypeError: can&apos;t multiply sequence by non-int of type &apos;str&apos;</span><br></pre></td></tr></table></figure>
+<p>数组下标：</p>
+<ol>
+<li>访问某个字符，下标从 0 开始。若下标为负数，则从右起(-1 起)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;hello&apos;[0]</span><br><span class="line">// h</span><br><span class="line">&apos;hello&apos;[-1]</span><br><span class="line">// o</span><br></pre></td></tr></table></figure>
+<ol>
+<li>访问多个字符，末尾数字为结尾位置的下一位，负数不再代表下标，而代表步长（末尾往回数的第几个字符）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&apos;hello world&apos;[0:5]</span><br><span class="line">// hello</span><br><span class="line">&apos;hello world&apos;[0:-1]</span><br><span class="line">// hello worl</span><br><span class="line">&apos;hello world&apos;[0:20]</span><br><span class="line">// hello world 注：末尾位置超出总字符串长度，截取完整字符串</span><br><span class="line">&apos;hello world&apos;[6:0]</span><br><span class="line">// &apos;&apos; 注：末尾位置 &lt; 起始位置，则取出的为空字符串</span><br><span class="line">&apos;hello world&apos;[6:]</span><br><span class="line">// hello world 注：不输入结尾位置，则代表截取到结尾位置</span><br></pre></td></tr></table></figure>
+<h3 id="列表-List"><a href="#列表-List" class="headerlink" title="列表(List)"></a>列表(List)</h3><p>列表中元素的类型可为多种，而非必须单一类型：字符串、数字、列表等。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3,4,5,6]</span><br><span class="line">[&apos;hello&apos;,&apos;world&apos;,1.9,True,False,6]</span><br><span class="line">[[1,2],[3,4],[True, False]]) // 嵌套列表</span><br><span class="line"></span><br><span class="line">type([1,2,3,4,5,6])</span><br><span class="line">//&lt;class &apos;list&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>基本操作</strong></p>
+<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 访问/截取元素： 下标</span><br></pre></td></tr></table></figure></p>
+<p>[‘红’,’蓝’,’绿’,’黑’][3]<br>// 黑<br>[‘红’,’蓝’,’绿’,’黑’][0:2]<br>// [‘红’,’蓝’] 注：若为多个截取，则结果仍为列表形式<br>[‘红’,’蓝’,’绿’,’黑’][-1:]<br>// [‘黑’] 注：若为多个截取，则结果仍为列表形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 添加元素： 加号/乘号</span><br></pre></td></tr></table></figure></p>
+<p>[‘红’,’蓝’]+[‘绿’,’黑’]<br>// [‘红’, ‘蓝’, ‘绿’, ‘黑’]</p>
+<p>[‘红’,’蓝’]*[‘绿’,’黑’]<br>// 报错<br>TypeError: can’t multiply sequence by non-int of type ‘list’</p>
+<p>[‘红’,’蓝’]*3<br>// [‘红’, ‘蓝’, ‘红’, ‘蓝’, ‘红’, ‘蓝’]</p>
+<p>[‘红’,’蓝’]-[‘蓝’]<br>// 报错，没有加法<br>TypeError: unsupported operand type(s) for -: ‘list’ and ‘list’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 元组(Tuple)</span><br><span class="line"></span><br><span class="line">元组</span><br></pre></td></tr></table></figure></p>
+<p>(1,2,3,4,5)<br>(1,’-1’,True)</p>
+<p>type((1,2,3,4,5))<br>// <class 'tuple'=""></class></p>
+<p>type((1))<br>// <class 'int'=""><br>type((‘1’))<br>// <class 'str'=""><br>注：IDLE 规定，当元组只有一个元素时，小括号表示数学运算符。正确写法为：<br>type((1,))<br>// <class 'tuple'=""></class></class></class></p>
+<p>type(())<br>// <class 'tuple'=""> 注：空元组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注：元组与列表的区别</span><br><span class="line"></span><br><span class="line">1. 访问/截取元素：下标（同列表）</span><br></pre></td></tr></table></figure></class></p>
+<p>(1,2,3,4)[0]<br>// 1<br>(1,2,3,4)[0:2]<br>// (1,2)<br>(1,2,3)+(4,5,6)<br>// (1, 2, 3, 4, 5, 6)<br>(1,2,3)*3<br>// (1, 2, 3, 1, 2, 3, 1, 2, 3)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">以上，字符串、列表和元组均称为**序列**。序列具有一些通用操作：  </span><br><span class="line"></span><br><span class="line">1. 每个元素都被分配一个序号，可通过下标访问元素    </span><br><span class="line">2. 切片：[start\_pos: end\_pos: step]   </span><br><span class="line">3. 可加和</span><br><span class="line">4. 判断元素是否（不）存在序列中：not in</span><br><span class="line">5. 判断序列长度：len()</span><br><span class="line">6. 其他函数：max()，min()，ord() 等</span><br><span class="line"></span><br><span class="line">### 集合(Set)</span><br><span class="line"></span><br><span class="line">集合最重要的特性：</span><br><span class="line"></span><br><span class="line">1. 无序</span><br><span class="line">2. 不重复</span><br><span class="line">3. 与序列相同的方法：len()，in，not in 等</span><br><span class="line">4. 特殊方法：-(差集)，&amp;(交集)，|(并集)</span><br><span class="line"></span><br><span class="line">同时，不具有序列的部分特性：</span><br><span class="line"></span><br><span class="line">1. 通过下标</span><br><span class="line">2. 切片</span><br><span class="line">3. ...</span><br></pre></td></tr></table></figure></p>
+<p>type({1,2,3,4,5,6})</p>
+<class 'set'="">
+
+<p>{1,2,3,4,5,6}[0]<br>// 报错，即不支持序列相关操作<br>TypeError: ‘set’ object does not support indexing</p>
+<p>{1,1,2,2,3,3}<br>// {1,2,3}</p>
+<p>len({1,2,3,4,5,6})<br>// 6</p>
+<p>1 in {1,2,3}<br>// True</p>
+<p>{1,2,3,4,5,6} - {3,4}<br>// {1,2,5,6}</p>
+<p>{1,2,3,4,5,6} &amp; {3,4}<br>// {3,4}</p>
+<p>{1,2,3,4,5,6} | {3,4,7}<br>// {1, 2, 3, 4, 5, 6, 7}</p>
+<p>type(set())<br>// <class 'set'=""> 定义空集合</class></p>
+<p>注：不能用 type({}) 来定义空集合，该种方式得到的是 <class 'dict'=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 字典(Dict)</span><br><span class="line"></span><br><span class="line">字典不是序列，属于一种集合，字典和集合的均用 &#123;&#125; 定义，用逗号分隔。</span><br><span class="line">字典与集合的最大区别在于定义方式不同，集合只有 value 没有 key，而字典是通过 &#123;key:value&#125; 的形式来定义的。</span><br></pre></td></tr></table></figure></class></p>
+<p>type({1:1,2:2,3:3})<br>// <class 'dict'=""></class></p>
+<p>{‘a’:’a1’,’a’:’a2’,’b’:’b’,’c’:’c’}[‘a’]<br>// a2 注：虽然未报错，并不代表字典当中可以存在相同的 key，上述定义相当于 {‘a’:’a2’,’b’:’b’,’c’:’c’}<br>```</p>
+<p>注：value 可以为 python 中任意的类型，key 必须为不可变类型</p>
+<p>相关操作：  </p>
+<ol>
+<li>{key: value}[key]，通过 key 访问 value</li>
+</ol>
+</class>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/数据分析/2018-04-15-conversion-3/" rel="next" title="用户留存">
+                <i class="fa fa-chevron-left"></i> 用户留存
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔-Boolean"><span class="nav-number">1.</span> <span class="nav-text">布尔(Boolean)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字-Int-Float"><span class="nav-number">2.</span> <span class="nav-text">数字(Int/Float)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串-String"><span class="nav-number">3.</span> <span class="nav-text">字符串(String)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表-List"><span class="nav-number">4.</span> <span class="nav-text">列表(List)</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
