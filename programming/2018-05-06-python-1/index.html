@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="Python 包含以下几种基本类型：  布尔 数字 字符串 列表（List） 元组（Tuple） 集合（Set） 字典（Dict）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T14:32:45.000Z">
+<meta property="og:updated_time" content="2018-05-06T14:37:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 入门（一）">
 <meta name="twitter:description" content="Python 包含以下几种基本类型：  布尔 数字 字符串 列表（List） 元组（Tuple） 集合（Set） 字典（Dict）">
@@ -367,37 +367,53 @@
 <h3 id="列表-List"><a href="#列表-List" class="headerlink" title="列表(List)"></a>列表(List)</h3><p>列表中元素的类型可为多种，而非必须单一类型：字符串、数字、列表等。例如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3,4,5,6]</span><br><span class="line">[&apos;hello&apos;,&apos;world&apos;,1.9,True,False,6]</span><br><span class="line">[[1,2],[3,4],[True, False]]) // 嵌套列表</span><br><span class="line"></span><br><span class="line">type([1,2,3,4,5,6])</span><br><span class="line">//&lt;class &apos;list&apos;&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>基本操作</strong></p>
-<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 访问/截取元素： 下标</span><br></pre></td></tr></table></figure></p>
-<p>[‘红’,’蓝’,’绿’,’黑’][3]<br>// 黑<br>[‘红’,’蓝’,’绿’,’黑’][0:2]<br>// [‘红’,’蓝’] 注：若为多个截取，则结果仍为列表形式<br>[‘红’,’蓝’,’绿’,’黑’][-1:]<br>// [‘黑’] 注：若为多个截取，则结果仍为列表形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 添加元素： 加号/乘号</span><br></pre></td></tr></table></figure></p>
-<p>[‘红’,’蓝’]+[‘绿’,’黑’]<br>// [‘红’, ‘蓝’, ‘绿’, ‘黑’]</p>
-<p>[‘红’,’蓝’]*[‘绿’,’黑’]<br>// 报错<br>TypeError: can’t multiply sequence by non-int of type ‘list’</p>
-<p>[‘红’,’蓝’]*3<br>// [‘红’, ‘蓝’, ‘红’, ‘蓝’, ‘红’, ‘蓝’]</p>
-<p>[‘红’,’蓝’]-[‘蓝’]<br>// 报错，没有加法<br>TypeError: unsupported operand type(s) for -: ‘list’ and ‘list’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 元组(Tuple)</span><br><span class="line"></span><br><span class="line">元组</span><br></pre></td></tr></table></figure></p>
-<p>(1,2,3,4,5)<br>(1,’-1’,True)</p>
-<p>type((1,2,3,4,5))<br>// <class 'tuple'=""></class></p>
-<p>type((1))<br>// <class 'int'=""><br>type((‘1’))<br>// <class 'str'=""><br>注：IDLE 规定，当元组只有一个元素时，小括号表示数学运算符。正确写法为：<br>type((1,))<br>// <class 'tuple'=""></class></class></class></p>
-<p>type(())<br>// <class 'tuple'=""> 注：空元组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注：元组与列表的区别</span><br><span class="line"></span><br><span class="line">1. 访问/截取元素：下标（同列表）</span><br></pre></td></tr></table></figure></class></p>
-<p>(1,2,3,4)[0]<br>// 1<br>(1,2,3,4)[0:2]<br>// (1,2)<br>(1,2,3)+(4,5,6)<br>// (1, 2, 3, 4, 5, 6)<br>(1,2,3)*3<br>// (1, 2, 3, 1, 2, 3, 1, 2, 3)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">以上，字符串、列表和元组均称为**序列**。序列具有一些通用操作：  </span><br><span class="line"></span><br><span class="line">1. 每个元素都被分配一个序号，可通过下标访问元素    </span><br><span class="line">2. 切片：[start\_pos: end\_pos: step]   </span><br><span class="line">3. 可加和</span><br><span class="line">4. 判断元素是否（不）存在序列中：not in</span><br><span class="line">5. 判断序列长度：len()</span><br><span class="line">6. 其他函数：max()，min()，ord() 等</span><br><span class="line"></span><br><span class="line">### 集合(Set)</span><br><span class="line"></span><br><span class="line">集合最重要的特性：</span><br><span class="line"></span><br><span class="line">1. 无序</span><br><span class="line">2. 不重复</span><br><span class="line">3. 与序列相同的方法：len()，in，not in 等</span><br><span class="line">4. 特殊方法：-(差集)，&amp;(交集)，|(并集)</span><br><span class="line"></span><br><span class="line">同时，不具有序列的部分特性：</span><br><span class="line"></span><br><span class="line">1. 通过下标</span><br><span class="line">2. 切片</span><br><span class="line">3. ...</span><br></pre></td></tr></table></figure></p>
-<p>type({1,2,3,4,5,6})</p>
-<class 'set'="">
-
-<p>{1,2,3,4,5,6}[0]<br>// 报错，即不支持序列相关操作<br>TypeError: ‘set’ object does not support indexing</p>
-<p>{1,1,2,2,3,3}<br>// {1,2,3}</p>
-<p>len({1,2,3,4,5,6})<br>// 6</p>
-<p>1 in {1,2,3}<br>// True</p>
-<p>{1,2,3,4,5,6} - {3,4}<br>// {1,2,5,6}</p>
-<p>{1,2,3,4,5,6} &amp; {3,4}<br>// {3,4}</p>
-<p>{1,2,3,4,5,6} | {3,4,7}<br>// {1, 2, 3, 4, 5, 6, 7}</p>
-<p>type(set())<br>// <class 'set'=""> 定义空集合</class></p>
-<p>注：不能用 type({}) 来定义空集合，该种方式得到的是 <class 'dict'=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 字典(Dict)</span><br><span class="line"></span><br><span class="line">字典不是序列，属于一种集合，字典和集合的均用 &#123;&#125; 定义，用逗号分隔。</span><br><span class="line">字典与集合的最大区别在于定义方式不同，集合只有 value 没有 key，而字典是通过 &#123;key:value&#125; 的形式来定义的。</span><br></pre></td></tr></table></figure></class></p>
-<p>type({1:1,2:2,3:3})<br>// <class 'dict'=""></class></p>
-<p>{‘a’:’a1’,’a’:’a2’,’b’:’b’,’c’:’c’}[‘a’]<br>// a2 注：虽然未报错，并不代表字典当中可以存在相同的 key，上述定义相当于 {‘a’:’a2’,’b’:’b’,’c’:’c’}<br>```</p>
+<p>举个栗子：<code>[&#39;红&#39;,&#39;蓝&#39;,&#39;绿&#39;,&#39;黑&#39;]</code></p>
+<ol>
+<li>访问/截取元素： 下标</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[&apos;红&apos;,&apos;蓝&apos;,&apos;绿&apos;,&apos;黑&apos;][3]</span><br><span class="line">// 黑</span><br><span class="line">[&apos;红&apos;,&apos;蓝&apos;,&apos;绿&apos;,&apos;黑&apos;][0:2]</span><br><span class="line">// [&apos;红&apos;,&apos;蓝&apos;] 注：若为多个截取，则结果仍为列表形式</span><br><span class="line">[&apos;红&apos;,&apos;蓝&apos;,&apos;绿&apos;,&apos;黑&apos;][-1:]</span><br><span class="line">// [&apos;黑&apos;] 注：若为多个截取，则结果仍为列表形式</span><br></pre></td></tr></table></figure>
+<ol>
+<li>添加元素： 加号/乘号</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[&apos;红&apos;,&apos;蓝&apos;]+[&apos;绿&apos;,&apos;黑&apos;]</span><br><span class="line">// [&apos;红&apos;, &apos;蓝&apos;, &apos;绿&apos;, &apos;黑&apos;]</span><br><span class="line"></span><br><span class="line">[&apos;红&apos;,&apos;蓝&apos;]*[&apos;绿&apos;,&apos;黑&apos;]</span><br><span class="line">// 报错</span><br><span class="line">TypeError: can&apos;t multiply sequence by non-int of type &apos;list&apos;</span><br><span class="line"></span><br><span class="line">[&apos;红&apos;,&apos;蓝&apos;]*3</span><br><span class="line">// [&apos;红&apos;, &apos;蓝&apos;, &apos;红&apos;, &apos;蓝&apos;, &apos;红&apos;, &apos;蓝&apos;]</span><br><span class="line"></span><br><span class="line">[&apos;红&apos;,&apos;蓝&apos;]-[&apos;蓝&apos;]</span><br><span class="line">// 报错，没有加法</span><br><span class="line">TypeError: unsupported operand type(s) for -: &apos;list&apos; and &apos;list&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="元组-Tuple"><a href="#元组-Tuple" class="headerlink" title="元组(Tuple)"></a>元组(Tuple)</h3><p>元组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(1,2,3,4,5)</span><br><span class="line">(1,&apos;-1&apos;,True)</span><br><span class="line"></span><br><span class="line">type((1,2,3,4,5))</span><br><span class="line">// &lt;class &apos;tuple&apos;&gt;</span><br><span class="line"></span><br><span class="line">type((1))</span><br><span class="line">// &lt;class &apos;int&apos;&gt; </span><br><span class="line">type((&apos;1&apos;))</span><br><span class="line">// &lt;class &apos;str&apos;&gt;</span><br><span class="line">注：IDLE 规定，当元组只有一个元素时，小括号表示数学运算符。正确写法为：</span><br><span class="line">type((1,))</span><br><span class="line">// &lt;class &apos;tuple&apos;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">type(())</span><br><span class="line">// &lt;class &apos;tuple&apos;&gt; 注：空元组</span><br></pre></td></tr></table></figure>
+<p>注：元组与列表的区别</p>
+<ol>
+<li>访问/截取元素：下标（同列表）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(1,2,3,4)[0]</span><br><span class="line">// 1</span><br><span class="line">(1,2,3,4)[0:2]</span><br><span class="line">// (1,2)</span><br><span class="line">(1,2,3)+(4,5,6)</span><br><span class="line">// (1, 2, 3, 4, 5, 6)</span><br><span class="line">(1,2,3)*3</span><br><span class="line">// (1, 2, 3, 1, 2, 3, 1, 2, 3)</span><br></pre></td></tr></table></figure>
+<p>以上，字符串、列表和元组均称为<strong>序列</strong>。序列具有一些通用操作：  </p>
+<ol>
+<li>每个元素都被分配一个序号，可通过下标访问元素    </li>
+<li>切片：[start_pos: end_pos: step]   </li>
+<li>可加和</li>
+<li>判断元素是否（不）存在序列中：not in</li>
+<li>判断序列长度：len()</li>
+<li>其他函数：max()，min()，ord() 等</li>
+</ol>
+<h3 id="集合-Set"><a href="#集合-Set" class="headerlink" title="集合(Set)"></a>集合(Set)</h3><p>集合最重要的特性：</p>
+<ol>
+<li>无序</li>
+<li>不重复</li>
+<li>与序列相同的方法：len()，in，not in 等</li>
+<li>特殊方法：-(差集)，&amp;(交集)，|(并集)</li>
+</ol>
+<p>同时，不具有序列的部分特性：</p>
+<ol>
+<li>通过下标</li>
+<li>切片</li>
+<li>…</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">type(&#123;1,2,3,4,5,6&#125;)</span><br><span class="line">&lt;class &apos;set&apos;&gt;</span><br><span class="line"></span><br><span class="line">&#123;1,2,3,4,5,6&#125;[0]</span><br><span class="line">// 报错，即不支持序列相关操作</span><br><span class="line">TypeError: &apos;set&apos; object does not support indexing</span><br><span class="line"></span><br><span class="line">&#123;1,1,2,2,3,3&#125;</span><br><span class="line">// &#123;1,2,3&#125;</span><br><span class="line"></span><br><span class="line">len(&#123;1,2,3,4,5,6&#125;)</span><br><span class="line">// 6</span><br><span class="line"></span><br><span class="line">1 in &#123;1,2,3&#125;</span><br><span class="line">// True</span><br><span class="line"></span><br><span class="line">&#123;1,2,3,4,5,6&#125; - &#123;3,4&#125;</span><br><span class="line">// &#123;1,2,5,6&#125;</span><br><span class="line"></span><br><span class="line">&#123;1,2,3,4,5,6&#125; &amp; &#123;3,4&#125;</span><br><span class="line">// &#123;3,4&#125;</span><br><span class="line"></span><br><span class="line">&#123;1,2,3,4,5,6&#125; | &#123;3,4,7&#125;</span><br><span class="line">// &#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">type(set())</span><br><span class="line">// &lt;class &apos;set&apos;&gt; 定义空集合</span><br><span class="line"></span><br><span class="line">注：不能用 type(&#123;&#125;) 来定义空集合，该种方式得到的是 &lt;class &apos;dict&apos;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="字典-Dict"><a href="#字典-Dict" class="headerlink" title="字典(Dict)"></a>字典(Dict)</h3><p>字典不是序列，属于一种集合，字典和集合的均用 {} 定义，用逗号分隔。<br>字典与集合的最大区别在于定义方式不同，集合只有 value 没有 key，而字典是通过 {key:value} 的形式来定义的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type(&#123;1:1,2:2,3:3&#125;)</span><br><span class="line">// &lt;class &apos;dict&apos;&gt;</span><br><span class="line"></span><br><span class="line">&#123;&apos;a&apos;:&apos;a1&apos;,&apos;a&apos;:&apos;a2&apos;,&apos;b&apos;:&apos;b&apos;,&apos;c&apos;:&apos;c&apos;&#125;[&apos;a&apos;]</span><br><span class="line">// a2 注：虽然未报错，并不代表字典当中可以存在相同的 key，上述定义相当于 &#123;&apos;a&apos;:&apos;a2&apos;,&apos;b&apos;:&apos;b&apos;,&apos;c&apos;:&apos;c&apos;&#125;</span><br></pre></td></tr></table></figure>
 <p>注：value 可以为 python 中任意的类型，key 必须为不可变类型</p>
 <p>相关操作：  </p>
 <ol>
 <li>{key: value}[key]，通过 key 访问 value</li>
 </ol>
-</class>
+
       
     </div>
 
@@ -548,7 +564,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔-Boolean"><span class="nav-number">1.</span> <span class="nav-text">布尔(Boolean)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字-Int-Float"><span class="nav-number">2.</span> <span class="nav-text">数字(Int/Float)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串-String"><span class="nav-number">3.</span> <span class="nav-text">字符串(String)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表-List"><span class="nav-number">4.</span> <span class="nav-text">列表(List)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔-Boolean"><span class="nav-number">1.</span> <span class="nav-text">布尔(Boolean)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字-Int-Float"><span class="nav-number">2.</span> <span class="nav-text">数字(Int/Float)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串-String"><span class="nav-number">3.</span> <span class="nav-text">字符串(String)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表-List"><span class="nav-number">4.</span> <span class="nav-text">列表(List)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组-Tuple"><span class="nav-number">5.</span> <span class="nav-text">元组(Tuple)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合-Set"><span class="nav-number">6.</span> <span class="nav-text">集合(Set)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典-Dict"><span class="nav-number">7.</span> <span class="nav-text">字典(Dict)</span></a></li></ol></div>
             
           </div>
         </section>
