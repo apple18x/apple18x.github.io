@@ -1,0 +1,670 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="运算符号 算术运算符：+、-、*、/、//、%、**   赋值运算符：=、+=、*=、/=、%=、**=、//=    比较（关系）运算符：==、!=、&amp;gt;、&amp;lt;、&amp;gt;=、&amp;lt;=   逻辑运算符：and、or、not    成员运算符：in、not in    身份运算符">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 入门（二）- 变量与运算符">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2018-08-10-python-2/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="运算符号 算术运算符：+、-、*、/、//、%、**   赋值运算符：=、+=、*=、/=、%=、**=、//=    比较（关系）运算符：==、!=、&amp;gt;、&amp;lt;、&amp;gt;=、&amp;lt;=   逻辑运算符：and、or、not    成员运算符：in、not in    身份运算符：is、is not   位运算符：&amp;amp;、|、^、~、&amp;lt;&amp;lt;、&amp;gt;&amp;gt;  算术运算符12">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-19T02:12:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 入门（二）- 变量与运算符">
+<meta name="twitter:description" content="运算符号 算术运算符：+、-、*、/、//、%、**   赋值运算符：=、+=、*=、/=、%=、**=、//=    比较（关系）运算符：==、!=、&amp;gt;、&amp;lt;、&amp;gt;=、&amp;lt;=   逻辑运算符：and、or、not    成员运算符：in、not in    身份运算符：is、is not   位运算符：&amp;amp;、|、^、~、&amp;lt;&amp;lt;、&amp;gt;&amp;gt;  算术运算符12">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2018-08-10-python-2/"/>
+
+
+  <title> Python 入门（二）- 变量与运算符 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python 入门（二）- 变量与运算符
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-10T00:00:00+08:00" content="2018-08-10">
+              2018-08-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="运算符号"><a href="#运算符号" class="headerlink" title="运算符号"></a>运算符号</h3><ul>
+<li>算术运算符：<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>、<code>//</code>、<code>%</code>、<code>**</code>  </li>
+<li>赋值运算符：<code>=</code>、<code>+=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>、<code>**=</code>、<code>//=</code>   </li>
+<li>比较（关系）运算符：<code>==</code>、<code>!=</code>、<code>&gt;</code>、<code>&lt;</code>、<code>&gt;=</code>、<code>&lt;=</code>  </li>
+<li>逻辑运算符：<code>and</code>、<code>or</code>、<code>not</code>   </li>
+<li>成员运算符：<code>in</code>、<code>not in</code>   </li>
+<li>身份运算符：<code>is</code>、<code>is not</code>  </li>
+<li>位运算符：<code>&amp;</code>、<code>|</code>、<code>^</code>、<code>~</code>、<code>&lt;&lt;</code>、<code>&gt;&gt;</code></li>
+</ul>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Hello'</span>+<span class="string">' world'</span></span><br><span class="line"><span class="comment"># Hello world</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]*<span class="number">3</span></span><br><span class="line"><span class="comment"># [1,2,3,1,2,3,1,2,3]</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span><span class="number">-1</span></span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>/<span class="number">2</span></span><br><span class="line"><span class="comment"># 1.5</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>//<span class="number">2</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span>%<span class="number">2</span></span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>**<span class="number">5</span></span><br><span class="line"><span class="comment"># 32 平方</span></span><br></pre></td></tr></table></figure>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>先做运算再赋值。<br>注：python 中变量不需要定义，因此 <code>c=1</code> 表示赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">c+=<span class="number">1</span></span><br><span class="line"><span class="comment"># 等价于： c = c+1</span></span><br><span class="line"><span class="comment"># 注：python 中不支持 c++/c-- 自增自减运算</span></span><br><span class="line"></span><br><span class="line">b=<span class="number">5</span></span><br><span class="line">a=<span class="number">3</span></span><br><span class="line">b-=a </span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line"></span><br><span class="line">b*=a</span><br><span class="line"><span class="comment"># 6</span></span><br></pre></td></tr></table></figure>
+<h3 id="比较（关系）运算符"><a href="#比较（关系）运算符" class="headerlink" title="比较（关系）运算符"></a>比较（关系）运算符</h3><p>比较两组数据类型是否相等，结果为布尔值。<br>不只是数字才能做比较运算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="number">1</span></span><br><span class="line">b = b+<span class="keyword">True</span></span><br><span class="line">// <span class="number">2</span> 注：int(<span class="keyword">True</span>) = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="string">'a'</span>&gt;<span class="string">'b'</span></span><br><span class="line">// <span class="keyword">False</span> 比较的是ASCII码，ord(<span class="string">'a'</span>) = <span class="number">97</span>，ord(<span class="string">'b'</span>) = <span class="number">98</span></span><br><span class="line"></span><br><span class="line"><span class="string">'abc'</span>&gt;<span class="string">'abd'</span></span><br><span class="line">// <span class="keyword">False</span> 当字符串有多个字母时，解析规则为依次做比较</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] &lt; [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">// <span class="keyword">True</span> 解析规则为依次做比较</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) &lt; (<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">// <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>逻辑运算符：<code>and</code>、<code>or</code>、<code>not</code>，主要操作对象为布尔类型，返回结果也为布尔类型</p>
+<p><code>and</code> 表示且，如果两个均为 True，才返回 True，否则返回False<br><code>or</code> 表示或，任意一个为 True，返回 True。只有两个均为 False，才返回 False。<br><code>not</code> 取反。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1 and 1 </span><br><span class="line">#True</span><br><span class="line"></span><br><span class="line">&apos;a&apos; and &apos;b&apos; </span><br><span class="line">#&apos;b&apos;</span><br><span class="line"></span><br><span class="line">&apos;a&apos; or &apos;b&apos; </span><br><span class="line">#&apos;b&apos;</span><br><span class="line"></span><br><span class="line">not &apos;a&apos;  </span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<h4 id="非布尔类型的转换"><a href="#非布尔类型的转换" class="headerlink" title="非布尔类型的转换"></a>非布尔类型的转换</h4><p>由于很少直接把变量设置为布尔类型，因此在大多数为非布尔类型的变量运算中，遵循如下法则：</p>
+<ul>
+<li>整数和浮点数：0表示False，非0为True</li>
+<li>字符串：空字符串为False，非空字符串为True</li>
+<li>列表：空列表为False，非空列表为True</li>
+<li>元组、集合、字典：同列表</li>
+</ul>
+<p>划重点：  </p>
+<ul>
+<li>被判定为False的值：<code>False</code>,<code>0</code>,<code>&#39;&#39;</code>,<code>[]</code>,<code>{}</code>,<code>()</code></li>
+<li>逻辑运算符的返回结果可以用非布尔类型表示，结果显示为非布尔类型</li>
+</ul>
+<h4 id="or和and返回值的规律"><a href="#or和and返回值的规律" class="headerlink" title="or和and返回值的规律"></a>or和and返回值的规律</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="keyword">or</span> [<span class="number">1</span>]</span><br><span class="line"><span class="comment"># [1]</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>] <span class="keyword">or</span> [] </span><br><span class="line"><span class="comment"># [1]</span></span><br><span class="line"></span><br><span class="line"><span class="string">'a'</span> <span class="keyword">and</span> <span class="string">'b'</span></span><br><span class="line"><span class="comment"># 'b'</span></span><br><span class="line"></span><br><span class="line"><span class="string">''</span> <span class="keyword">and</span> <span class="string">'b'</span></span><br><span class="line"><span class="comment"># ''</span></span><br><span class="line"></span><br><span class="line"><span class="number">0</span> <span class="keyword">and</span> <span class="number">1</span></span><br><span class="line"><span class="comment">#0</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span> <span class="keyword">and</span> <span class="number">0</span></span><br><span class="line"><span class="comment">#0</span></span><br></pre></td></tr></table></figure>
+<p>计算返回的结果，是当计算机解析出结果时的值。以0和1为例，当<code>0 and 1</code>时，0已经可以判断出返回结果为False，因此返回结果为0。而当<code>1 and 0</code>时，只有当判断到0时，才能判定为结果为False，因此返回的值仍然是0。</p>
+<h3 id="成员运算符"><a href="#成员运算符" class="headerlink" title="成员运算符"></a>成员运算符</h3><p>成员运算符包括：<code>in</code>、<code>not in</code>  </p>
+<p>用于判断一个元素是否在另外一组元素里，返回值为布尔类型。<br>适用于列表、字符、元组、集合和字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">a1 = <span class="number">1</span></span><br><span class="line">a1 <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">#True</span></span><br><span class="line"></span><br><span class="line">a2 = <span class="number">76</span></span><br><span class="line">a2 <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">#False</span></span><br><span class="line"></span><br><span class="line">a3 = <span class="string">'h'</span></span><br><span class="line">a3 <span class="keyword">in</span> <span class="string">'hello'</span> <span class="comment">#True</span></span><br><span class="line">a3 <span class="keyword">not</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>) <span class="comment">#True</span></span><br><span class="line">a3 <span class="keyword">not</span> <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">#True</span></span><br><span class="line"></span><br><span class="line">a4 = <span class="string">'a'</span></span><br><span class="line">a4 <span class="keyword">in</span> &#123;<span class="string">'c'</span>:<span class="number">1</span>&#125; <span class="comment">#False</span></span><br><span class="line"></span><br><span class="line">a5 = <span class="number">1</span></span><br><span class="line">a5 <span class="keyword">in</span> &#123;<span class="string">'c'</span>:<span class="number">1</span>&#125; <span class="comment">#False</span></span><br><span class="line"></span><br><span class="line">a6 = <span class="string">'c'</span></span><br><span class="line">a6 <span class="keyword">in</span> &#123;<span class="string">'c'</span>:<span class="number">1</span>&#125; <span class="comment">#True</span></span><br></pre></td></tr></table></figure>
+<p>注：字典的成员运算符是针对 key 进行判断的，而非 value</p>
+<h3 id="身份运算符"><a href="#身份运算符" class="headerlink" title="身份运算符"></a>身份运算符</h3><p>身份运算符包括：<code>is</code>、<code>is not</code></p>
+<p>身份运算的返回类型为布尔值，与关系运算符的区别：</p>
+<ul>
+<li><code>not is</code>：两个变量身份不同时返回True</li>
+<li><code>is</code>：两个变量身份，即<code>id()</code>（内存地址）相等时返回True</li>
+<li><code>==</code>：两个变量取值相等时返回True</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br><span class="line">a <span class="keyword">is</span> b  <span class="comment">#False</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1.0</span></span><br><span class="line">a <span class="keyword">is</span> b  <span class="comment">#False id(a)=4473961600 id(b)=4498600872</span></span><br><span class="line">a == b  <span class="comment">#True</span></span><br><span class="line"></span><br><span class="line">a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">b = &#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>&#125;</span><br><span class="line">a == b <span class="comment">#True  集合是无序的</span></span><br><span class="line">a <span class="keyword">is</span> b <span class="comment">#False 内存地址不同</span></span><br><span class="line"></span><br><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">b = (<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line">a == b <span class="comment">#False 元组属于序列，是有序的</span></span><br><span class="line">a <span class="keyword">is</span> b <span class="comment">#False 内存地址不同</span></span><br></pre></td></tr></table></figure>
+<p>对象的三大特征：值、类型和身份</p>
+<p>补充：类型的判断 <code>isinstance</code>  </p>
+<p>第一个参数：变量<br>第二个参数：变量类型<br>注：第二个参数可接受元组，当满足元组中任意一种，则返回True  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">type(a) == int <span class="comment">#True</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">'1'</span></span><br><span class="line">type(a) == int <span class="comment">#False</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">'a'</span></span><br><span class="line">isinstance(a,str) <span class="comment">#True</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">'a'</span></span><br><span class="line">isinstance(a,(int,str,float)) <span class="comment">#True</span></span><br></pre></td></tr></table></figure>
+<p>为什么不推荐使用 <code>type()</code> 进行类型判断？<br>答：无法判断对象的子类型是否属于该类型</p>
+<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>位运算符：把数字当作二进制数进行运算</p>
+<ul>
+<li><code>&amp;</code>：按位与：</li>
+<li><code>|</code>：按位或  </li>
+<li><code>^</code>：按位异或</li>
+<li><code>~</code>：按位取反</li>
+<li><code>&lt;&lt;</code>：左移动</li>
+<li><code>&gt;&gt;</code>：右移动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = 2</span><br><span class="line">b = 3</span><br><span class="line"></span><br><span class="line">a &amp; b #2</span><br><span class="line"></span><br><span class="line">### 运算规则:0&amp;1=0 1&amp;1=1</span><br><span class="line">   a = 10(二进制)</span><br><span class="line">+  b = 11(二进制)</span><br><span class="line">-----------------</span><br><span class="line">       10</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2018-07-28-numpy-1/" rel="next" title="Numpy 初认识">
+                <i class="fa fa-chevron-left"></i> Numpy 初认识
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符号"><span class="nav-number">1.</span> <span class="nav-text">运算符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">2.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算符"><span class="nav-number">3.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较（关系）运算符"><span class="nav-number">4.</span> <span class="nav-text">比较（关系）运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">5.</span> <span class="nav-text">逻辑运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非布尔类型的转换"><span class="nav-number">5.1.</span> <span class="nav-text">非布尔类型的转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#or和and返回值的规律"><span class="nav-number">5.2.</span> <span class="nav-text">or和and返回值的规律</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员运算符"><span class="nav-number">6.</span> <span class="nav-text">成员运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#身份运算符"><span class="nav-number">7.</span> <span class="nav-text">身份运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算符"><span class="nav-number">8.</span> <span class="nav-text">位运算符</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
