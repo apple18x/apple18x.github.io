@@ -1,0 +1,677 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="函数的定义12def funcname(parameter_list):	pass  如果函数体内没有return，则返回 None 先定义，后调用（解释性语言） 递归次数有限制，设置最大递归次数方法如下：">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 入门（四）- 函数与变量作用域">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2018-10-12-python-4/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="函数的定义12def funcname(parameter_list):	pass  如果函数体内没有return，则返回 None 先定义，后调用（解释性语言） 递归次数有限制，设置最大递归次数方法如下：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-14T13:35:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 入门（四）- 函数与变量作用域">
+<meta name="twitter:description" content="函数的定义12def funcname(parameter_list):	pass  如果函数体内没有return，则返回 None 先定义，后调用（解释性语言） 递归次数有限制，设置最大递归次数方法如下：">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2018-10-12-python-4/"/>
+
+
+  <title> Python 入门（四）- 函数与变量作用域 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python 入门（四）- 函数与变量作用域
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-10-12T00:00:00+08:00" content="2018-10-12">
+              2018-10-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">funcname</span><span class="params">(parameter_list)</span>:</span></span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>如果函数体内没有return，则返回 None</li>
+<li>先定义，后调用（解释性语言）</li>
+<li>递归次数有限制，设置最大递归次数方法如下：</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.setrecursionlimit(<span class="number">100000</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="多结果"><a href="#多结果" class="headerlink" title="多结果"></a>多结果</h3><p>python 支持返回多个结果，且结果为 tuple 类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    r1 = a*<span class="number">3</span></span><br><span class="line">    r2 = b*<span class="number">2</span>+<span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> r1, r2</span><br><span class="line"></span><br><span class="line">result = cal(<span class="number">3</span>,<span class="number">6</span>) // (<span class="number">9</span>, <span class="number">22</span>)</span><br><span class="line">result[<span class="number">0</span>] // <span class="number">9</span></span><br><span class="line">result[<span class="number">1</span>] // <span class="number">22</span></span><br></pre></td></tr></table></figure>
+<p>不推荐用下标来获得多个结果中的每一个，而使用变量名称来接收多个结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r1, r2 = cal(<span class="number">3</span>,<span class="number">6</span>) // <span class="number">9</span>, <span class="number">22</span></span><br></pre></td></tr></table></figure>
+<h3 id="序列解包与链式赋值"><a href="#序列解包与链式赋值" class="headerlink" title="序列解包与链式赋值"></a>序列解包与链式赋值</h3><p>可以用多变量接收多个数值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a,b,c = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>也可以一个变量接收多个数值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span> </span><br><span class="line">type(d) // &lt;type <span class="string">'tuple'</span>&gt;（序列）</span><br></pre></td></tr></table></figure>
+<p>序列解包(sequence unpacking)是一个序列赋值给多个变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a,b,c = d </span><br><span class="line">a,b,c // (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>注：序列解包的个数必须相同，否则则会发生错误异常</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a,b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">// File <span class="string">"main.py"</span>, line <span class="number">11</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    a,b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">ValueError: too many values to unpack</span><br></pre></td></tr></table></figure>
+<p>链式赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=b=c=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a,b,c = <span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>参数包括必须参数、关键字参数、默认参数与可变参数。</p>
+<h4 id="必须参数"><a href="#必须参数" class="headerlink" title="必须参数"></a>必须参数</h4><p>必须参数，参数必须传递。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line">	</span><br><span class="line">func(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4><p>关键字参数，参数必须传递。调用时指明实参赋值给哪个形参，无需按照顺序传递。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line">	</span><br><span class="line">func(x=<span class="number">1</span>,y=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><p>默认参数，参数可不传，采用默认值。<br>默认参数必须出现在非默认参数之后。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y=<span class="number">2</span>,z=<span class="number">3</span>)</span>:</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line">	</span><br><span class="line">func(x=<span class="number">3</span>)</span><br><span class="line">func(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">func(<span class="number">3</span>,y=<span class="number">2</span>,<span class="number">3</span>) <span class="comment">#报错</span></span><br></pre></td></tr></table></figure>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><p><code>*</code>用来表示可变参数，可变参数会自动转化为元组类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*param)</span>:</span></span><br><span class="line">    print(param) <span class="comment">#(1, 2, 3, 4, 5, 6)</span></span><br><span class="line">    print(type(param)) <span class="comment">#&lt;type 'tuple'&gt;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">func(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+<p>如果传入一个元组，则会变为二维元组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*param)</span>:</span></span><br><span class="line">    print(param) <span class="comment">#二维元组 ((1, 2, 3, 4, 5, 6),)</span></span><br><span class="line">    print(type(param)) <span class="comment">#&lt;type 'tuple'&gt;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">func((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>))</span><br></pre></td></tr></table></figure>
+<p>如果想只传入一个元组，而不想变成二维元组怎么办？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*param)</span>:</span></span><br><span class="line">    print(param) <span class="comment">#(1, 2, 3, 4, 5, 6)</span></span><br><span class="line">    print(type(param)) <span class="comment">#&lt;type 'tuple'&gt;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">func(*(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>))</span><br></pre></td></tr></table></figure>
+<p><code>*a</code> 的作用在于把<code>a</code>中数据平铺。  </p>
+<p>可变参数可与其它参数同时使用，但其它参数一定要在可变参数之前。</p>
+<p>如果参数顺序为必须参数 &gt; 默认参数 &gt; 可变参数，则可变参数会覆盖默认参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(param1, param2=<span class="number">2</span>, *param)</span>:</span></span><br><span class="line">    print(param1) <span class="comment">#a</span></span><br><span class="line">    print(param2) <span class="comment">#1</span></span><br><span class="line">    print(param) <span class="comment">#(2,3)</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">func(<span class="string">'a'</span>, <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) <span class="comment">#无法跳过默认参数</span></span><br></pre></td></tr></table></figure>
+<p>如果参数顺序为必须参数 &gt; 可变参数 &gt; 默认参数，则默认参数之前的所有参数都会被认为是可变参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(param1, *param, param2=<span class="number">2</span>)</span>:</span></span><br><span class="line">    print(param1) <span class="comment">#'a'</span></span><br><span class="line">    print(param2) <span class="comment">#(1,2,3,'param')</span></span><br><span class="line">    print(param) <span class="comment">#2</span></span><br><span class="line"></span><br><span class="line">func(<span class="string">'a'</span>, <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">'param'</span>)</span><br></pre></td></tr></table></figure>
+<p>可用关键字参数代替默认参数，顺序为必须参数 &gt; 可变参数 &gt; 关键字参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(param1, *param, param2=<span class="number">2</span>)</span>:</span></span><br><span class="line">    print(param1) <span class="comment">#'a'</span></span><br><span class="line">    print(param2) <span class="comment">#(1,2,3)</span></span><br><span class="line">    print(param) <span class="comment">#'param'</span></span><br><span class="line"></span><br><span class="line">func(<span class="string">'a'</span>, <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>, param2=<span class="string">'param'</span>)</span><br></pre></td></tr></table></figure>
+<p>解析可变参数列表：for 循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*param)</span>:</span></span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> param:</span><br><span class="line">        sum += i*i</span><br><span class="line">    print(sum) <span class="comment"># 91</span></span><br><span class="line"></span><br><span class="line">func(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>不建议使用多种类型的形参列表，种类越少越好。</strong></p>
+<h4 id="关键字可变参数"><a href="#关键字可变参数" class="headerlink" title="关键字可变参数"></a>关键字可变参数</h4><p><code>**</code>用来表示关键字可变参数，关键字可变参数会自动转化为字典类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(**param)</span>:</span></span><br><span class="line">    print(param) <span class="comment">#&#123;'aa': 1, 'cc': 3, 'bb': 2&#125;</span></span><br><span class="line">    print(type(param)) <span class="comment">#&lt;type 'dict'&gt;</span></span><br><span class="line"></span><br><span class="line">func(aa=<span class="number">1</span>,bb=<span class="number">2</span>,cc=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>如何快速遍历字典呢？常见的错误写法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(**param)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> key,value <span class="keyword">in</span> param:</span><br><span class="line">        print(key,<span class="string">':'</span>,value)</span><br><span class="line"></span><br><span class="line">func(aa=<span class="number">1</span>,bb=<span class="number">2</span>,cc=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">(<span class="string">'a'</span>, <span class="string">':'</span>, <span class="string">'a'</span>)</span><br><span class="line">(<span class="string">'c'</span>, <span class="string">':'</span>, <span class="string">'c'</span>)</span><br><span class="line">(<span class="string">'b'</span>, <span class="string">':'</span>, <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+<p>其中，key 为键的第一个字母，value 为键的第二个字母。正确的写法为：调用items()方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(**param)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> key,value <span class="keyword">in</span> param.items():</span><br><span class="line">        print(key,<span class="string">':'</span>,value)</span><br><span class="line"></span><br><span class="line">func(aa=<span class="number">1</span>,bb=<span class="number">2</span>,cc=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">(<span class="string">'aa'</span>, <span class="string">':'</span>, <span class="number">1</span>)</span><br><span class="line">(<span class="string">'cc'</span>, <span class="string">':'</span>, <span class="number">3</span>)</span><br><span class="line">(<span class="string">'bb'</span>, <span class="string">':'</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>如果传入的参数为字典格式，和可变参数类似，需要在参数传入时增加<code>**</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">'aa'</span>:<span class="number">1</span>,<span class="string">'bb'</span>:<span class="number">2</span>,<span class="string">'cc'</span>:<span class="number">3</span>&#125;</span><br><span class="line">func(**a)</span><br></pre></td></tr></table></figure>
+<p><strong>注：当定义时设置了参数，但传入参数为空，则不会调用该函数。</strong></p>
+<h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><p>函数内的变量作用域为局部变量（只在函数内部），函数外部的变量为全局变量，函数内部可以使用外部变量。</p>
+<p>python没有块级作用域(例如:for循环)，只有函数作用域。</p>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>当变量在当前函数作用域里找不到值时，则会在上一级中寻找，直至全局寻找。此为作用域的链式特性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">c=<span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span></span><br><span class="line">    c=<span class="number">2</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func2</span><span class="params">()</span>:</span></span><br><span class="line">        c=<span class="number">3</span></span><br><span class="line">        print(c)</span><br><span class="line">    func2()</span><br><span class="line"></span><br><span class="line">func1() <span class="comment">#3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">c=<span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span></span><br><span class="line">    c=<span class="number">2</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func2</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="comment">#c=3</span></span><br><span class="line">        print(c)</span><br><span class="line">    func2()</span><br><span class="line"></span><br><span class="line">func1() <span class="comment">#2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">c=<span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#c=2</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func2</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="comment">#c=3</span></span><br><span class="line">        print(c)</span><br><span class="line">    func2()</span><br><span class="line"></span><br><span class="line">func1() <span class="comment">#1</span></span><br></pre></td></tr></table></figure>
+<h3 id="global-关键字"><a href="#global-关键字" class="headerlink" title="global 关键字"></a>global 关键字</h3><p><code>global</code>关键字可以使在外部可以访问函数内部的局部变量变为可能，即变成全局变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> c</span><br><span class="line">    c=<span class="number">2</span></span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line">print(c) <span class="comment">#2</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2018-09-04-python-3/" rel="next" title="Python 入门（三）- 包与模块">
+                <i class="fa fa-chevron-left"></i> Python 入门（三）- 包与模块
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的定义"><span class="nav-number">1.</span> <span class="nav-text">函数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多结果"><span class="nav-number">2.</span> <span class="nav-text">多结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列解包与链式赋值"><span class="nav-number">3.</span> <span class="nav-text">序列解包与链式赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">4.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#必须参数"><span class="nav-number">4.1.</span> <span class="nav-text">必须参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字参数"><span class="nav-number">4.2.</span> <span class="nav-text">关键字参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认参数"><span class="nav-number">4.3.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可变参数"><span class="nav-number">4.4.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字可变参数"><span class="nav-number">4.5.</span> <span class="nav-text">关键字可变参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量作用域"><span class="nav-number">5.</span> <span class="nav-text">变量作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域链"><span class="nav-number">6.</span> <span class="nav-text">作用域链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#global-关键字"><span class="nav-number">7.</span> <span class="nav-text">global 关键字</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

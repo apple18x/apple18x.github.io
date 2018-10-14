@@ -1,0 +1,731 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="组织结构：包、模块、类 顶级组织结构：包 第二层级：模块 第三层级：类（包含函数、变量）">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 入门（三）- 包与模块">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2018-09-04-python-3/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="组织结构：包、模块、类 顶级组织结构：包 第二层级：模块 第三层级：类（包含函数、变量）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-14T13:33:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 入门（三）- 包与模块">
+<meta name="twitter:description" content="组织结构：包、模块、类 顶级组织结构：包 第二层级：模块 第三层级：类（包含函数、变量）">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2018-09-04-python-3/"/>
+
+
+  <title> Python 入门（三）- 包与模块 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python 入门（三）- 包与模块
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-09-04T00:00:00+08:00" content="2018-09-04">
+              2018-09-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="组织结构：包、模块、类"><a href="#组织结构：包、模块、类" class="headerlink" title="组织结构：包、模块、类"></a>组织结构：包、模块、类</h3><ul>
+<li>顶级组织结构：包</li>
+<li>第二层级：模块</li>
+<li>第三层级：类（包含函数、变量）</li>
+</ul>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package1 包</span><br><span class="line">    |- c1.py 模块</span><br><span class="line">    |- c2.py</span><br><span class="line">    |- c3.py</span><br><span class="line">    |_ c4.py</span><br><span class="line">package2 包</span><br><span class="line">    |- c1.py 模块</span><br><span class="line">    |- c2.py</span><br><span class="line">    |- c3.py</span><br><span class="line">    |_ c4.py</span><br></pre></td></tr></table></figure>
+<ol>
+<li>若想访问某个文件夹下的某个文件，则可通过 <code>包.文件名</code> 来区分，也称为命名空间。例如：<code>package1.c1</code>和<code>package2.c1</code>分别访问了<code>package1</code>文件夹下和<code>package2</code>文件夹下的名为<code>c1.py</code>的文件。</li>
+<li>可以存在子包，子包和模块也可以是平行关系。</li>
+<li>包和普通文件夹的区别：包里含有特定文件：<code>__init__.py</code>。</li>
+<li><code>__init__.py</code>文件的访问方式：不是<code>package1.__init__.py</code>，而是通过包名，<code>package1</code>访问的即是<code>__init__.py</code>文件。</li>
+</ol>
+<h3 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h3><p>如果想在另一个文件引入其他模块，有如下两种方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一：导入模块，但无法导入具体变量？？</span></span><br><span class="line"><span class="keyword">import</span> module_name[.var_name] <span class="keyword">as</span> alias</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二：导入模块或具体变量</span></span><br><span class="line"><span class="keyword">from</span> module_name <span class="keyword">import</span> module_name/var_name</span><br></pre></td></tr></table></figure>
+<p>举个栗子，假设<code>package1</code>中的<code>c3.py</code>文件包含以下内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>引入<code>c3.py</code>文件的方式为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"><span class="keyword">import</span> package1.c3.a <span class="keyword">as</span> m</span><br><span class="line"></span><br><span class="line">print(package1.c3.a) // <span class="number">1</span></span><br><span class="line">print(m.a) // <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="keyword">from</span> package1.c3 <span class="keyword">import</span> a</span><br><span class="line">print(a) // <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> package1 <span class="keyword">import</span> c3</span><br><span class="line">print(c3.a) // <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> package1.c3 <span class="keyword">import</span> *</span><br><span class="line">print(a) // <span class="number">1</span></span><br><span class="line">print(b) // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>只用 <code>import</code> 不能在时导入模块中的变量，只能导入模块。缺点是命名空间过长。</li>
+<li>不推荐使用 <code>import *</code>，导入的变量不明确，且编辑器会因找不到具体的引入变量而提示错误，但代码可以运行。</li>
+<li><code>import *</code> 无法导入所有的变量（由内置变量决定）</li>
+</ul>
+<p>如在导入变量和模块时需要换行，则可以通过<code>/</code>或<code>()</code>进行导入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写法一</span></span><br><span class="line"><span class="keyword">from</span> c2 <span class="keyword">import</span> a,b,/</span><br><span class="line">	c</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写法二</span></span><br><span class="line"><span class="keyword">from</span> c2 <span class="keyword">import</span> (a,b,</span><br><span class="line">	c)</span><br></pre></td></tr></table></figure>
+<h4 id="模块的内置变量"><a href="#模块的内置变量" class="headerlink" title="模块的内置变量"></a>模块的内置变量</h4><p><strong>all</strong><br>package1中的c3.py包含以下内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__all__ = [<span class="string">'a'</span>,<span class="string">'c'</span>]</span><br><span class="line"></span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br><span class="line">c = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>当 首先自动执行 <code>__init__.py</code>，<code>__init__.py</code>通常做初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package1</span><br><span class="line">    |- t </span><br><span class="line">       |- __init__.py </span><br><span class="line">       |_ c4.py</span><br><span class="line">    |- c1.py</span><br><span class="line">    |_ c2.py</span><br></pre></td></tr></table></figure>
+<h4 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h4><p>内置变量通常为前后双下划线格式，与我们定义的变量含义相同，只是由系统定义的。</p>
+<h5 id="dir"><a href="#dir" class="headerlink" title="dir()"></a>dir()</h5><p>dir() 函数不带参数时，返回当前范围内的变量、方法和定义的类型列表；带参数时，返回参数的属性、方法列表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 无参数</span></span><br><span class="line">a = <span class="number">2</span></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line">print(dir())</span><br><span class="line"></span><br><span class="line"><span class="comment"># ['__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'a', 'b']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 有参数</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">print(dir([ ])) <span class="comment"># list模块的属性列表</span></span><br><span class="line">print(dir(sys)) <span class="comment"># sys模块的属性列表</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#['__displayhook__', '__doc__', '__excepthook__', '__interactivehook__', '__loader__', '__name__', '__package__', '__spec__', '__stderr__', '__stdin__', '__stdout__', '_clear_type_cache', '_current_frames', '_debugmallocstats', '_getframe', '_git', '_home', '_xoptions', 'abiflags', 'api_version', 'argv', 'base_exec_prefix', 'base_prefix', 'builtin_module_names', 'byteorder', 'call_tracing', 'callstats', 'copyright', 'displayhook', 'dont_write_bytecode', 'exc_info', 'excepthook', 'exec_prefix', 'executable', 'exit', 'flags', 'float_info', 'float_repr_style', 'get_asyncgen_hooks', 'get_coroutine_wrapper', 'getallocatedblocks', 'getcheckinterval', 'getdefaultencoding', 'getdlopenflags', 'getfilesystemencodeerrors', 'getfilesystemencoding', 'getprofile', 'getrecursionlimit', 'getrefcount', 'getsizeof', 'getswitchinterval', 'gettrace', 'hash_info', 'hexversion', 'implementation', 'int_info', 'intern', 'is_finalizing', 'maxsize', 'maxunicode', 'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache', 'platform', 'prefix', 'set_asyncgen_hooks', 'set_coroutine_wrapper', 'setcheckinterval', 'setdlopenflags', 'setprofile', 'setrecursionlimit', 'setswitchinterval', 'settrace', 'stderr', 'stdin', 'stdout', 'thread_info', 'version', 'version_info', 'warnoptions']</span></span><br></pre></td></tr></table></figure>
+<h5 id="常见内置变量"><a href="#常见内置变量" class="headerlink" title="常见内置变量"></a>常见内置变量</h5><ul>
+<li><code>__name__</code>：当前模块的完整路径（命名空间）</li>
+<li><code>__package__</code>：当前文件所在模块</li>
+<li><code>__file__</code>：系统完整的物理路径</li>
+<li><code>__doc__</code>：模块的注释</li>
+</ul>
+<p>举个栗子：</p>
+<p>package1-c1.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">    This is c1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'name:'</span>+__name__)</span><br><span class="line">print(<span class="string">'package:'</span>+__package__)</span><br><span class="line">print(<span class="string">'doc:'</span>+__doc__)</span><br><span class="line">print(<span class="string">'file:'</span>+__file__)</span><br></pre></td></tr></table></figure>
+<p>package2-c1.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> package1.c1</span><br><span class="line"></span><br><span class="line"><span class="comment"># name:  package1.c1</span></span><br><span class="line"><span class="comment"># package:  package1</span></span><br><span class="line"><span class="comment"># doc:  </span></span><br><span class="line"><span class="comment">#    This is c1</span></span><br><span class="line"><span class="comment"># file:  /Users/Desktop/python/package1/c1.py</span></span><br></pre></td></tr></table></figure>
+<p>如果我们在package2的c1.py文件中打印相同的内容：</p>
+<p>package2 c1.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'name:  '</span>+__name__)</span><br><span class="line">print(<span class="string">'package:  '</span>+str(__package__))</span><br><span class="line">print(<span class="string">'doc:  '</span>+str(__doc__))</span><br><span class="line">print(<span class="string">'file:  '</span>+__file__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># name:  __main__</span></span><br><span class="line"><span class="comment"># package:  None</span></span><br><span class="line"><span class="comment"># doc:  None</span></span><br><span class="line"><span class="comment"># file: /Users/Desktop/python/package2/c1.py</span></span><br></pre></td></tr></table></figure>
+<p>更推荐的写法为：</p>
+<p>package2 c1.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'name:  '</span>+__name__)</span><br><span class="line">print(<span class="string">'package:  '</span>+ (__package__ <span class="keyword">or</span> <span class="string">'当前模块不属于任何包'</span>))</span><br><span class="line">print(<span class="string">'doc:  '</span>+ (__doc__ <span class="keyword">or</span> <span class="string">'当前模块无文档注释'</span>))</span><br><span class="line">print(<span class="string">'file:  '</span>+__file__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># name:  __main__</span></span><br><span class="line"><span class="comment"># package:  当前模块不属于任何包</span></span><br><span class="line"><span class="comment"># doc:  当前模块无注释文档</span></span><br><span class="line"><span class="comment"># file: /Users/Desktop/python/package2/c1.py</span></span><br></pre></td></tr></table></figure>
+<p>package2和package1中的c1.py均执行以后，打印出的结果完全不一样。package1. c1 被当做应用程序的入口文件执行的，而package2被当做普通的模块。入口文件的内置变量是不同的。</p>
+<ol>
+<li>当文件被当做入口文件，则<code>__name__</code>会打印出<code>__main__</code></li>
+<li>当文件被当做入口文件，则顶级没有包（尽管看起来有package2）</li>
+</ol>
+<p>如何将可执行文件当作一个模块来使用呢？在python命令中通过<code>-m</code>命令即可。前提是必须具备当作模块的条件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python -m package2.c1</span><br><span class="line"><span class="comment"># 注：此时位置位于 package2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># name:  __main__</span></span><br><span class="line"><span class="comment"># package:  package2</span></span><br><span class="line"><span class="comment"># doc:  当前模块无注释文档</span></span><br><span class="line"><span class="comment"># file: /Users/Desktop/python/package2/c1.py</span></span><br></pre></td></tr></table></figure>
+<p>注：当需要把py文件作为普通模块，必须有包。因此必须进入到package目录，执行package底下的python文件才可以。</p>
+<h4 id="name-的应用"><a href="#name-的应用" class="headerlink" title="__name__的应用"></a>__name__的应用</h4><p>关于<code>__name__</code>，有一句比较经典的话：</p>
+<blockquote>
+<p>Make a script both importable and executable</p>
+</blockquote>
+<p>说白了，就是让你的脚本既可以作为普通模块提供给其他程序调用，也可以作为可执行的文件。脚本不同的两种角色，会有不同的使用方式。下面的代码判断是否为入口文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>以下面的代码为例：</p>
+<p>c1.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    print(<span class="string">'This is app'</span>)</span><br><span class="line">    </span><br><span class="line">print(<span class="string">'This is a module'</span>)</span><br></pre></td></tr></table></figure>
+<p>c2.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> c1</span><br></pre></td></tr></table></figure></p>
+<p>如果执行<code>c1.py</code>文件，则说明c1为入口文件，输出的结果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This <span class="keyword">is</span> app</span><br><span class="line">This <span class="keyword">is</span> a module</span><br></pre></td></tr></table></figure>
+<p>如果执行<code>c2.py</code>文件，则说明c1为引入模块，输出的结果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This <span class="keyword">is</span> a module</span><br></pre></td></tr></table></figure>
+<h3 id="相对导入与绝对导入"><a href="#相对导入与绝对导入" class="headerlink" title="相对导入与绝对导入"></a>相对导入与绝对导入</h3><p>常规目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">DEMO(顶级包)</span><br><span class="line">|-package1 (包)</span><br><span class="line">    |- c1.py (模块)</span><br><span class="line">    |- c2.py</span><br><span class="line">    |- c3.py</span><br><span class="line">    |_ c4.py</span><br><span class="line">|-package2 (包)</span><br><span class="line">    |- package4.py</span><br><span class="line">    |	  |_ m2.py</span><br><span class="line">    |_ m1.py (模块)</span><br><span class="line">|-package2 (包)</span><br><span class="line">    |- c1.py (模块)</span><br><span class="line">    |- c2.py</span><br><span class="line">    |- c3.py</span><br><span class="line">    |_ c4.py</span><br><span class="line">|_main.py</span><br></pre></td></tr></table></figure>
+<h4 id="绝对导入"><a href="#绝对导入" class="headerlink" title="绝对导入"></a>绝对导入</h4><p><strong>绝对引入必须从顶级包开始。</strong></p>
+<p>事实上，DEMO不一定为顶级包，与入口文件的位置有关。例如<code>main.py</code>不属于任何包</p>
+<p>main.py </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(__package__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># None</span></span><br></pre></td></tr></table></figure>
+<p>如果改成下面的写法：</p>
+<p>m2.py </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(__package__)</span><br></pre></td></tr></table></figure>
+<p>main.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> package2.package4.m2</span><br><span class="line"><span class="comment"># package2.package4</span></span><br></pre></td></tr></table></figure>
+<p>此时，对于<code>m2.py</code>来讲，顶级包为<code>package2</code>，并非<code>DEMO</code>。这是由于可执行文件<code>main.py</code>与<code>package2</code>文件夹同级。因此，哪个文件夹为顶级包是由可执行文件（入口文件）决定的。</p>
+<p>如果将<code>main.py</code>移动到<code>DEMO</code>文件夹同级，则<code>m2.py</code>的顶级包的位置也将修改。必须将<code>main.py</code>修改为：</p>
+<p>main.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> demo.package2.package4.m2</span><br><span class="line"><span class="comment"># demo.package2.package4</span></span><br></pre></td></tr></table></figure>
+<h4 id="相对导入"><a href="#相对导入" class="headerlink" title="相对导入"></a>相对导入</h4><p><strong>import不可以使用相对路径，但使用from…import时可使用相对路径。</strong></p>
+<p><strong>相对导入不能导入超过当前文件顶级包的文件。</strong></p>
+<p><strong>入口文件无法使用相对路径导入。</strong></p>
+<p><code>.</code>代表当前目录，<code>..</code>代表上一级目录，<code>...</code>代表上上级目录，以此类推。但是在可执行文件中，不能使用相对路径导入。</p>
+<p>main.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> .package2.package4.m2</span><br><span class="line"></span><br><span class="line"><span class="comment">### 报错信息</span></span><br><span class="line">main.py<span class="string">", line 1</span></span><br><span class="line"><span class="string">    import .package2.package4.m2</span></span><br><span class="line"><span class="string">           ^</span></span><br><span class="line"><span class="string">SyntaxError: invalid syntax</span></span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，如果在import中使用相对路径，则会报语法错误。</p>
+<p>m2.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>main.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .package2.package4.m2 <span class="keyword">import</span> m</span><br><span class="line"></span><br><span class="line"><span class="comment">### 报错信息</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"/DEMO/main.py"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span>  .package2.package4.m2 <span class="keyword">import</span> m</span><br><span class="line">ModuleNotFoundError: No module named <span class="string">'__main__.package2'</span>; <span class="string">'__main__'</span> <span class="keyword">is</span> <span class="keyword">not</span> a package</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，使用<code>from...import</code>不再报语法错误。修改为如下目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DEMO(顶级包)</span><br><span class="line">|-package2 (包)</span><br><span class="line">    |- package4.py</span><br><span class="line">    |    |- m3.py</span><br><span class="line">    |    |_ m2.py</span><br><span class="line">    |- m4.py</span><br><span class="line">    |_ m1.py (模块)</span><br><span class="line">|- m5.py</span><br><span class="line">|_ main.py</span><br></pre></td></tr></table></figure>
+<p>如果在 <code>m2.py</code> 中分别做如下引入，均为正确：</p>
+<p>m2.py </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> .m3 <span class="comment">#正确</span></span><br><span class="line"><span class="keyword">import</span> ..m4 <span class="comment">#正确</span></span><br></pre></td></tr></table></figure>
+<p>分别设置<code>import .m3</code>和<code>import ..m4</code>时执行<code>main.py</code>文件，得到的结果为：</p>
+<p>main.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#import .m3</span></span><br><span class="line">package2.package4</span><br><span class="line">package2.package4</span><br><span class="line"></span><br><span class="line"><span class="comment">#import ..m4</span></span><br><span class="line">package2 <span class="comment"># m2中打印</span></span><br><span class="line">package2.package4 <span class="comment"># m4中打印</span></span><br></pre></td></tr></table></figure>
+<p>尝试引入更高层级的包，执行<code>m2.py</code>，则结果会报错。</p>
+<p>m2.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ...m5</span><br><span class="line"></span><br><span class="line"><span class="comment">### 报错</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"m2.py"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> ...m5 <span class="keyword">import</span> m</span><br><span class="line">ValueError: attempted relative <span class="keyword">import</span> beyond top-level package</span><br></pre></td></tr></table></figure>
+<p>因此，当试图引入超过顶级包的文件(包)，则会报错。由于<code>m2</code>的顶级包为<code>package2</code>，当<code>import ...m5</code>时，已超过顶级包的位置，因此会报错。</p>
+<p><strong>为什么不能在入口文件中使用相对路径？</strong></p>
+<p>相对路径时根据当前的内置变量<code>__name__</code>来定位，当入口文件<code>__name__ ==__main__</code>时，<code>__name__</code>不存在的。因此不能使用相对路径。</p>
+<p><strong>如何在入口文件中使用相对路径？</strong></p>
+<p>进入入口文件的上一层目录，执行带<code>-m</code>的<code>python</code>命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">python -m demo.main</span><br><span class="line"># demo.package2.package4 #m2的顶级包变为demo</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2018-08-10-python-2/" rel="next" title="Python 入门（二）- 变量与运算符">
+                <i class="fa fa-chevron-left"></i> Python 入门（二）- 变量与运算符
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2018-10-12-python-4/" rel="prev" title="Python 入门（四）- 函数与变量作用域">
+                Python 入门（四）- 函数与变量作用域 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#组织结构：包、模块、类"><span class="nav-number">1.</span> <span class="nav-text">组织结构：包、模块、类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入模块"><span class="nav-number">2.</span> <span class="nav-text">导入模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模块的内置变量"><span class="nav-number">2.1.</span> <span class="nav-text">模块的内置变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内置变量"><span class="nav-number">2.2.</span> <span class="nav-text">内置变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#dir"><span class="nav-number">2.2.1.</span> <span class="nav-text">dir()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常见内置变量"><span class="nav-number">2.2.2.</span> <span class="nav-text">常见内置变量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#name-的应用"><span class="nav-number">2.3.</span> <span class="nav-text">__name__的应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对导入与绝对导入"><span class="nav-number">3.</span> <span class="nav-text">相对导入与绝对导入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绝对导入"><span class="nav-number">3.1.</span> <span class="nav-text">绝对导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对导入"><span class="nav-number">3.2.</span> <span class="nav-text">相对导入</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
