@@ -84,20 +84,18 @@
 
 
 
-<meta name="description" content="运营中一个重要的模型是AARRR模型（Dave McClure在2007提出的客户生命周期模型），涵盖用户在使用产品前后的整个生命周期中的5个环节，分别是获取用户（Acquisition）、提高用户活跃度（Activation）、提高用户留存率（Retention）、获取收入（Revenue）、自传播（Refer）。2">
+<meta name="description" content="近些年常被提起的一个概念叫做 —— 用户精细化运营。是将用户划分为不同的群体，针对不同群体的共性特征使用不同的运营手段，目的则是为了达到GMV的最大化。 在上一篇AARRR模型中，我们提到了我们提到用户的五个阶段，与此对应的是用户生命周期的几个阶段：导入期-成长期-成熟悉-休眠期-流失期，而每个阶段对用户的运营目标都不">
 <meta name="keywords" content="商业模型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AARRR 模型">
-<meta property="og:url" content="http://www.xinxiaoyang/数据分析/2020-05-04-aarrr/index.html">
+<meta property="og:title" content="RFM模型">
+<meta property="og:url" content="http://www.xinxiaoyang/数据分析/2020-05-10-rfm/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="运营中一个重要的模型是AARRR模型（Dave McClure在2007提出的客户生命周期模型），涵盖用户在使用产品前后的整个生命周期中的5个环节，分别是获取用户（Acquisition）、提高用户活跃度（Activation）、提高用户留存率（Retention）、获取收入（Revenue）、自传播（Refer）。2A3R模型是一个理想态的完美闭环，用户可自发循环与传播，实现用户增长。">
+<meta property="og:description" content="近些年常被提起的一个概念叫做 —— 用户精细化运营。是将用户划分为不同的群体，针对不同群体的共性特征使用不同的运营手段，目的则是为了达到GMV的最大化。 在上一篇AARRR模型中，我们提到了我们提到用户的五个阶段，与此对应的是用户生命周期的几个阶段：导入期-成长期-成熟悉-休眠期-流失期，而每个阶段对用户的运营目标都不一样。 我们为什么要研究用户呢？因为不同用户的诉求不同。比如，同一件商品，某些用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2020-05-04-aarrr/aarrr.jpg">
-<meta property="og:updated_time" content="2020-05-14T13:21:56.000Z">
+<meta property="og:updated_time" content="2020-07-01T08:08:57.898Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AARRR 模型">
-<meta name="twitter:description" content="运营中一个重要的模型是AARRR模型（Dave McClure在2007提出的客户生命周期模型），涵盖用户在使用产品前后的整个生命周期中的5个环节，分别是获取用户（Acquisition）、提高用户活跃度（Activation）、提高用户留存率（Retention）、获取收入（Revenue）、自传播（Refer）。2A3R模型是一个理想态的完美闭环，用户可自发循环与传播，实现用户增长。">
-<meta name="twitter:image" content="http://www.xinxiaoyang/数据分析/2020-05-04-aarrr/aarrr.jpg">
+<meta name="twitter:title" content="RFM模型">
+<meta name="twitter:description" content="近些年常被提起的一个概念叫做 —— 用户精细化运营。是将用户划分为不同的群体，针对不同群体的共性特征使用不同的运营手段，目的则是为了达到GMV的最大化。 在上一篇AARRR模型中，我们提到了我们提到用户的五个阶段，与此对应的是用户生命周期的几个阶段：导入期-成长期-成熟悉-休眠期-流失期，而每个阶段对用户的运营目标都不一样。 我们为什么要研究用户呢？因为不同用户的诉求不同。比如，同一件商品，某些用">
 
 
 
@@ -118,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/数据分析/2020-05-04-aarrr/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/数据分析/2020-05-10-rfm/"/>
 
 
-  <title> AARRR 模型 | 昕小阳的博客 </title>
+  <title> RFM模型 | 昕小阳的博客 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +258,7 @@
             
             
               
-                AARRR 模型
+                RFM模型
               
             
           </h1>
@@ -272,8 +270,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-05-04T00:00:00+08:00" content="2020-05-04">
-              2020-05-04
+            <time itemprop="dateCreated" datetime="2020-05-10T00:00:00+08:00" content="2020-05-10">
+              2020-05-10
             </time>
           </span>
 
@@ -319,26 +317,86 @@
       
 
       
-        <p>运营中一个重要的模型是AARRR模型（Dave McClure在2007提出的客户生命周期模型），涵盖用户在使用产品前后的整个生命周期中的5个环节，分别是获取用户（Acquisition）、提高用户活跃度（Activation）、提高用户留存率（Retention）、获取收入（Revenue）、自传播（Refer）。2A3R模型是一个理想态的完美闭环，用户可自发循环与传播，实现用户增长。</p>
+        <p>近些年常被提起的一个概念叫做 —— 用户精细化运营。是将用户划分为不同的群体，针对不同群体的共性特征使用不同的运营手段，目的则是为了达到GMV的最大化。</p>
+<p>在上一篇AARRR模型中，我们提到了我们提到用户的五个阶段，与此对应的是用户生命周期的几个阶段：导入期-成长期-成熟悉-休眠期-流失期，而每个阶段对用户的运营目标都不一样。</p>
+<p>我们为什么要研究用户呢？因为不同用户的诉求不同。比如，同一件商品，某些用户只有等到打折时才会购买，而另外一批用户完全不看价格，原价也会入手。从用户角度讲，同一件商品满足了不同支付能力的用户，从企业角度也可以提升产品的整体创收。</p>
 <a id="more"></a>
-<p><img src="aarrr.jpg"></p>
-<h3 id="A-Acquisition，获取阶段"><a href="#A-Acquisition，获取阶段" class="headerlink" title="(A) Acquisition，获取阶段"></a>(A) Acquisition，获取阶段</h3><p>Acquisition是将一个完全没使用过产品的用户转化为注册用户的阶段。从产品角度来讲如何让用户在海量的应用市场中注意到你的产品，从数据与影的角度来讲有多少用户从曝光转化为注册用户，都是在这一阶段需要关注的。</p>
-<p>通常获客都是有成本的，比如购买流量，寻找最优的获客渠道等，我们除了要关注各渠道的成本，还要衡量获客这件事情的ROI。获客只是第一步，用户注册以后，是否转化？转化到哪一步流失？是否最终带来收益？收益与成本的关系，能否达到营收？获客是提升为了带来用户数量的提升，但若一味追求流量，带来一些“坏”用户或无价值的用户，则有些得不偿失了。因此，除了渠道获客数量之外，也要关注用户质量。数量和质量两个维度相结合，才能更好的筛选出适合企业自己的优质渠道，更合理地评估公司的投放效果。</p>
-<h3 id="A-Activation，激活阶段"><a href="#A-Activation，激活阶段" class="headerlink" title="(A) Activation，激活阶段"></a>(A) Activation，激活阶段</h3><p>Activation通常是指新用户第一次使用产品，即用户「被激活」，成为真正的注册用户，并完成一次完整的业务流程，例如交易、打车等。</p>
-<p>从产品角度讲，要尽可能优化新用户的产品体验，因为人们初次接触产品时也是他们最想弄明白如何使用产品的时候，需要让用户快速get到产品的核心价值，引导用户体验产品的核心功能。以便让用户更快地开始操作，体验一个完整的流程。</p>
-<p>很多APP提供的新手红包、新人专享商品、会员限时免费体验等“真金白银”的好处，都是为了促成用户尽快体验完整的流程，增强新用户黏性。</p>
-<h3 id="R-Retention，留存用户"><a href="#R-Retention，留存用户" class="headerlink" title="(R) Retention，留存用户"></a>(R) Retention，留存用户</h3><p>留存通常指用户首次使用产品后，若后续有相同的需求场景，是否愿意继续使用该产品。只有用户留存下来，才有可能与产品发生更多接触，最终实现收入。</p>
-<p>从产品角度讲，要让用户快速抓住到产品的价值点，当用户完成对产品价值的认可，也就实现了用户留存。</p>
-<p>用户留存率可通过次日、3日、7日和次月留存等指标进行反映。次日、3日和7日用于查看活动的短期效果，较长期的指标，比如次月留存通常会逐渐稳定在一个数量级上。这些用户，基本上就是产品的目标用户了。</p>
-<p>此外，留存还有很多指标，如：每日流失、每日回流、用户生命周期、生命周期价值、使用间隔等等。</p>
-<h3 id="R-Revenue，收入"><a href="#R-Revenue，收入" class="headerlink" title="(R) Revenue，收入"></a>(R) Revenue，收入</h3><p>大多数企业做产品最最终的目标，都是获得商业盈利。能否盈利，往往决定了产品能否在市场上最终存活下来。因此，产品的商业模式是什么？如何盈利？是我们在营收阶段最需要考虑的问题。</p>
-<p>在当前市场环境下，获取商业盈利可以通过两种方式，一种是产品及服务变现，另一种则是流量变现。</p>
-<p>产品及服务变现是指：通过产品服务核心竞争力实现收入。</p>
-<p>流量变现是指：通过用户以及用户在产品中的行为活动，做广告、数据等变现获取收入。例如：在页面进行广告展示和推广，从而吸纳用户的关注，当用户、时间和场景都足够精准时，会带来可靠的目标用户群体。数据变现是指将用户数据脱敏后，通过抽取过滤加工，形成有效、可利用的数据，通过数据的运用或商业转让，获取盈利。此外数据不单单可以通过处理加工，形成可变现的商业数据或产品，同时也能够通过挖掘分析，提炼用户画像行为，进而指导产品业务，精准获取盈利。</p>
-<p>付费行为，既可能发生在用户激活首日，也可以在一段时间后的留存用户中。</p>
-<h3 id="R-Refer，自传播"><a href="#R-Refer，自传播" class="headerlink" title="(R) Refer，自传播"></a>(R) Refer，自传播</h3><p>当用户实现自传播，才真正构成了一个闭环。自传播之所以重要，是因为用户的裂变是指数级增长的，通过一代一代的扩散传播，可实现用户规模的指数级增长，同时降低获客的成本。</p>
-<p>自传播途径获得的用户，通常也具有较高的质量。这是由于用户之间或多或少存在共性的特征，因此该渠道转化率高于其他渠道就不足为奇了。此外，自传播也能够促成口碑效应的产生。</p>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>在企业发展的不同阶段，我们需要关注的步骤是不同的。例如，在企业刚刚成立，处于占领市场的阶段，获客是最重要的指标，我们可适当地做出一些让利；若企业处于扩张期，则更应该关注用户激活；若企业处于发展的平台期，则要更多地考虑留存。</p>
+<h3 id="RFM模型"><a href="#RFM模型" class="headerlink" title="RFM模型"></a>RFM模型</h3><p>比较经典的用户分群工具就是RFM模型。RFM模型是衡量用户价值和用户创利能力的经典工具，依托于用户最近一次购买时间、消费频次以及消费金额。</p>
+<p>RFM的含义：</p>
+<p>R（Recency）最近一次消费时间：表示用户最近一次消费距离现在的时间。消费时间越近的客户价值越大。<br>F（Frequency）消费频率：消费频率是指用户在统计周期内购买商品的次数，频率越高则价值越大。<br>M（Monetary）消费金额：消费金额是指用户在统计周期内消费的总金额，体现了消费者为企业带来的收入，消费越多的用户价值越大。</p>
+<p>通过这三个维度，我们可以把用户分为8个群体：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">群体</th>
+<th style="text-align:center">R(最近一次消费时间)</th>
+<th style="text-align:center">F(消费频率)</th>
+<th style="text-align:center">M(消费金额)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">重要价值客户</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">高</td>
+</tr>
+<tr>
+<td style="text-align:left">重要发展客户</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">高</td>
+</tr>
+<tr>
+<td style="text-align:left">重要保持客户</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">高</td>
+</tr>
+<tr>
+<td style="text-align:left">重要挽留客户</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">高</td>
+</tr>
+<tr>
+<td style="text-align:left">一般价值客户</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">低</td>
+</tr>
+<tr>
+<td style="text-align:left">一般发展客户</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">低</td>
+</tr>
+<tr>
+<td style="text-align:left">一般保持客户</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">低</td>
+</tr>
+<tr>
+<td style="text-align:left">一般挽留客户</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">低</td>
+</tr>
+</tbody>
+</table>
+<p>如何使用上述表格呢？举个栗子，如果某个用户最近一次消费时间距今很久，近期没有消费，但累计消费金额和消费频次都很高，说明这个用户曾经很有价值，也就是RFM模型中的重要保持客户。对于这类客户，我们不希望他流失，所以运营人员可以针对这类型用户设计召回策略，这也就是RFM模型的核心价值。</p>
+<h3 id="RFM模型的应用"><a href="#RFM模型的应用" class="headerlink" title="RFM模型的应用"></a>RFM模型的应用</h3><p>如何应用RFM模型对用户进行分层呢？</p>
+<p>通常用用户绝对贡献金额来进行分析是不合理的，因为每个商品价格可能不同，折扣不同，所以采用相对的分级（例如R、F、M都各分为五级）或评分（归一化）来判定用户的等级，则更可以显现出相对行为。</p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>评分法是将用户在RFM三个维度下，每个维度给定一个分数（例如五分制）或分组，最终人工制订某种规则，将用户划分到不同的组别。</p>
+<p>首先，需要对每个维度取一个指标，用来衡量该维度的值。比如最近一次交易的时间距离当前的时间代表R，每个用户购买次数为F，每个用户支付的总金额为M。取各自均值，若大于均值则为“高”，小于均值则为“低”，以此获得8个分组。</p>
+<p>如果觉得取均值分为两组过于简略，也可以采用五分制，每个维度拆分为5组，将各维度综合（例如相乘、加和）得到一个分数。最终分组划分还需要人为来判定，比如分值&gt;90为“贡献度高的活跃用户”，分值&gt;60为“贡献度较高用户”等等。</p>
+<h4 id="评分"><a href="#评分" class="headerlink" title="评分"></a>评分</h4><p>在很多情况下，用户遵循着二八原则，即20%的用户贡献了80%的价值。例如，5个用户中A用户消费了5000元，B用户消费了500元，CDE用户消费了10元。这样5个用户消费均值为1106元，由于B用户消费低于均值(500&lt;1106)，我们就可以认为B用户是一个低价值用户了吗？显然不是。因此取均值的方法可能并不能反映用户真实价值的高低，更好的方式是取中位数，或使用min-max归一化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = (x-min)/(max-min)</span><br></pre></td></tr></table></figure>
+<p>最终，我们也可以综合考虑RFM三个值，得到一个综合的指标：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RFM = R*（-1）+F+M+100</span><br></pre></td></tr></table></figure>
+<h4 id="作为模型特征"><a href="#作为模型特征" class="headerlink" title="作为模型特征"></a>作为模型特征</h4><p>除了通过R/F/M三个维度的指标，通过人工制定标准，也可以将这三个维度的值作为特征输入模型。比如，取提取样本的时间点与用户最后一次消费时间间隔(天)，消费行为平均次数，用户平均金额作为三个指标，结合k-means聚类算法，将用户划分到不同组别。</p>
+<h3 id="RFM模型的不足"><a href="#RFM模型的不足" class="headerlink" title="RFM模型的不足"></a>RFM模型的不足</h3><p>RFM模型只有三个维度，在某些复杂场景下作用很有限。比如，多功能场景（支付宝）、多业务类型（滴滴快车、专车、顺风车等）等等。这时就要根据具体的场景，将模型中的指标进行调整。例如，希望用户跨多场景使用而制定补贴策略时，除了金额、频次等因素，还需要增加用户应用场景使用情况的指标。</p>
 
       
     </div>
@@ -370,17 +428,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/programming/2020-03-30-sqoop/" rel="next" title="sqoop">
-                <i class="fa fa-chevron-left"></i> sqoop
+              <a href="/数据分析/2020-05-04-aarrr/" rel="next" title="AARRR 模型">
+                <i class="fa fa-chevron-left"></i> AARRR 模型
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/数据分析/2020-05-10-rfm/" rel="prev" title="RFM模型">
-                RFM模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -494,7 +548,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Acquisition，获取阶段"><span class="nav-number">1.</span> <span class="nav-text">(A) Acquisition，获取阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Activation，激活阶段"><span class="nav-number">2.</span> <span class="nav-text">(A) Activation，激活阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R-Retention，留存用户"><span class="nav-number">3.</span> <span class="nav-text">(R) Retention，留存用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R-Revenue，收入"><span class="nav-number">4.</span> <span class="nav-text">(R) Revenue，收入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R-Refer，自传播"><span class="nav-number">5.</span> <span class="nav-text">(R) Refer，自传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-number">6.</span> <span class="nav-text">应用场景</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RFM模型"><span class="nav-number">1.</span> <span class="nav-text">RFM模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RFM模型的应用"><span class="nav-number">2.</span> <span class="nav-text">RFM模型的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分组"><span class="nav-number">2.1.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#评分"><span class="nav-number">2.2.</span> <span class="nav-text">评分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作为模型特征"><span class="nav-number">2.3.</span> <span class="nav-text">作为模型特征</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RFM模型的不足"><span class="nav-number">3.</span> <span class="nav-text">RFM模型的不足</span></a></li></ol></div>
             
           </div>
         </section>
