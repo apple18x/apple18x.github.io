@@ -1,0 +1,717 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Hive是第一个基于Hadoop最常用的SQL处理引擎，也是日常数据查询最常用的方案。Hadoop集群，就是为了跑sql任务而生的技术体系。impala，presto则是facebook公司开源的，为了避免hive的缺点分布式查询引擎，可满足实时、快速交互式查询。此外，还有drill、spark sql和hawq等。">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="presto">
+<meta property="og:url" content="http://www.xinxiaoyang/SQL/2020-02-02-presto/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="Hive是第一个基于Hadoop最常用的SQL处理引擎，也是日常数据查询最常用的方案。Hadoop集群，就是为了跑sql任务而生的技术体系。impala，presto则是facebook公司开源的，为了避免hive的缺点分布式查询引擎，可满足实时、快速交互式查询。此外，还有drill、spark sql和hawq等。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/SQL/2020-02-02-presto/hive外部表.png">
+<meta property="og:image" content="http://www.xinxiaoyang/SQL/2020-02-02-presto/hive-externel-table.png">
+<meta property="og:image" content="http://www.xinxiaoyang/SQL/2020-02-02-presto/presto-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/SQL/2020-02-02-presto/presto-2.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/SQL/2020-02-02-presto/presto-3.jpg">
+<meta property="og:updated_time" content="2020-07-02T01:49:43.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="presto">
+<meta name="twitter:description" content="Hive是第一个基于Hadoop最常用的SQL处理引擎，也是日常数据查询最常用的方案。Hadoop集群，就是为了跑sql任务而生的技术体系。impala，presto则是facebook公司开源的，为了避免hive的缺点分布式查询引擎，可满足实时、快速交互式查询。此外，还有drill、spark sql和hawq等。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/SQL/2020-02-02-presto/hive外部表.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/SQL/2020-02-02-presto/"/>
+
+
+  <title> presto | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                presto
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-02-02T00:00:00+08:00" content="2020-02-02">
+              2020-02-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Hive是第一个基于Hadoop最常用的SQL处理引擎，也是日常数据查询最常用的方案。Hadoop集群，就是为了跑sql任务而生的技术体系。impala，presto则是facebook公司开源的，为了避免hive的缺点分布式查询引擎，可满足实时、快速交互式查询。此外，还有drill、spark sql和hawq等。</p>
+<a id="more"></a>
+<h3 id="hive简介"><a href="#hive简介" class="headerlink" title="hive简介"></a>hive简介</h3><p>数据仓库：将<strong>多个数据源</strong>的数据经过ETL处理之后，按照一定的<strong>主题集成</strong>起来提供<strong>决策支持</strong>和<strong>联机分析</strong>应用的结构化数据环境</p>
+<p>ETL:Extract(抽取)、Transform(转换)、Load(加载)</p>
+<p>loap 查询引擎：impala或presto</p>
+<p>hive 基于hadoop hdfs上的文件进行查询，可以将hive转化成</p>
+<p>Hive是将存储在HDFS上的数据映射成数据库和一张表，库和表的元数据信息一般存在关系型数据库。以MapReduce作为计算引擎，HDFS作为存储系统，提供超大数据集的计算/扩展能力</p>
+<p>Hive数据存储：存储在HDFS上的，Hive的库和表是对HDFS上的数据的映射（元数据）。</p>
+<p>Hive元数据存储：一般在外部关系库(MySQL)，元数据与Presto、Impala等共享<br>因为Hive查询比较慢，因此通常会用Presto、Impala等查询引擎进行查询；而我们只需要启动Hive MetaStore，提供元数据的检索服务，就可以用Presto进行集成。  </p>
+<p>Hive语句的执行过程：将Hive SQL(HQL)转换为MapReduce任务进行，也具有解释器、编译器，优化器等，HQL进行解析，生成计划，通过优化器生成最优计划，由MapReduce进行调用，得到最后的结果。MapReduce需要进行频繁的I/O读写，所以HIVE查询速度比较慢。  </p>
+<p><strong>常见名词：</strong>  </p>
+<p><strong>1.数据仓库</strong>  </p>
+<p><strong>2.OLTP/OLAP</strong>  </p>
+<p>OLTP(联机事务处理)：是传统的关系型数据库的主要应用，主要是基本的、日常的事务处理，例如银行交易、增删改查等  </p>
+<p>OLAP(联机分析处理)：是数据仓库系统的主要应用，支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果  </p>
+<h3 id="hive-内部表操作"><a href="#hive-内部表操作" class="headerlink" title="hive 内部表操作"></a>hive 内部表操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ssh root@39.101.206.5</span><br><span class="line"></span><br><span class="line"># 进入hive目录</span><br><span class="line"></span><br><span class="line">cd /usr/local/apache-hive-2.3.6-bin/</span><br><span class="line">cd bin</span><br><span class="line">ls </span><br><span class="line">./hive</span><br><span class="line">./hive --services metastore</span><br><span class="line"></span><br><span class="line">show databases;</span><br><span class="line">use default;</span><br><span class="line">show tables;</span><br><span class="line"># 构造表相关数据</span><br></pre></td></tr></table></figure>
+<p>hive的数据是存储在hdfs上的，hive文件支持的存储结构有四种:TEXTFILE、SEQUENCEFILE、ORC、PARQUET，前面两种是行式存储，后面两种是列式存储。这里以TEXTFILE为例。每一行就是hive表的一行，</p>
+<p>假设数据存储于 testdata.txt 文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,tom,music-running-code,c++:98.0-java:76.00-php:65.0</span><br><span class="line">2,jerry,music-code,c++:93.0-java:70.0-php:55.0</span><br><span class="line">3,jogn,code,go:87.0-python:93.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 建表</span><br><span class="line">create table table1 (id int, name string, interest array&lt;string&gt;,score map&lt;string,string&gt;) row format delimited fields terminated by &apos;,&apos; collection items terminated by &apos;-&apos; map keys terminated by &apos;;&apos; stored as textfile;</span><br><span class="line"># 加载数据</span><br><span class="line">load data local inpath &apos;/root/testdata.txt&apos; overwrite into table table1;</span><br><span class="line"># 查看数据结果</span><br><span class="line">select * from table1;</span><br><span class="line">1	tom	[&quot;music&quot;,&quot;running&quot;,&quot;code&quot;]	&#123;&quot;c++:98.0&quot;:null,&quot;java:76.00&quot;:null,&quot;php:65.0&quot;:null&#125;</span><br><span class="line">2	jerry	[&quot;music&quot;,&quot;code&quot;]	&#123;&quot;c++:93.0&quot;:null,&quot;java:70.0&quot;:null,&quot;php:55.0&quot;:null&#125;</span><br><span class="line">3	jogn	[&quot;code&quot;]	&#123;&quot;go:87.0&quot;:null,&quot;python:93.0&quot;:null&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># hdfs</span><br><span class="line">cd /usr/local/hadoop/bin/</span><br><span class="line">./hdfs dfs -ls /hive/warehouse/table1</span><br><span class="line">Found 1 items</span><br><span class="line">-rwxrwxrwx   1 root supergroup        133 2020-03-24 21:48 /hive/warehouse/table1/testdata.txt</span><br></pre></td></tr></table></figure>
+<p>text file格式：指定相关分隔符，就能形成hive array和map这两种复杂的格式。每一行对应hive的一行数据，每一行通过逗号分隔成列，每一列通过<code>-</code>分割collection(array类型)，通过<code>:</code>分割key-value(map类型)</p>
+<h3 id="hive-外部表操作"><a href="#hive-外部表操作" class="headerlink" title="hive 外部表操作"></a>hive 外部表操作</h3><p>内部表会移动至我们配置的warehouse当中，load之后在hdfs的warehouse文件中，内部表会把数据移动到指定文件，删除以后也会把相关文件删除。相反，外部表只需要在建表加上extend关键字，删除时候只会删除hive源数据，并不会删除本身的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 先将测试数据上传到hdfs上</span><br><span class="line">cd /usr/local/hadoop/bin/</span><br><span class="line">./hdfs dfs -mkdir /testtable</span><br><span class="line"># 将本地文件复制到testtable目录下</span><br><span class="line">./hdfs dfs -copyFromLocal /root/testdata.txt /testtable/</span><br><span class="line"># 查看已经生成的txt文件</span><br><span class="line">./hdfs dfs -ls /testtable</span><br><span class="line">Found 1 items</span><br><span class="line">-rw-r--r--   1 root supergroup        133 2020-03-24 22:08 /testtable/testdata.txt</span><br><span class="line"></span><br><span class="line"># 打开hive，创建外部表(external关键字)</span><br><span class="line">create external table table2 (id int, name string, interest array&lt;string&gt;,score map&lt;string,string&gt;) row format delimited fields terminated by &apos;,&apos; collection items terminated by &apos;-&apos; map keys terminated by &apos;;&apos; stored as textfile;</span><br><span class="line"></span><br><span class="line"># 查看table详情</span><br><span class="line">desc formatted table2</span><br></pre></td></tr></table></figure>
+<p><img src="hive外部表.png"></p>
+<p><img src="hive-externel-table.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 查看外部表数据</span><br><span class="line">select * from table2;</span><br><span class="line">OK</span><br><span class="line">1	tom	[&quot;music&quot;,&quot;running&quot;,&quot;code&quot;]	&#123;&quot;c++:98.0&quot;:null,&quot;java:76.00&quot;:null,&quot;php:65.0&quot;:null&#125;</span><br><span class="line">2	jerry	[&quot;music&quot;,&quot;code&quot;]	&#123;&quot;c++:93.0&quot;:null,&quot;java:70.0&quot;:null,&quot;php:55.0&quot;:null&#125;</span><br><span class="line">3	jogn	[&quot;code&quot;]	&#123;&quot;go:87.0&quot;:null,&quot;python:93.0&quot;:null&#125;</span><br><span class="line">Time taken: 0.13 seconds, Fetched: 3 row(s)</span><br></pre></td></tr></table></figure>
+<p>我们分别删除table1和table2，然后比较hdfs文件，就知道内部表和外部表的差别了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drop table table1;</span><br><span class="line">drop table table2;</span><br></pre></td></tr></table></figure>
+<p>进入testtable下，查看是否有 testdata.txt文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/hadoop/bin</span><br><span class="line">./hdfs dfs -ls /testtable</span><br><span class="line"></span><br><span class="line">Found 1 items</span><br><span class="line">-rw-r--r--   1 root supergroup        133 2020-03-24 22:08 /testtable/testdata.txt</span><br></pre></td></tr></table></figure></p>
+<p>我们再看下warehouse下，是否存在table1(已经成为 )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># table1（内部表）相应的数据文件已被删除</span><br><span class="line">./hdfs dfs -ls /hive/warehouse/table1</span><br><span class="line">ls: `/hive/warehouse/table1&apos;: No such file or directory</span><br><span class="line"></span><br><span class="line"># table2（外部表）相应的数据文件依然存在</span><br><span class="line">./hdfs dfs -ls /hive/warehouse/table2</span><br><span class="line">Found 1 items</span><br><span class="line">-rwxrwxrwx   1 root supergroup        133 2020-03-24 22:16 /hive/warehouse/table2/testdata.txt</span><br></pre></td></tr></table></figure>
+<p>因此，当我们删除内部表时，数据文件也删除掉了。</p>
+<h3 id="presto简介"><a href="#presto简介" class="headerlink" title="presto简介"></a>presto简介</h3><p>presto是由facebook开发的分布式SQL查询引擎，用来进行高速、实时的数据分析。presto的产生是为了解决hive的mapreduce模型太慢且不能通过bi等工具展现hdfs数据的问题。</p>
+<p>preto是一个计算引擎，它不存储数据，通过丰富的connector获取第三方服务的数据，并支持扩展。例如：通过连接hive的metastore获取hive的元数据信息，从而读取hdfs上的数据；通过mysql的connector获取mysql数据，同时还支持注入hbase等connector，并且支持扩展，通过接口扩展。</p>
+<p>presto的优点</p>
+<ol>
+<li>presto支持标准的sql，降低了分析人员和开发人员的使用门槛  </li>
+<li>presto支持可插拔的connector，可以连接多种数据源。包括hive、rdbms、kafka、mongodb等。支持不同数据源的联合查询</li>
+<li>presto是一个低延时、高并发的内存计算引擎，比hive执行效率高得多</li>
+</ol>
+<p>presto数据模型</p>
+<p>catalog：即数据源。hive、mysql、mongdb、kafka都是数据源。presto可以连接多个hive和多个mysql<br>schema：类比于database，一个catalog下有多个schema<br>table：数据表，与我们常用的数据库表意义相同，一个schema下有多个数据表  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select * </span><br><span class="line">from hive.testdb.tableA a </span><br><span class="line">join mysql.testdb.tableB b</span><br><span class="line">where a.id = b.id</span><br><span class="line"></span><br><span class="line">show catalogs</span><br><span class="line"></span><br><span class="line">show schemas</span><br></pre></td></tr></table></figure>
+<p>因为不是单一数据源，因此分为三级，catalog-schema-table</p>
+<h3 id="presto的安装"><a href="#presto的安装" class="headerlink" title="presto的安装"></a>presto的安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 下载SERVER</span><br><span class="line">wget https://repo1.maven.org/maven2/com/facebook/presto/presto-server/0.233.1/presto-server-0.233.1.tar.gz</span><br><span class="line"></span><br><span class="line"># 下载COMMAND LINE INTERFACE</span><br><span class="line">wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.233.1/presto-cli-0.233.1-executable.jar</span><br><span class="line"></span><br><span class="line"># 解压</span><br><span class="line">tar -zxvf presto-server-0.233.1.tar.gz</span><br><span class="line"></span><br><span class="line"># 移动</span><br><span class="line">mv presto-server-0.233.1 /usr/local/</span><br><span class="line"></span><br><span class="line"># 进入目录</span><br><span class="line">cd /usr/local/presto-server-0.233.1/</span><br><span class="line"></span><br><span class="line"># 配置4个文件</span><br><span class="line">mkdir etc</span><br><span class="line">cd etc</span><br></pre></td></tr></table></figure>
+<h4 id="presto-的配置"><a href="#presto-的配置" class="headerlink" title="presto 的配置"></a>presto 的配置</h4><p>接下来需要对presto进行配置，一共4个文件，包括3个worker和一个Coordinator</p>
+<p><strong>coordinator节点</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi config.properties</span><br><span class="line"></span><br><span class="line">coordinator=true</span><br><span class="line">node-scheduler.include-coordinator=true</span><br><span class="line">http-server.http.port=7670</span><br><span class="line">query.max-memory=5GB</span><br><span class="line">query.max-memory-per-node=1GB</span><br><span class="line">discovery-server.enabled=true</span><br><span class="line">discovery.uri=http://39.101.206.5:7670</span><br></pre></td></tr></table></figure>
+<p>参数解释：</p>
+<p>coordinator：当前节点是presto的coordinator节点，false代表worker节点<br>node-scheduler.include-coordinator：该coordinator是否参与计算，为true时，既作为coordinator节点，也作为worker节点。<br>http-server.http.port:指定HTTP端口。Presto使用HTTP来与外部和内部进行交流<br>query.max-memory: 查询能用到的最大总内存<br>query.max-memory-per-node: 查询能用到的最大单结点内存<br>discovery-server.enabled: true代表内嵌到coordinator当中，而不是作为单独服务启动。Presto使用Discovery服务去找到集群中的所有结点。每个Presto实例在启动时都会在Discovery服务里注册。这样可以简化部署，不需要额外的服务，Presto的coordinator内置一个Discovery服务。也是使用HTTP端口<br>discovery.uri: Discovery服务的URI。将example.net:8080替换为coordinator的host和端口。这个URI不能以斜杠结尾，这个错误需特别注意，不然会报404错误。</p>
+<p><strong>node.properties</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi node.properties</span><br><span class="line"></span><br><span class="line">node.environment=production</span><br><span class="line">node.id=node01</span><br><span class="line">node.data-dir=/var/presto</span><br></pre></td></tr></table></figure>
+<p>解释：<br>node.environment: 环境名字，Presto集群中的结点的环境名字都必须是一样的<br>node.id: 唯一标识，每个结点的标识都必须是为一的。就算重启或升级Presto都必须还保持原来的标识。如果有多个worker，这里的id不能重复<br>node.data-dir: 数据存储目录，Presto用它来保存log和其他数据   </p>
+<p><strong>jvm.config</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi jvm.config</span><br><span class="line"></span><br><span class="line">-server</span><br><span class="line">-Xmx6G</span><br><span class="line">-XX:+UseG1GC</span><br><span class="line">-XX:G1HeapRegionSize=32M</span><br><span class="line">-XX:+UseGCOverheadLimit</span><br><span class="line">-XX:+ExplicitGCInvokesConcurrent</span><br><span class="line">-XX:+HeapDumpOnOutOfMemoryError</span><br><span class="line">-XX:+ExitOnOutOfMemoryError</span><br></pre></td></tr></table></figure>
+<p><strong>log.properties</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi log.properties</span><br><span class="line"></span><br><span class="line">com.facebook.presto=INFO</span><br></pre></td></tr></table></figure>
+<p>添加catalog</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir catalog</span><br><span class="line">cd catalog</span><br></pre></td></tr></table></figure>
+<p>将hive添加到catalog当中，便可以通过presto查询hive相关信息了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi hive.properties</span><br><span class="line"></span><br><span class="line">connector.name=hive-hadoop2</span><br><span class="line">hive.metastore.uri=thrift://39.101.206.5:9083  </span><br><span class="line">hive.config.resources=$&#123;HADOOP_HOME&#125;/etc/hadoop/conf/core-site.xml,$&#123;HADOOP_HOME&#125;/etc/hadoop/conf/hdfs-site.xml</span><br></pre></td></tr></table></figure>
+<p>解释：<br>connector.name：根据connector.name决定根据哪个connector连接该数据源，hive的connectorhive-hadoop2<br>hive.metastore.uri：需修改为hive-metastore服务所在的服务器及端口<br>hive.config.resources：需配置core-site.xml和hdfs-site.xml的路径</p>
+<p>至此，presto就配置完成了。下面我们启动presto。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cd ../../bin</span><br><span class="line"></span><br><span class="line"># 启动presto</span><br><span class="line">./launcher start</span><br><span class="line"></span><br><span class="line">Ouput:</span><br><span class="line">Started as 12127</span><br><span class="line"></span><br><span class="line"># jps，发现启动了prestoServer服务</span><br><span class="line">21408 ResourceManager</span><br><span class="line">12306 Jps</span><br><span class="line">22739 HRegionServer</span><br><span class="line">21700 NodeManager</span><br><span class="line">16966 RunJar</span><br><span class="line">22664 HMaster</span><br><span class="line">21226 SecondaryNameNode</span><br><span class="line">20925 NameNode</span><br><span class="line">23245 HQuorumPeer</span><br><span class="line">12127 PrestoServer</span><br><span class="line">21055 DataNode</span><br></pre></td></tr></table></figure>
+<p>presto 客户端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mv ~/download/presto-cli-0.233.1-executable.jar .</span><br><span class="line"></span><br><span class="line">chmod a+x presto-cli-0.233.1-executable.jar</span><br><span class="line"></span><br><span class="line"># 启动，指定server、catalog、schema</span><br><span class="line">./presto-cli-0.233.1-executable.jar --server 39.101.206.5:7670 --catalog hive --schema default</span><br></pre></td></tr></table></figure>
+<p>此时已建立连接</p>
+<h3 id="presto架构"><a href="#presto架构" class="headerlink" title="presto架构"></a>presto架构</h3><p>presto是一个典型的master-slave架构，由三部分组成：一个coordinator节点、一个discovery server节点和多个worker节点/  </p>
+<p>其中，<br>coordinator负责解析SQL语句，生成查询计划，分发任务到worker节点执行任务<br>discovery server负责维护coordinator和worker的关系，通常内嵌于coordinator节点。我们在上边部署时就将其内嵌于coordinator节点中<br>worker节点负责执行查询任务以及与hdfs进行交互读取数据</p>
+<p><img src="presto-1.png"></p>
+<p>通过presto的client连接到presto server，presto可以从hive metastore获取到相应的元数据信息，然后从HDFS访问数据，然后将结果返回给client。</p>
+<p>那么，coordinator和worker处于怎样的位置呢？</p>
+<p><img src="presto-2.jpg"></p>
+<p>coordinator负责接收presto提交给它的sql，然后从hive的metastore生成它的元数据，将sql解析之后生成的查询计划分发给各个worker节点。各个worker节点去HDFS查询数据。最后，coordinator把worker节点进行汇总，返回给client字段。</p>
+<p>presto是支持多个数据源的联合查询，那presto怎么实现多个数据源的查询呢？在架构当中是怎么体现的呢？</p>
+<p><img src="presto-3.jpg"></p>
+<p>左半部分,worker访问数据源时候的connector，每个worker对应多个connector，每个worker可通过不同的connector从不同的数据源获取数据。最终将不同数据源的数据在内存中进行聚合计算，从而实现跨数据源的联合查询。</p>
+<h3 id="MPP架构"><a href="#MPP架构" class="headerlink" title="MPP架构"></a>MPP架构</h3><p>数据库架构设计</p>
+<ul>
+<li>Share Everthing：完全透明共享CPU/MEMORY/IO，并行处理能力是最差的，不易扩展，例如SQL SServer   </li>
+<li>Shared Storage：各个处理单元使用自己的私有CPU和Memeroy，共享磁盘系统。数据共享，可通过节点提高并行的能力，但受到存储限制  </li>
+<li>Shared Nothing：各个处理单元都有自己私有的CPU/内存/硬盘，不存在任何共享资源，并行能力和扩展能力都不受限制。例如hadoop</li>
+</ul>
+<p>MPP架构就对应着Shared Nothing架构，就好像小数据库联合起来组成一个大数据库，将数据进行分片存储各个节点上。每个节点查询自己负责的数据，最终得到结果反馈。</p>
+<p>MPP架构优缺点</p>
+<p>易扩容：可轻松通过扩展机器节点（处理单元）扩展整个系统的分布式存储和计算能力<br>效率高：任务并行执行能力强，充分发挥本地计算的能力，数据无共享、无I/O冲突，无锁资源竞争，计算速度快</p>
+<p>短板效应：单个节点查询效率慢会影响整个查询，所以如果每个节点配置相同会避免该问题</p>
+<p>回到presto来说，presto拥有多个worker，每个worker都是独立的，拥有自己的CPU/MEMORY/IO。</p>
+<h3 id="Presto-Connector-amp-Functions"><a href="#Presto-Connector-amp-Functions" class="headerlink" title="Presto Connector &amp; Functions"></a>Presto Connector &amp; Functions</h3><p>我们来看一个例子，来表明presto是如何处理的？</p>
+<p>多个数据源，SQL进行解析，通过SQL生成的语法树，知道该SQL是多数据源的SQL查询语句。然后将SQL进行拆分，将SQL拆分为多个数据源的语句，（整个涉及多个优化细节，例如列分解、下推、函数执行等），将子查询推到对应的数据源进行查询，获取数据后在内存中进行处理，返回客户端。</p>
+<h4 id="Presto-Connector"><a href="#Presto-Connector" class="headerlink" title="Presto Connector"></a>Presto Connector</h4><p>presto包含哪些connector呢？熟知的有hive、JMX、MySQL等，也包括Cassandra、ES、kafka、MongoDB、redis等。此外，presto还支持可扩展的自定义Connector。</p>
+<h4 id="Presto-Functions"><a href="#Presto-Functions" class="headerlink" title="Presto Functions"></a>Presto Functions</h4><p>presto包含内置函数，包括聚合函数(SUM、max)，字符串，时间处理函数等简单的函数，也支持更高级的JSON、正则、Array、Map、Geo、Url及Lambda表达式等函数。此外，presto还支持可扩展的自定义函数。</p>
+<h3 id="python访问presto"><a href="#python访问presto" class="headerlink" title="python访问presto"></a>python访问presto</h3><h4 id="pyhive方式"><a href="#pyhive方式" class="headerlink" title="pyhive方式"></a>pyhive方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyhive[presto]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyhive <span class="keyword">import</span> presto</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    cursor = presto.connect(host=<span class="string">'39.101.206.5'</span>,port=<span class="string">'7670'</span>, catalog=<span class="string">'hive'</span>, schema=<span class="string">'default'</span>)</span><br><span class="line">    cursor.execute(<span class="string">'select * from table1'</span>)</span><br><span class="line">    print(cursor.fetchall())</span><br></pre></td></tr></table></figure>
+<h4 id="sqlalchemy方式"><a href="#sqlalchemy方式" class="headerlink" title="sqlalchemy方式"></a>sqlalchemy方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from sqlalchemy import *</span><br><span class="line">from sqlalchemy.engine import create_engine</span><br><span class="line">from sqlalchemy.schema import *</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    engine = create_engine(&apos;presto://39.101.206.5:76700/hive/default&apos;)</span><br><span class="line">    table1 = Table(&apos;table1&apos;,MetaData(bind=engine),autoload=True)</span><br><span class="line"></span><br><span class="line">    num = select([func.count(&apos;*&apos;)], from_obj=table1).scalar()</span><br><span class="line"></span><br><span class="line">    print(&apos;row count = &#123;&#125;&apos;.format(num))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2020-01-20-window_func/" rel="next" title="窗口函数">
+                <i class="fa fa-chevron-left"></i> 窗口函数
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2020-03-20-window-function/" rel="prev" title="HIVE 窗口函数">
+                HIVE 窗口函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hive简介"><span class="nav-number">1.</span> <span class="nav-text">hive简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hive-内部表操作"><span class="nav-number">2.</span> <span class="nav-text">hive 内部表操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hive-外部表操作"><span class="nav-number">3.</span> <span class="nav-text">hive 外部表操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#presto简介"><span class="nav-number">4.</span> <span class="nav-text">presto简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#presto的安装"><span class="nav-number">5.</span> <span class="nav-text">presto的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#presto-的配置"><span class="nav-number">5.1.</span> <span class="nav-text">presto 的配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#presto架构"><span class="nav-number">6.</span> <span class="nav-text">presto架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MPP架构"><span class="nav-number">7.</span> <span class="nav-text">MPP架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Presto-Connector-amp-Functions"><span class="nav-number">8.</span> <span class="nav-text">Presto Connector & Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Presto-Connector"><span class="nav-number">8.1.</span> <span class="nav-text">Presto Connector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Presto-Functions"><span class="nav-number">8.2.</span> <span class="nav-text">Presto Functions</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python访问presto"><span class="nav-number">9.</span> <span class="nav-text">python访问presto</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pyhive方式"><span class="nav-number">9.1.</span> <span class="nav-text">pyhive方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sqlalchemy方式"><span class="nav-number">9.2.</span> <span class="nav-text">sqlalchemy方式</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
