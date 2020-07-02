@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="用户行为," />
+  <meta name="keywords" content="商业分析," />
 
 
 
@@ -85,24 +85,24 @@
 
 
 <meta name="description" content="注册转化率，购买转化率等等，这些指标或多或少都和网站最后的营收有关。 例如两个不同的电商网站，体量一样，一个网站的购买转化率高，那么最终的营收一定更高。在这里我们不限于 o2o，p2p，社区网站等，就一般性地讨论如何精准提高转化率？">
-<meta name="keywords" content="用户行为">
+<meta name="keywords" content="商业分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何精准提高转化率">
-<meta property="og:url" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/index.html">
+<meta property="og:url" content="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="注册转化率，购买转化率等等，这些指标或多或少都和网站最后的营收有关。 例如两个不同的电商网站，体量一样，一个网站的购买转化率高，那么最终的营收一定更高。在这里我们不限于 o2o，p2p，社区网站等，就一般性地讨论如何精准提高转化率？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/conversion-1.png">
-<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/conversion-2.png">
-<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/conversion-3.png">
-<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/conversion-4.png">
-<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/conversion-5.png">
-<meta property="og:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/conversion-6.png">
-<meta property="og:updated_time" content="2018-01-14T09:37:16.000Z">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/conversion-1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/conversion-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/conversion-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/conversion-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/conversion-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/conversion-6.png">
+<meta property="og:updated_time" content="2020-07-02T01:57:21.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何精准提高转化率">
 <meta name="twitter:description" content="注册转化率，购买转化率等等，这些指标或多或少都和网站最后的营收有关。 例如两个不同的电商网站，体量一样，一个网站的购买转化率高，那么最终的营收一定更高。在这里我们不限于 o2o，p2p，社区网站等，就一般性地讨论如何精准提高转化率？">
-<meta name="twitter:image" content="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/conversion-1.png">
+<meta name="twitter:image" content="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/conversion-1.png">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/数据分析/2018-01-14-conversion-2/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/商业分析/2018-01-14-conversion-2/"/>
 
 
   <title> 如何精准提高转化率 | 昕小阳的博客 </title>
@@ -291,8 +291,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据分析/" itemprop="url" rel="index">
-                    <span itemprop="name">数据分析</span>
+                  <a href="/categories/商业分析/" itemprop="url" rel="index">
+                    <span itemprop="name">商业分析</span>
                   </a>
                 </span>
 
@@ -351,8 +351,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">转化率=F(渠道1_PV,渠道2_PV,渠道3_PV,...,渠道n_PV)</span><br></pre></td></tr></table></figure>
 <p>根据数据的特性，此处可能是简单的线性关系也可能是呈周期性的时间序列，依照具体数据特点决定。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">线性模型：转化率 = a0 + a1*渠道1_PV + a2*渠道2_PV + ... + an*渠道n_PV </span><br><span class="line">时间序列：转化率t = b + b0*转化率t-1 + a1*渠道1_PV_t + ... + an*渠道n_PV_t</span><br></pre></td></tr></table></figure>
-<p>在已经确定的条件下，我们需要对投放进行优化：</p>
-<p>求解转化率 <code>F(渠道1_PV,渠道2_PV,渠道3_PV,...,渠道n_PV)</code> 的最大值，获得优化的投放组合</p>
+<p>在已经确定的条件下，我们需要对投放进行优化：<br>求解转化率 <code>F(渠道1_PV,渠道2_PV,渠道3_PV,...,渠道n_PV)</code> 的最大值，获得优化的投放组合</p>
 <p>限定条件: 总花费 = M</p>
 <p>比较优化前和优化后的策略结果：</p>
 <p><img src="conversion-4.png"></p>
@@ -376,8 +375,7 @@
 <p>针对高价值用户进行推送，投入和产出才是有效率的。</p>
 <h3 id="网站、APP-体验"><a href="#网站、APP-体验" class="headerlink" title="网站、APP 体验"></a>网站、APP 体验</h3><p>常见的体验问题：</p>
 <ul>
-<li><p>支付环节的流畅性</p>
-<blockquote>
+<li>支付环节的流畅性<blockquote>
 <p>通常当支付环节的流畅性很好时，流失性很低。</p>
 </blockquote>
 </li>
@@ -428,7 +426,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/用户行为/" rel="tag">#用户行为</a>
+            <a href="/tags/商业分析/" rel="tag">#商业分析</a>
           
         </div>
       
@@ -437,16 +435,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/数据分析/2018-01-14-conversion-1/" rel="next" title="转化率背后的原因剖析">
-                <i class="fa fa-chevron-left"></i> 转化率背后的原因剖析
+              <a href="/programming/2018-01-08-sql-leetcode-4/" rel="next" title="MYSQL 获取中位数">
+                <i class="fa fa-chevron-left"></i> MYSQL 获取中位数
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/视频剪辑/2018-02-24-fcpx-1/" rel="prev" title="FCPX 入门（一） 之核心界面">
-                FCPX 入门（一） 之核心界面 <i class="fa fa-chevron-right"></i>
+              <a href="/商业分析/2018-01-14-conversion-1/" rel="prev" title="转化率背后的原因剖析">
+                转化率背后的原因剖析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -523,7 +521,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -532,7 +530,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
