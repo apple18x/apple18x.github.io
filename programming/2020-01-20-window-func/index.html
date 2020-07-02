@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="HIVE," />
+  <meta name="keywords" content="SQL," />
 
 
 
@@ -85,16 +85,16 @@
 
 
 <meta name="description" content="先看一个栗子： 12345678+----+-------+--------+--------------+| Id | Name  | Salary | DepartmentId |+----+-------+--------+--------------+| 1  | Joe   | 70000  | 1     ">
-<meta name="keywords" content="HIVE">
+<meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HIVE 窗口函数">
-<meta property="og:url" content="http://www.xinxiaoyang/programming/2020-03-20-window-function/index.html">
+<meta property="og:title" content="窗口函数">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2020-01-20-window-func/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
 <meta property="og:description" content="先看一个栗子： 12345678+----+-------+--------+--------------+| Id | Name  | Salary | DepartmentId |+----+-------+--------+--------------+| 1  | Joe   | 70000  | 1            || 2  | Henry | 80000  | 2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-20T08:23:16.000Z">
+<meta property="og:updated_time" content="2020-07-02T01:38:52.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HIVE 窗口函数">
+<meta name="twitter:title" content="窗口函数">
 <meta name="twitter:description" content="先看一个栗子： 12345678+----+-------+--------+--------------+| Id | Name  | Salary | DepartmentId |+----+-------+--------+--------------+| 1  | Joe   | 70000  | 1            || 2  | Henry | 80000  | 2">
 
 
@@ -116,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://www.xinxiaoyang/programming/2020-03-20-window-function/"/>
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2020-01-20-window-func/"/>
 
 
-  <title> HIVE 窗口函数 | 昕小阳的博客 </title>
+  <title> 窗口函数 | 昕小阳的博客 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +258,7 @@
             
             
               
-                HIVE 窗口函数
+                窗口函数
               
             
           </h1>
@@ -270,8 +270,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-03-20T00:00:00+08:00" content="2020-03-20">
-              2020-03-20
+            <time itemprop="dateCreated" datetime="2020-01-20T00:00:00+08:00" content="2020-01-20">
+              2020-01-20
             </time>
           </span>
 
@@ -319,8 +319,8 @@
       
         <p>先看一个栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| Id | Name  | Salary | DepartmentId |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| 1  | Joe   | 70000  | 1            |</span><br><span class="line">| 2  | Henry | 80000  | 2            |</span><br><span class="line">| 3  | Sam   | 60000  | 2            |</span><br><span class="line">| 4  | Max   | 90000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
-<p>想得到上述表格里1号部门里薪水最高的员工名和对应的薪水，如果用聚合函数来做，需要建立子查询，因为按照DepartmentId聚合，只能得到一个统计值，即部门内最高的薪水。然后再关联全表获得员工其他信息。</p>
 <a id="more"></a>
+<p>想得到上述表格里1号部门里薪水最高的员工名和对应的薪水，如果用聚合函数来做，需要建立子查询，因为按照DepartmentId聚合，只能得到一个统计值，即部门内最高的薪水。然后再关联全表获得员工其他信息。</p>
 <p>所以聚合函数有个缺点，即普通的聚合函数用<code>group by</code>分组，每个分组只能返回一行统计值。而窗口函数采用<code>partition by</code>分组，并且每组每行都可以返回一个统计值。</p>
 <p>上述问题可以通过一个典型的窗口函数写法来实现组内的排序，且不丢失原表的信息：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROW_NUMBER() OVER (PARTITION BY departmentId ORDER BY salary desc BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)</span><br></pre></td></tr></table></figure>
@@ -343,7 +343,7 @@
 <p>&gt;<br><strong>DENSE_RANK()</strong><br>相同的两名是并列，空出并列所占的名次，例如1 2 2 3</p>
 <p>&gt;<br><strong>NTILE(n)</strong><br>将分组数据按照顺序切分成n片，返回当前记录所在的切片值。<br>如果切片不均匀，默认增加第一个切片的分布。<br>通常用于取前百分数比例的记录后计算统计值，例如前50%用户的均值</p>
 <h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><blockquote>
-<p><strong>CUME_DIST()</strong><br>小于等于当前值的行数/分组总行数   </p>
+<p><strong>CUME_DIST()</strong><br>小于等于当前值的行数/分组总行数    </p>
 </blockquote>
 <p>&gt;<br><strong>PERCENT_RANK()</strong><br>分组内当前行的RANK值-1/分组内总行数-1<br>RANK从1开始，相同值RANK相同   </p>
 <blockquote>
@@ -384,7 +384,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HIVE/" rel="tag">#HIVE</a>
+            <a href="/tags/SQL/" rel="tag">#SQL</a>
           
         </div>
       
@@ -393,16 +393,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/SQL/2020-02-02-presto/" rel="next" title="presto">
-                <i class="fa fa-chevron-left"></i> presto
+              <a href="/programming/2019-02-28-python-9/" rel="next" title="Python 入门（七）- 闭包专题">
+                <i class="fa fa-chevron-left"></i> Python 入门（七）- 闭包专题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/programming/2020-03-30-sqoop/" rel="prev" title="sqoop">
-                sqoop <i class="fa fa-chevron-right"></i>
+              <a href="/SQL/2020-02-02-presto/" rel="prev" title="presto">
+                presto <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -471,7 +471,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-count">79</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -488,7 +488,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
