@@ -90,12 +90,12 @@
 <meta property="og:title" content="HQL数据类型">
 <meta property="og:url" content="http://www.xinxiaoyang/programming/2020-09-20-hql-data-type/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="map数据类型创建: 123456hive&amp;gt; CREATE TABLE t3 (foo STRING, bar MAP&amp;lt;STRING,INT&amp;gt;)    &amp;gt; ROW FORMAT DELIMITED    &amp;gt; FIELDS TERMINATED BY &amp;apos;/t&amp;apos;    &amp;gt; COLLECTION ITEMS TERMINATED BY &amp;apos">
+<meta property="og:description" content="map数据类型创建: 123456hive&amp;gt; CREATE TABLE t3 (foo STRING, bar MAP&amp;lt;STRING,INT&amp;gt;)    &amp;gt; ROW FORMAT DELIMITED    &amp;gt; FIELDS TERMINATED BY &amp;apos;/t&amp;apos;    &amp;gt; COLLECTION ITEMS TERMINATED BY &amp;apos;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-09-19T02:43:25.957Z">
+<meta property="og:updated_time" content="2020-11-15T08:06:22.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HQL数据类型">
-<meta name="twitter:description" content="map数据类型创建: 123456hive&amp;gt; CREATE TABLE t3 (foo STRING, bar MAP&amp;lt;STRING,INT&amp;gt;)    &amp;gt; ROW FORMAT DELIMITED    &amp;gt; FIELDS TERMINATED BY &amp;apos;/t&amp;apos;    &amp;gt; COLLECTION ITEMS TERMINATED BY &amp;apos">
+<meta name="twitter:description" content="map数据类型创建: 123456hive&amp;gt; CREATE TABLE t3 (foo STRING, bar MAP&amp;lt;STRING,INT&amp;gt;)    &amp;gt; ROW FORMAT DELIMITED    &amp;gt; FIELDS TERMINATED BY &amp;apos;/t&amp;apos;    &amp;gt; COLLECTION ITEMS TERMINATED BY &amp;apos;">
 
 
 
@@ -317,9 +317,9 @@
       
 
       
-        <a id="more"></a>
-<h3 id="map数据类型"><a href="#map数据类型" class="headerlink" title="map数据类型"></a><strong>map数据类型</strong></h3><p><strong>创建:</strong></p>
+        <h3 id="map数据类型"><a href="#map数据类型" class="headerlink" title="map数据类型"></a><strong>map数据类型</strong></h3><p><strong>创建:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; CREATE TABLE t3 (foo STRING, bar MAP&lt;STRING,INT&gt;)</span><br><span class="line">    &gt; ROW FORMAT DELIMITED</span><br><span class="line">    &gt; FIELDS TERMINATED BY &apos;/t&apos;</span><br><span class="line">    &gt; COLLECTION ITEMS TERMINATED BY &apos;,&apos;（必须使用）</span><br><span class="line">    &gt; MAP KEYS TERMINATED BY &apos;:&apos;</span><br><span class="line">&gt; STORED AS TEXTFILE;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>使用:</p>
 <p>1.map_values(map)：取map字段全部value</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map_values(map)：取map字段全部value</span><br></pre></td></tr></table></figure>
