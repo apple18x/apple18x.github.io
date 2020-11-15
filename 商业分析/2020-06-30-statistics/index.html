@@ -1,0 +1,1407 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数理基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="以下内容整理自可汗学院《统计学》  描述统计描述统计是定量描述 集中趋势：众数、平均数、分位数 离散趋势：极值与极差、平均差、方差、标准差、分位差 分布：峰态、偏态">
+<meta name="keywords" content="数理基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学">
+<meta property="og:url" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="以下内容整理自可汗学院《统计学》  描述统计描述统计是定量描述 集中趋势：众数、平均数、分位数 离散趋势：极值与极差、平均差、方差、标准差、分位差 分布：峰态、偏态">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_1.jpeg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_2.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_4.svg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_6.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_11.svg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/Users/phoebe/Documents/数据分析课程/知乎%3C猴子Live讲座%3E/prop_8.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/Users/phoebe/Documents/数据分析课程/知乎%3C猴子Live讲座%3E/prop_9.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/Users/phoebe/Documents/数据分析课程/知乎%3C猴子Live讲座%3E/prop_10.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_13.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_14.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_7.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_15.png">
+<meta property="og:image" content="https://bkimg.cdn.bcebos.com/formula/8831b7d7bd338d1ddce4f768286d2044.svg">
+<meta property="og:image" content="https://bkimg.cdn.bcebos.com/formula/8831b7d7bd338d1ddce4f768286d2044.svg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_16.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_17.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_18.png">
+<meta property="og:updated_time" content="2020-11-15T08:44:18.436Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计学">
+<meta name="twitter:description" content="以下内容整理自可汗学院《统计学》  描述统计描述统计是定量描述 集中趋势：众数、平均数、分位数 离散趋势：极值与极差、平均差、方差、标准差、分位差 分布：峰态、偏态">
+<meta name="twitter:image" content="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/stat_1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/商业分析/2020-06-30-statistics/"/>
+
+
+  <title> 统计学 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                统计学
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-06-30T00:00:00+08:00" content="2020-06-30">
+              2020-06-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/商业分析/" itemprop="url" rel="index">
+                    <span itemprop="name">商业分析</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p> 以下内容整理自可汗学院<a href="http://open.163.com/newview/movie/courseintro?newurl=%2Fspecial%2FKhan%2Fkhstatistics.html" target="_blank" rel="noopener">《统计学》</a></p>
+</blockquote>
+<h3 id="描述统计"><a href="#描述统计" class="headerlink" title="描述统计"></a>描述统计</h3><p>描述统计是定量描述</p>
+<p>集中趋势：众数、平均数、分位数</p>
+<p>离散趋势：极值与极差、平均差、方差、标准差、分位差</p>
+<p>分布：峰态、偏态</p>
+<a id="more"></a>
+<h3 id="随机变量（random-variable）"><a href="#随机变量（random-variable）" class="headerlink" title="随机变量（random variable）"></a>随机变量（random variable）</h3><p>随机变量称为变量，但与我们传统意义上的变量不一样。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x+3=7</span><br></pre></td></tr></table></figure>
+<p>我们可以得到变量x=4。我们熟悉的变量是可变化，可求解的。变量可以取定值。但随机变量虽然也可以取很多值，但这些变量无法求解。这些随机变量通常用大写字母X Y Z表示。</p>
+<p>它其实是一种函数，将随机过程映射到实际数字。假设我想量化一个随机过程，比如明天是否下雨：</p>
+<blockquote>
+<p>X =   1 , IF RAIN TOMORROW<br>           2 , IF NOT RAIN TOMORROW</p>
+</blockquote>
+<p>这个X是有概率的，我并不知道它会取什么值。再举个例子，比如抛硬币，抛硬币是一个随机过程，每抛一次都是一次试验。随机变量用来量化这个过程。</p>
+<p>下面我们来看概率分布和期望值。</p>
+<p>随机变量有两类：离散(discrete)随机变量和连续(continuous)随机变量。</p>
+<p>之前我们提到的都是离散随机变量，例如抛硬币(0,1)，投骰子(0,1,2,3,4,5,6)，是否下雨(1,2)。以抛硬币为例，如果是等概率的。则出现0的概率为0.5，1的概率也为0.5。因此随机变量会出现两个维度，<strong>取值</strong>和<strong>概率</strong>，其中<strong>概率和为1</strong>。</p>
+<p>与离散随机变量具有有限个数值相比，连续随机变量有无限个结果，例如：X为明天的雨量（英寸数）。</p>
+<p>均匀分布，还有二项分布、正态分布（高斯分布/钟形曲线）等。</p>
+<h3 id="概率密度函数"><a href="#概率密度函数" class="headerlink" title="概率密度函数"></a>概率密度函数</h3><p>概率密度函数其实就是连续的随机变量。</p>
+<p>a. 连续的随机变量，出现某个值的概率为0，因为直线没有面积</p>
+<p>b. 曲线下方的面积是1，这条同样适用于离散随机变量</p>
+<p><img src="stat_1.jpeg"></p>
+<h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><p>有一枚硬币，往上抛5次。定义X等于这5次中正面向上的个数，</p>
+<p>P(X=0)=(1/2)^5=1/32</p>
+<p>P(X=1)=5/*(1/2)^5=5/32</p>
+<p>P(X=2)=10/*(1/2)^5=5/16</p>
+<p>P(X=3)=10/*(1/2)^5=5/16</p>
+<p>P(X=4)=5/*(1/2)^5=5/32</p>
+<p>P(X=5)=(1/2)^5=1/32</p>
+<p><img src="stat_2.jpg"></p>
+<p>我们看到像个钟形，离散情况下得到的是二项分布，连续时候得到的是正态分布。</p>
+<p>P(X=n)=5!/n!(5-2)!</p>
+<p>为什么叫二项分布呢？因为和二项式展开的每一项一致，所有概率值可以通过二项式系数确定。</p>
+<p>我们再看一个例子，假设某个人打篮球投6次篮(n=6)，每次投篮命中率是30%（不中的概率是70%）。下面定义随机变量X，设X是投进篮的次数：</p>
+<p>P(X=0)=0.7^6</p>
+<p>P(X=1)=C(1,6)*0.3*0.7^5</p>
+<p>P(X=2)=C(2,6)*0.3^2*0.7^4</p>
+<p>P(X=3)=C(3,6)*0.3^3*0.7^3</p>
+<p>P(X=4)=C(4,6)*0.3^4*0.7^2</p>
+<p>P(X=5)=C(5,6)*0.3^5*0.7^1</p>
+<p>P(X=6)=C(6,6)*0.3^6</p>
+<p>P(X=n)=C(n,N)*p^n*(1-p)^(N-n)</p>
+<p>Excel使用方法：</p>
+<blockquote>
+<p>阶乘函数：fact(n) = n!</p>
+</blockquote>
+<h3 id="期望值E-X"><a href="#期望值E-X" class="headerlink" title="期望值E(X)"></a>期望值E(X)</h3><p>假设总体为3,3,3,4,5，那么均值为<code>(3+3+3+4+5)/5 = 3.6</code>，换一种方式计算就是<code>(3\*3+4\*1+5\*1)/5 = 3.6</code></p>
+<p>如果我们把出现的次数替换为出现的概率，则是：<code>(3\*60%+4\*20%+5\*20%)/5 = 3.6</code>。为什么这么做呢？因为这同随机变量是有关系的。</p>
+<p>之前我们算过总体的均值，哪怕总体个数有150w之多，但个数既是有限的，就可以计算总体的均值。现在考虑总体数据量无穷的情况，比如随机变量。总体可以看作随机变量的每个实例，或者每次随机试验的集合，而随机试验可以做无数次。每次随机试验的结果，一般可以记作小写的x1, x2, x3…，可以看作是无穷总体中的样本，样本通常是有限个的。</p>
+<p>随机变量的期望值，其实就是总体的均值。只不过此时的总体是无穷尽的，所以无法用全部个体求和然后除以个数的方式来求均值，不过我们知道这些数字的频率，这就是计算随机变量期望值的方式。如何知道数字出现的频率呢？答案是参照概率分布，这里是离散概率分布。</p>
+<p>以抛硬币为例，<code>E(X)= 0*0.015625+1*0.09375+2*0.234375+3*0.3125+4*0.234375+5*0.09375+6*0.015625 =3</code>。</p>
+<p>通过这种方式，我们计算了无穷总体的均值，也就是随机变量的均值。可以说3正式我们所“期望”的值，但需要注意的是，期望值并不一定是最可能的值。</p>
+<p>因此，我们想通过上述例子证明：期望值的计算其实等同于总体均值计算，我们之所以这么做是因为无穷总体无法获得总体的个数，因此用频率作为权重，相当于计算加权平均值。这和之前求均值的方式没有本质区别。</p>
+<h3 id="二项分布的期望值"><a href="#二项分布的期望值" class="headerlink" title="二项分布的期望值"></a>二项分布的期望值</h3><p>假设有随机变量X，表示n次试验成功的次数，其中每次成功的概率是p</p>
+<h3 id="泊松过程"><a href="#泊松过程" class="headerlink" title="泊松过程"></a>泊松过程</h3><p>假设你是一个交通工程师，想知道任意时刻通过街上某一点的车辆数。想确定某一小时内100辆车或5辆车通过的概率。最好的方式是先定义一个相关的随机变量X，表示一个小时内通过的车辆数。然后求出该随机变量的概率分布。</p>
+<p>在讲具体泊松分布之前，有<strong>两个假设</strong>要讲一下</p>
+<p>a.街上任意时间车流量没有差异（显然不是真实情况，高峰时间肯定比一般时间车多）</p>
+<p>b.一段时间的车流量对另一段时间没有影响（就算一段时间车流量少，也不会影响到下一段时间车流量），即具有独立性</p>
+<p>对于任何分布，我们可以首先估计均值，我们可以坐在路边观察几个小时的车流量，然后平均起来，这也许就是总体均值很好的估计值了。</p>
+<p>假设期望值最好的估计E(X)是<em>λ</em>。由于每个时段车流量相同，我们可以把一小时分成60个区间，然后用二项分布来近似。即一分钟内是否有车通过，有车通过的概率为p，重复60次试验。而我们已知二项分布的期望值，它等于np。</p>
+<blockquote>
+<p><em>λ</em>辆车/小时 = np = 60 *<em>λ</em>/60 (重复60次试验*每分钟一辆车出现的概率)</p>
+<p>p(X=k) = C(k,60) *(<em>λ</em>/60)^k *(1-<em>λ</em>/60)^(n-k)</p>
+</blockquote>
+<p>结果可能很合理，不过有个核心问题。也就是如果一分钟内布置一辆车通过怎么办？之前我们把有一辆车通过叫成功，但没有考虑到一分钟内同时5车通过这样的情况。解决办法是，分更多的区间，如果一分钟不行，就拆成1秒钟。这样区间就不是60个，而是3600个</p>
+<blockquote>
+<p>p(X=k) = C(k,3600) *(<em>λ</em>/3600)^k *(1-<em>λ</em>/3600)^(n-k)</p>
+</blockquote>
+<p>这是更好的近似，但也有可能一秒钟开过2辆车，你可能会说继续分割就可以了，让这个数字越来越大，一直下去就能得到泊松分布。</p>
+<p>所以这里告诉你们，<strong>泊松分布其实来自二项分布</strong>。而二项分布就是某种抛硬币，这是一切的源头。当区间个数趋近于无穷大时，就是泊松分布。</p>
+<p>下面我们复习下手头的数学工具，</p>
+<p>当x趋于无穷大时，(1+a/x)的x次方极限是e的a次方，推导过程如下：</p>
+<blockquote>
+<p>1/n = a/x =&gt; x= na</p>
+<p>lim(1+a/x)^x = lim(1+1/n)^na = lim((1+1/n)^n)^a = (lim(1+1/n)^n)^a = e^a</p>
+</blockquote>
+<p>另外一个就是：</p>
+<blockquote>
+<p>x!/(x-k)! = x(x-1)(x-2)…(x-k+1)</p>
+</blockquote>
+<p>这里正好是k项，这对泊松分布的推导很重要。</p>
+<p>回到我们的推导上来，当n趋近于∞：</p>
+<blockquote>
+<p>E(x)=<em>λ</em>=np =&gt; p=<em>λ</em>/n</p>
+<p>p(X=k) = lim C(k,n) *(<em>λ</em>/n)^k*(1-<em>λ</em>/n)^(n-k)</p>
+<p>​            = lim n!/(n-k)!k! *<em>λ</em>^k/n^k* (1-<em>λ</em>/n)^n* (1-<em>λ</em>/n)^-k</p>
+<p>​            = lim【n(n-1)(n-2)…(n-k+1)/n^k】 *【<em>λ</em>^k/k! 】* 【(1-<em>λ</em>/n)^n】* 【(1-<em>λ</em>/n)^-k】</p>
+<p>​            = lim【n^k+…/n^k)】* lim【<em>λ</em>^k/k! 】* lim【(1-<em>λ</em>/n)^n】* 【(1-<em>λ</em>/n)^-k】</p>
+<p>​            = 1 *【<em>λ</em>^k/k! 】*【e^-λ】*【1】</p>
+<p>​            = <em>λ</em>^k/k!*e^-<em>λ</em></p>
+</blockquote>
+<p>因此，是取极限得到的e。</p>
+<h3 id="大数定律"><a href="#大数定律" class="headerlink" title="大数定律"></a>大数定律</h3><p>大数定律是数学史上的第一个“极限定理”，由雅各布.伯努利于1713年提出。</p>
+<p>该定律的应用范围非常广泛，但有时候会被错误运用。</p>
+<p>样本均值将收敛于总体均值，或随机变量的期望值。“大数定律”用于描述“平均结果”和“频率”的稳定性。</p>
+<p>通俗来讲，是在“试验条件”不变的情况下，当我们“大量重复”某一相同实验时，其最终的“实验结果”可能会稳定在“某一数值”附近，“偶然”中包含着某种“必然”。</p>
+<p>假设有随机变量X，大数定律是说，随机变量的n次观测样本，将所有观测值平均起来，定义变量Xn = (x1+x2+x3+…xn)/n。大数定律是说：样本均值趋近于随机变量的期望值，或者说n趋近∞时，样本均值趋于总体样本。趋近可能说的不够严谨，意思就是：样本量足够大的时候，样本均值接近期望值。</p>
+<p>但为什么如此？通常会有一些误解。</p>
+<p>大数定律是说，假设随机变量X等于抛100次硬币得到正面的次数。我们知道该随机变量的期望值，乘以一次试验成功的概率，也就是100*5 = 50。一次试验是指，100枚硬币抛出，或放在盒子里摇，第一次试验要盒子，得到55枚正面，第二次得到65枚正面，第三次得到45枚硬币…总共摇100次。根据大数定律，这些观测值的均值，将收敛于50。随着n趋于∞。</p>
+<p>很多人觉得，如果100次试验后，如果正面数高于均值，则定律会让后面的正面数更少。这不对，这通常被称作「赌徒谬论」。并非如此，之后的概率是一样的，得到正面的概率永远是50%。并不会因为之前正面得到的多，后面就会得到的少来弥补。并不是说，长时间不成比例地得到正面，那么之后就更有可能不成比例地得到反面。大数定律不关心前面发生的情况，比如优先次试验后，可能得到的平均值在70，可能性很小。</p>
+<blockquote>
+<p>举个例子，如果在买彩票选号的时候，有意地去选择以往中奖号码中出现少的数字，这样不就遵遁了“大数定律”规律，增加了中奖的机率吗？这恰好是<strong>“赌徒谬误”</strong>的心理陷阱，将原本“互相独立”的随机事件当成了“有关联”的事件。</p>
+<p>比如说，第一次抛硬币，是一个随机事件。再抛一次，是另一个随机事件。这两次随机事件是相互独立而没有关联的，第二次的结果并不以第一次为条件。</p>
+<p>这种错误应用“大数定律”时的心理偏差，被心理学家们戏称为“小数法则”：就是将通过研究“大样本”得到的结论，应用到“小样本”的实践中去。由于人类“惯性思维”的原因，大多数人会违背 “大数定律”而不由自主地运用“赌徒谬误”。</p>
+</blockquote>
+<p>大数定律根本不关心这些有限次试验，后面还剩下无限次试验，这无限次试验的期望值是50。最后肯定收敛回期望值。收敛回期望值是因为后面还有无限次收敛于期望值的试验，让前面的有限次试验，还有无限次收敛于期望值的试验。只要后面试验的数字足够多，就能收敛回期望值。</p>
+<p>不过买彩票和赌博的人没有遵循这个原则，样本足够大的话，我们能算出期望值。但赌徒们不遵循这个原则，短期内，少量样本事，有人能赢。但长期来看，肯定庄家会赢，因为参数是赌场设定的。</p>
+<p>比如：纵轴表示样本均值</p>
+<h3 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h3><p>正态分布是，根据数据点进行推论，很大程度都是基于正态分布。</p>
+<p>离散概率密度，可以看到某个点的概率，但连续密度函数，只能看一段区间的概率，比如4.5到5.5之间，概率等于4.5到5.5的概率密度函数的积分</p>
+<h4 id="概率密度函数-1"><a href="#概率密度函数-1" class="headerlink" title="概率密度函数"></a>概率密度函数</h4><p><img src="stat_4.svg"></p>
+<p>我们再来理解一下指数部分，x-μ是我们要求的值同均值之间的距离，(x-μ)/σ表示离均值有多少个标准差远，它被称为<strong>标准z分数</strong>。然后平方，乘以-1/2。相当于e的(x-μ)/σ次方的二次方，再另一个-1/2指数。</p>
+<p>同理，我们倒弄一下1/（σ*根号下2π），等于1/（根号下2π*σ^2\）</p>
+<p>最终，我们得到正态分布的概率密度函数为：</p>
+<p>1/（根号下2π*σ^2*e^xxx）</p>
+<p>不管看到哪种形式，我们都应该知道它是正态分布曲线。</p>
+<p><strong>标准正态分布（standard normal distribution）</strong>是μ=0，σ=1的正态分布</p>
+<h4 id="正态分布曲线"><a href="#正态分布曲线" class="headerlink" title="正态分布曲线"></a>正态分布曲线</h4><p>数据可下载自：<a href="http://www.khanacademy.org/downloads/NormalIntro.xls" target="_blank" rel="noopener">http://www.khanacademy.org/downloads/NormalIntro.xls</a></p>
+<p>均值</p>
+<p>方差是同均值距离的平方的均值，标准差是其平方根。所以标准差可以说是同均值的某种平均距离。标准差越小，越多的点将越靠近均值，图像也就变得越来越窄。</p>
+<p>比如，标准差为2，则得到一个非常密集的钟形曲线；标准差为10，则得到一个非常扁的钟形曲线，两侧无尽延伸。这是关键，二项式分布是有限的， 而正态分布在整个实数轴上都有定义。所以在均值为-5，标准差为10的情况下，我们得到1000的概率是非常低的，但还是存在可能性的。</p>
+<p><img src="stat_5.png"></p>
+<p>上图中有三条直线，中间一条表示均值，左右两条表示离均值一个标准差远。</p>
+<p>之前我们提到，正态分布不能看某个点的概率。我们需要看的是两点间曲线下方的面积。如果我们想看0的概率是不可能的，因为正好为0的概率在曲线下方没有面积。</p>
+<h3 id="哪些是正态分布？"><a href="#哪些是正态分布？" class="headerlink" title="哪些是正态分布？"></a>哪些是正态分布？</h3><p>✅ 手指的跨度（小拇指到大拇指的宽度）：最小为0，不可能到达无穷。但近似于正态分布，由于男生和女生手的差异，可能存在双峰</p>
+<p>❌ 海运员工的年薪：右偏分布(right-skewed) </p>
+<h3 id="z分数-z-score"><a href="#z分数-z-score" class="headerlink" title="z分数 (z-score)"></a>z分数 (z-score)</h3><blockquote>
+<p> z-score = (x-μ)/σ</p>
+</blockquote>
+<p>也就是离均值有多少个标准差远</p>
+<p><strong>z分数与概率的关系</strong></p>
+<p><strong>经验法则</strong>又被称为3-sigma法则或者68-95-99.7法则。</p>
+<p>在完美的正态分布中，</p>
+<p>1.低于均值一个标准差处(μ-σ)到高于均值一个标准差(μ+σ)区域的面积，大概是68%。换句话说，68%的概率落在均值左右一个标准差范围内。</p>
+<p>2.低于均值两个标准差处(μ-2σ)到高于均值两个标准差(μ+2σ)区域的面积，大概是95%。</p>
+<p>3.低于均值三个标准差处(μ-3σ)到高于均值三个标准差(μ+3σ)区域的面积，大概是99.7%。</p>
+<p><img src="stat_6.jpg"></p>
+<blockquote>
+<p>例如：假设美国一岁大的女孩体重服从正态分布，均值为9.5kg，标准差为1.1kg。估算美国1岁大女孩满足下列条件的百分比：</p>
+<p>a.低于8.4kg     b.7.3kg~11.7kg之间    c.高于12.8kg</p>
+<p>a. 8.4 = 9.5-1.1 = μ-σ，概率为16%</p>
+<p>b. 8.4 = 9.5-1.1*2 = μ-2σ，11.7 = 9.5+1.1*2 = μ+2σ，概率为95%</p>
+<p>c. 12.8 = 9.5+1.1*3 = μ+3σ，概率为0.15%</p>
+</blockquote>
+<h4 id="概率的计算"><a href="#概率的计算" class="headerlink" title="概率的计算"></a>概率的计算</h4><p>如果我们想算-1到1之间的概率，通过积分密度函数的方法很难算。因此，我们这里引入一个新的函数定义，叫做累积分布函数(CDF)，这是求面积非常有用的工具。</p>
+<p>累积分布函数是x的函数，它是概率密度函数从-∞到x范围内的积分。</p>
+<p>如果我们想算-1到1之间的概率，可以用CDF(1)- CDF(-1)。</p>
+<p>看上图，如果我们想知道均值左右各一个标准差之间的概率，我们可以在excel中操作一下，比如均值-5，标准差10。输入-15到5之间的概率，我们发现是68.3%。有趣的是，<strong>对于正态分布，均值左右一个标准差内的概率总是68.3%</strong>。</p>
+<p><strong>Excel计算正态分布的方法</strong></p>
+<p>Normdist，参数是x/μ/σ，True(求累积)，否则为False</p>
+<h3 id="中心极限定理-central-limit-theory"><a href="#中心极限定理-central-limit-theory" class="headerlink" title="中心极限定理(central limit theory)"></a>中心极限定理(central limit theory)</h3><blockquote>
+<p>在一定条件下，大量独立<strong>随机变量</strong>的<strong>平均数</strong>是以正态分布为极限的。</p>
+<p>换句话说，随着实验次数的增多，样本均值（Sampling Distribution）的概率分布越来越接近正态分布。</p>
+</blockquote>
+<p>如果抛的足够多，每一次试验相互独立，其随机变量等于1(如果为正)，0(如果为反)，那么这些随机变量的和，在抛次数趋于无穷时，趋于正态分布。但每一次抛硬币的试验并非正态分布。</p>
+<p>我们可以理解为很多相互作用合在一起，最后就得到了正态分布的结果。因此正态分布非常重要，在大自然中无处不在。</p>
+<p>注：大数定律只是揭示了大量随机变量的<strong>平均结果</strong>，但没有涉及到随机变量的分布的问题。</p>
+<h3 id="样本均值的分布-sampling-distribution-of-the-sample-mean"><a href="#样本均值的分布-sampling-distribution-of-the-sample-mean" class="headerlink" title="样本均值的分布(sampling distribution of the sample mean)"></a>样本均值的分布(sampling distribution of the sample mean)</h3><h4 id="均值"><a href="#均值" class="headerlink" title="均值"></a>均值</h4><p>课程仅通过实验来证明，并未给出严格的数学证明。实验如下：设定每一次的样本量N，计算N个样本的均值，大量<strong>重复</strong>该实验，观察样本均值的分布。</p>
+<p>样本概率分布（离散）：</p>
+<p><img src="stat_8.png"></p>
+<p>设定每次抽样的样本量N=5，重复试验20000次后，得到样本均值概率分布（以下称为均值分布）如下：</p>
+<p><img src="stat_9.png"></p>
+<p>实验如下：设定每一次的样本量N，计算N个样本的均值，大量重复该实验，发现<strong>均值分布趋于正态分布，样本量越大拟合得越好，且均值分布的均值为原样本分布的均值</strong>。</p>
+<p>此外，每一次抽样的样本量N越大，正态分布越尖（顶部越平滑）。这很好理解，因为样本容量越大，离均值很远的概率就越低（标准差越小）。</p>
+<p><strong>其他指标：</strong></p>
+<p><strong>偏度(skew)</strong>：如果是完美的正态分布，偏度为0；如果偏度为正(positive skew)，意味着右侧尾部较长；偏态为负，则左侧尾部较长。</p>
+<p><strong>峰度(kurtosis)</strong>：如果是完美的正态分布，偏度为0；如果峰度为正(positive kurtosis)，尾部会较肥，顶端更尖锐；峰度为负，则顶端更平滑。</p>
+<p>下面进一步讲解随着样本量n的改变，分布会如何变化。加入样本容量为n，重复次数为N。</p>
+<p>如果样本量n=4，重复多次后，得到的分布趋近于正态分布。</p>
+<p>当重复次数n很小时，结果不会很好地趋近于正态分布。</p>
+<p>N=1时，也就是抽取n=4个样本，但只做一次试验，得到样本均值，结果肯定不是正态分布。</p>
+<p>n=2时，我们通过试验发现哪怕进行10000次也不会趋近于正态分布。</p>
+<p><img src="stat_10.png"></p>
+<p>当n=10或15时就已经显现出正态分布的样子了，因为朝正态分布收敛的很快，。</p>
+<p>样本-&gt;随机变量：</p>
+<p>样本均值抽样分布的<strong>均值</strong>，这是真正的随机变量均值。对原来的分布以一定样本容量抽取样本值，然后平均，就能描述函数。</p>
+<p>因此，如果把样本均值抽样分布的均值作为随机变量的话，当n越大，标准差越小。</p>
+<h4 id="标准差-方差"><a href="#标准差-方差" class="headerlink" title="标准差/方差"></a>标准差/方差</h4><p>每一次抽样的样本量n越大，样本均值的分布越尖（顶部越平滑），标准差越小。</p>
+<p>那么已知原分布的均值μ，标准差σ，样本容量n，是否有公式预测样本均值分布的方差？</p>
+<p>课程未作证明，只是给了一些直观认识。</p>
+<p>我们已经知道，样本容量n和样本均值的标准差呈反向关系，容量n越大，标准差越小。</p>
+<p>样本均值的<strong>方差</strong>与总体<strong>方差</strong>存在n倍关系，因此<strong>标准差</strong>的关系为（课程未做证明，只是给出结论，通过实验验证了下）：</p>
+<p><img src="stat_11.svg"></p>
+<p><strong>例题</strong></p>
+<blockquote>
+<p>男性在户外活动时平均喝水2升，标准差0.7升。组织一项50人的全天户外旅行，准备110升水，这些水不够的概率是多少？</p>
+<p>解：110/50 = 2.2，问题转换为“50个人平均用水量大于2.2升的概率”，即总体均值μ=2.2，总体标准差σ，求样本均值的抽样分布（样本量n=50，重复多次抽样得到的分布）中x大于2.2的概率。</p>
+<p>样本均值分布的均值：μ(X) = μ= 2</p>
+<p>样本均值分布的标准差：σ(X) = 0.7/(根号下50) = 0.099 </p>
+<p>z-score= (2.2-2)/0.999 = 2.020（大于均值右侧2.020个标准差），根据z-table（注意z-table为低于该值的概率）得到0.9783，因此概率为0.0217 </p>
+</blockquote>
+<h3 id="置信区间"><a href="#置信区间" class="headerlink" title="置信区间"></a>置信区间</h3><p><strong>置信区间</strong>：<strong>样本</strong>统计量所构造的<strong>总体</strong>参数的估计区间（先估计出一个总体分布），这个参数的真实值落在测量<strong>结果范围</strong>的概率（需给定区间，估计出现在区间的概率）</p>
+<p>从农场收获的20w个苹果中抽取36个作为样本，样本中苹果重量的均值是112克，标准差为40克。问20w个苹果的重量均值处在100到124克之间的概率是多少？ </p>
+<blockquote>
+<p>假设总体的均值为u，标准差为σ。已知样本均值为112，样本标准差为40 。我们知道，抽样分布的均值等于总体均值，所以样本均值= 112，样本的标准差。比均值大一个标准差大概在这里，我们可以通过均值抽样分布确定这个标准差。在样本量较大，很好给出总体标准差，样本小时会有一些修正因子。这里，样本标准差 = 样本标准差/根号下n =  样本标准差/6，每个均值堆叠在一起就形成这个分布，用来得到这个分布的值是原分布中样本的均值。</p>
+</blockquote>
+<p>问题是关于20w个苹果的平均重量，也就是u，也就是样本均值112左右12克范围内。这里也就是问，总体均值落在均值左右12g范围内的概率，也就是某一特定样本均值落在抽样分布均值左右12g范围内的概率。如果能求出12对应多少个标准差，就能用z</p>
+<p>我们还不知道抽样分布的标准差，我们只知道它是σ/6，但σ也是未知的。所以我们只能用最好的估计值来代替总体标准差σ，即样本标准差((x1-x)^2+…+(xn-x)^2+/n-1)，也就是40。因此 σ/6 = s/6 = 40/6 = 6.67。于是样本均值抽样分布，标准差的最好估计是6.67。</p>
+<p>那么12g对应多少个标准差呢，12/6.67 = 1.8。所以问题变成：某样本均值落在均值1.8个标准差范围内的概率。1.8个标准差要比1多出0.8。</p>
+<p>这里还是用z表格求概率，首先可以求均值到其右侧12g处之间的概率，然后根据正态分布对称性。将这个概率乘以2就可以了。均值到其右侧12g处之间的概率是多少呢？</p>
+<p><img src="stat_3.png"></p>
+<p>1.8对应的0.9641是从-∞到均值右侧1.8个标准差的x的面积，均值到右侧1.8个标准差的面积为 0.9641 - 0.5 = 0.4641。所求面积为0.4641*2 = 0.9282</p>
+<h3 id="伯努利分布的均值和方差"><a href="#伯努利分布的均值和方差" class="headerlink" title="伯努利分布的均值和方差"></a>伯努利分布的均值和方差</h3><p>成功的概率为p，失败的概率为1-p。</p>
+<p>均值/分布的期望值 ： (1-p)*0+p*1 = p （这可能是分布取不到的值）</p>
+<p>方差：p*(1-p)^2 + (1-p)<em>(0-p)^2 = p\</em>(1-p) = pq</p>
+<h3 id="误差范围"><a href="#误差范围" class="headerlink" title="误差范围"></a>误差范围</h3><p>假设两位候选人，投给B候选人的概率为p，A候选人的概率为1-p。我们定义投标给A记为0，投票给B记为1。 </p>
+<p>注：这是个伯努利分布。</p>
+<p>这个分布的均值为p，</p>
+<p>但是国家人太多了，不可能每一个人都去问，于是均值μ、概率p就无法准确获得。不过我可以进行一项随机调查，从总体中进行抽样，用抽样样本去估计总体，然后还可以评判估计得有多好。</p>
+<p>假设随机抽取了100人，57个人选A，即样本值为0；剩下43个人选B，即样本值是1。那么样本均值和方差分别为：</p>
+<blockquote>
+<p>均值：(57*0+43*1)/100 = 0.43 </p>
+<p>方差：57*(0-0.43)^2 + 43*(1-0.43)^2 / (100-1) = 0.2475</p>
+<p>标准差： 0.495</p>
+</blockquote>
+<p>有个更深层的问题，这个样本有多好呢？我们有95%的把握确信真实均值在该区间内。</p>
+<p>我们看下<strong>样本均值</strong>的抽样分布（以下称为均值分布）。</p>
+<ol>
+<li><p><strong>均值分布的均值</strong>，我们从前面已知，均值分布的均值等于原总体分布的均值μ，抽样也就是从原总体中抽取。</p>
+</li>
+<li><p><strong>均值分布的标准差</strong>，等于总体分布标准差的σ/根号下n = σ/10。但我们不知道这个σ，只能用样本标准差来估计σ。因此，我们从样本是得不到完全正确的σ的，只能通过样本去估计。样本标准差是对σ最好的估计，然后除以10，得到抽样分布标准差的最好估计。</p>
+<p>（注意：这只是个估计，后面的数都不太准。）</p>
+<p>计算后约等于 0.495/10 ≈ 0.05，因此关于此标准差的最好估计是0.05。</p>
+</li>
+</ol>
+<p>进一步地，我们想得到一个置信区间，保证总体的均值能有95%的概率为这个样本均值，在伯努利试验中均值恰好为p=0.43（<span style="color:red">这里是由于伯努利的特殊性质，均值恰好等于p</span>）。这里我们利用<strong>正态分布</strong>（<span style="color:red">这里是由于大样本，根据中心极限定理，样本均值符合正态分布</span>）x在[μ-2σ, μ+2σ] 概率为 95.4%的结论，得到如下推导：</p>
+<blockquote>
+<p> P(样本均值在总体均值2σ范围内) = 95.4%</p>
+<p>=&gt; P(总体均值在样本均值2σ范围内) = 95.4% （由于总体分布的均值等于样本分布的均值）</p>
+<p>=&gt; P(p在样本均值2σ范围内) = 95.4%（2σ未知，我们需要用估计值，即上面算出的0.05。这里总体均值可以用p代替，是在伯努利分布的前提下） </p>
+<p>=&gt; P(p在样本均值左右2*0.05范围内) ≈ 95.4% （从这一步开始，由于用的估计值，因此用约等于）</p>
+<p>=&gt; P(p在样本均值左右0.1范围内) ≈ 95.4%</p>
+<p>=&gt; P(p在[0.33,0.53]范围内) ≈ 95.4%</p>
+</blockquote>
+<p>注：从推导过程我们发现，一开始标准差很准确，最后变成了估计值。因此如果样本偏得厉害，估计值则不准，因此只能说大约95%。</p>
+<p>这里得到了一个置信区间，[0.33,0.53]的95%置信区间。也就是说置信水平有95%，p落在0.33到0.53之间，也可以说<strong>误差范围</strong>是0.1(10%)，表示存在一个值，均值落在得到这个值加减10%的范围里。</p>
+<p>这是已知信息条件下最好的衡量了，若需要更准确，则要提高样本量。这样抽样分布的标准差会变小，误差范围也会变小。</p>
+<blockquote>
+<p>置信区间与<strong>置信水平</strong>、<strong>样本量</strong>等因素均有关系。</p>
+<p>在置信水平固定的情况下，<strong>样本量越多，置信区间越窄</strong>。</p>
+<p>在样本量相同的情况下，<strong>置信水平越高，置信区间越宽</strong>。</p>
+</blockquote>
+<p>注：这里可结合猴子——《统计概率思维》系列课程中的置信区间部分理解</p>
+<h3 id="置信区间相关例题"><a href="#置信区间相关例题" class="headerlink" title="置信区间相关例题"></a>置信区间相关例题</h3><p><strong>例题1：大样本情况</strong></p>
+<blockquote>
+<p>某地方教学区获得一笔技术拨款用于在教室中安装一组的计算机，该区共有6250名教师，随机抽取250人。问他们是否认为计算机室教师必备教学工具，250人中，142名教师认为计算机室必备的教学工具。</p>
+<p><strong>问题1：计算教师认为计算机是必备教学工具的99%置信区间</strong></p>
+<p>答：设教师认为必备为1概率为p，认为不必备为0概率为1-p，即总体服从伯努利分布。</p>
+<p>下面我们来转化下问题：计算教师认为计算机是必备教学工具，相当于计算p，相当于计算总体均值。由此问题变为用样本均值（样本量为250）预估<strong>总体均值</strong>p的可信度（置信水平）99%时候的置信区间。</p>
+<p>样本均值是：(1*142+0*108)/250 =0. 568</p>
+<p>样本方差是：142*(1-0.568)^2+108*(0-0.568)^2 / 250-1 = 0.246</p>
+<p>样本标准差是：0.495≈ 0.05</p>
+<p>样本<strong>均值</strong>的标准差是：0.05/根号下250 = 0.031</p>
+<p>由于我们想要的是99%置信区间，那么样本均值距离多少个标准差能达到99%呢？我们希望有99%的纪律，抽取一个样本均值抽样分布的样本值它会落在均值周围这么多标准差范围内。</p>
+<p>99%的一半应该是0.495，因此z值（由于大样本，均值符合正态分布，可用z值）对应的概率应该是0.495+0.5 = 0.995，查阅z-table，我们得到z-score应该是2.58，对应的概率是0.9902。也就是说均值左右2.58个标准差范围里[μ-2.58σ, μ+2.58σ]概率达到0.9902。</p>
+<p>即置信区间为：[0.568+2.58*0.031, 0. 568-2.58*0.031] = [0.488,0.648]</p>
+<p><strong>问题2：保持99%置信水平的前提下，如何缩小置信区间</strong></p>
+<p>答：抽取更大样本即可。抽样分布的标准差就会减小（因为分母变大）。而置信区间是加减一定倍数的标准差，范围也会变小。</p>
+</blockquote>
+<p><strong>例题2：小样本情况</strong></p>
+<blockquote>
+<p>7个患者在服用新药3个月后测量血压，其血压上升值分别为下面七个值：</p>
+<p>1.5,2.9,0.9,3.9,3.2,2.1,1.9</p>
+<p><strong>问题1:为总体中所有病人的血压升高真正期望值建立一个95%置信区间</strong></p>
+<p>答：</p>
+<p>样本均值为：2.34</p>
+<p>样本标准差为：1.04</p>
+<p>样本均值标准差为：0.39</p>
+<p>对于正态分布，我们会去查z分布。但是<strong>这里不是正态分布，而是t分布</strong>。也就是均值左右包含95%面基的区域，t分布对应有t表格，在这里，我们选择“双侧”检验，“单侧”表示一直累积到特定值的累积百分比，这里是对称的，选择2-tailed。总之n=7时，有6个自由度，也就是n-1个。</p>
+<p><img src="stat_12.png"></p>
+<p>我们得到95%对应的t值是2.447，也就是2.447个标准差估计值。</p>
+<p>95%置信区间为：[2.34-2.447*0.39,2.34+2.447*0.39] = [1.38, 3.3] </p>
+</blockquote>
+<p>在这个案例中我们遇到一个问题，n只有7。此时这个估计值就不算好了，因为n太小了。通常，<strong>n&lt;30</strong>被认为是糟糕的估计。这样的抽样分布不能像之前一样使用中心极限定理之类的，我们需要改变抽样分布。因为不能再假设正态分布了，而是使用t分布，t分布是专门为小样本容量时置信区间的更好估计所设计的，它和正态分布很像，这是此抽样分布的均值，但是它的尾部较肥。为什么会有肥尾呢？</p>
+<p>一般而言，抽样分布的实际标准差等于原分布标准差/根号n。当n=7，我们一般<strong>不知道总体的标准差σ</strong>。此时最好的办法就是用样本标准差S来进行估计，这就是不说95%置信区间的原因，因为我们进行了估计。S会随着样本的不同而变化，而且这里的估计还很糟糕，因为样本容量很小(&lt;30)。如果用样本标准差的公式估计抽样分布标准差，就不能将其看作正态分布，而应该假设它有更肥的尾部。</p>
+<p>肥尾是因为低估了抽样分布的标准差。</p>
+<h3 id="假设检验相关例题"><a href="#假设检验相关例题" class="headerlink" title="假设检验相关例题"></a>假设检验相关例题</h3><p>假设检验的基本原理是：<strong>出现了假设H0的小概率事件，因此拒绝H0，接受H1</strong></p>
+<blockquote>
+<p>神经学家测试一种药物对反应时间的效果，分别对100只老鼠注射一单位计量的药物对其进行神经刺激，然后记录反应时间。已知没有注射药物的老鼠平均反应时间是1.2秒，100只注射了药物的老鼠平均反应时间是1.05秒，样本标准差0.5秒。你认为该药物对反应时间有效果吗？</p>
+<p>答：H0: μ=1.2 H1: μ≠1.2</p>
+<p>总体均值：1.2</p>
+<p>总体标准差（估计）：σ = s/根号下100 =  0.5/10= 0.05</p>
+<p>那么1.05秒距离均值多少标准差呢？其实就是z-socre = (1.05-1.2)/0.05 = -3，即小3个标准差的距离。根据经验法则，3个标准差内的概率是99.7%，<strong>负尾部和正尾部的概率各为0.15%，总概率为0.3%（p值）</strong>。</p>
+<p>假设药物没效果，这种极端情况出现的概率只有0.3%&lt; 5%。因此结果更倾向于支持备择假设，拒绝零假设（尽管不是100%确信）。</p>
+</blockquote>
+<h3 id="单侧检验和双侧检验"><a href="#单侧检验和双侧检验" class="headerlink" title="单侧检验和双侧检验"></a>单侧检验和双侧检验</h3><p>在上面的例子中，我们使用的是双侧检验，因此得到的结论是<strong>平均反应时间不是1.2秒</strong>，但究竟是提高了还是降低了呢？我们不得而知。</p>
+<p>下面我们考虑用单侧检验做一遍：</p>
+<blockquote>
+<p>答：H0: μ=1.2 H1: <strong>μ&lt;1.2</strong></p>
+<p>总体均值：1.2</p>
+<p>总体标准差（估计）：σ = s/根号下100 =  0.5/10= 0.05</p>
+<p>如果零假设成立，得到结果<strong>低于</strong>1.05秒的概率为0.15%。</p>
+<p>在单侧检验里，p值 = 0.15%。</p>
+</blockquote>
+<p>总结一下（以下内容为个人的理解）：</p>
+<blockquote>
+<p>假设检验的逻辑是，如果出现了H0的小概率事件，则判定H0不成立。</p>
+<p>那么这个小概率事件一定是不符合H0的，换句话说，就是符合H1的。但无论如何，我们定义的小概率事件的概率都是α。因此，</p>
+<p><strong>a.如果原假设是=μ，备择假设是≠μ</strong></p>
+<p>那么如果发生了小概率事件，样本统计量可能出现在极大/极小处，因此使用双侧检验。</p>
+<p>最终我们拒绝的条件是 p(X&lt;=样本统计量) &lt; α/2 或 p(X&lt;=样本统计量) &gt; 1-α/2</p>
+<p><strong>p值 = p(X&lt;=样本统计量)？？？</strong></p>
+<p><img src="/Users/phoebe/Documents/数据分析课程/知乎&lt;猴子Live讲座&gt;/prop_8.jpg" alt="prop_8"></p>
+<p><strong>b.如果原假设是≤μ，备择假设是≥μ</strong></p>
+<p>那么如果发生了小概率事件，样本统计量一定出现≥μ处（因为拒绝原假设，即出现了与原假设相悖的情况），因此使用右尾检验。</p>
+<p>最终我们拒绝的条件是  p(X&lt;=样本统计量) &gt; α</p>
+<p>**p值 =  p(X&lt;=样本统计量)  </p>
+<p><img src="/Users/phoebe/Documents/数据分析课程/知乎&lt;猴子Live讲座&gt;/prop_9.jpg" alt="prop_9"></p>
+<p><strong>c.如果原假设是≥μ，备择假设是≤μ</strong></p>
+<p>那么如果发生了小概率事件，样本统计量一定出现≤μ处（因为拒绝原假设，即出现了与原假设相悖的情况），因此使用左尾检验。</p>
+<p>最终我们拒绝的条件是 p(X&lt;=样本统计量) &lt; α</p>
+<p><img src="/Users/phoebe/Documents/数据分析课程/知乎&lt;猴子Live讲座&gt;/prop_10.jpg" alt="prop_10"></p>
+<p>可参考知乎：<a href="https://www.zhihu.com/question/354041406/answer/889364486" target="_blank" rel="noopener">https://www.zhihu.com/question/354041406/answer/889364486</a></p>
+</blockquote>
+<h3 id="z统计量-vs-t统计量"><a href="#z统计量-vs-t统计量" class="headerlink" title="z统计量 vs t统计量"></a>z统计量 vs t统计量</h3><p>z统计量：我们 </p>
+<p><img src="stat_13.png"></p>
+<p>如果用样本对总体进行估计：</p>
+<p>中心极限定理告诉我们，样本容量充分时，样本标准差等于总体标准差除以样本量的平方根。然后查z-table。</p>
+<p>总体标准差通常是未知的，用<strong>样本标准差作为估计值</strong>。在样本容量n&gt;30时可行，或者可以认为n&gt;30符合正态分布。如果&lt;30，特别是比30小很多时，就不服从正态分布了。</p>
+<p><img src="stat_14.png"></p>
+<p>当n&gt;30 ，这个统计量符合正态分布；否则，则服从t分布</p>
+<table>
+<thead>
+<tr>
+<th>z统计量</th>
+<th>t统计量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="第一类错误和第二类错误（Type-I-II-error）"><a href="#第一类错误和第二类错误（Type-I-II-error）" class="headerlink" title="第一类错误和第二类错误（Type I/II error）"></a>第一类错误和第二类错误（Type I/II error）</h3><p>以下案例参考知乎：<a href="https://www.zhihu.com/question/20993864" target="_blank" rel="noopener">https://www.zhihu.com/question/20993864</a></p>
+<p><strong>假设检验的两类错误：</strong></p>
+<table>
+<thead>
+<tr>
+<th>实际情况</th>
+<th>拒绝H0</th>
+<th>接受H0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H0为真</td>
+<td>第一类错误(α)</td>
+<td>结论正确(1-α)</td>
+</tr>
+<tr>
+<td>H0为假</td>
+<td>结论正确(1-β)</td>
+<td>第二类错误(β)</td>
+</tr>
+</tbody>
+</table>
+<p>第一类错误其实为“弃真”，第二类错误为“存伪”。</p>
+<blockquote>
+<p>例如：零假设：H0，备择假设：H1</p>
+</blockquote>
+<p><strong>第一类错误：</strong>拒绝正确的零假设，概率恰好为显著性水平α。就是拒绝样本来自μ=μ0的总体，因为检验时出现了小概率事件（概率只有α=5%，但也是真实出现的），但是被拒绝了，即“弃真”。表示有多大的把握不冤枉好人。</p>
+<p><strong>避免方法：</strong>可通过α水平控制，降低α水平</p>
+<p><strong>第二类错误：</strong>接受错误的零假设。即接受样本来自H0假设，但实际样本来自H1假设。这种情况出现是由于，实际的总体来自H1的分布，但抽样恰好出现在H0的大概率分布里</p>
+<p><strong>避免方法：</strong>扩大样本容量</p>
+<p><img src="stat_7.jpg"></p>
+<p><em>上图是<em>*假设</em></em>总体服从正态分布的情况（通常检验u1是样本均值，根据中心极限定理，符合正态分布）</p>
+<p><strong>根据上图，几个知识点：</strong></p>
+<p>1.第一类错误和第二类错误不会同时发生</p>
+<p>2.出现第一类错误的概率为α（显著性水平），第二类错误的概率为β，<strong>当α越小，β越大</strong>（竖线越往右，α的值就越小，β越大）</p>
+<p>3.<strong>要同时减小α和β，只有增加样本数</strong>。（样本量越大，均值服从的正太分布方差就越小，正太分布的图画出来就又高又瘦，两个正态分布的图改成瘦高形的，就能看出来α和β都变小了）统计上将<strong>1－β</strong>称为<strong>检验效能</strong>或<strong>把握度（power of a test）</strong>，即两个总体确有差别存在，而以α为检验水准，假设检验能发现它们有差别的能力。实际工作中应权衡两类错误中哪一个重要以选择检验水准的大小。</p>
+<p><strong>统计功效(power)</strong>是说拒绝零假设（H0）后接受正确的H1假设概率。直观上说，AB即使有差异，也不一定能被你观测出来，必须保证一定的条件（比如样本要充足）才能使你能观测出统计量之间的差异；否则，结果也是不置信的，具体的，可以参考下面这张图：</p>
+<p><strong>为什么原假设一般是想要拒绝的假设?</strong></p>
+<blockquote>
+<p>因为我们无法完全验证某个假设一定成立的（毕竟只能抽样，不能得到总体真实情况），只能通过小概率事件来拒绝某个假设，拒绝是有理有据（出现小概率事件），且可以控制风险水平的（置信水平α）</p>
+</blockquote>
+<h4 id="在假设检验中的应用"><a href="#在假设检验中的应用" class="headerlink" title="在假设检验中的应用"></a>在假设检验中的应用</h4><p>总结一下，对于ABTEST实验：</p>
+<p>· 第一类错误α不超过5%。也就是说 Statistical Significance =1-α=95%</p>
+<p>· 第二类错误β不超过20%。也就是说 <strong>Statistical Power = 1 -β = 80%</strong>。</p>
+<p><strong>对α与β的理解：</strong></p>
+<p>对两类错误上限的选取（α是5%，β是20%），我们可以了解到A/B实验的重要理念：<strong>宁肯砍掉4个好的产品，也不应该让1个不好的产品上线。</strong></p>
+<p>在假设检验中同时减少两类错误的最好方法是适当增加样本含量 [2] 。</p>
+<h3 id="线性回归中的平方误差"><a href="#线性回归中的平方误差" class="headerlink" title="线性回归中的平方误差"></a>线性回归中的平方误差</h3><p>在<strong>二维坐标轴</strong>中有n个点，<strong>最小化这些点到该直线的平方误差</strong>。这是怎样一条线呢？</p>
+<p>假设这条直线是 <code>y=mx+b</code>，需要求出m和b值，使得下面的SE最小。注：误差是指<strong>点</strong>的yn与<strong>直线</strong>y的距离。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SE = (y1-(mx1+b))^<span class="number">2</span> + (y2-(mx2+b))^<span class="number">2</span> + ... + (yn-(mxn+b))^<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>下面是推导过程：，方便之后使用微积分求出最小化平方误差的<code>m</code>和<code>b</code>值</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SE </span><br><span class="line">= y1^<span class="number">2</span><span class="number">-2</span>y1(mx1+b)+(mx1+b)^<span class="number">2</span> + </span><br><span class="line">  y2^<span class="number">2</span><span class="number">-2</span>y2(mx2+b)+(mx2+b)^<span class="number">2</span> + </span><br><span class="line">  ... +</span><br><span class="line">  yn^<span class="number">2</span><span class="number">-2</span>yn(mxn+b)+(mxn+b)^<span class="number">2</span></span><br><span class="line">= y1^<span class="number">2</span> - <span class="number">2</span>y1mx1 - <span class="number">2</span>y1b + m^<span class="number">2</span>x1^<span class="number">2</span> + <span class="number">2</span>mx1b+b^<span class="number">2</span> + b^<span class="number">2</span></span><br><span class="line">  y2^<span class="number">2</span> - <span class="number">2</span>y2mx2 - <span class="number">2</span>y2b + m^<span class="number">2</span>x2^<span class="number">2</span> + <span class="number">2</span>mx2b+b^<span class="number">2</span> + b^<span class="number">2</span></span><br><span class="line">  ...  + </span><br><span class="line">  yn^<span class="number">2</span> - <span class="number">2</span>ynmxn - <span class="number">2</span>ynb + m^<span class="number">2</span>xn^<span class="number">2</span> + <span class="number">2</span>mxnb+b^<span class="number">2</span> + b^<span class="number">2</span></span><br><span class="line">= (y1^<span class="number">2</span>+y2^<span class="number">2</span>+...+yn^<span class="number">2</span>) - <span class="number">2</span>m(x1y1+...+xnyn) - <span class="number">2</span>b(y1+...+yn)</span><br><span class="line">  + m^<span class="number">2</span>(x1^<span class="number">2</span>+...+xn^<span class="number">2</span>) + <span class="number">2</span>mb(x1+x2+...+xn) + nb^<span class="number">2</span></span><br><span class="line">= n(y^<span class="number">2</span>拔) - <span class="number">2</span>mn(xy拔) - <span class="number">2</span>bn(y拔) + m^<span class="number">2</span>n(x^<span class="number">2</span>拔) + <span class="number">2</span>mbn(x拔) + nb^<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>这个表达式在三维(m/b/SE轴)图像中其实是一个曲面，像碗一样的形状，我们希望求一个(m,b)使纵坐标最低。下面我们将分别对m和b求偏导，因为在纵坐标最低的地方，斜率都等于0。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 分别对m和b求偏导</span><br><span class="line"><span class="number">-2</span>n(xy拔)+<span class="number">2</span>mn(x^<span class="number">2</span>拔)+<span class="number">2</span>bn(x拔) = <span class="number">0</span></span><br><span class="line"><span class="number">-2</span>n(y拔)+<span class="number">2</span>mn(x拔)+<span class="number">2</span>nb = <span class="number">0</span></span><br><span class="line"># 求解二元一次方程组（m和b），简化下：</span><br><span class="line">-(xy拔)+m(x^<span class="number">2</span>拔)+b(x拔) = <span class="number">0</span> </span><br><span class="line">-(y拔)+m(x拔)+b = <span class="number">0</span> </span><br><span class="line"># 简化下：</span><br><span class="line">m(x^<span class="number">2</span>拔)+b(x拔) = (xy拔) ——  ①</span><br><span class="line">m(x拔)+b = (y拔) ——  ②</span><br></pre></td></tr></table></figure>
+<p>我们重新梳理下问题，即求解使点到直线平方误差最小的直线<code>y=mx+b</code>参数<code>m</code>和<code>b</code>，且必须满足①和②。我们从②中不难发现，<code>(x拔,y拔)</code>这个点落在我们要求的直线上。</p>
+<p>下面我们再改写下式①，将两侧同时除以x的均值：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m(x^<span class="number">2</span>拔)/(x拔)+b = (xy拔)/(x拔) ——  ①</span><br></pre></td></tr></table></figure>
+<p>我们发现<code>(x^2拔/x拔,xy拔/x拔)</code>这个点也落在我们要求的直线上。</p>
+<p>求解 ①和②，得到结果：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m = (y拔 - xy拔/x拔) / (x拔 - x^<span class="number">2</span>拔/x拔) </span><br><span class="line">  =（xy拔-x拔y拔）/ (x^<span class="number">2</span>拔-(x拔)^<span class="number">2</span>) // 可以记乘积的均值-均值的乘积</span><br><span class="line">b = y拔 - m*x拔</span><br></pre></td></tr></table></figure>
+<p>注意到，这和用两点<code>(x拔,y拔)</code>和<code>(x^2拔/x拔,xy拔/x拔)</code>求斜率会得到一样的值</p>
+<p>之前我们讲过平方误差，即SE：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SE（LINE） = （y1-(mx1+b))^<span class="number">2</span>+（y2-(mx2+b))^<span class="number">2</span>+...+（yn-(mxn+b))^<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>y的波动程度有多少百分比能被x的波动程度所描述？</p>
+<p>y显然是有波动的，那么由x波动描述的到底有多少呢？首先想想，y的总波动是多少呢。考虑方差时也是如此，方差就是y波动的均值。这里考虑到某几种趋势的距离的平方，最好的集中趋势就是算术平均值了：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y的总波动（总平方距离）SE(Y拔)：(y1-y拔)^<span class="number">2</span>+(y2-y拔)^<span class="number">2</span>+...+(yn-y拔)^<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>那么y的总波动有多少百分比能被x的波动程度所描述？首先考虑下，总波动中有多少<strong>没有</strong>被回归线所描述？答案就是平方误差。</p>
+<p><strong>总波动中有多少百分比没有被x的波动所描述？或者说没有被回归线所描述？</strong></p>
+<blockquote>
+<p>SE（LINE）/ SE(Y拔) </p>
+</blockquote>
+<p>取剩余集合，即总波动有多少百分比能被直线所描述？这个数字称为R-Square</p>
+<blockquote>
+<p>R-Square = 1 - SE（LINE）/ SE(Y拔) </p>
+</blockquote>
+<p>如果直线的平方误差很小，这意味着什么？也就是这个总误差非常小，直线拟合得非常好。</p>
+<p>此时因为SE（LINE）接近于0，R-Square接近1，也就是说y的波动很多都被x的波动描述了（个人理解：不同的x对应不同的y值，这个x对应的y与真实值很相近，即y的波动是由于x变动导致的，而且描述得很好）</p>
+<p>相反，如果直线的平凡误差很大，那数据点和直线距离很大，那么整个R-Square就会接近于0。这说明y的波动只有一小部分是由x的波动引起，或者说直线描述。</p>
+<p><strong>例1：</strong></p>
+<p>假设有<code>(1,2)</code>,<code>(2,1)</code>,<code>(4,3)</code>三个点，拟合直线是？</p>
+<blockquote>
+<p>X拔 = (1+2+4)/3 = 7/3</p>
+<p>y拔 = (2+1+3)/3 = 2</p>
+<p>xy拔 = (1*2+2*1+4*3)/3  = 16/3</p>
+<p>x^2拔 = (1^2+2^2+4^2)/3 = 7</p>
+<p>m = (7/3*2 - 16/3)/[(7/3)^2-7] = 3/7</p>
+<p>b = 2 - 3/7*7/3 = 1</p>
+</blockquote>
+<p><strong>例2：</strong></p>
+<p>求下列点的拟合直线：</p>
+<p><img src="stat_15.png"></p>
+<p>设最佳拟合直线为<code>y=mx+b</code>，其中最小化这些点总平方误差的直线斜率为<code>m</code>。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m=（x拔y拔-xy拔)/((x拔)^<span class="number">2</span>-x^<span class="number">2</span>拔)=(<span class="number">1</span>/<span class="number">2</span>*<span class="number">1</span>/<span class="number">4</span><span class="number">-21</span>/<span class="number">4</span>)/((<span class="number">1</span>/<span class="number">2</span>)^<span class="number">2</span>-(<span class="number">11</span>/<span class="number">2</span>)^<span class="number">2</span>)=<span class="number">41</span>/<span class="number">42</span></span><br><span class="line">b= y拔-m*x拔=<span class="number">1</span>/<span class="number">4</span><span class="number">-41</span>/<span class="number">42</span>*<span class="number">1</span>/<span class="number">2</span>=<span class="number">-5</span>/<span class="number">21</span></span><br></pre></td></tr></table></figure>
+<p>因此直线方程为：<code>y=41/42x-5/21</code></p>
+<p>在这个直线方程中，有多少y的波动能被x的波动解释（以下可通过Excel计算）：</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th>y*</th>
+<th>Sqrd err w/line</th>
+<th>sqrd from mean y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>-3</td>
+<td>-2.1905</td>
+<td>0.655328798</td>
+<td>10.5625</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>-1</td>
+<td>-1.2143</td>
+<td>0.045918367</td>
+<td>1.5625</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>0.7381</td>
+<td>1.592403628</td>
+<td>3.0625</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>3.6667</td>
+<td>0.44444444</td>
+<td>7.5625</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>2.738095238</td>
+<td>22.75</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">R-<span class="keyword">Square</span>=<span class="number">1</span>-SE(LINE)/SE(Y拔)=<span class="number">1</span><span class="number">-2.738095238</span>/<span class="number">22.75</span>=<span class="number">0.88</span></span><br></pre></td></tr></table></figure>
+<p>R-Square=0.88是一个很高的值，我们从图中也可以看到，点与直线的距离都不远。比起均值线，每个点显然和回归线接近得更好。</p>
+<h3 id="协方差和回归线"><a href="#协方差和回归线" class="headerlink" title="协方差和回归线"></a>协方差和回归线</h3><p>两个随机变量之间协方差的概念：两随机变量离各自均值（期望值）距离之积的期望值</p>
+<blockquote>
+<p>cov(X,Y) = E[(X-E(X)) * (Y-E(Y))]</p>
+</blockquote>
+<p>我们来直观理解下。</p>
+<p>依据上述公式，假如X=1,E(X)=0;Y=3,E(Y)=4，那么协方差中的<code>(X-E(X))(Y-E(Y))</code>部分值为-1，为负值。只有当X与Y同时高于/低于期望值时，才为正，即<strong>同步程度确定协方差的大小</strong>。</p>
+<p>这一节更重要的，是将协方差的定义，同最小二乘回归联系起来。</p>
+<p>这一节，我将重写这个协方差的定义。</p>
+<blockquote>
+<p> cov(X,Y) = E[(X-E(X)) * (Y-E(Y))]</p>
+<p>​               = E[XY - XE(Y) - YE(X) + E(X)E(Y)]</p>
+<p>​               = E(XY) - E[XE(Y)] - E[YE(X)] + E(X)E(Y)</p>
+<p>​               = E(XY) - E(X)E(Y) - E(X)E(Y) + E(X)E(Y)</p>
+<p>​               = E(XY) - E(X)E(Y) </p>
+</blockquote>
+<p>根据上面的式子，如果我们知道总体的期望，那么就可以算出来。如果只知道样本，怎么估计呢？</p>
+<p>如果要估计，假设这是一系列数据点，E(XY) 可以用XY的样本均值来近似，E(X)、E(Y) 分别用X和Y的样本均值来代替。</p>
+<blockquote>
+<p>cov(X,Y) = E(XY) - E(X)E(Y) </p>
+<p>​              ≈ XY拔 - X拔Y拔</p>
+</blockquote>
+<p>从上一节的知识中我们不难发现，<code>XY拔 - X拔Y拔</code>是回归线斜率<strong>m的分子部分</strong>。</p>
+<blockquote>
+<p>m = (xy拔-x拔y拔)/(x^2拔-(x拔)^2)<br>b =  y拔-m*x拔</p>
+</blockquote>
+<p>那么m的分母<code>(x拔)^2-x^2拔</code>怎么理解呢？</p>
+<blockquote>
+<p>x^2拔-(x拔)^2= xx拔 - x拔x拔 = cov(X,X) =E [(X-E(X))*(X-E(X))] = E[(X-E(X))^2]</p>
+</blockquote>
+<p>这恰好是方差的定义，因此我们得到下面的公式：</p>
+<blockquote>
+<p>m = cov(X,Y) / var(X)</p>
+</blockquote>
+<h3 id="卡方分布（Chi-Square-Distribution）"><a href="#卡方分布（Chi-Square-Distribution）" class="headerlink" title="卡方分布（Chi-Square Distribution）"></a>卡方分布（Chi-Square Distribution）</h3><p>理论分布同观测结果吻合得有多好。</p>
+<p>假设有一些相互独立的标准正态分布随机变量，记做X~N(0,1)，均值为0，方差为1。</p>
+<p>卡方分布是什么呢？我们定义一个新变量Q1，从这个标准正态分布中抽样，然后对得到的值进行平方，它等于随机变量X的平方，</p>
+<blockquote>
+<p>Q1 = X^2 ~ <img src="https://bkimg.cdn.bcebos.com/formula/8831b7d7bd338d1ddce4f768286d2044.svg" alt="img">(1)</p>
+</blockquote>
+<p>下面我们将会学到，卡方分布是这样一些数量的随机变量平方之和。上例只有一个随机变量然后平方，这只是其中一个案例，自由度为1。</p>
+<p>下面我们再来定义Q2。</p>
+<p>这里是一个独立的标准正态分布随机变量X1平方，然后是另一个独立的标准正态分布随机变量X2，然后平方</p>
+<blockquote>
+<p>Q2 =  X1^2 + X2^2 ~ <img src="https://bkimg.cdn.bcebos.com/formula/8831b7d7bd338d1ddce4f768286d2044.svg" alt="img">(2)</p>
+</blockquote>
+<p><img src="stat_16.jpg"></p>
+<p>从上图中我们可以看到，n表示自由度。</p>
+<p>Q1，当n=1时的概率密度函数，接近0时它飞速上升，此时它只从标准正态分布中抽样一次，得到接近0的可能性非常大，被平方的数如果接近0，平方后会更接近0，所以得到的小数值概率非常高，低于某界限值的概率非常高，比如小于1/2，得到大数值的概率则非常低。</p>
+<p>Q2，我们注意到接近0的可能性减少了，较远处的值更容易取到，不过仍然更容易取得小数字。</p>
+<p>再看下一个卡方分布的随机变量Q3，它表示三个相互独立的随机变量平方之和，X1,X2,X3都服从标准正态分布。Q3是拥有3个自由度的卡方分布，对应图上 绿色曲线，因为这里取一些小数字之和，随着自由度增加，曲线会往右偏移。凸起部分越往右，从某种程度上来说，越来越对称。</p>
+<p>有趣的是，这和我们之前看到的曲线都不一样，它没有小于0的值。这种性质的曲线我们倒是见过，因为这里是平方和，每个随机变量的值可能小于0，正态分布可以取负值。但由于这里是取平方和，结果显然是正的。</p>
+<p>这个分布的作用，我们下一节会讲到，大体上是衡量离期望值的误差，这个可以看成总误差。你能求出这种误差的概率。如果你假设一些参数的话。</p>
+<p>如果问题问：Q2&gt;2.41的概率是多少？</p>
+<p>选2.41是有原因的，这就需要查阅卡方分布表。看自由度为2的行，这里恰好有2.41，对应的p值为0.3，说明&gt;2.41的概率为0.3。</p>
+<p><img src="stat_17.jpg"></p>
+<h3 id="皮尔逊卡方检验"><a href="#皮尔逊卡方检验" class="headerlink" title="皮尔逊卡方检验"></a>皮尔逊卡方检验</h3><blockquote>
+<p>我询问目前的店主，店内每天顾客数的分布是怎样？他告诉我如下情况</p>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>M</th>
+<th>T</th>
+<th>W</th>
+<th>T</th>
+<th>F</th>
+<th>S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expected%</td>
+<td>10</td>
+<td>10</td>
+<td>15</td>
+<td>20</td>
+<td>30</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Observed</td>
+<td>30</td>
+<td>14</td>
+<td>34</td>
+<td>45</td>
+<td>57</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>10%的顾客来自周一，周二20%，周三15%等，周日停业休息。整周百分比为100%。我有点怀疑，想检验他给出的分布和我观测的数据是否吻合。要看是否吻合，我需要进行假设检验，显著性水平是5%。</p>
+<p>H0:店主给出的<strong>分布</strong>是正确的  H1:店主给出的<strong>分布</strong>是错误的</p>
+<p>我们首先要计算总体顾客数：30+14+34+45+57+20 = 200</p>
+<p>根据总客户数和期望比例，我们得到期望的顾客数分别为：20，20，30，40，60，30</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Mon</th>
+<th>Tues</th>
+<th>Wed</th>
+<th>Thur</th>
+<th>Fri</th>
+<th>Sat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expected%</td>
+<td>10</td>
+<td>10</td>
+<td>15</td>
+<td>20</td>
+<td>30</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Observed</td>
+<td>30</td>
+<td>14</td>
+<td>34</td>
+<td>45</td>
+<td>57</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Expected</td>
+<td>20</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>60</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p>将每天的观测值和预计值相减，差的平方，然后用预计值标准化。</p>
+<p>X^2= (30-20)^2/20+(14-20)^2/20+(34-30)^2/30+(45-40)^2/40+(57-60)^2/60+(20-30)^2/30 = 11.44</p>
+<p>那么得到至少这么极端情况的概率是多少呢？、</p>
+<p>自由度：这里共求了6次和，其实有5条信息就能求出第6条信息，因此自由度是5。通过查表，我们得到</p>
+<p>p-value = 11.07</p>
+<p>而我们得到的结果11.44比11.07海盗，比临界值更极端。因此店主分布正确的可能性很低，我们拒绝他给我们的分布。</p>
+</blockquote>
+<h3 id="方差分析"><a href="#方差分析" class="headerlink" title="方差分析"></a>方差分析</h3><blockquote>
+<p>假如有以下三次抽样，每次抽样的值分别为：</p>
+<p>组1：3,2,1（均值:2）</p>
+<p>组2：5,3,4（均值:4）</p>
+<p>组3：5,6,7（均值:6）</p>
+</blockquote>
+<p>在这里我们再定义下m和n。设有m组数据，每一组有n个成员，总数据数为m*n个。在这个例子中，m=3，n=3。</p>
+<h4 id="总平方和"><a href="#总平方和" class="headerlink" title="总平方和"></a>总平方和</h4><p>这里我们提到一个新的概念——总平方和SST，你可以将其考虑为计算方差时的分子部分，也就是这些<strong>数据点离均值的距离的平方之和</strong>。</p>
+<p>总均值为<code>x拔</code>：(3+2+1+5+3+4+5+6+7)/9 = 4 （相当于等于均值的均值）</p>
+<blockquote>
+<p><strong>总波动SST</strong>= (3-4)^2+(2-4)^2+(1-4)^2+(5-4)^2+(3-4)^2+(4-4)^2+(5-4)^2+(6-4)^2+(7-4)^2 = 30</p>
+</blockquote>
+<p>自由度为2。这是由于我们有m(3)组数据，每一组有n(3)个成员，总数据数为m*n(9)个，自由度为mn-1(8)。如果你知道总均值，那么就只有8条新信息，最后一条信息可以通过均值求出来。</p>
+<p>我们想知道这个总的波动程度SST有多少来自<strong>组内(SSW, Sum of Squares Within)</strong>的波动程度，有多少来自<strong>组间(SSW, Sum of Squares Between)</strong>的波动程度。</p>
+<h4 id="组内平方和"><a href="#组内平方和" class="headerlink" title="组内平方和"></a><strong>组内平方和</strong></h4><p>组内平方和，是各点同<strong>各自组均值</strong>的距离平方和。</p>
+<blockquote>
+<p><strong>组内平方和SSW</strong> = (3-2)^2+(2-2)^2+(1-2)^2 +(5-4)^2+(3-4)^2+(4-4)^2+(5-6)^2+(6-6)^2+(6-7)^2 = 6</p>
+</blockquote>
+<p>总波动是30，其中有6是来自于组内。</p>
+<p>计算中有多少自由度？假设每一组有n个数据点，这里n=3，如果你知道n-1个值，而且知道样本均值，那么就可以求得最后一个值。因此每个组n个数据，自由度是n-1。在这个案例中，n=3，每组自由度为2。一共是m*(n-1)个自由度，即3*2=6。</p>
+<h4 id="组间平方和"><a href="#组间平方和" class="headerlink" title="组间平方和"></a><strong>组间平方和</strong></h4><p>下面考虑下有多少总波动来自于组间波动。组间平方和，是指对于<strong>每一组</strong>，有多少波动是来自<strong>组均值相对总均值</strong>的波动。</p>
+<blockquote>
+<p><strong>组间平方和SSB</strong> = 3<em>(2-4)^2+3\</em>(4-4)^2+3*(6-4)^2 = 24</p>
+</blockquote>
+<p>因此由于组间差异导致的波动是24。</p>
+<p>这里有多少自由度？我们可以这样想，已知总均值时，有多少是新信息。如果知道2个组均值，知道总均值，第3个组均值总能求出来，因此自由度就是m-1，在这个例子中自由度为2。</p>
+<p>现在我们把上边内容汇总在一起看：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>值</th>
+<th>自由度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SST(总平方和)</td>
+<td>30</td>
+<td>8, mn-1</td>
+</tr>
+<tr>
+<td>SSW(组内平方和)</td>
+<td>6</td>
+<td>6, m(n-1)</td>
+</tr>
+<tr>
+<td>SSB(组间平方和)</td>
+<td>24</td>
+<td>2, m-1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总平方和 = 组内平方和 + 组间平方和</strong></p>
+<p>也就是说，数据中的总波动，可以由每个组内的波动，加上组间的波动来描述。自由度也是如此；</p>
+<p><strong>总平方和自由度 = 组内平方和自由度+组间平方和自由度</strong></p>
+<p>那么通过上面的数据，我们想知道，三组的<strong>总体</strong>均值是否相同？我们来进行一个假设检验，显著性水平时10%：</p>
+<blockquote>
+<p>H0: μ1 = μ2 = μ3   H1: μ1,μ2,μ3不全相等</p>
+</blockquote>
+<p>下面我们计算出现样本情况的概率是多少，如果概率很小，则拒绝原假设。我们要使用的统计量叫F统计量，它服从F分布。你可以认为<strong>F分布是两个卡方分布之比</strong>。</p>
+<p>F统计量是，组间平方和除以自由度， 除以组内平方和除以自由度</p>
+<blockquote>
+<p>F-statistics = (SSB/m-1) / (SSW/m(n-1))</p>
+</blockquote>
+<p>如果分子比分母大很多，说明波动大多数来自于组间，较少来自于组内，我们认为总体均值之间存在差异，即零假设成立。反之，如果分子很小，分母很大，那就意味着组内波动比组件波动在总波动中占比更多，差异可能只是随机产生的。这就更难拒绝零假设。</p>
+<blockquote>
+<p>F-statistics = (24/2) / (6/6) = 12</p>
+</blockquote>
+<p> 经过查表，我们得到自由度为(2,6)的F统计量的10%临界值3.46，而我们得到的数值比这大很多。它的p值会很小，因此零假设前提下，得到如此极端的值的概率非常低，拒绝零假设。我们相信很有可能存在总体差异。</p>
+<p>附：</p>
+<p>下图是F分布的曲线，会随着分子和分母中自由度的不同而不同。这里有两个自由度要考虑，即分子自由度和分母自由度</p>
+<p><img src="stat_18.png"></p>
+<p>注意，F统计量的分子和分母分别服从卡方分布，自由度分别为m-1和m(n-1)。</p>
+<h3 id="相关性和因果性"><a href="#相关性和因果性" class="headerlink" title="相关性和因果性"></a>相关性和因果性</h3><p>有这样一篇研究文章显示，吃早餐能预防减肥？它是否真的告诉我们，不吃早餐就会超重，肥胖？还是说，这些是有关联的。我们用数学的方式说，就是他们想指出的是“因果性(causality)”吗？但其实研究的是“相关性(correlation)”，二者差异很大。</p>
+<p>因果性是说“A导致B”，而相关性是说“A和B有可能被同时观测到”，B发生时，A有可能同时发生。</p>
+<p>可能是因为吃早餐更可能运动，运动能帮助消耗卡路里，于是不会肥胖。也许可能是这样的，运动是两者的原因，不能说早餐能让人不会肥胖。也可能和睡得晚，睡眠不足也有关系，显然睡得晚起得晚来不及吃早饭。因此研究中，区分因果性和相关性是非常重要的，如果是相关性，就不能下结论说“吃早餐能让人减肥“，相关性只能说明两者一起出现，更好的研究是能够证明因果性的研究。</p>
+<h3 id="演绎推理"><a href="#演绎推理" class="headerlink" title="演绎推理"></a>演绎推理</h3><p>估计该镇以后的人口数，镇工作人员收集了过去人口数据。显示在下列表格中：</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Population</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1950</td>
+<td>7403</td>
+</tr>
+<tr>
+<td>1960</td>
+<td>7958</td>
+</tr>
+<tr>
+<td>1970</td>
+<td>8377</td>
+</tr>
+<tr>
+<td>1980</td>
+<td>8775</td>
+</tr>
+<tr>
+<td>1990</td>
+<td>9323</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>9794</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>10281</td>
+</tr>
+</tbody>
+</table>
+<p>镇里希望预测2015，2018，2020年的人口数，这需要用到<strong>归纳推理</strong>还是<strong>演绎推理</strong>？</p>
+<p>首先考虑下，什么是归纳推理和演绎推理？</p>
+<p>归纳推理是寻找规律或趋势，然后推广；演绎推理，则是从一些数据或事实出发，演绎得到其他正确的事实。归纳推理在推广时，并不确定趋势是否会继续，只是假设它会继续；而演绎推理则知道肯定正确。</p>
+<p>这个镇是在估计2015，2018，2020人口数，也就是未来的情况无法确切知道。顶多只能通过趋势看过去每10年增长百分之多少，然后趋势推广至2015，2018，2020年，因此这是归纳推理。</p>
+<blockquote>
+<p>使用演绎推理和分配率论证：</p>
+<p>(x+y)^2 = x^2 + 2xy + y^2</p>
+<p>并为每一步给出理由</p>
+</blockquote>
+<p>我们需要推演出某式等于某式，这就是演绎推理。</p>
+<blockquote>
+<p>(x+y)^2 </p>
+<p>= (x+y)(x+y)</p>
+<p>= (x+y)x +(x+y)y  // 分配率</p>
+<p>= xx+xy+xy+yy  // 分配率</p>
+<p>= x^2 + 2xy + y^2</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数理基础/" rel="tag">#数理基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/商业分析/2020-05-10-rfm/" rel="next" title="RFM模型">
+                <i class="fa fa-chevron-left"></i> RFM模型
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2020-08-29-charles-1/" rel="prev" title="Charles抓包配置">
+                Charles抓包配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">85</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述统计"><span class="nav-number">1.</span> <span class="nav-text">描述统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机变量（random-variable）"><span class="nav-number">2.</span> <span class="nav-text">随机变量（random variable）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率密度函数"><span class="nav-number">3.</span> <span class="nav-text">概率密度函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二项分布"><span class="nav-number">4.</span> <span class="nav-text">二项分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期望值E-X"><span class="nav-number">5.</span> <span class="nav-text">期望值E(X)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二项分布的期望值"><span class="nav-number">6.</span> <span class="nav-text">二项分布的期望值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泊松过程"><span class="nav-number">7.</span> <span class="nav-text">泊松过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大数定律"><span class="nav-number">8.</span> <span class="nav-text">大数定律</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正态分布"><span class="nav-number">9.</span> <span class="nav-text">正态分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概率密度函数-1"><span class="nav-number">9.1.</span> <span class="nav-text">概率密度函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正态分布曲线"><span class="nav-number">9.2.</span> <span class="nav-text">正态分布曲线</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哪些是正态分布？"><span class="nav-number">10.</span> <span class="nav-text">哪些是正态分布？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#z分数-z-score"><span class="nav-number">11.</span> <span class="nav-text">z分数 (z-score)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概率的计算"><span class="nav-number">11.1.</span> <span class="nav-text">概率的计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中心极限定理-central-limit-theory"><span class="nav-number">12.</span> <span class="nav-text">中心极限定理(central limit theory)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样本均值的分布-sampling-distribution-of-the-sample-mean"><span class="nav-number">13.</span> <span class="nav-text">样本均值的分布(sampling distribution of the sample mean)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#均值"><span class="nav-number">13.1.</span> <span class="nav-text">均值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准差-方差"><span class="nav-number">13.2.</span> <span class="nav-text">标准差/方差</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#置信区间"><span class="nav-number">14.</span> <span class="nav-text">置信区间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伯努利分布的均值和方差"><span class="nav-number">15.</span> <span class="nav-text">伯努利分布的均值和方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差范围"><span class="nav-number">16.</span> <span class="nav-text">误差范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#置信区间相关例题"><span class="nav-number">17.</span> <span class="nav-text">置信区间相关例题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假设检验相关例题"><span class="nav-number">18.</span> <span class="nav-text">假设检验相关例题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单侧检验和双侧检验"><span class="nav-number">19.</span> <span class="nav-text">单侧检验和双侧检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#z统计量-vs-t统计量"><span class="nav-number">20.</span> <span class="nav-text">z统计量 vs t统计量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一类错误和第二类错误（Type-I-II-error）"><span class="nav-number">21.</span> <span class="nav-text">第一类错误和第二类错误（Type I/II error）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在假设检验中的应用"><span class="nav-number">21.1.</span> <span class="nav-text">在假设检验中的应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归中的平方误差"><span class="nav-number">22.</span> <span class="nav-text">线性回归中的平方误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协方差和回归线"><span class="nav-number">23.</span> <span class="nav-text">协方差和回归线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卡方分布（Chi-Square-Distribution）"><span class="nav-number">24.</span> <span class="nav-text">卡方分布（Chi-Square Distribution）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#皮尔逊卡方检验"><span class="nav-number">25.</span> <span class="nav-text">皮尔逊卡方检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方差分析"><span class="nav-number">26.</span> <span class="nav-text">方差分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总平方和"><span class="nav-number">26.1.</span> <span class="nav-text">总平方和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组内平方和"><span class="nav-number">26.2.</span> <span class="nav-text">组内平方和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组间平方和"><span class="nav-number">26.3.</span> <span class="nav-text">组间平方和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关性和因果性"><span class="nav-number">27.</span> <span class="nav-text">相关性和因果性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#演绎推理"><span class="nav-number">28.</span> <span class="nav-text">演绎推理</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
