@@ -84,20 +84,20 @@
 
 
 
-<meta name="description" content="均值和中位数首先我们引入偏态分布的概念：偏态分布是与“正态分布”相对，曲线左右不对称的分布。 偏态分布分为正偏态（右偏）分布和负偏态（左偏）分布。 正偏也叫右偏，看起来好像是峰值在左，怎么会叫右偏呢？按维基百科的解释是：传统定义，均值大于中位数的称为右偏，也可以理解为长尾在右侧。同理可知，负偏也叫左偏。">
+<meta name="description" content="偏态首先我们引入偏态分布的概念：偏态分布是与“正态分布”相对，曲线左右不对称的分布。 偏态分布分为正偏态（右偏）分布和负偏态（左偏）分布。 正偏也叫右偏，看起来好像是峰值在左，怎么会叫右偏呢？按维基百科的解释是：传统定义，均值大于中位数的称为右偏，也可以理解为长尾在右侧。同理可知，负偏也叫左偏。">
 <meta name="keywords" content="数理基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="均值与中位数">
 <meta property="og:url" content="http://www.xinxiaoyang/商业分析/2021-06-20-mean-and-median/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="均值和中位数首先我们引入偏态分布的概念：偏态分布是与“正态分布”相对，曲线左右不对称的分布。 偏态分布分为正偏态（右偏）分布和负偏态（左偏）分布。 正偏也叫右偏，看起来好像是峰值在左，怎么会叫右偏呢？按维基百科的解释是：传统定义，均值大于中位数的称为右偏，也可以理解为长尾在右侧。同理可知，负偏也叫左偏。">
+<meta property="og:description" content="偏态首先我们引入偏态分布的概念：偏态分布是与“正态分布”相对，曲线左右不对称的分布。 偏态分布分为正偏态（右偏）分布和负偏态（左偏）分布。 正偏也叫右偏，看起来好像是峰值在左，怎么会叫右偏呢？按维基百科的解释是：传统定义，均值大于中位数的称为右偏，也可以理解为长尾在右侧。同理可知，负偏也叫左偏。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-06-20-mean-and-median/mean&mediam1.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-06-20-mean-and-median/mean&mediam2.png">
-<meta property="og:updated_time" content="2021-06-23T16:18:39.217Z">
+<meta property="og:updated_time" content="2021-07-03T07:43:34.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="均值与中位数">
-<meta name="twitter:description" content="均值和中位数首先我们引入偏态分布的概念：偏态分布是与“正态分布”相对，曲线左右不对称的分布。 偏态分布分为正偏态（右偏）分布和负偏态（左偏）分布。 正偏也叫右偏，看起来好像是峰值在左，怎么会叫右偏呢？按维基百科的解释是：传统定义，均值大于中位数的称为右偏，也可以理解为长尾在右侧。同理可知，负偏也叫左偏。">
+<meta name="twitter:description" content="偏态首先我们引入偏态分布的概念：偏态分布是与“正态分布”相对，曲线左右不对称的分布。 偏态分布分为正偏态（右偏）分布和负偏态（左偏）分布。 正偏也叫右偏，看起来好像是峰值在左，怎么会叫右偏呢？按维基百科的解释是：传统定义，均值大于中位数的称为右偏，也可以理解为长尾在右侧。同理可知，负偏也叫左偏。">
 <meta name="twitter:image" content="http://www.xinxiaoyang/商业分析/2021-06-20-mean-and-median/mean&mediam1.png">
 
 
@@ -320,12 +320,12 @@
       
 
       
-        <h3 id="均值和中位数"><a href="#均值和中位数" class="headerlink" title="均值和中位数"></a><strong>均值和中位数</strong></h3><p>首先我们引入偏态分布的概念：偏态分布是与“正态分布”相对，曲线左右不对称的分布。</p>
+        <h3 id="偏态"><a href="#偏态" class="headerlink" title="偏态"></a>偏态</h3><p>首先我们引入偏态分布的概念：偏态分布是与“正态分布”相对，曲线左右不对称的分布。</p>
 <p>偏态分布分为<strong>正偏态（右偏）</strong>分布和<strong>负偏态（左偏）</strong>分布。</p>
 <p>正偏也叫右偏，看起来好像是峰值在左，怎么会叫右偏呢？按维基百科的解释是：传统定义，均值大于中位数的称为右偏，也可以理解为长尾在右侧。同理可知，负偏也叫左偏。</p>
 <a id="more"></a>
 <p><img src="./mean&mediam1.png"></p>
-<h4 id="均值、中位数与众数"><a href="#均值、中位数与众数" class="headerlink" title="均值、中位数与众数"></a>均值、中位数与众数</h4><p>正偏态（右偏）分布：众数&lt;中位数&lt;均值</p>
+<h3 id="均值、中位数与众数的关系"><a href="#均值、中位数与众数的关系" class="headerlink" title="均值、中位数与众数的关系"></a>均值、中位数与众数的关系</h3><p>正偏态（右偏）分布：众数&lt;中位数&lt;均值</p>
 <p>正偏态（左偏）分布：均值&lt;中位数&lt;众数</p>
 <p>为什么会出现上面这个结论呢？下面的回答取自知乎，是看到的相对比较通俗的解释。</p>
 <p>若分布处于左侧实线和右侧虚线的状态时，中位数和均值是相等的，可以理解为左右两边的值个数相同，两两平均到中位数上。但是实际情况是右侧小的值更多，大的值更少了，值的个数还是不变的。但是这样就不够抵消左侧的值，平均到中位数上了。所以平均值要向左移动。于是均值小于中位数。</p>
@@ -481,7 +481,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#均值和中位数"><span class="nav-number">1.</span> <span class="nav-text">均值和中位数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#均值、中位数与众数"><span class="nav-number">1.1.</span> <span class="nav-text">均值、中位数与众数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#偏态"><span class="nav-number">1.</span> <span class="nav-text">偏态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#均值、中位数与众数的关系"><span class="nav-number">2.</span> <span class="nav-text">均值、中位数与众数的关系</span></a></li></ol></div>
             
           </div>
         </section>
