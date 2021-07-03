@@ -259,8 +259,8 @@
             
               
                 
-                <a class="post-title-link" href="/programming/2017-12-25-sql-leetcode-3/" itemprop="url">
-                  MYSQL 获取分组某字段最大的记录
+                <a class="post-title-link" href="/programming/2017-12-25-sql-leetcode-1/" itemprop="url">
+                  SQL_MODE = ONLY_FULL_GROUP_BY
                 </a>
               
             
@@ -321,10 +321,10 @@
 
       
         
-          <p>考虑这个问题源自 LeetCode 上的一道题：<a href="https://leetcode.com/problems/department-highest-salary/description/" target="_blank" rel="noopener">184. Department Highest Salary</a></p>
-<p>大概意思就是用下面两张表(Employee、Department)合成最后的一张表，得到以 DepartmentId 分组的 Salary 值最大的记录：</p>
+          <p>今天在写 SQL 语句的时候遇到了问题。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Employee <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">desc</span>) <span class="keyword">AS</span> a</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> a.DepartmentId</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/programming/2017-12-25-sql-leetcode-3/#more" rel="contents">
+            <a class="btn" href="/programming/2017-12-25-sql-leetcode-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

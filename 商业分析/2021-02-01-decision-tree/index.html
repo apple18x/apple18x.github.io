@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt23.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt24.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt25.png">
-<meta property="og:updated_time" content="2021-07-03T07:41:38.390Z">
+<meta property="og:updated_time" content="2021-07-03T08:39:51.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树算法">
 <meta name="twitter:description" content="算法简介决策树算法是一种自上而下的，对样本进行树形分类的算法。是一种有监督的算法 包括特征选择、决策树的生成、决策树的剪枝三个步骤。">
@@ -385,7 +385,7 @@
 <h3 id="决策树算法"><a href="#决策树算法" class="headerlink" title="决策树算法"></a>决策树算法</h3><p>这里我们主要讨论决策树中较为经典的ID3算法，它是由罗斯昆（J. Ross Quinlan）于1975年在悉尼大学提出，算法的核心为——信息熵。</p>
 <p>1.计算数据集D的熵 <img src="dt17.png" style="zoom: 50%;"></p>
 <p>2.计算某个特征A对于数据集D的条件熵 <img src="dt18.png" style="zoom: 50%;"> </p>
-<p>3.计算信息增益 <img src="dt19.png" style="zoom: 50%;">，选取信息增益最大的特征作为节点</p>
+<p>3.计算信息增益，选取信息增益最大的特征作为节点 <img src="dt19.png" style="zoom: 50%;"></p>
 <p>举个例子，其中标签代表银行是否贷款给该用户。</p>
 <p><img src="dt20.png" style="zoom: 50%;"></p>
 <p>主要步骤如下：</p>
@@ -405,7 +405,7 @@
 <p>1.只能处理离散型变量，无法处理连续型变量</p>
 <p>2.对于样本缺失值比较敏感（若对于连续型数据，可以通过缺失值前后的数据进行处理补全缺失值，但对于离散型数据无法补）</p>
 <p>3.每次分裂倾向于取值较多的特征（由信息熵不确定性定义决定），导致最终泛化性能较差（训练集表现较好，但在测试集上表现较差）</p>
-<h3 id="决策树的改进"><a href="#决策树的改进" class="headerlink" title="决策树的改进"></a>决策树的改进</h3><p>目的：提高决策树的<strong>泛化能力</strong></p>
+<h3 id="决策树算法的改进"><a href="#决策树算法的改进" class="headerlink" title="决策树算法的改进"></a>决策树算法的改进</h3><p>目的：提高决策树的<strong>泛化能力</strong></p>
 <p>常见的剪枝方法：预剪枝、后剪枝</p>
 <h4 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h4><p>核心思想：在树中节点进行分裂之前，<strong>先</strong>计算当前划分能否带来模型泛化能力的提升</p>
 <p>三种情况：</p>
@@ -571,7 +571,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法简介"><span class="nav-number">1.</span> <span class="nav-text">算法简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个概念"><span class="nav-number">2.</span> <span class="nav-text">几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息熵"><span class="nav-number">2.1.</span> <span class="nav-text">信息熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件熵"><span class="nav-number">2.2.</span> <span class="nav-text">条件熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益"><span class="nav-number">2.3.</span> <span class="nav-text">信息增益</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法"><span class="nav-number">3.</span> <span class="nav-text">决策树算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法的缺点"><span class="nav-number">4.</span> <span class="nav-text">决策树算法的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树的改进"><span class="nav-number">5.</span> <span class="nav-text">决策树的改进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预剪枝"><span class="nav-number">5.1.</span> <span class="nav-text">预剪枝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后剪枝"><span class="nav-number">5.2.</span> <span class="nav-text">后剪枝</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法代码"><span class="nav-number">6.</span> <span class="nav-text">决策树算法代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法简介"><span class="nav-number">1.</span> <span class="nav-text">算法简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个概念"><span class="nav-number">2.</span> <span class="nav-text">几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息熵"><span class="nav-number">2.1.</span> <span class="nav-text">信息熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件熵"><span class="nav-number">2.2.</span> <span class="nav-text">条件熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益"><span class="nav-number">2.3.</span> <span class="nav-text">信息增益</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法"><span class="nav-number">3.</span> <span class="nav-text">决策树算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法的缺点"><span class="nav-number">4.</span> <span class="nav-text">决策树算法的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法的改进"><span class="nav-number">5.</span> <span class="nav-text">决策树算法的改进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预剪枝"><span class="nav-number">5.1.</span> <span class="nav-text">预剪枝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后剪枝"><span class="nav-number">5.2.</span> <span class="nav-text">后剪枝</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法代码"><span class="nav-number">6.</span> <span class="nav-text">决策树算法代码</span></a></li></ol></div>
             
           </div>
         </section>
