@@ -1,0 +1,715 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="机器学习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="算法简介决策树算法是一种自上而下的，对样本进行树形分类的算法。是一种有监督的算法 包括特征选择、决策树的生成、决策树的剪枝三个步骤。">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树算法">
+<meta property="og:url" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="算法简介决策树算法是一种自上而下的，对样本进行树形分类的算法。是一种有监督的算法 包括特征选择、决策树的生成、决策树的剪枝三个步骤。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt11.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt13.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt14.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt15.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt16.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt17.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt18.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt19.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt20.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt21.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt22.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt23.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt24.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt25.png">
+<meta property="og:updated_time" content="2021-07-03T07:41:38.390Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="决策树算法">
+<meta name="twitter:description" content="算法简介决策树算法是一种自上而下的，对样本进行树形分类的算法。是一种有监督的算法 包括特征选择、决策树的生成、决策树的剪枝三个步骤。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/dt1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/商业分析/2021-02-01-decision-tree/"/>
+
+
+  <title> 决策树算法 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                决策树算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-02-01T00:00:00+08:00" content="2021-02-01">
+              2021-02-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/商业分析/" itemprop="url" rel="index">
+                    <span itemprop="name">商业分析</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="算法简介"><a href="#算法简介" class="headerlink" title="算法简介"></a>算法简介</h3><p>决策树算法是一种自上而下的，对样本进行树形分类的算法。是一种有监督的算法</p>
+<p>包括特征选择、决策树的生成、决策树的剪枝三个步骤。</p>
+<a id="more"></a>
+<h3 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h3><h4 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h4><p>熵在物理学中的定义为：混乱程度，在数学中的定义为：随机变量的不确定性，即熵是随机变量的不确定性的度量。</p>
+<p>假设X是取有限个值的随机变量</p>
+<p>概率分布：<img src="dt1.png" style="zoom:60%;"></p>
+<p>随机变量X的熵定义为（log以2为底）：</p>
+<p><img src="dt2.png" style="zoom:60%;"></p>
+<p>从上面的公式我们可知，熵的值与X的取值无关，只与X的分布和概率有关，因此通常我们写成H(p)，而不是H(X)：</p>
+<p><img src="dt3.png" style="zoom:60%;"></p>
+<p>下面举个例子：</p>
+<p><img src="dt4.png" style="zoom:60%;"></p>
+<p>那么熵为：</p>
+<p><img src="dt5.png" style="zoom:60%;"></p>
+<p>熵——关于不确定性的理解：熵越大：随机变量的不确定性就越大。</p>
+<p>假设随机变量X只有两个取值0和1，那么X的分布：</p>
+<p><img src="dt6.png" style="zoom:60%;"></p>
+<p>熵的值为：</p>
+<p><img src="dt7.png" style="zoom:60%;"></p>
+<p><img src="dt8.png" style="zoom:60%;"></p>
+<p>横坐标为p，纵坐标为H( p)。我们来看三个特殊情况：</p>
+<ul>
+<li><p>当P=0时，H(P)=0，即X的取值一定为1，P(X=0)=1-P=1，此时X的取值是完全确定的，不确定性为0；</p>
+</li>
+<li><p>当P=1时，H(P)=0，即X的取值一定为0，P(X=0)=P=1，此时X的取值是完全确定的，不确定性为0；</p>
+</li>
+<li><p>当P=0.5时，H(P)=1，即X的取值为1的概率是50%，取值为0的概率为50%。此时不确定性是最高的。</p>
+</li>
+</ul>
+<h4 id="条件熵"><a href="#条件熵" class="headerlink" title="条件熵"></a>条件熵</h4><p>概率：<img src="dt9.png" style="zoom:60%;">  条件概率：<img src="dt10.png" style="zoom:60%;"></p>
+<p>含义：当事件X发生的情况下，事件Y发生的<strong>概率</strong></p>
+<p>熵：<img src="dt11.png" style="zoom:60%;">   条件熵：<img src="dt12.png" style="zoom:60%;"></p>
+<p>含义：已知随机变量X的情况下，随机变量Y的<strong>不确定性</strong></p>
+<p>条件熵的计算公式</p>
+<p>条件熵：<img src="dt13.png" style="zoom:60%;">，<img src="dt14.png" style="zoom:60%;"></p>
+<h4 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h4><p>熵与条件熵的差值</p>
+<p>符号：<img src="dt15.png" style="zoom:60%;">，特征A对数据集D的信息增益。其中，g: Gain D：数据集Dataset A：特征Attribute</p>
+<p>计算公式：<img src="dt16.png" style="zoom:60%;"></p>
+<p>通俗来讲，当我们知道信息A以后，信息的不确定性发生了变化，变成了H(D)-H(D|A)，如果这个值很大，说明A告诉了我们一些非常有用的信息，数据集变成了一个更加确定的数据集。反过来，如果A带来的信息量很小，即H(D|A)与H(D)的值相近，g(D,A)近似于0，说明A没有给我们带来有用的信息。</p>
+<h3 id="决策树算法"><a href="#决策树算法" class="headerlink" title="决策树算法"></a>决策树算法</h3><p>这里我们主要讨论决策树中较为经典的ID3算法，它是由罗斯昆（J. Ross Quinlan）于1975年在悉尼大学提出，算法的核心为——信息熵。</p>
+<p>1.计算数据集D的熵 <img src="dt17.png" style="zoom: 50%;"></p>
+<p>2.计算某个特征A对于数据集D的条件熵 <img src="dt18.png" style="zoom: 50%;"> </p>
+<p>3.计算信息增益 <img src="dt19.png" style="zoom: 50%;">，选取信息增益最大的特征作为节点</p>
+<p>举个例子，其中标签代表银行是否贷款给该用户。</p>
+<p><img src="dt20.png" style="zoom: 50%;"></p>
+<p>主要步骤如下：</p>
+<p>1.计算信息熵</p>
+<p><img src="dt21.png" style="zoom: 50%;"></p>
+<p>2.计算条件熵</p>
+<p>   A的取值只有三个：青年、中年和老年，因此对应的概率分别为5/15、5/15、5/15。</p>
+<p><img src="dt22.png" style="zoom: 50%;"></p>
+<p>其中，H(D1)、H(D2)和H(D3)的概率如下。以D1为例，我们看年龄A=’’青年’’的5个样本中，标签为0的有3个，标签为1的有2个，因此H(D1)的计算如下：</p>
+<p><img src="dt23.png" style="zoom: 50%;"></p>
+<p>3.计算信息增益</p>
+<p><img src="dt24.png" style="zoom: 50%;"></p>
+<p>4.计算所有特征的信息增益</p>
+<p>   找出信息增益最大的特征作为划分特征，其中特征C的信息增益最大，因此选定特征C作为节点。</p>
+<p><img src="dt25.png" style="zoom: 50%;"></p>
+<h3 id="决策树算法的缺点"><a href="#决策树算法的缺点" class="headerlink" title="决策树算法的缺点"></a>决策树算法的缺点</h3><p>以下为ID3算法的缺点：</p>
+<p>1.只能处理离散型变量，无法处理连续型变量</p>
+<p>2.对于样本缺失值比较敏感（若对于连续型数据，可以通过缺失值前后的数据进行处理补全缺失值，但对于离散型数据无法补）</p>
+<p>3.每次分裂倾向于取值较多的特征（由信息熵不确定性定义决定），导致最终泛化性能较差（训练集表现较好，但在测试集上表现较差）</p>
+<h3 id="决策树的改进"><a href="#决策树的改进" class="headerlink" title="决策树的改进"></a>决策树的改进</h3><p>目的：提高决策树的<strong>泛化能力</strong></p>
+<p>常见的剪枝方法：预剪枝、后剪枝</p>
+<h4 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h4><p>核心思想：在树中节点进行分裂之前，<strong>先</strong>计算当前划分能否带来模型泛化能力的提升</p>
+<p>三种情况：</p>
+<p>a.当树到达一定深度的时候，停止树的生长</p>
+<p>b.当到达当前节点的样本数量小于某个阈值的时候，停止生长</p>
+<p>c.计算每次分裂时对测试集准确率的提升，小于某个阈值，停止生长</p>
+<h4 id="后剪枝"><a href="#后剪枝" class="headerlink" title="后剪枝"></a>后剪枝</h4><p>核心思想：首先生长完全生长的决策树，然后自底向上进行剪枝</p>
+<p>原则：判断在测试集上的准确率，若剪枝后的准确率没有多少下降，那么该划分是不必要的</p>
+<h3 id="决策树算法代码"><a href="#决策树算法代码" class="headerlink" title="决策树算法代码"></a>决策树算法代码</h3><p>以下代码实现了决策树的 ID3算法，找到最优分裂节点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据集 年龄/是否有工作/是否有房子/信用情况/标签</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createDataset</span><span class="params">()</span>:</span></span><br><span class="line">    dataset = [[<span class="string">'young'</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">'normal'</span>, <span class="string">'0'</span>],</span><br><span class="line">               [<span class="string">'young'</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">'good'</span>, <span class="string">'0'</span>],</span><br><span class="line">               [<span class="string">'young'</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">'good'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'young'</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="string">'normal'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'young'</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">'normal'</span>, <span class="string">'0'</span>],</span><br><span class="line">               [<span class="string">'mid'</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">'normal'</span>, <span class="string">'0'</span>],</span><br><span class="line">               [<span class="string">'mid'</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">'good'</span>, <span class="string">'0'</span>],</span><br><span class="line">               [<span class="string">'mid'</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="string">'good'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'mid'</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="string">'very good'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'mid'</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="string">'very good'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'old'</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="string">'very good'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'old'</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="string">'good'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'old'</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">'good'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'old'</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="string">'very good'</span>, <span class="string">'1'</span>],</span><br><span class="line">               [<span class="string">'old'</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">'normal'</span>, <span class="string">'0'</span>]]</span><br><span class="line">    <span class="keyword">return</span> dataset</span><br><span class="line">  </span><br><span class="line"><span class="comment"># 计算熵</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcEntropy</span><span class="params">(dataset)</span>:</span></span><br><span class="line">    num_samples = len(dataset) <span class="comment"># 样本条数</span></span><br><span class="line">    label_counts = &#123;&#125; <span class="comment"># 每个标签的样本数</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> dataset:</span><br><span class="line">        current_label = line[<span class="number">-1</span>] <span class="comment"># -1代表倒数第一个元素</span></span><br><span class="line">        <span class="keyword">if</span> current_label <span class="keyword">not</span> <span class="keyword">in</span> label_counts.keys():</span><br><span class="line">            label_counts[current_label]= <span class="number">0</span> </span><br><span class="line">        label_counts[current_label] += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    entropy = <span class="number">0.0</span> <span class="comment"># 初始值</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> label_counts:</span><br><span class="line">        p = float(label_counts[key]) / num_samples <span class="comment"># 计算概率</span></span><br><span class="line">        <span class="keyword">if</span> p == <span class="number">0</span>:</span><br><span class="line">            entropy = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            entropy -= p * log(p,<span class="number">2</span>) <span class="comment"># 计算熵</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> entropy</span><br><span class="line">  </span><br><span class="line"><span class="comment"># 计算条件熵（该函数仅实现返回子数据集的功能）</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">splitDataset</span><span class="params">(dataset, feature_index, value)</span>:</span></span><br><span class="line">    ret_dataset = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> dataset:</span><br><span class="line">        <span class="comment"># 抽取不含line的数据集</span></span><br><span class="line">        <span class="keyword">if</span> line[feature_index] == value:</span><br><span class="line">            <span class="comment"># 抽取当前特征左侧的数据</span></span><br><span class="line">            extract_line = line[:feature_index] </span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 抽取当前特征右侧的数据</span></span><br><span class="line">            extract_line.extend(line[feature_index+<span class="number">1</span>:])</span><br><span class="line">            ret_dataset.append(extract_line)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ret_dataset</span><br><span class="line">  </span><br><span class="line"><span class="comment"># 计算信息增益，找到最优信息增益所对应的节点</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_info_gain</span><span class="params">(dataset)</span>:</span></span><br><span class="line">    num_features = len(dataset[<span class="number">0</span>])<span class="number">-1</span> <span class="comment"># 数据集特征个数</span></span><br><span class="line">    base_entropy = calcEntropy(dataset)</span><br><span class="line">    best_info_gain = <span class="number">0.0</span></span><br><span class="line">    best_feature_index = <span class="number">-1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_features):</span><br><span class="line">        feature_list = [example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataset]</span><br><span class="line">        feature_set = set(feature_list) <span class="comment"># 第i个特征构成的数据集</span></span><br><span class="line">        conditional_entropy = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> feature_set:</span><br><span class="line">            sub_dataset = splitDataset(dataset, i, value)</span><br><span class="line">            p = float(len(sub_dataset))/ len(dataset)</span><br><span class="line">            conditional_entropy += p* calcEntropy(sub_dataset) <span class="comment"># 计算条件增益</span></span><br><span class="line">        </span><br><span class="line">        info_gain = base_entropy - conditional_entropy <span class="comment"># 计算信息增益</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(info_gain&gt;best_info_gain):</span><br><span class="line">            best_info_gain = info_gain</span><br><span class="line">            best_feature_index = i</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> best_feature_index,best_info_gain</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 计算信息增益，找到最优节点样本</span></span><br><span class="line">    dataset = createDataset()</span><br><span class="line">    best_feature_index,best_info_gain = calc_info_gain(dataset)</span><br><span class="line">    print(best_feature_index) <span class="comment"># 2</span></span><br><span class="line">    print(best_info_gain) <span class="comment"># 0.419973094022</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/商业分析/2021-01-09-k-means/" rel="next" title="k-means算法">
+                <i class="fa fa-chevron-left"></i> k-means算法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/商业分析/2021-06-20-mean-and-median/" rel="prev" title="均值与中位数">
+                均值与中位数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">88</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法简介"><span class="nav-number">1.</span> <span class="nav-text">算法简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个概念"><span class="nav-number">2.</span> <span class="nav-text">几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息熵"><span class="nav-number">2.1.</span> <span class="nav-text">信息熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件熵"><span class="nav-number">2.2.</span> <span class="nav-text">条件熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益"><span class="nav-number">2.3.</span> <span class="nav-text">信息增益</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法"><span class="nav-number">3.</span> <span class="nav-text">决策树算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法的缺点"><span class="nav-number">4.</span> <span class="nav-text">决策树算法的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树的改进"><span class="nav-number">5.</span> <span class="nav-text">决策树的改进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预剪枝"><span class="nav-number">5.1.</span> <span class="nav-text">预剪枝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后剪枝"><span class="nav-number">5.2.</span> <span class="nav-text">后剪枝</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策树算法代码"><span class="nav-number">6.</span> <span class="nav-text">决策树算法代码</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
