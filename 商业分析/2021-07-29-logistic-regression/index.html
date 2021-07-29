@@ -1,0 +1,694 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="机器学习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="逻辑回归逻辑回归（Logistic Regression，简称LR） 虽然被称为回归，但其实际上是分类模型，并常用于二分类。Logistic Regression 因其简单、可并行化、可解释强深受工业界喜爱。 Logistic 回归的本质是：假设数据服从这个分布，然后使用极大似然估计做参数的估计。">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逻辑回归算法">
+<meta property="og:url" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="逻辑回归逻辑回归（Logistic Regression，简称LR） 虽然被称为回归，但其实际上是分类模型，并常用于二分类。Logistic Regression 因其简单、可并行化、可解释强深受工业界喜爱。 Logistic 回归的本质是：假设数据服从这个分布，然后使用极大似然估计做参数的估计。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic1.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic2.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic3.gif">
+<meta property="og:image" content="https://private.codecogs.com/gif.latex?W%5E%7BT%7DX">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic4.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic3.gif">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic7.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic8.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic9.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic11.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic13.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic14.png">
+<meta property="og:updated_time" content="2021-07-29T15:21:54.644Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逻辑回归算法">
+<meta name="twitter:description" content="逻辑回归逻辑回归（Logistic Regression，简称LR） 虽然被称为回归，但其实际上是分类模型，并常用于二分类。Logistic Regression 因其简单、可并行化、可解释强深受工业界喜爱。 Logistic 回归的本质是：假设数据服从这个分布，然后使用极大似然估计做参数的估计。">
+<meta name="twitter:image" content="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/logistic1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/商业分析/2021-07-29-logistic-regression/"/>
+
+
+  <title> 逻辑回归算法 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                逻辑回归算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-07-29T00:00:00+08:00" content="2021-07-29">
+              2021-07-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/商业分析/" itemprop="url" rel="index">
+                    <span itemprop="name">商业分析</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><p>逻辑回归（Logistic Regression，简称LR） 虽然被称为回归，但其实际上是分类模型，并常用于二分类。Logistic Regression 因其简单、可并行化、可解释强深受工业界喜爱。</p>
+<p>Logistic 回归的本质是：假设数据服从这个分布，然后使用极大似然估计做参数的估计。</p>
+<a id="more"></a>
+<h4 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h4><p>假设我们用回归的方法去解决分类问题。考虑下面简单一维情况下的二分类，x轴为肿瘤大小，y轴为是否为恶性肿瘤标签（也可以认为是概率）。我们先通过回归方法得到一条拟合直线，用于描述人体内肿瘤大小与恶性肿瘤发生概率的关系，然后人为设定一个阈值，例如0.5，当预测出来的y&gt;0.5时我们认为标签为1，否则为0。<strong>即通过设定阈值，可以将回归问题转化为分类问题。</strong></p>
+<p><img src="logistic1.jpg" style="zoom:30%;"></p>
+<p>在上图中，绿色线右侧即为恶性肿瘤标签判定为1的区域。</p>
+<p>假如现在出现了一个超大肿瘤的样本（即下图最右侧的样本），此时会得到一条新的直线如下图。此时若阈值仍为0.5，那么就会有两个样本点被划分错误（下图标注wrong的部分）。</p>
+<p><img src="logistic2.jpg" style="zoom:30%;"></p>
+<p>从上边的例子可以看出，使用线性函数拟合的问题在于：离群值（也叫异常值）对结果的影响过大。为了解决这个问题，下面我们将会做两件事：</p>
+<p>1.找到一个办法解决掉回归的函数严重受离群值影响的办法</p>
+<p>2.选定一个阈值</p>
+<h4 id="逻辑回归-1"><a href="#逻辑回归-1" class="headerlink" title="逻辑回归"></a>逻辑回归</h4><p>为了解决线性函数“过直”的硬伤问题，我们将其转换为非线性函数，这里选用有众多优秀性质的sigmod函数。</p>
+<p><img src="logistic3.gif" style="zoom:100%;"></p>
+<p>其中，e为欧拉常数，z就是我们熟悉的多元线性回归中的<img src="https://private.codecogs.com/gif.latex?W%5E%7BT%7DX" alt="W^{T}X">。sigmoid函数的图像如下，它是S型曲线，定义域(-Inf,Inf)，值域(0,1)，可求导。</p>
+<p><img src="logistic4.jpg" style="zoom:25%;"></p>
+<p>该函数具有很强的鲁棒性，并将函数的输入范围(∞,-∞)映射到了(0,1)，具有概率意义。</p>
+<p>有了这样一条曲线之后，我们要了解这个曲线可以预测正确的概率是多少？</p>
+<ul>
+<li><p>预测为负例的概率：P(y=0|w,x) = 1 – g(z)</p>
+</li>
+<li><p>预测为正例的概率：P(y=1|w,x) =  g(z)</p>
+</li>
+<li>上面的表达式合并为：<img src="logistic5.png" style="zoom:50%;"></li>
+</ul>
+<p><strong>损失函数</strong></p>
+<p>现在我们的目标为找到一组w，使所有样本以下列函数作为分类曲线的预测正确概率最大：</p>
+<p><img src="logistic3.gif" style="zoom:100%;"></p>
+<p>若对所有样本预测正确概率最大，所有样本预测正确的概率相乘得到的P（总体正确）最大。在上面的推理过程中，我们已知每个样本预测正确概率的公式为：</p>
+<p><img src="logistic5.png" style="zoom:50%;"></p>
+<p>那么对于<strong>所有样本</strong>，预测正确概率（似然函数）为：</p>
+<p><img src="logistic7.jpg" style="zoom:15%;"></p>
+<p>由于连乘的函数不好计算，我们可通过两边取log的形式（对数似然函数）让其变成连加：</p>
+<p><img src="logistic8.jpg" style="zoom:15%;"></p>
+<p>得到的这个函数越大，证明我们得到的W就越好。由于在函数优化时通常求最小值，因此我们人为增加一个负号。终于，这个函数就是我们逻辑回归（Logistics regression）的损失函数，我们叫它<strong>交叉熵损失函数</strong>。我们的目标为：<strong>找到一组w使下式最小。</strong></p>
+<p><img src="logistic9.jpg" style="zoom:30%;"></p>
+<p>人为增加一个1/m后（为了求解时抵消m），最终变为以下形式：</p>
+<p><img src="logistic10.png" style="zoom:50%;"></p>
+<p><strong>求解方法——梯度下降</strong></p>
+<p>由于梯度下降需要计算目标函数的斜率，因此在这里我们需要计算下式中斜率</p>
+<blockquote>
+<p>梯度下降的原理可参见《线性回归》，这里不再赘述</p>
+</blockquote>
+<p><img src="logistic11.png" style="zoom:40%;"></p>
+<p>斜率计算方法为：</p>
+<p><img src="logistic12.png" style="zoom:40%;"></p>
+<p>最终我们得到：</p>
+<p><img src="logistic13.png" style="zoom:40%;"></p>
+<h4 id="阈值选定"><a href="#阈值选定" class="headerlink" title="阈值选定"></a>阈值选定</h4><p>我们已经知道了sigmod函数预测结果为一个0到1之间的小数，判定是否正类或负类的阈值是由<strong>人为选定</strong>的。选定阈值的第一反应大多都是选0.5名，其实实际工作中并不一定是0.5，阈值的设定是根据实际情况来判断的。</p>
+<p>在开头的案例中，我们也可以直观地了解，为什么阈值不一定是0.5。事实上，无论如何设定误差都是存在的，所以我们选定阈值就是选择可以接受误差的程度。</p>
+<p>通常情况下，我们需要结合业务来看。例如开头的案例，选定阈值为0.5意味着如果一个患者得恶性肿瘤的概率为0.49，模型依旧认为他没有患恶性肿瘤，结果可能会造成严重的医疗事故。因此针对这类问题，我们可人为将阈值设置的小一些，例如当一个人患恶性肿瘤的概率超过0.3时我们的算法就会报警，让这个人去做一个全面检查，比起医疗事故来讲，显然这个更容易接受。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>这里我们使用了sklearn自带的鸢尾花数据集。</p>
+<blockquote>
+<p>sklearn datasets参考：<a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets" target="_blank" rel="noopener">https://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets</a></p>
+</blockquote>
+<p>相关包引入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> exp</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<p>数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dataX=datasets.load_iris()[<span class="string">'data'</span>][<span class="number">0</span>:<span class="number">100</span>]</span><br><span class="line"><span class="comment">#np.insert(dataX,0,1,axis=1)</span></span><br><span class="line">dataY=datasets.load_iris()[<span class="string">'target'</span>][<span class="number">0</span>:<span class="number">100</span>]</span><br></pre></td></tr></table></figure>
+<p>核心逻辑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sigmoid函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.0</span>/(<span class="number">1</span>+exp(-X))</span><br><span class="line">  </span><br><span class="line"><span class="comment"># 计算目标函数的值</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lossFunc</span><span class="params">(x,y,weights)</span>:</span></span><br><span class="line">    lossSum=<span class="number">0</span>   </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 每一行（每一个样本）单独计算，其实也可以用矩阵</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(y)): </span><br><span class="line">        <span class="comment"># 先计算wx估计值 = theta0*x0+theta1*x1+theta2*x2,其中,weights=[theta0,theta1,theta2]</span></span><br><span class="line">        y_hat=sum(np.dot(x[i,:],weights)) <span class="comment"># np.dot是矩阵乘法，例如np.dot([1,2,3],[4,5,6])=1*4+2*5+3*6=32。sum是为了从ndarray变为数字</span></span><br><span class="line">        <span class="comment"># 再计算y估计值，即sigmoid函数，得到事件发生的概率</span></span><br><span class="line">        prob=sigmoid(y_hat) <span class="comment">#</span></span><br><span class="line">        <span class="comment"># print(prob)</span></span><br><span class="line">        <span class="comment"># 最后计算目标函数的值（损失函数）</span></span><br><span class="line">        lossSum+=-y[i]*np.log(prob)-(<span class="number">1</span>-y[i])*np.log(<span class="number">1</span>-prob)</span><br><span class="line">    <span class="keyword">return</span> lossSum/float(len(x))</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="comment"># 梯度下降求解weight（注：这里weights即参数才是需要求解的变量，x不是！）</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LR_Descending</span><span class="params">(x,y,maxstep,esp,alpha)</span>:</span></span><br><span class="line">    m,n=x.shape <span class="comment"># m代表样本维度,n代表样本的个数</span></span><br><span class="line">    lossList=[] <span class="comment"># 为了画图用，记录下每次迭代得到的目标函数值</span></span><br><span class="line">    weights=np.ones((n, <span class="number">1</span>)) <span class="comment"># 初始值设置：生成n*1取值为1的列，也就是要求解的weights的初始值</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(maxstep): <span class="comment"># 终止条件为100次迭代，每一次迭代生成新的解，即weights</span></span><br><span class="line">        <span class="comment"># 当前weight值对应的目标函数值</span></span><br><span class="line">        loss = lossFunc(x, y, np.array(weights)) </span><br><span class="line">        lossList.append(loss) <span class="comment"># 记录每一次迭代的目标函数值</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算斜率，为迭代得到新的解做准备 sum[(y_hat-y)*x] </span></span><br><span class="line">        y_hat=sigmoid(np.mat(x)*weights) <span class="comment"># 再一次计算当前weight下每个样本的y估计值，返回的是一个n*1的矩阵。mat=asmatrix,创建矩阵</span></span><br><span class="line">        err=y_hat-np.mat(y).T <span class="comment"># 计算残差，斜率为np.mat(x).T*err</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算新的解 = 旧目标值-alphs*斜率</span></span><br><span class="line">        weights_new=weights-alpha*np.mat(x).T*err</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算新的目标函数值</span></span><br><span class="line">        loss_after=lossFunc(x, y, np.array(weights_new)) </span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 判断结束条件</span></span><br><span class="line">        <span class="keyword">if</span> abs(loss_after-loss)&lt;esp: <span class="comment"># 小于</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            weights=weights_new</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> lossList,np.array(weights),y_hat</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="string">''' </span></span><br><span class="line"><span class="string">   @maxstep: 最大迭代次数（终止条件）</span></span><br><span class="line"><span class="string">   @esp: 最小变动（终止条件）</span></span><br><span class="line"><span class="string">   @alpha: 步长</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 定义函数</span></span><br><span class="line">lossList1,weight1,y_hat= LR_Descending(x=dataX,y=dataY,maxstep=<span class="number">1000</span>,esp=<span class="number">0.0001</span>,alpha=<span class="number">0.0001</span>)</span><br></pre></td></tr></table></figure>
+<p>画图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig, ax1 = plt.subplots()</span><br><span class="line">ax1.scatter(range(len(lossList1)),lossList1)</span><br></pre></td></tr></table></figure>
+<p><img src="logistic14.png" style="zoom:40%;"></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://zhuanlan.zhihu.com/p/74874291" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/74874291</a></p>
+<p><a href="https://blog.csdn.net/weixin_39445556/article/details/83930186" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39445556/article/details/83930186</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/商业分析/2021-07-19-linear-regression/" rel="next" title="线性回归算法">
+                <i class="fa fa-chevron-left"></i> 线性回归算法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">92</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-number">1.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性回归"><span class="nav-number">1.1.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归-1"><span class="nav-number">1.2.</span> <span class="nav-text">逻辑回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阈值选定"><span class="nav-number">1.3.</span> <span class="nav-text">阈值选定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文档"><span class="nav-number">2.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
