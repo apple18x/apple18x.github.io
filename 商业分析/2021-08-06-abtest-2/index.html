@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess7.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess9.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess10.png">
-<meta property="og:updated_time" content="2021-08-12T14:06:25.032Z">
+<meta property="og:updated_time" content="2021-08-12T14:11:21.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A&#x2F;B测试（二）-科学规范的测试流程">
 <meta name="twitter:description" content="一个科学规范的 A/B 测试流程需要遵循以下步骤： 1.确定目标和假设 —&amp;gt; 2.确定指标（评价指标和护栏指标）—&amp;gt; 3.确定实验单位 —&amp;gt; 4.确定样本量（需要哪些统计量来确定样本量） —&amp;gt; 5.随机分组（一般为均分）—&amp;gt; 6.实施测试 —&amp;gt; 7.合理性检验（采用哪种检验）—&amp;gt; 8.分析测试结果（P 值法和置信区间法的判断标准） 下面将会围绕流程中重点的">
@@ -397,7 +397,7 @@
 <p>根据中心极限定理，当样本量足够大时，大部分情况下数据服从正态分布，所以这里选用 z 分数。在一般情况下我们选用 95% 的置信区间（双侧），对应的 z 分数为 1.96，即：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">置信区间 = 样本均值（Sample Mean） ± 1.96 * 标准误差</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>例如：假设指标的样本均值为 50、标准误差为 0.1，服从正态分布，那么，该指标的 95% 的置信区间为 [50-1.96 <em> 0.1， 50+1.96 </em> 0.1] = [49.8, 50.2]。</p>
+<p>例如：假设指标的样本均值为 50、标准误差为 0.1，服从正态分布，那么，该指标的 95% 的置信区间为 [50-1.96 * 0.1， 50+1.96 * 0.1] = [49.8, 50.2]。</p>
 </blockquote>
 <p>其中，标准误差是需要计算的。对于概率类和均值类，计算标准误差的公式也不尽相同。</p>
 <p><strong>概率类的指标</strong></p>
@@ -482,7 +482,7 @@
 <h3 id="计算样本量的案例"><a href="#计算样本量的案例" class="headerlink" title="计算样本量的案例"></a>计算样本量的案例</h3><p>我们还用上述优化注册流程来增加某 App 的用户注册率的案例来说明，已计算收支平衡时 δ=8.2%。现在我们来计算 σpooled2。</p>
 <p>根据历史数据我们算出注册率大约为 60%（pcontrol），结合前面算出的 σpooled2=8.2%，这时就可以把流程改变后的注册率定为 68.2%。根据概率指标的计算公式： </p>
 <p><img src="abtestprocess7.png" style="zoom:40%;"></p>
-<p>求出 σpooled2 = 60%<em>(1-60%) + 68.2%</em>(1-68.2%)=0.46。</p>
+<p>求出 σpooled2 = 60%*(1-60%) + 68.2%*(1-68.2%)=0.46。</p>
 <p>最后，我们在 A/B 测试中把实验组和对照组进行 50%/50% 均分，利用公式最终求得样本总量为：</p>
 <p><img src="abtestprocess9.png" style="zoom:25%;"></p>
 <p>这样我们就求得每组样本量至少要有 548，完成了样本量的计算。</p>
@@ -530,7 +530,7 @@
 <p><strong>置信区间法</strong></p>
 <p>实验组和对照组的评价指标是否显著不同，也就是看两者的差值是不是为 0，构建两组指标差值 (ptest−pcontrol) 的置信区间。如果置信区间包括 0 的话，就说明两组指标的差值也有可能为 0，两组指标是相等的。而如果置信区间不包括 0 的话，就说明两组指标的差值不为 0，两组指标是显著不同的。</p>
 <blockquote>
-<p>例如：音乐 App 点击率实验中，我们得到的测试结果：实验组：样本量为 315256，升级的用户为 7566，升级率为 2.4%。对照组：样本量为 315174，升级的用户为 6303，升级率为 2.0%。</p>
+<p>例如：音乐 App 点击率实验中，我们得到的测试结果：实验组：样本量为 315,256，升级的用户为 7,566，升级率为 2.4%。对照组：样本量为 315,174，升级的用户为 6,303，升级率为 2.0%。</p>
 <p><strong>P值法</strong>：通过计算我们可以得到 P 值 &lt; 2.2e^−16 &lt; 5%，P 值远远小于 5% 且接近于 0，说明两组指标具有显著的不同</p>
 <p><strong>置信区间法</strong>：95% 的置信区间为[0.0033, 0.0047]，不包括 0 的，也就是说我们的测试结果是统计显著的。</p>
 </blockquote>
@@ -569,8 +569,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/商业分析/2021-07-29-logistic-regression/" rel="next" title="逻辑回归算法">
-                <i class="fa fa-chevron-left"></i> 逻辑回归算法
+              <a href="/商业分析/2021-08-01-abtest-1/" rel="next" title="A/B测试（一）- 统计基础">
+                <i class="fa fa-chevron-left"></i> A/B测试（一）- 统计基础
               </a>
             
           </div>
@@ -643,7 +643,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">93</span>
+              <span class="site-state-item-count">94</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
