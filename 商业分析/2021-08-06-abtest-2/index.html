@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数理基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="一个科学规范的 A/B 测试流程需要遵循以下步骤： 1.确定目标和假设 —&amp;gt; 2.确定指标（评价指标和护栏指标）—&amp;gt; 3.确定实验单位 —&amp;gt; 4.确定样本量（需要哪些统计量来确定样本量） —&amp;gt; 5.随机分组（一般为均分）—&amp;gt; 6.实施测试 —&amp">
+<meta name="keywords" content="数理基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A&#x2F;B测试（二）-科学规范的测试流程">
+<meta property="og:url" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="一个科学规范的 A/B 测试流程需要遵循以下步骤： 1.确定目标和假设 —&amp;gt; 2.确定指标（评价指标和护栏指标）—&amp;gt; 3.确定实验单位 —&amp;gt; 4.确定样本量（需要哪些统计量来确定样本量） —&amp;gt; 5.随机分组（一般为均分）—&amp;gt; 6.实施测试 —&amp;gt; 7.合理性检验（采用哪种检验）—&amp;gt; 8.分析测试结果（P 值法和置信区间法的判断标准） 下面将会围绕流程中重点的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess10.png">
+<meta property="og:updated_time" content="2021-08-12T14:06:25.032Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A&#x2F;B测试（二）-科学规范的测试流程">
+<meta name="twitter:description" content="一个科学规范的 A/B 测试流程需要遵循以下步骤： 1.确定目标和假设 —&amp;gt; 2.确定指标（评价指标和护栏指标）—&amp;gt; 3.确定实验单位 —&amp;gt; 4.确定样本量（需要哪些统计量来确定样本量） —&amp;gt; 5.随机分组（一般为均分）—&amp;gt; 6.实施测试 —&amp;gt; 7.合理性检验（采用哪种检验）—&amp;gt; 8.分析测试结果（P 值法和置信区间法的判断标准） 下面将会围绕流程中重点的">
+<meta name="twitter:image" content="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/abtestprocess1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/商业分析/2021-08-06-abtest-2/"/>
+
+
+  <title> A/B测试（二）-科学规范的测试流程 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                A/B测试（二）-科学规范的测试流程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-08-06T00:00:00+08:00" content="2021-08-06">
+              2021-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/商业分析/" itemprop="url" rel="index">
+                    <span itemprop="name">商业分析</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一个科学规范的 A/B 测试流程需要遵循以下步骤：</p>
+<p><strong>1.确定目标和假设</strong> —&gt; <strong>2.确定指标</strong>（评价指标和护栏指标）—&gt; <strong>3.确定实验单位</strong> —&gt; <strong>4.确定样本量</strong>（需要哪些统计量来确定样本量） —&gt; <strong>5.随机分组</strong>（一般为均分）—&gt; <strong>6.实施测试</strong> —&gt; <strong>7.合理性检验</strong>（采用哪种检验）—&gt; <strong>8.分析测试结果</strong>（P 值法和置信区间法的判断标准）</p>
+<p>下面将会围绕流程中重点的几个步骤进行展开。</p>
+<a id="more"></a>
+<h2 id="确定目标和假设"><a href="#确定目标和假设" class="headerlink" title="确定目标和假设"></a>确定目标和假设</h2><p>做 A/B 测试是为了解决业务上遇到的问题，要解决的业务问题就是 A/B 测试目标。这里需要注意的是，目标要具体，可以被量化。</p>
+<blockquote>
+<p>例如：一款按月付费的音乐 App，目标是希望提高营收。经过调研，发现产品的留存率低于行业水平，希望增加产品的便利功能，具体为“自动播放下一个专辑 / 歌单”功能来提升留存。</p>
+<p>这里”留存”就不是一个很好的指标，因为不够具体无法量化。在按月付费的音乐 App 这个案例中，用户只要每个月按时付费续订，就是留存。所以，我们可以把用户留存定义为下个月的续订率，这样我们就把假设变得更加具体，并且目标可被量化。</p>
+<p>因此在这个案例中， A/B 测试的假设为：在每个专辑 / 歌单播放完成后增加“自动播放下一个专辑 / 歌单”的功能，可以提升用户下个月的续订率。</p>
+</blockquote>
+<h3 id="A-B-测试的指标有哪几类？"><a href="#A-B-测试的指标有哪几类？" class="headerlink" title="A/B 测试的指标有哪几类？"></a>A/B 测试的指标有哪几类？</h3><p>A/B 测试的指标分为<strong>评价指标</strong>（Evaluation Metrics）和<strong>护栏指标</strong>（Guardrail Metrics）。</p>
+<p><strong>评价指标</strong></p>
+<p>评价指标指能驱动公司 / 组织实现核心价值的指标，通常是短期的、比较敏感、有很强的可操作性，例如点击率、转化率、人均使用时长等，是能够直接评价 A/B 测试结果的指标。</p>
+<p>评价指标需要具有三个特征：可归因性、可测量性、敏感性和稳定性。当指标对变化太敏感或不敏感时，都不是一个好的评价指标。</p>
+<ul>
+<li>用 A/B 测试来检测单次的变化时（比如单次推送 / 邮件）一般选用短期效果的指标，因为长期效果目标通常对单次变化并不敏感。</li>
+<li>用 A/B 测试来检测连续的、永久的变化时（比如增加产品功能），可以选用长期效果的指标。</li>
+</ul>
+<blockquote>
+<p>例如：“用户满意度”就不是一个可测量的指标，可将其转化为“用户续订率”指标；用于衡量推送周杰伦的新专辑的推送效果，”续订率”就不是具有敏感度的指标，因为推送只会产生短期效果，因此短期的收听率是对单次推送更加敏感且合适的指标。</p>
+</blockquote>
+<p>如何测量评价指标的敏感性和稳定性呢？</p>
+<p>A/A 测试。A/A 测试（A/A Test）是选择体验相同的测试对象分成实验组和对照组，若两组的指标有显著不同，那么就说明要么两组用户质量差异较大，要么指标波动范围太大，稳定性差。</p>
+<p><strong>护栏指标</strong></p>
+<p>只考虑评价指标是不够的，因为我们不确定测试是否会对业务有负面效果（长期/短期）。因此，我们还需要护栏指标。</p>
+<blockquote>
+<p>例如：如果为了优化一个网页的点击率，就给网页添加了非常酷炫的动画效果。结果点击率是提升了，网页加载时间却增加了，造成了不好的用户体验。长期来看，这就不利于业务的发展。</p>
+</blockquote>
+<p>护栏指标属于 A/B 测试中基本的合理性检验（Sanity Check），用于辅助保障 A/B 测试的质量，衡量 A/B 测试是否符合业务上的长期目标，不会因为优化短期指标而打乱长期目标，以及确保从统计上尽量减少出现各种偏差（Bias），得到尽可能值得信任的实验结果。</p>
+<blockquote>
+<p>例如：如果为了优化一个网页的点击率，就给网页添加了非常酷炫的动画效果。那么“点击率”可以设为评价指标，“网页加载时间”设为护栏指标。</p>
+</blockquote>
+<h3 id="如何选取具体的评价指标？"><a href="#如何选取具体的评价指标？" class="headerlink" title="如何选取具体的评价指标？"></a>如何选取具体的评价指标？</h3><p>第一，根据当前所处阶段的目标</p>
+<p>产品初期，公司通常以拉新为主要业务目标，在这一阶段我们可选择以点击率、转化率作为评价指标；在产品的发展和成熟期，则会关注留存情况，可以以平均使用时间和频率、产品特定功能的使用率、留存率作为评价指标。</p>
+<p>第二，采用定性 + 定量相结合的方法</p>
+<p>对于一些比较抽象的目标，比如用户的满意度，我们可以使用一些定性的方法，例如问卷调查、用户调研等进行定量的数据分析来了解他们的使用行为。把定性的用户调研结果和定量的用户使用行为分析结合起来，找出哪些使用行为和用户的满意度有着强烈的关系。</p>
+<blockquote>
+<p>例如：为了了解哪些指标与音乐 APP 满意度相关，我们先通过定性用户调研来确定哪些用户满意、哪些用户不满意完成分组。针对两组用户做定量分析，发现”收藏音乐”行为与用户满意度有明显正相关性。然后我们可以考虑把”收藏音乐的数量”或“收藏 X 首以上音乐的用户”作为评价指标。</p>
+</blockquote>
+<p>第三，借鉴其他公司的评价指标</p>
+<h3 id="如何建立综合指标？"><a href="#如何建立综合指标？" class="headerlink" title="如何建立综合指标？"></a>如何建立综合指标？</h3><p>在实际的业务需求中，有时会出现多个目标，同一目标也可能有多个都很重要的评价指标，需要我们把它们都综合起来考虑，构建一个总体评价标准 （Overall Evaluation Criteria，简称 OEC）。</p>
+<p>需要注意的是，OEC 有可能会包含护栏指标，例如下例中的“损失”。</p>
+<blockquote>
+<p>例如：亚马逊通过发送电子邮件对用户做产品推荐，用邮件产生的收入来衡量电子邮件的效果，所以设计的 A/B 实验如下：</p>
+<ul>
+<li>实验组：给用户发推荐邮件</li>
+<li>对照组：不给用户发推荐邮件</li>
+</ul>
+<p>结果可想而知，对照组没有收到任何邮件也就不会有邮件产生的收入，而在实验组的用户由于收到很多邮件所以产生了不少收入。</p>
+<p>那么是不是想要有更多的收入，发更多的邮件就行了呢？现实情况是，用户收到的邮件多到一定程度后，他们会觉得被骚扰选择退订（Unsubscribe）。而用户一旦退订，以后就再也接收不到来自亚马逊的邮件了。</p>
+<p>因此把邮件产生的收入作为评价指标，可以说只是用来优化短期的收入，并没有考虑到长期的用户价值。用户一旦因为被骚扰而退订，亚马逊就失去了在未来给他们发邮件做营销的机会了。所以，邮件产生的收入并不适合作为评价指标，我们需要综合考虑发邮件所带来的好处和潜在的损失，结合多个指标，构建一个总体评价标准OEC。</p>
+<p><img src="abtestprocess1.png"></p>
+<p>其中，i代表每一个用户，S代表每组退订的人数，Unsubscribe_lifetime_loss 代表用户退订邮件带来的预计的损失，n代表每组的样本大小。</p>
+<p>当亚马逊实施了这个 OEC 之后，惊讶地发现有一半以上电子邮件的 OEC 都是负的，这就说明多发邮件并不总是能带来正的收益。因此改进了退订页面，减少长期的潜在损失。</p>
+</blockquote>
+<p>另外，使用 OEC 的另一个好处就是可以避免多重检验问题（Multiple Testing Problem）。如果我们不把不同的指标加权结合起来分析，而是单独比较它们，就会出现多重检验的问题，导致 A/B 测试的结果不准确。</p>
+<h3 id="如何衡量评价指标的波动性？"><a href="#如何衡量评价指标的波动性？" class="headerlink" title="如何衡量评价指标的波动性？"></a>如何衡量评价指标的波动性？</h3><p>这里的波动性是基于历史的探究，了解评价指标的<strong>历史波动性</strong>和<strong>正常波动范围</strong>会帮助我们建立正确的因果关系。</p>
+<blockquote>
+<p>例如：未优化前音乐 App 每个月的用户续订率的波动范围是[65%-70%]， A/B 测试的实验组（有自动播放功能）的续订率 69%，比对照组（没有自动播放功能）的续订率 66% 要高，但这个结果并不是可信的，因为69%是处于正常波动范围内的。</p>
+</blockquote>
+<p>如何才能知道评价指标的正常波动范围呢？</p>
+<p><strong>置信区间</strong>。在实践中，计算波动范围一般有统计公式和实践经验两类方法。</p>
+<p><strong>第一，根据统计公式来计算。</strong></p>
+<p>在统计学中，一般是用以下公式构建置信区间的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">置信区间 = 样本均值（Sample Mean） ± Z 分数 * 标准误差</span><br></pre></td></tr></table></figure>
+<p>根据中心极限定理，当样本量足够大时，大部分情况下数据服从正态分布，所以这里选用 z 分数。在一般情况下我们选用 95% 的置信区间（双侧），对应的 z 分数为 1.96，即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">置信区间 = 样本均值（Sample Mean） ± 1.96 * 标准误差</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例如：假设指标的样本均值为 50、标准误差为 0.1，服从正态分布，那么，该指标的 95% 的置信区间为 [50-1.96 <em> 0.1， 50+1.96 </em> 0.1] = [49.8, 50.2]。</p>
+</blockquote>
+<p>其中，标准误差是需要计算的。对于概率类和均值类，计算标准误差的公式也不尽相同。</p>
+<p><strong>概率类的指标</strong></p>
+<p>概率类指标在统计上通常服从二项分布，在样本量足够大的情况下，也可以近似为正态分布。所以，概率指标的标准误差，我们可以通过下面这个公式计算：</p>
+<p><img src="abtestprocess2.png" style="zoom:33%;"></p>
+<p>其中，p 代表事件发生的概率。</p>
+<p><strong>均值类的指标</strong></p>
+<p>均值类指标通常也是正态分布。所以，均值类指标的标准误差，我们可以这样计算：</p>
+<p><img src="abtestprocess3.png" style="zoom:33%;"></p>
+<p>其中，s 代表样本的标准差，n= 样本大小，xi= 第 i 个用户的使用时长或者购买金额等，xˉ= 用户的平均使用时长或者购买金额等。</p>
+<p><strong>第二，根据实践经验来确定。</strong></p>
+<p>对于有些不符合正态分布的复杂指标，要得到评价指标的波动范围，我们需要结合实践经验来估算。</p>
+<p><strong>A/A 测试</strong></p>
+<p>我们可以跑多个不同样本大小的 A/A 测试，然后分别计算每个样本的指标大小，计算出来后，再把这些指标从小到大排列起来，并且去除最小 2.5% 和最大 2.5% 的值，剩下的就是 95% 的置信区间。</p>
+<p><strong>Bootstrapping 算法</strong></p>
+<p>我们可以先跑一个样本很大的 A/A 测试，然后在这个大样本中进行随机可置换抽样（Random Sample with Replacement）， 抽取不同大小的样本来分别计算指标。然后采用和 A/A 测试一样的流程：把这些指标从小到大排列起来，并且去除最小 2.5% 和最大 2.5% 的值，得到 95% 的置信区间。</p>
+<p>在实际应用中，Bootstrapping 会更流行些，因为只需要跑一次 A/A 测试，既节省时间也节省资源。不过要注意的是，即使对于那些简单的、符合正态分布的、可以用统计方法直接计算方差的指标，如果有条件、有时间的话，最好使用统计公式和 Bootstrapping 两种方法分别计算方差。如果两者的结果差距较大，就需要再去跑更多的 A/A 测试，所以从两方面验证得到的结果会更保险。</p>
+<h3 id="护栏指标的选取"><a href="#护栏指标的选取" class="headerlink" title="护栏指标的选取"></a>护栏指标的选取</h3><p>每个 A/B 测试都要有相应的护栏指标，我们可以从<strong>业务层面</strong>和<strong>统计层面</strong>进行选取。</p>
+<p><strong>业务层面</strong></p>
+<p>业务层面的护栏指标是在保证用户体验的同时，兼顾盈利能力和用户的参与度。所以，我们通常会用到的护栏指标主要是三个：网络延迟（Latency）、闪退率（Crash Rate）和人均指标（收入、用户参与度）。</p>
+<p><strong>统计品质层面</strong></p>
+<p>统计方面主要是尽可能多地消除偏差，使实验组和对照组尽可能相似，比如检测两组样本量的比例，以及检测两组中特征的分布是否相似。</p>
+<p>a.实验 / 对照组样本大小的比例</p>
+<p>在设计 A/B 测试时，我们会预先分配好实验组和对照组的比例，但实际实验中可能出现较大偏差，因此可做验证。</p>
+<p>b.实验 / 对照组中特征的分布</p>
+<p>A/B 测试中一般采取随机分组，来保证两组实验对象是相似的，即除了测试的变量，其他变量的分布应是一致的。</p>
+<blockquote>
+<p>例如：当以用户作为实验单位，试验结束后应去分析两组用户的年龄、性别、地点等基本信息的分布是否大体一致。</p>
+</blockquote>
+<h2 id="确定实验单位"><a href="#确定实验单位" class="headerlink" title="确定实验单位"></a>确定实验单位</h2><p>通常情况下，我们可以从<strong>用户层面</strong>、<strong>访问层面</strong>和<strong>页面层面</strong>这三个维度来设置实验。</p>
+<h3 id="实验单位"><a href="#实验单位" class="headerlink" title="实验单位"></a>实验单位</h3><h4 id="用户维度（User-Level）"><a href="#用户维度（User-Level）" class="headerlink" title="用户维度（User Level）"></a>用户维度（User Level）</h4><p>用户层面是指，把单个的用户作为最小单位，也就是以用户为单位来划分实验组和对照组。</p>
+<p>在绝大部分情况下，准确地说，实验单位都是用户的行为。</p>
+<h4 id="访问维度（Visit-Session-Level）"><a href="#访问维度（Visit-Session-Level）" class="headerlink" title="访问维度（Visit/Session Level）"></a>访问维度（Visit/Session Level）</h4><p>访问层面是指把用户的每次访问作为一个最小单位。通常进入到某个网站或 App 时就是访问的开始，而访问结束的定义因为用户操作的复杂性而有所不同，通常情况下，如果用户在某个网站、App 连续 30 分钟之内没有任何动作，就认为这次访问已经结束了。</p>
+<h4 id="访问维度（Visit-Session-Level）-1"><a href="#访问维度（Visit-Session-Level）-1" class="headerlink" title="访问维度（Visit/Session Level）"></a>访问维度（Visit/Session Level）</h4><p>页面层面指的是把每一个新的页面浏览（Pageview）作为最小单位。</p>
+<blockquote>
+<p>例如：用户先浏览了网站的首页，然后点进一个专栏，最后又回到了首页。若以页面浏览 ID 作为实验单位的话，那么首页将会被认为是两个记录。</p>
+</blockquote>
+<h3 id="确定实验单位的三大原则"><a href="#确定实验单位的三大原则" class="headerlink" title="确定实验单位的三大原则"></a>确定实验单位的三大原则</h3><h4 id="保证用户体验的连贯性"><a href="#保证用户体验的连贯性" class="headerlink" title="保证用户体验的连贯性"></a>保证用户体验的连贯性</h4><p>如果 A/B 测试中的变化是用户可以察觉到的，那么实验单位就要选择用户层面。否则，同一个用户同时出现在实验组和对照组，就会体验到不同的功能、得到不同的体验。这种体验的不连贯性，就会给用户带来困惑和沮丧，很容易导致用户流失。</p>
+<h4 id="实验单位要和评价指标的单位保持一致"><a href="#实验单位要和评价指标的单位保持一致" class="headerlink" title="实验单位要和评价指标的单位保持一致"></a>实验单位要和评价指标的单位保持一致</h4><p>A/B 测试的一个前提是实验单位相互独立且分布相同的（Independent and identically distributed），简称 IID。如果两个单位不一致，就会违反相互独立这一前提，破坏了 A/B 测试的理论基础，从而导致实验结果不准确。</p>
+<blockquote>
+<p>例如：如果用 A/B 测试来检测音乐 App 推送新专辑的效果，评价指标为用户的新专辑收听率（这里评价指标是用户维度）。假如我们把实验单位变为新专辑页面维度，由于每个用户可以多次浏览该页面，所以对于同一个用户的多次页面浏览，每次页面浏览其实并不是独立的，IID 的假设前提就被破坏了，那么实验结果也就变得不准确了。</p>
+</blockquote>
+<h4 id="样本数量要尽可能多"><a href="#样本数量要尽可能多" class="headerlink" title="样本数量要尽可能多"></a>样本数量要尽可能多</h4><p>样本数量越多，实验结果就越准确。但增加样本量的方法有很多，我们绝对不能因为要获得更多的样本量，就选择颗粒度更细的实验单位，而不考虑前面两个原则。</p>
+<h2 id="确定样本量"><a href="#确定样本量" class="headerlink" title="确定样本量"></a>确定样本量</h2><h3 id="样本量并不是越多越好"><a href="#样本量并不是越多越好" class="headerlink" title="样本量并不是越多越好"></a>样本量并不是越多越好</h3><p>从统计理论上来说，确实是样本量越多越好。因为样本量越大，样本所具有的代表性才越强。但在实际业务中，样本量其实是越少越好。</p>
+<p><strong>时间成本</strong>。样本量越小意味着实验所进行的时间越短。在实际业务场景中，时间往往是最宝贵的资源，毕竟，快速迭代贵在一个“快”字。</p>
+<p><strong>试错成本</strong>。此外，测试可能出现某种改变对产品、业务造成损害的情况，所以实验范围越小，样本量越小，试错成本就会越低。</p>
+<p>因此我们需要寻求一种统计学和实际业务中的平衡：<strong>既要保证样本量足够大，又要把实验控制在尽可能短的时间内</strong>。</p>
+<h3 id="样本量计算原理"><a href="#样本量计算原理" class="headerlink" title="样本量计算原理"></a>样本量计算原理</h3><p>结论先行：</p>
+<p><img src="abtestprocess4.png" style="zoom:33%;"></p>
+<p>从公式中，我们知道样本量主要由α、Power、δ和 σpooled2 决定。</p>
+<p><strong>显著水平（Significance Level）α</strong></p>
+<p>显著水平和样本量成反比：显著水平越小，样本量就越大。这个也不难理解。因为显著水平又被称为第一类错误率（Type I Error）α，想要第一类错误率越小，结果越精确，就需要更大的样本量。</p>
+<p><strong>Power （1 – β）</strong></p>
+<p>Power 和样本量成正比：Power 越大，样本量就越大。Power 越大，就说明第二类错误率（Type II Error）β越小。和第一类错误类似，想要第二类错误率越小，结果越精确，就需要更大的样本量。</p>
+<p><strong>实验组和对照组的综合方差 σpooled2</strong></p>
+<p>方差和样本量成正比：方差越大，样本量就越大。前面讲过，方差是用来表征评价指标的波动性的，方差越大，说明评价指标的波动范围越大，也越不稳定，那就更需要更多的样本来进行实验，从而得到准确的结果。</p>
+<p><strong>实验组和对照组评价指标的差值δ</strong></p>
+<p>差值和样本量成反比：差值越小，样本量就越大。因为实验组和对照组评价指标的差值越小，越不容易被 A/B 测试检测到，所以我们需要提高 Power，也就是说需要更多的样本量来保证准确度。</p>
+<h3 id="实践中该怎么计算样本量？"><a href="#实践中该怎么计算样本量？" class="headerlink" title="实践中该怎么计算样本量？"></a>实践中该怎么计算样本量？</h3><p>在实践中，我们通常把显著水平设为 5%，把 Power 设为 80%，这样的话我们就确定了公式中的 Z 分数（z-97.5% = 1.96, z-80% = 0.84），剩下两个因素：σpooled2和δ。</p>
+<p><img src="abtestprocess5.png" style="zoom:33%;"></p>
+<p>需要注意的是，<strong>上述公式计算出来的样本量是<span style="color:#AE0000">单组最小值</span></strong>。如果我们设置了50%-50%的对照组和实验组，那么样本量将是：</p>
+<p><img src="abtestprocess6.png" style="zoom:25%;"></p>
+<p>在非均分的情况下，只有相对<strong>较小组的样本量达到最小样本量</strong>，实验结果才有可能显著。</p>
+<p>现在，我们就可以用这个简化版的公式来估算样本量大小了。</p>
+<h4 id="估算差值δ"><a href="#估算差值δ" class="headerlink" title="估算差值δ"></a>估算差值δ</h4><p>δ是实验组和对照组评价指标的差值，也就是需要我们在实验之间预先设置一个预计提升的幅度。可通过下面的两种方法估算出两组评价指标的差值δ。</p>
+<p><strong>第一种，从收益和成本的角度进行估算</strong></p>
+<blockquote>
+<p>例如：想要通过优化注册流程来增加某 App 的用户注册率，优化前的注册率为 60%，每天开始注册的人数为 100 人，每个新用户平均花费 10 元。假设优化流程的成本大约是 3 万元（主要是人力和时间成本），那么为了产生正利润（收益&gt;成本），至少达到收支平衡，对应的需注册率为：8.2%（30000/10/100/365 – 60%），因此 δ=8.2% 是一个理想的提升。</p>
+</blockquote>
+<p><strong>第二种，根据历史指标波动范围进行估算</strong></p>
+<blockquote>
+<p>例如：假设评价指标是点击率，通过历史数据算出点击率的平均值为 5%，波动范围是[3.5%, 6.5%]，那么我们对实验组评价指标的期望值就是至少要大于这个波动范围，比如 7%，那么这时δ设置为 2%（7%–5%）较为合理。</p>
+</blockquote>
+<h4 id="计算综合方差-σpooled2"><a href="#计算综合方差-σpooled2" class="headerlink" title="计算综合方差 σpooled2"></a>计算综合方差 σpooled2</h4><p>综合方差 σpooled2 的计算主要是<strong>选取历史数据</strong>，概率类和均值类指标的统计方法不同。</p>
+<p><strong>概率类指标</strong></p>
+<p>概率类指标在统计上通常是二项分布，综合方差为：</p>
+<p><img src="abtestprocess7.png" style="zoom:40%;"></p>
+<p>其中，pcontrol 为对照组中事件发生的概率，也就是没有 A/B 测试变化的情况，一般可以通过历史数据计算得出；ptest=pcontrol+δ，得出的是期望的实验组中事件发生的概率。</p>
+<p><strong>均值类指标</strong></p>
+<p><img src="abtestprocess8.png" style="zoom:40%;"></p>
+<p>其中：n 为所取历史数据样本的大小。xi 为所取历史数据样本中第 i 个用户的使用时长 / 购买金额等。xˉ 为所取历史数据样本中用户的平均使用时长 / 购买金额等。</p>
+<h3 id="计算样本量的案例"><a href="#计算样本量的案例" class="headerlink" title="计算样本量的案例"></a>计算样本量的案例</h3><p>我们还用上述优化注册流程来增加某 App 的用户注册率的案例来说明，已计算收支平衡时 δ=8.2%。现在我们来计算 σpooled2。</p>
+<p>根据历史数据我们算出注册率大约为 60%（pcontrol），结合前面算出的 σpooled2=8.2%，这时就可以把流程改变后的注册率定为 68.2%。根据概率指标的计算公式： </p>
+<p><img src="abtestprocess7.png" style="zoom:40%;"></p>
+<p>求出 σpooled2 = 60%<em>(1-60%) + 68.2%</em>(1-68.2%)=0.46。</p>
+<p>最后，我们在 A/B 测试中把实验组和对照组进行 50%/50% 均分，利用公式最终求得样本总量为：</p>
+<p><img src="abtestprocess9.png" style="zoom:25%;"></p>
+<p>这样我们就求得每组样本量至少要有 548，完成了样本量的计算。</p>
+<h3 id="常用的计算样本量网站"><a href="#常用的计算样本量网站" class="headerlink" title="常用的计算样本量网站"></a>常用的计算样本量网站</h3><p>abtest guide：<a href="https://abtestguide.com/abtestsize/" target="_blank" rel="noopener">https://abtestguide.com/abtestsize/</a></p>
+<p>Evan’s A/B Tools：<a href="https://www.evanmiller.org/ab-testing/sample-size.html" target="_blank" rel="noopener">https://www.evanmiller.org/ab-testing/sample-size.html</a></p>
+<p>需要注意的是，网上的这些样本量计算器只能计算概率类的指标（从要求输入的指标可知），并不能计算均值类的指标。对于均值类指标，现在网上还没有比较好的样本量计算器，在这种情况下我建议你通过公式来计算。</p>
+<h2 id="分析测试结果"><a href="#分析测试结果" class="headerlink" title="分析测试结果"></a>分析测试结果</h2><h3 id="什么时候可以查看测试结果？"><a href="#什么时候可以查看测试结果？" class="headerlink" title="什么时候可以查看测试结果？"></a>什么时候可以查看测试结果？</h3><p><strong>不要提前结束测试</strong></p>
+<p>首先需要达到显著性结果所需的<span style="color:#AE0000">最小样本量</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A/B 测试所需的时间 = 总样本量 / 每天可以得到的样本量</span><br></pre></td></tr></table></figure>
+<p>具体到 A/B 测试的实践中，除了考虑样本量的大小外，我们还要考虑指标<span style="color:#AE0000">周期性变化的因素</span>，测试时间要包含至少一个周期的时间，以排除指标周期性变化的影响（如果计算出的测试时间小于一个周期的时间，那么最好也取一个周期的时间）。</p>
+<blockquote>
+<p>例如：在音乐 App 这个案例中，我们通过历史数据发现，在周末升级的用户要比周中多。这就说明用户升级率这个评价指标，会以<strong>每周</strong>为单位形成周期性的变化，所以我们的测试至少要跑 7 天。而我们通过最小样本量已经算出了本次测试需要跑 10 天，包含了一个周期，所以我们可以放心地把测试时间定为 10 天。</p>
+</blockquote>
+<p>特别需要注意的是，若在样本量未达到预期时，评价指标就出现了显著不同，一定<strong>不能提前结束测试</strong>。</p>
+<p>一方面，因为样本量是不断变化的，所以每次观测到的测试其实都可以算作新的实验。这就意味着如果我们观测的次数变多的话，那么观测到错误的统计显著结果的概率就会大大提升，这是多重检验问题（Multiple Testing Issue）的一种体现。</p>
+<p>另一方面，提前观测到统计显著的结果，这就意味着样本量并没有达到事先估算的最小样本量，那么这个所谓的“统计显著的结果”就极有可能是错误的假阳性（False Positive，两组事实上是相同的，而测试结果错误地认为两组显著不同）。</p>
+<p><strong>当样本量达到预期值，是不是可以开始分析结果了呢？</strong></p>
+<p>依旧不是。在正式分析实验结果前，我们还要进行测试的<span style="color:#AE0000">合理性检验（Sanity Check）</span>，从而保证实验结果的准确性。</p>
+<p>我们可以用护栏指标来保证统计品质。这时，我们可以使用「两组样本大小的比例」和「两组中特征的分布」这两个护栏指标。</p>
+<p><strong>检验样本量的比例</strong></p>
+<p>各组样本量占总样本量的比例也是概率，也是符合二项分布的，所以具体的操作方法是：</p>
+<p>a.首先根据二项分布的公式 √p(1−p)/n 算出标准误差</p>
+<p>b.以 0.5（50%）为中心构建 95% 的置信区间</p>
+<p>c.最后，确认实际的两组样本量的比例是否在置信区间内</p>
+<p>如果总的比例在置信区间内的话，就说明即使总的比例不完全等于 50%/50%，也是非常接近，属于正常波动，两组样本量大小就符合预期。否则，就说明实验有问题。</p>
+<blockquote>
+<p>例如：我们实验组的样本量 315,256，对照组的样本量为 315,174。通过公式我们求得标准误差为：</p>
+<p><img src="abtestprocess10.png" style="zoom:25%;"></p>
+<p>计算出来的结果是 0.06%，我们构建了 95% 的置信区间[50%-1.96<em>0.06%, 50%+1.96</em>0.06%] = [49.88%,50.12%]，也就是两组占比的波动范围，然后算出总体的实验组 / 对照组的样本量比例 =50.01%/49.99%。</p>
+<p>两组占比均在置信区间内，属于正常波动。也就是说，两组样本量符合均分的预期，成功通过了实验 / 对照组样本量的比例这个合理性检验。</p>
+</blockquote>
+<p><strong>检验特征的分布</strong></p>
+<p>A/B 测试中实验组和对照组的样本要相似才具有可比性，我们可以通过比较两组的特征分布来判断是否相似。</p>
+<p>常用的特征包括用户的年龄、性别、地点等基本信息，或者可能影响评价指标的特征。比如在音乐 App 这个案例中，我们还可以查看用户平时的活跃程度。如果这些特征在两组中分布比例相差较大，则说明实验有问题。</p>
+<h3 id="如何分析测试结果？"><a href="#如何分析测试结果？" class="headerlink" title="如何分析测试结果？"></a>如何分析测试结果？</h3><p>我们只需要记住常用的 3 种检验方法的使用场景：</p>
+<p><strong>1.Z 检验（Z Test）</strong></p>
+<p>当评价指标为概率类指标时（比如转化率，注册率等等），一般选用 Z 检验（在 A/B 测试中有时又被称为比例检验（Proportion Test））来计算出相应的 P 值和置信区间。</p>
+<p><strong>2.T 检验（T Test）</strong></p>
+<p>当评价指标为均值类指标时（比如人均使用时间，人均使用频率等等），且在大样本量下可以近似成正态分布时，一般选用 T 检验来计算相应的 P 值和置信区间。</p>
+<p><strong>3.Bootstrapping</strong></p>
+<p>当评价指标的分布比较复杂，在大样本量下也不能近似成正态分布时（比如 70% 用户的使用时间，OEC 等），一般采用 Bootstrapping 的方法，从 P 值或者置信区间的定义来计算 P 值和置信区间。</p>
+<p>接下来，我们就可以通过 P 值法和置信区间法来分析这个测试结果，验证我们的假设是否正确。</p>
+<p><strong>P 值法</strong></p>
+<p>我们可以采取 P 值法，借助一些计算工具计算 P 值。当 P 值小于 5% 时，说明两组指标具有显著的不同。当 P 值大于 5% 时，说明两组指标没有显著的不同。</p>
+<p><strong>置信区间法</strong></p>
+<p>实验组和对照组的评价指标是否显著不同，也就是看两者的差值是不是为 0，构建两组指标差值 (ptest−pcontrol) 的置信区间。如果置信区间包括 0 的话，就说明两组指标的差值也有可能为 0，两组指标是相等的。而如果置信区间不包括 0 的话，就说明两组指标的差值不为 0，两组指标是显著不同的。</p>
+<blockquote>
+<p>例如：音乐 App 点击率实验中，我们得到的测试结果：实验组：样本量为 315256，升级的用户为 7566，升级率为 2.4%。对照组：样本量为 315174，升级的用户为 6303，升级率为 2.0%。</p>
+<p><strong>P值法</strong>：通过计算我们可以得到 P 值 &lt; 2.2e^−16 &lt; 5%，P 值远远小于 5% 且接近于 0，说明两组指标具有显著的不同</p>
+<p><strong>置信区间法</strong>：95% 的置信区间为[0.0033, 0.0047]，不包括 0 的，也就是说我们的测试结果是统计显著的。</p>
+</blockquote>
+<p><strong>P值法和置信区间法有什么差别吗？</strong></p>
+<p>在大部分情况下这两种方法是通用的，只要选择一种就可以。但如果需要考虑实施变化后的收益和成本的关系时，我们就要选择置信区间法了。</p>
+<p>因为要考虑收益和成本的关系时，除了满足结果在统计上是显著的（两组指标不相同，差值的置信区间不包括 0）还不够，更要让结果在业务上也是显著的（两组指标不仅要不相等，而且其差值δ &gt;= δ(收支平衡)，并且差值的置信区间范围的<strong>最小值</strong>都要比 δ 大）。</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>参考内容：极客时间 - A/B测试从0到1</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数理基础/" rel="tag">#数理基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/商业分析/2021-07-29-logistic-regression/" rel="next" title="逻辑回归算法">
+                <i class="fa fa-chevron-left"></i> 逻辑回归算法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">93</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#确定目标和假设"><span class="nav-number">1.</span> <span class="nav-text">确定目标和假设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-B-测试的指标有哪几类？"><span class="nav-number">1.1.</span> <span class="nav-text">A/B 测试的指标有哪几类？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何选取具体的评价指标？"><span class="nav-number">1.2.</span> <span class="nav-text">如何选取具体的评价指标？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何建立综合指标？"><span class="nav-number">1.3.</span> <span class="nav-text">如何建立综合指标？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何衡量评价指标的波动性？"><span class="nav-number">1.4.</span> <span class="nav-text">如何衡量评价指标的波动性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#护栏指标的选取"><span class="nav-number">1.5.</span> <span class="nav-text">护栏指标的选取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确定实验单位"><span class="nav-number">2.</span> <span class="nav-text">确定实验单位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验单位"><span class="nav-number">2.1.</span> <span class="nav-text">实验单位</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用户维度（User-Level）"><span class="nav-number">2.1.1.</span> <span class="nav-text">用户维度（User Level）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问维度（Visit-Session-Level）"><span class="nav-number">2.1.2.</span> <span class="nav-text">访问维度（Visit/Session Level）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问维度（Visit-Session-Level）-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">访问维度（Visit/Session Level）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定实验单位的三大原则"><span class="nav-number">2.2.</span> <span class="nav-text">确定实验单位的三大原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#保证用户体验的连贯性"><span class="nav-number">2.2.1.</span> <span class="nav-text">保证用户体验的连贯性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验单位要和评价指标的单位保持一致"><span class="nav-number">2.2.2.</span> <span class="nav-text">实验单位要和评价指标的单位保持一致</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样本数量要尽可能多"><span class="nav-number">2.2.3.</span> <span class="nav-text">样本数量要尽可能多</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确定样本量"><span class="nav-number">3.</span> <span class="nav-text">确定样本量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样本量并不是越多越好"><span class="nav-number">3.1.</span> <span class="nav-text">样本量并不是越多越好</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样本量计算原理"><span class="nav-number">3.2.</span> <span class="nav-text">样本量计算原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实践中该怎么计算样本量？"><span class="nav-number">3.3.</span> <span class="nav-text">实践中该怎么计算样本量？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#估算差值δ"><span class="nav-number">3.3.1.</span> <span class="nav-text">估算差值δ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算综合方差-σpooled2"><span class="nav-number">3.3.2.</span> <span class="nav-text">计算综合方差 σpooled2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算样本量的案例"><span class="nav-number">3.4.</span> <span class="nav-text">计算样本量的案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的计算样本量网站"><span class="nav-number">3.5.</span> <span class="nav-text">常用的计算样本量网站</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析测试结果"><span class="nav-number">4.</span> <span class="nav-text">分析测试结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候可以查看测试结果？"><span class="nav-number">4.1.</span> <span class="nav-text">什么时候可以查看测试结果？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何分析测试结果？"><span class="nav-number">4.2.</span> <span class="nav-text">如何分析测试结果？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
