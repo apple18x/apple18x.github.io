@@ -1,0 +1,797 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tableau," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="基础图表操作1.拆分和合并字段拆分字段：字段点击右键 合并字段：字段点击右键-创建-计算字段 （可拖拽）。显示“计算有效”后，点击完成后在数据源中查看">
+<meta name="keywords" content="Tableau">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tableau常用操作">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="基础图表操作1.拆分和合并字段拆分字段：字段点击右键 合并字段：字段点击右键-创建-计算字段 （可拖拽）。显示“计算有效”后，点击完成后在数据源中查看">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau1.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau14.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau11.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau13.png">
+<meta property="og:updated_time" content="2021-08-16T15:53:15.254Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tableau常用操作">
+<meta name="twitter:description" content="基础图表操作1.拆分和合并字段拆分字段：字段点击右键 合并字段：字段点击右键-创建-计算字段 （可拖拽）。显示“计算有效”后，点击完成后在数据源中查看">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2021-07-30-tableau/Tableau1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2021-07-30-tableau/"/>
+
+
+  <title> Tableau常用操作 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Tableau常用操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-07-30T00:00:00+08:00" content="2021-07-30">
+              2021-07-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基础图表操作"><a href="#基础图表操作" class="headerlink" title="基础图表操作"></a>基础图表操作</h2><h3 id="1-拆分和合并字段"><a href="#1-拆分和合并字段" class="headerlink" title="1.拆分和合并字段"></a>1.拆分和合并字段</h3><p>拆分字段：字段点击右键</p>
+<p>合并字段：字段点击右键-创建-计算字段 （可拖拽）。显示“计算有效”后，点击完成后在数据源中查看</p>
+<a id="more"></a>  
+<blockquote>
+<p>例如：[类别] + ‘-‘ + [子类别]</p>
+</blockquote>
+<h3 id="2-创建文件夹和分层结构"><a href="#2-创建文件夹和分层结构" class="headerlink" title="2.创建文件夹和分层结构"></a>2.创建文件夹和分层结构</h3><p>创建文件夹：字段点击右键-文件夹 （用于结构化管理字段）</p>
+<p>分层结构：字段点击右键-分层结构-创建分层结构 （可用于维度下钻，注意有严格顺序）</p>
+<blockquote>
+<p>例如：创建”分层结构”，将国家、省、城市依次加入分层结构，那么当选择国家为行时，出现+，可用于下钻</p>
+</blockquote>
+<h3 id="3-计算字段、组、集、参数、数据桶"><a href="#3-计算字段、组、集、参数、数据桶" class="headerlink" title="3.计算字段、组、集、参数、数据桶"></a>3.计算字段、组、集、参数、数据桶</h3><p>计算字段：字段点击右键-创建-计算字段。显示“计算有效”后，点击完成后在数据源中查看。计算字段会在字段前显示有一个等号</p>
+<blockquote>
+<p>sum([利润])/[销售额]</p>
+</blockquote>
+<p>组：字段点击右键-创建-组（类似case when的分组作用）。选择字段，右键”添加到”或点击”分组”按钮，若已有分组，可直接选择”添加到”。组的标志为一个曲别针符号</p>
+<p>集：字段点击右键-创建-集（集是指选定了一个范围，只分为集合内和集合外）。选择“顶部”，写入名称，在”按字段”中选择”顶部10”，点击”确定”后左侧工具栏中多了集（标志为链接）。</p>
+<p>参数：上述集中，若TOPN的N不确定，可在10处选择为「创建新参数」，输入最小值/最大值/步长，点击”确定”后左侧工具栏中多了“参数”部分。参数可动态变化。</p>
+<p>数据桶：数据桶是直方图或条形图的<strong>频数</strong>分割区间。选择度量为”行”，”智能推荐”选择”直方图”，此时”列”会自动创建数据桶（在左侧维度字段处也可以看到）。字段点击右键-编辑，”数据桶大小”即为组距。也可以通过：字段点击右键-创建-数据桶实现上述过程。</p>
+<h3 id="4-地理角色"><a href="#4-地理角色" class="headerlink" title="4.地理角色"></a>4.地理角色</h3><p>字段点击右键-地理角色。例如：我们选择国家/地区，右键-地理角色-国家/地区，此时该字段标志变为地球。双击字段即可自动生成经纬度，呈现地图。</p>
+<h2 id="常见图表"><a href="#常见图表" class="headerlink" title="常见图表"></a>常见图表</h2><h3 id="1-条形图"><a href="#1-条形图" class="headerlink" title="1.条形图"></a>1.条形图</h3><p>将分类维度拖入“行”，将数值指标拖入”列”即可</p>
+<blockquote>
+<p>例如：“类别”、”区域”拖入”行”，“销售额”拖入”列”</p>
+</blockquote>
+<h3 id="2-折线图-面积图"><a href="#2-折线图-面积图" class="headerlink" title="2.折线图/面积图"></a>2.折线图/面积图</h3><p>折线图：将数值指标拖入”行”，分类维度拖入”列”，标记选为”线”。若行有M个指标，则会分为M个图。若想在一个图里展示不同类别，则将相应的字段拖入”标记”-“颜色”中即可。</p>
+<p>面积图：若希望为面积图，则标记选为”区域”即可。</p>
+<blockquote>
+<p>例如：“销售额”、”利润”拖入”行”，“年”拖入”列”。若想进一步拆分年到月，则在拖入”列”中的指标点击下拉小三角，选择”月”即可。（这里有两个”月”，上面的表示按月聚合group by month，下面表示按年月聚合group by year,month）</p>
+</blockquote>
+<h3 id="3-散点图"><a href="#3-散点图" class="headerlink" title="3.散点图"></a>3.散点图</h3><p>相关指标拖到”行”和”列”，标记选为”形状”，这时只会显示一个点，此时将维度拖到”标记”-“详细信息”即可。若希望进行美化，在标记中进行选择即可。</p>
+<blockquote>
+<p>例如：”销售额”拖入”行”、”利润”拖入”列”，”产品名称”拖入”详细信息”。美化：”标记”-“形状”选择散点的形状，”标记”-“颜色”调整透明度。</p>
+</blockquote>
+<h3 id="4-饼图"><a href="#4-饼图" class="headerlink" title="4.饼图"></a>4.饼图</h3><p>修改”标记”为”饼图”，饼图的数值字段拖入”标记”-“角度”，分类字段拖入”‘颜色”，标签字段拖入”标签”即可。</p>
+<blockquote>
+<p>例如：“销售额”拖到”标记”-“角度”处，”类别”拖到”颜色”处，则会根据类别显示各自的销售额。</p>
+</blockquote>
+<p>颜色优化：点击标记-颜色-编辑颜色，选择调色板后点击”分配调色板”，点击确定后生效。若想单独修改某个块的颜色，可在编辑颜色中，选择某个字段后，点击相应的颜色即可。</p>
+<p>添加标签：将想显示的内容对应的字段拖入标记-标签中，例如：将”类别”字段拖入”标签”，通过拖拽调整标签的位置。点击标记-标签，可修改字体。若想得到计算字段，可将字段拖入后，通过标记-下拉小三角-快速表计算-百分比得到。若希望修改显示格式，可通过标记-下拉小三角-设置格式进行修改。</p>
+<h3 id="5-气泡图"><a href="#5-气泡图" class="headerlink" title="5.气泡图"></a>5.气泡图</h3><p>将相应字段拖入行和列，选择”气泡图”即可。通常可用颜色、大小表示更多维度信息，将相应字段拖入标记-颜色/大小即可。</p>
+<blockquote>
+<p>销售额拖入”行”，子类别拖入”列”，智能推荐选择”气泡图”即可。利润拖入”颜色”，则可同时了解销售额与利润的关系。</p>
+</blockquote>
+<h3 id="6-文字云"><a href="#6-文字云" class="headerlink" title="6.文字云"></a>6.文字云</h3><p>将文本字段拖入标记-文本，将表示文本大小的字段拖入标记-大小即可。可进一步通过标记-颜色增加更多维度信息。</p>
+<blockquote>
+<p>子类别拖入”标记”-“文本”，销售额拖入”大小”，标记改为“文本”，利润拖入”颜色”。</p>
+</blockquote>
+<h3 id="7-树状图"><a href="#7-树状图" class="headerlink" title="7.树状图"></a>7.树状图</h3><p>将分类维度拖入”行”，数值型字段拖入”列”，智能推荐选择”树状图”。或分类维度拖入”标记”-“标签”，数值型字段拖入”标签”-“大小”</p>
+<blockquote>
+<p>例如：子类别拖入”行”，销售额拖入”大小”，标记改为“文本”，利润拖入”颜色”。</p>
+</blockquote>
+<h3 id="8-热图"><a href="#8-热图" class="headerlink" title="8.热图"></a>8.热图</h3><p>将分类维度拖入”行”，数值型字段拖入”列”，智能推荐选择”热图”。</p>
+<blockquote>
+<p>例如：省/自治区拖入”行”，销售额拖入”列”，智能推荐选择”热图”（相当于把销售额拖入”标记”-“大小”）。</p>
+</blockquote>
+<h3 id="9-凸显表"><a href="#9-凸显表" class="headerlink" title="9.凸显表"></a>9.凸显表</h3><p>将分类维度拖入”行”，数值型字段拖入显示的”列”中（此时为普通表），智能推荐选择”凸显表”。在右侧的控件中可进行颜色的选择。</p>
+<blockquote>
+<p>例如：省/自治区拖入”行”，销售额拖入表中，智能推荐选择”凸显表”。</p>
+</blockquote>
+<h2 id="高阶图表操作"><a href="#高阶图表操作" class="headerlink" title="高阶图表操作"></a>高阶图表操作</h2><h3 id="1-嵌套条形图"><a href="#1-嵌套条形图" class="headerlink" title="1.嵌套条形图"></a>1.嵌套条形图</h3><p>嵌套条形图即两个维度相同的条形图，显示在相同位置。</p>
+<p> <img src="Tableau1.png" style="zoom:50%;"></p>
+<p>将分类维度拖入”行”，数值型字段（多个）拖入”列”。在最后一个分类维度字段上点击右键，下拉菜单中选择”双轴”（此时图表类型可能会自动变为其他），在”标记处”改回”条形图”类型。在左侧轴右键，选择”同步轴”，则左右两个坐标轴的范围一致，此时再右侧轴右键，去掉勾选“显示标题”，则变为只显示一个轴。</p>
+<blockquote>
+<p>例如：为了对比2020年和2021年的销售额，先创建计算字段：</p>
+<p>IF YEAR([订单日期])=2020 then [销售额] end</p>
+<p>IF YEAR([订单日期])=2021 then [销售额] end</p>
+<p>后续过程与上述介绍一致</p>
+</blockquote>
+<h3 id="2-子弹图"><a href="#2-子弹图" class="headerlink" title="2.子弹图"></a>2.子弹图</h3><p>子弹图通常用于表示「预估值」与「完成值」之间的差异。</p>
+<p><img src="Tableau2.png" style="zoom:50%;"></p>
+<p>将分类维度拖入”行”，数值型字段（完成值）拖入”列”。数值型字段（预估值）拖入”标记”-“详细信息”。点击左侧”分析tab”，选择”自定义”-“参考线”（也可以在图表中右击选择”添加参考线”），拖入”单元格”。在跳出的编辑窗口内，”线”-“值”选择为预估值的字段，选择”最大值”。</p>
+<p>若希望比较的是各分位区间的值，可在图表右键，选择”添加参考线”，顶部选择”分布”，选择”每单元格”，”计算”-“值”选择百分位，输入百分位数字，字段选择为预估值的字段，”计算”-“标签”选择为”无”，格式勾选”向上填充”和”向下填充”，颜色选择”停止指示灯”。</p>
+<p>如果希望对「已完成」和「未完成」的图进行区分，那么可以创建字段”是否完成”，再将该字段拖入”标记”-“颜色”即可。</p>
+<blockquote>
+<p>例如：为了对比实际销售额与预估销售额之间的关系，将”产品类别”、”产品名称”拖入”行”，”销售额”拖入”列”。预估销售额拖入”标记”-“详细信息”。后续操作与上述介绍一致。</p>
+<p>其中，用于区分「已完成」和「未完成」的公式可以输入：sum([销售额]) &gt;= sum([预估销售额 ])</p>
+</blockquote>
+<h3 id="3-瀑布图"><a href="#3-瀑布图" class="headerlink" title="3.瀑布图"></a>3.瀑布图</h3><p><img src="Tableau3.png" style="zoom:50%;"></p>
+<p>将分类维度拖入”列”，数值型字段拖入”行”，点击数值型字段右侧小三角，选择”快速表计算”，选择”汇总”。”标记”选择”甘特条形图”，创建相关字段后再次拖入”标记”-“大小”。</p>
+<blockquote>
+<p>例如：为了反映子类别和利润的大小关系（累计利润/单项利润），将”子类别拖入”列”，利润拖入”行”。点击利润字段右侧小三角，选择”快速表计算”，选择”汇总”（此时成为汇总情况）。创建计算字段：负利润，输入公式：-[利润]，将”负利润”字段拖入”标记”-“大小”。</p>
+<p>还可以增加累计利润的值，顶部菜单选择”分析”，”合计”-“显示行总和”</p>
+<p>为了显示利润的正负，可将”负利润”字段拖入”标记”-“颜色”</p>
+</blockquote>
+<h3 id="4-箱线图（盒须图）"><a href="#4-箱线图（盒须图）" class="headerlink" title="4.箱线图（盒须图）"></a>4.箱线图（盒须图）</h3><p>统计学上度量数据离散型的指标有以下5种：</p>
+<p><img src="Tableau4.png" style="zoom:30%;"></p>
+<p>1.<strong>全距（极差）</strong>：最大值-最小值，反映数据段的离散程度。全距受到异常值影响非常大，所以需要引入四分位数。</p>
+<p>2.<strong>四分位数</strong>：指的是将数据分成4等分的3个数值，最大的四分位数被称为上四分位数，最小的四分位数被称为下四分位数，中间的四分位数就是中位数。</p>
+<p>  <strong>四分位距（IQR）</strong>：四分位距=上四分位数Q3-下四分位数Q1（由于四分位距只用了中心部分50%的数据，所以能剔除异常值）。</p>
+<p>  <strong>异常值</strong>：Q3+1.5IQR和Q1－1.5IQR，这两条线段为<a href="https://baike.baidu.com/item/异常值" target="_blank" rel="noopener">异常值</a>截断点，称其为内限，也就是箱线图上下两个边界。</p>
+<p>3.<strong>百分位数</strong>：与四分位数的原理相同，不过此时数据被划分为100等份，四分位数也是百分位数的一种</p>
+<p>以下2个指标与箱线图无关，作为离散类指标的扩展内容：</p>
+<p>4.<strong>方差</strong>：方差是每一个样本和均值之间的距离的平方之和，我们通常用方差度量变异性。但由于方差是距离的平方，因此并不值观。</p>
+<p>5.<strong>标准差</strong>：由于方差不具有解释性，我们对方差进行修正得到标准差，即对方差开平方得到标准差。标准差的另一个重要用途为：<strong>标准分</strong>。标准分提供了一种不同数据集之间进行比较的方法，通过标准分将其化为标准正态分布。</p>
+<p><img src="Tableau6.png" style="zoom:50%;"></p>
+<p><img src="Tableau5.png" style="zoom:50%;"></p>
+<p>将数值型字段拖入”行”，单元维度字段拖入”标记”-“详细信息”，此时，每一条记录都是一个点。智能推荐选择”盒须图”。</p>
+<p>若想进一步分类，可将分类维度拖入”列”。</p>
+<blockquote>
+<p>例如：将销售额拖入”行”，客户名称拖入”标记”-“详细信息”，智能推荐选择”盒须图”，”区域”拖入”列”。</p>
+</blockquote>
+<h3 id="5-环形图"><a href="#5-环形图" class="headerlink" title="5.环形图"></a>5.环形图</h3><p>Tableau中其实并没有环形图这一图表类型，但我们可以通过构造两个饼图来模拟环形图。</p>
+<p><img src="Tableau7.png" style="zoom:50%;"></p>
+<p>在左侧数据集中同时选中维度字段和数值型字段，在”智能推荐”里选择”饼图”。任意选择另外一个字段（以下称为”辅助字段”），拖入”行”，此时饼图会被拆成多个子图。在辅助字段右侧小三角下拉菜单中”度量(总和)”选择”计数(不同)”，饼图恢复。</p>
+<p>复制辅助字段到”行”，此时”行”有两个辅助字段，饼图会有两个。在第二个（右侧）辅助字段右侧小三角下拉菜单中，选择”双轴”（此时恢复为一个饼图，但具有左右两个坐标轴，此方式为两个图合并为一个图的通用操作方法），若左右两侧坐标轴不相同，可右击坐标轴，选择”同步轴”。</p>
+<p>此时”标记”栏中有两个饼图，在第二个饼图中，将所有字段（维度字段和数值型字段）拖回，修改大小即可。</p>
+<blockquote>
+<p>例如：同时选择”细分”和”销售额”，智能推荐选择”饼图”，”区域”拖入”列”。选择”数量”拖入”行”，在字段下拉菜单中”度量(总和)”选择”计数(不同)”。后续操作与上述介绍一致。</p>
+</blockquote>
+<h3 id="6-帕累托图"><a href="#6-帕累托图" class="headerlink" title="6.帕累托图"></a>6.帕累托图</h3><p>将分类维度拖入”列”，数值型字段拖入显示的”行”中，在顶部菜单栏选择降序排序。创建计算字段。后续操作步骤较为复杂，可参见下述例子。</p>
+<p><img src="Tableau8.png" style="zoom:30%;"></p>
+<blockquote>
+<p>例如：为了验证是否由20%的头部用户贡献了80%的价值，将”利润”拖入”行”。创建计算字段”获客数量累计占比”，index()/size()，点击默认表计算，计算定义选择”客户Id”。将”获客数量累计占比”拖入”列”，客户id拖入”标记”-“详细信息”，在”标记”中的”客户Id”字段点击下三角，点击”排序”，排序依据选择”字段”，排序顺序选择”降序”，字段名称选择”利润”，聚合保持默认”总和”。”标记”选择区域图。</p>
+<p>为了让Y轴也显示为百分比，在”行”的”利润”字段点击下三角，点击”添加表计算”，计算类型选择”汇总”，计算依据选择”特定维度”，勾选”客户Id”。勾选”添加辅助计算”，从属计算类型选择”合计百分比”，计算依据选择”特定维度”，勾选”客户Id”。</p>
+<p>为了更好地展示20%与80%的关系，点击左侧”分析tab”，选择”汇总”-“常量线”拖入”获客数量累计占比”，输入0.2。再选择”汇总”-“常量线”拖入”利润”，输入0.8即可。</p>
+</blockquote>
+<h3 id="7-动态图"><a href="#7-动态图" class="headerlink" title="7.动态图"></a>7.动态图</h3><p>动态图是分页实现的。</p>
+<p>将动态变化的维度拖入”列”，数值型指标拖入”行”，复制”列”中的维度，拖入”页面”。此时可在右侧页面控件中选择具体页面或播放。播放的设置如下图：左侧三个按钮分别为：向后播放、停止播放、向前播放。右侧三个按钮分别表示播放速率由慢到快。若希望播放时显示历史点轨迹，可点击”显示历史记录”，点击”全部”等。</p>
+<blockquote>
+<p>例如：为了对比近几年公司的销量和利润情况，将”订单日期(月)”拖入”列”，”销售额”和”利润”拖入”行”，此时形成了上下两个图形，可用于观测销售和利润随着时间的推移二者的关系和走向。</p>
+</blockquote>
+<h3 id="8-雷达图"><a href="#8-雷达图" class="headerlink" title="8.雷达图"></a>8.雷达图</h3><p><img src="Tableau14.png" style="zoom:50%;"></p>
+<p><strong>添加雷达图背景</strong>：</p>
+<p>雷达图的背景是需要人工添加图片的。顶部菜单-地图-背景图像，选择当前数据源。点击”添加图像”，选择雷达图背景，设置X字段和Y字段</p>
+<p><strong>雷达图绘制：</strong></p>
+<p>创建字段（angle, 角度）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RUNNING_SUM(2*PI()/Indicator_Numbers)+PI()/2</span><br><span class="line"></span><br><span class="line">其中，Indicator_Numbers代表维度，也就是雷达的边数。若具体到某个场景下，也可以用MIN(COUNTD([字段]))来代替。PI()/2 是指偏移量</span><br></pre></td></tr></table></figure>
+<p>创建字段（distance from center, 每个指标到中心的距离）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AVG([字段])</span><br></pre></td></tr></table></figure>
+<p>创建字段（X, 绘制到雷达图上的位置）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[distance from center]*COS([angle])</span><br></pre></td></tr></table></figure>
+<p>创建字段（Y, 绘制到雷达图上的位置）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[distance from center]*SIN([angle])</span><br></pre></td></tr></table></figure>
+<p>X拖到”列”，计算依据选择”Indicator”，Y拖到”行”，计算依据选择”Indicator”。”标记”选择”多边形”，字段Indicator拖入”标记”-“详细信息”，点击右侧小三角下拉菜单，点击”排序”，选择”降序”。字段”angle”拖入”标记”-“路径”。</p>
+<p>添加顶部圆点：在”列”中复制X字段，在复制的字段中点击右侧按钮，选择”双轴”，”标记”中第二个X选择”圆”即可。</p>
+<h2 id="基础函数"><a href="#基础函数" class="headerlink" title="基础函数"></a>基础函数</h2><p>计算函数：ABS、SQRT、square</p>
+<p>字符串函数：contains、startswith、endswith、find、left、mid、right、len、lower、upper</p>
+<p>日期函数：isdate、dateadd、datediff、year、month、day、now、today</p>
+<p>聚合函数：count、countd(distinct)、sum、avg、median、max、min</p>
+<p>逻辑句式：if…then…elseif…then..else…end、case…when…then…else…end</p>
+<p>表计算函数：index、size、rank、running类函数、window类函数</p>
+<blockquote>
+<p>累计占比：index()/size()，通常结合默认表计算中的”计算定义”进行使用</p>
+</blockquote>
+<p><strong>延伸知识：sum、running_sum、window_sum、total这四种方式的差别？</strong></p>
+<p><strong>sum(exp)：单元格累计</strong></p>
+<p>返回表达式中所有值的总计。</p>
+<p><img src="Tableau10.png" style="zoom:30%;"></p>
+<p><strong>running_sum(exp)：逐行/列累计</strong></p>
+<p>返回给定表达式从分区中第一行到当前行的运行总计（可通过修改计算依据来修改行的定义方式），下图显示的结果为：以表(横穿)计算结果。</p>
+<p><img src="Tableau11.png" style="zoom:30%;"></p>
+<blockquote>
+<p>注：可通过修改running_sum字段的”计算依据”来修改累计的方式，包括表(横穿)、表(向下)、表(横穿,然后向下)、表(向下,然后横穿)、单元格等，与具体的行列字段有关</p>
+</blockquote>
+<p><strong>window_sum(exp,first,last)：窗口累计</strong></p>
+<p>返回窗口中表达式的总计。窗口用与当前行的偏移定义，使用first()+n和last()-n表示与分区中第一行或最后一行的偏移。</p>
+<p><img src="Tableau12.png" style="zoom:30%;"></p>
+<p><strong>total(exp)：窗口累计</strong></p>
+<p>返回给定表达式的总计。相当于window_sum(exp,first(),last())，但由于只有一个参数没有window_sum灵活。</p>
+<p><img src="Tableau13.png" style="zoom:30%;"></p>
+<h2 id="详细级别表达式-LOD"><a href="#详细级别表达式-LOD" class="headerlink" title="详细级别表达式/LOD"></a>详细级别表达式/LOD</h2><p>我们可通过改变列、行的字段设置数据的粒度，高聚合度意味着低颗粒度，即LOD（Level Of Detail）表达式。</p>
+<p>FIXED可用于固定数据的最小颗粒度。当数据的颗粒度<strong>高于</strong>设置的FIXED粒度时，会正常显示数据；当<strong>低于</strong>设置的FIXED粒度时，显示FIXED粒度数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIXED ([dim1 [, dim2] ... ]) 仅使用指定的维度计算聚合</span><br></pre></td></tr></table></figure>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>数据集：Tableau自带数据集 Sample - China Superstore</p>
+<p>内容来源：</p>
+<p>1.网易云课堂 - Tableau数据分析</p>
+<p>2.微信公众号 - 数据分析且徐行</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tableau/" rel="tag">#Tableau</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/商业分析/2021-07-29-logistic-regression/" rel="next" title="逻辑回归算法">
+                <i class="fa fa-chevron-left"></i> 逻辑回归算法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/商业分析/2021-08-01-abtest-1/" rel="prev" title="A/B测试（一）- 统计基础">
+                A/B测试（一）- 统计基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">95</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础图表操作"><span class="nav-number">1.</span> <span class="nav-text">基础图表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-拆分和合并字段"><span class="nav-number">1.1.</span> <span class="nav-text">1.拆分和合并字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-创建文件夹和分层结构"><span class="nav-number">1.2.</span> <span class="nav-text">2.创建文件夹和分层结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-计算字段、组、集、参数、数据桶"><span class="nav-number">1.3.</span> <span class="nav-text">3.计算字段、组、集、参数、数据桶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-地理角色"><span class="nav-number">1.4.</span> <span class="nav-text">4.地理角色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见图表"><span class="nav-number">2.</span> <span class="nav-text">常见图表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-条形图"><span class="nav-number">2.1.</span> <span class="nav-text">1.条形图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-折线图-面积图"><span class="nav-number">2.2.</span> <span class="nav-text">2.折线图/面积图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-散点图"><span class="nav-number">2.3.</span> <span class="nav-text">3.散点图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-饼图"><span class="nav-number">2.4.</span> <span class="nav-text">4.饼图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-气泡图"><span class="nav-number">2.5.</span> <span class="nav-text">5.气泡图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-文字云"><span class="nav-number">2.6.</span> <span class="nav-text">6.文字云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-树状图"><span class="nav-number">2.7.</span> <span class="nav-text">7.树状图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-热图"><span class="nav-number">2.8.</span> <span class="nav-text">8.热图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-凸显表"><span class="nav-number">2.9.</span> <span class="nav-text">9.凸显表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高阶图表操作"><span class="nav-number">3.</span> <span class="nav-text">高阶图表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-嵌套条形图"><span class="nav-number">3.1.</span> <span class="nav-text">1.嵌套条形图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-子弹图"><span class="nav-number">3.2.</span> <span class="nav-text">2.子弹图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-瀑布图"><span class="nav-number">3.3.</span> <span class="nav-text">3.瀑布图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-箱线图（盒须图）"><span class="nav-number">3.4.</span> <span class="nav-text">4.箱线图（盒须图）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-环形图"><span class="nav-number">3.5.</span> <span class="nav-text">5.环形图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-帕累托图"><span class="nav-number">3.6.</span> <span class="nav-text">6.帕累托图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-动态图"><span class="nav-number">3.7.</span> <span class="nav-text">7.动态图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-雷达图"><span class="nav-number">3.8.</span> <span class="nav-text">8.雷达图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础函数"><span class="nav-number">4.</span> <span class="nav-text">基础函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详细级别表达式-LOD"><span class="nav-number">5.</span> <span class="nav-text">详细级别表达式/LOD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">6.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
