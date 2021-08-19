@@ -84,13 +84,13 @@
 
 
 
-<meta name="description" content="测试结果不显著，要怎么改善测试结果不显著可能有方面的原因：  A/B 测试确实没有效果，所以两组的指标是相同的。 A/B 测试有效果，但由于变化程度很小（数据集导致，我们不可控），测试的灵敏度（Power）不足（我们可控），所以并没有检测到两组指标的不同。  对于第一种原因，我们考虑放弃测试的实验组即可。下面我们着重讲">
+<meta name="description" content="测试结果不显著，要怎么改善测试结果不显著可能有方面的原因：  A/B 测试确实没有效果，所以两组的指标是相同的。 A/B 测试有效果，但由于变化程度很小（数据集导致，我们不可控），测试的灵敏度（Power）不足（我们可控），所以并没有检测到两组指标的不同。">
 <meta name="keywords" content="数理基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A&#x2F;B测试（三）- 常见误区及解决办法">
 <meta property="og:url" content="http://www.xinxiaoyang/商业分析/2021-08-12-abtest-3/index.html">
 <meta property="og:site_name" content="昕小阳的博客">
-<meta property="og:description" content="测试结果不显著，要怎么改善测试结果不显著可能有方面的原因：  A/B 测试确实没有效果，所以两组的指标是相同的。 A/B 测试有效果，但由于变化程度很小（数据集导致，我们不可控），测试的灵敏度（Power）不足（我们可控），所以并没有检测到两组指标的不同。  对于第一种原因，我们考虑放弃测试的实验组即可。下面我们着重讲解第二种原因，从 A/B 测试的角度进行一些优化和调整。具体来说就是，通过提高">
+<meta property="og:description" content="测试结果不显著，要怎么改善测试结果不显著可能有方面的原因：  A/B 测试确实没有效果，所以两组的指标是相同的。 A/B 测试有效果，但由于变化程度很小（数据集导致，我们不可控），测试的灵敏度（Power）不足（我们可控），所以并没有检测到两组指标的不同。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-12-abtest-3/abtestquestion1.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-12-abtest-3/abtestquestion2.png">
@@ -99,10 +99,10 @@
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-12-abtest-3/abtestquestion5.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-12-abtest-3/abtestquestion8.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-12-abtest-3/abtestquestion6.png">
-<meta property="og:updated_time" content="2021-08-19T01:49:56.510Z">
+<meta property="og:updated_time" content="2021-08-19T01:55:18.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A&#x2F;B测试（三）- 常见误区及解决办法">
-<meta name="twitter:description" content="测试结果不显著，要怎么改善测试结果不显著可能有方面的原因：  A/B 测试确实没有效果，所以两组的指标是相同的。 A/B 测试有效果，但由于变化程度很小（数据集导致，我们不可控），测试的灵敏度（Power）不足（我们可控），所以并没有检测到两组指标的不同。  对于第一种原因，我们考虑放弃测试的实验组即可。下面我们着重讲解第二种原因，从 A/B 测试的角度进行一些优化和调整。具体来说就是，通过提高">
+<meta name="twitter:description" content="测试结果不显著，要怎么改善测试结果不显著可能有方面的原因：  A/B 测试确实没有效果，所以两组的指标是相同的。 A/B 测试有效果，但由于变化程度很小（数据集导致，我们不可控），测试的灵敏度（Power）不足（我们可控），所以并没有检测到两组指标的不同。">
 <meta name="twitter:image" content="http://www.xinxiaoyang/商业分析/2021-08-12-abtest-3/abtestquestion1.png">
 
 
@@ -330,6 +330,7 @@
 <li>A/B 测试确实没有效果，所以两组的指标是相同的。</li>
 <li>A/B 测试有效果，但由于变化程度很小（数据集导致，我们不可控），测试的灵敏度（Power）不足（我们可控），所以并没有检测到两组指标的不同。</li>
 </ul>
+<a id="more"></a>
 <p>对于第一种原因，我们考虑放弃测试的实验组即可。下面我们着重讲解第二种原因，从 A/B 测试的角度进行一些优化和调整。具体来说就是，<strong>通过提高 Power 来提高 A/B 测试的检测灵敏度</strong>。</p>
 <p>有什么方法可以提高 Power 呢？</p>
 <p>由于样本量的估算公式如下</p>
