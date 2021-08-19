@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-01-abtest-1/abtest7.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-01-abtest-1/abtest8.png">
 <meta property="og:image" content="http://www.xinxiaoyang/商业分析/2021-08-01-abtest-1/abtest9.png">
-<meta property="og:updated_time" content="2021-08-12T14:56:57.005Z">
+<meta property="og:updated_time" content="2021-08-17T07:11:52.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A&#x2F;B测试（一）- 统计基础">
 <meta name="twitter:description" content="在下面的内容中，我们将会讲到一个定理、两个分布和三个概念：  一个定理：中心极限定理。 两个分布：正态分布和二项分布。 三个概念：方差，标准差和 z 分数。">
@@ -365,9 +365,9 @@
 <p>由于样本量这一表述可能会存在歧义（究竟是计算均值的样本量还是重复抽样的次数），在这里写成以下形式：</p>
 <p>假设单个样本 x 服从 A 分布（非正态分布），我们构造一个新的变量X，可表述为 N 个 x 样本的均值，当N &gt; 30时样本 X 服从正态分布（可通过大量重复抽取 X 样本画图验证，即此时的抽取次数并不是我们所要求的样本量）。</p>
 <h3 id="二项分布（Binomial-Distribution）"><a href="#二项分布（Binomial-Distribution）" class="headerlink" title="二项分布（Binomial Distribution）"></a>二项分布（Binomial Distribution）</h3><p>前面我们提到，概率类指标可以既服从二项分布又服从正态分布，这是为什么呢？业务中的概率类指标，具体到用户行为时，结果只有两种：要么发生，要么不发生。</p>
-<p>这种单个的二元事件（Binary Event）是伯努利分布，多个伯努利分布就服从二项分布（Binomial Distribution）。举个例子，假设现在我们想通过数据看App下载率的分布情况，那么单个用户下载则是个二元事件，要么下载要么不下载。</p>
+<p>这种单个的二元事件（Binary Event）是伯努利分布，多个伯努利分布就服从二项分布（Binomial Distribution）。举个例子，假设现在我们想通过数据看App下载率的分布情况，单个用户下载是个二元事件，要么下载要么不下载，下载率相当于多个独立的伯努利实验（N个用户）中有X次实验发生的概率（M个用户下载），即P(X=x)。</p>
 <blockquote>
-<p> 下载率 = 通过广告下载 App 的用户数量 / 看到广告的用户数量。</p>
+<p> 下载率 = 通过广告下载 App 的用户数量 / 看到广告的用户数量</p>
 </blockquote>
 <p>这里我们以分钟为单位来举例，先计算每分钟的下载率。经数据分析，每分钟平均有 10 个人会看到广告，下载率集中分布在 0-30% 之间，概率分布如下：</p>
 <p><img src="abtest6.png"></p>
@@ -552,7 +552,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">95</span>
+              <span class="site-state-item-count">96</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
