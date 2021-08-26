@@ -1,0 +1,695 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="机器学习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="分类混淆矩阵">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习性能评估指标">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="分类混淆矩阵">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/model-performance1.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/model-performance2.svg">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/model-performance3.svg">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/model-performance5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/model-performance6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/model-performance4.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/model-performance7.jpg">
+<meta property="og:updated_time" content="2021-08-20T07:34:36.093Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习性能评估指标">
+<meta name="twitter:description" content="分类混淆矩阵">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2021-08-19-model-performance/model-performance1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2021-08-19-model-performance/"/>
+
+
+  <title> 机器学习性能评估指标 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                机器学习性能评估指标
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-08-19T00:00:00+08:00" content="2021-08-19">
+              2021-08-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h3><a id="more"></a>
+<p><img src="model-performance1.jpg" style="zoom:50%;"></p>
+<ul>
+<li>True Positive(真正, TP)：将正类预测为正类数</li>
+<li>True Negative(真负 , TN)：将负类预测为负类数</li>
+<li>False Positive(假正, FP)：将负类预测为正类数 -&gt; <strong>误报</strong> (Type I error)</li>
+<li>False Negative(假负 , FN)：将正类预测为负类数 -&gt; <strong>漏报</strong> (Type II error)</li>
+</ul>
+<h3 id="准确率-精确率-召回率"><a href="#准确率-精确率-召回率" class="headerlink" title="准确率/精确率/召回率"></a>准确率/精确率/召回率</h3><p><strong>准确率（Accuracy）</strong> ：</p>
+<blockquote>
+<p>通俗解释： 在所有样本中，预测正确的概率</p>
+</blockquote>
+<p><strong>精确率（Precision）</strong>是针对我们<strong>预测结果</strong>而言的，它表示的是预测为正的样本中有多少是对的。那么预测为正就有两种可能了，一种就是把正类预测为正类(TP)，另一种就是把负类预测为正类(FP)。</p>
+<blockquote>
+<p>通俗解释：你认为的正样本中，有多少是真的正确的概率</p>
+</blockquote>
+<p><img src="model-performance2.svg"></p>
+<p>需要注意的是<strong>精确率</strong>(precision)和<strong>准确率</strong>(accuracy)是不一样的，在正负样本不平衡的情况下，准确率这个评价指标有很大的缺陷。</p>
+<blockquote>
+<p>例如：在互联网广告里面，点击的数量是很少的，一般只有千分之几，如果用acc，即使全部预测成负类（不点击）acc 也有 99% 以上，没有意义。</p>
+</blockquote>
+<p><strong>召回率(recall/True Positive Rate/TPR)</strong>是针对我们原来的<strong>样本</strong>而言的，它表示的是样本中的正例有多少被预测正确了。那也有两种可能，一种是把原来的正类预测成正类(TP)，另一种就是把原来的正类预测为负类(FN)。</p>
+<blockquote>
+<p>通俗解释：正样本中有多少是被找了出来</p>
+</blockquote>
+<p><img src="model-performance3.svg"></p>
+<h3 id="F值"><a href="#F值" class="headerlink" title="F值"></a>F值</h3><p>F 值是精确率和召回率的<strong>调和均值</strong>，当精确率和准确率都高的情况下，F 值也会高。</p>
+<p><img src="model-performance5.png"></p>
+<p>当参数α=1时，就是最常见的F1：</p>
+<p><img src="model-performance6.png"></p>
+<blockquote>
+<p>例如：某池塘有1400条鲤鱼，300只虾，300只鳖。<strong>现在以捕鲤鱼为目的</strong>。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：</p>
+<p>准确率 = 700/(1400+300+300) = 35%</p>
+<p>精确率 = 700/（700+200+100）=70%</p>
+<p>召回率 = 700/1400 = 50%</p>
+<p>F1 = (50%<em>70%</em>2)/(50%+70%) = 58.33%</p>
+</blockquote>
+<h3 id="ROC-曲线"><a href="#ROC-曲线" class="headerlink" title="ROC 曲线"></a>ROC 曲线</h3><p>维基百科定义：</p>
+<p>In signal detection theory, a receiver operating characteristic (ROC), or simply ROC curve, is a graphical plot which illustrates the performance of a binary classifier system <strong>as its discrimination threshold is varied</strong>.</p>
+<p>ROC曲线涉及到一个阀值，线上每个点对应一个阈值，是回归当中划分正/负类别的分割点。</p>
+<p>比如在逻辑回归里面，我们会设一个阈值，大于这个值的为正类，小于这个值为负类。如果我们减小这个阀值，那么更多的样本会被识别为正类。这会提高正类的识别率，但同时也会使得更多的负类被错误识别为正类。为了形象化这一变化，在此引入 ROC ，ROC 曲线可以用于评价一个分类器好坏。</p>
+<p>通过设定一个阈值如0.6，概率大于等于0.6的为正类，小于0.6的为负类。对应的就可以算出一组(FPR,TPR),在平面中得到对应坐标点。随着阈值的逐渐减小，越来越多的实例被划分为正类，但是这些正类中同样也掺杂着真正的负实例，即TPR和FPR会同时增大。阈值最大时，对应坐标点为(0,0),阈值最小时，对应坐标点(1,1)。</p>
+<p>ROC 关注两个指标，TPR 和FPR。TPR 代表能将正例分对的概率，FPR 代表将负例错分为正例的概率。在 ROC 空间中，每个点的横坐标是 FPR，纵坐标是 TPR，这也就描绘了分类器在 TP（<strong>真正率</strong>）和 FP（<strong>假正率</strong>）间的 trade-off。</p>
+<p><img src="model-performance4.jpg" style="zoom:50%;"></p>
+<ul>
+<li><p>纵轴 TPR：被预测为 1 的，且真实为 1 （命中率）</p>
+</li>
+<li><ul>
+<li>TPR = TP / (TP + FN) = TP / P。所有真实类别为 1 的样本中，预测为 1 的比例，越大表示预测的 1 中，实际 1 越多</li>
+</ul>
+</li>
+<li><p>横轴 FPR：被预测为 1 的，但真实为 0 （误诊率）</p>
+</li>
+<li><ul>
+<li>FPR = FP / (FP + TN) = FN / N。所有真实类别为 0 的样本中，预测为 1 的比例，越大表示预测的 1 中，实际 0 越多</li>
+</ul>
+</li>
+</ul>
+<h4 id="为什么使用ROC曲线"><a href="#为什么使用ROC曲线" class="headerlink" title="为什么使用ROC曲线?"></a>为什么使用ROC曲线?</h4><p>既然已经这么多评价标准，为什么还要使用ROC和AUC呢？因为ROC曲线有个很好的特性：当测试集中的正负样本的分布变化的时候，ROC曲线能够保持不变。在实际的数据集中经常会出现类不平衡（class imbalance）现象，即负样本比正样本多很多（或者相反），而且测试数据中的正负样本的分布也可能随着时间变化。下图是ROC曲线和Precision-Recall曲线的对比：</p>
+<p><img src="model-performance7.jpg" style="zoom:50%;"></p>
+<p>在上图中，(a)和(c)为ROC曲线，(b)和(d)为Precision-Recall曲线。(a)和(b)展示的是分类其在原始测试集（正负样本分布平衡）的结果，(c)和(d)是将测试集中负样本的数量增加到原来的10倍后，分类器的结果。可以明显的看出，ROC曲线基本保持原貌，而Precision-Recall曲线则变化较大。</p>
+<h3 id="AUC"><a href="#AUC" class="headerlink" title="AUC"></a>AUC</h3><p>AUC（Area Under Curve）被定义为ROC曲线下的面积，这个面积的数值不会大于1。</p>
+<p>The AUC value is equivalent to the probability that a randomly chosen positive example is ranked higher than a randomly chosen negative example.</p>
+<p>随机挑选一个正样本以及一个负样本，分类器判定正样本的值高于负样本的概率就是 AUC 值。AUC值越大的分类器，正确率越高。</p>
+<ul>
+<li>AUC = 1，<strong>完美分类器</strong>，采用这个预测模型时，不管设定什么阈值都能得出完美预测。绝大多数预测的场合，不存在完美分类器。</li>
+<li>0.5 &lt; AUC &lt; 1，优于<strong>随机猜测</strong>。这个分类器（模型）妥善设定阈值的话，能有预测价值。</li>
+<li>AUC = 0.5，跟<strong>随机猜测一样</strong>（例：丢铜板），模型没有预测价值。</li>
+<li>AUC &lt; 0.5，比<strong>随机猜测</strong>还差；但只要总是反预测而行就优于随机猜测，因此不存在 AUC &lt; 0.5 的情况。</li>
+</ul>
+<h2 id="回归"><a href="#回归" class="headerlink" title="回归"></a>回归</h2><h3 id="平均绝对误差"><a href="#平均绝对误差" class="headerlink" title="平均绝对误差"></a>平均绝对误差</h3><p>平均绝对误差MAE（Mean Absolute Error）又被称为 L1 范数损失（l1-norm loss）：</p>
+<h3 id="平均平方误差"><a href="#平均平方误差" class="headerlink" title="平均平方误差"></a>平均平方误差</h3><p>平均平方误差 MSE（Mean Squared Error）又被称为 L2 范数损失（l2-norm loss）：</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>知乎问题：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/30459095" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/30459095</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/146711298" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/146711298</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/商业分析/2021-08-12-abtest-3/" rel="next" title="A/B测试（三）- 常见误区及解决办法">
+                <i class="fa fa-chevron-left"></i> A/B测试（三）- 常见误区及解决办法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#混淆矩阵"><span class="nav-number">1.1.</span> <span class="nav-text">混淆矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准确率-精确率-召回率"><span class="nav-number">1.2.</span> <span class="nav-text">准确率/精确率/召回率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F值"><span class="nav-number">1.3.</span> <span class="nav-text">F值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROC-曲线"><span class="nav-number">1.4.</span> <span class="nav-text">ROC 曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么使用ROC曲线"><span class="nav-number">1.4.1.</span> <span class="nav-text">为什么使用ROC曲线?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AUC"><span class="nav-number">1.5.</span> <span class="nav-text">AUC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归"><span class="nav-number">2.</span> <span class="nav-text">回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#平均绝对误差"><span class="nav-number">2.1.</span> <span class="nav-text">平均绝对误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平均平方误差"><span class="nav-number">2.2.</span> <span class="nav-text">平均平方误差</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">3.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
