@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-11.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-14.png">
 <meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-13.png">
-<meta property="og:updated_time" content="2021-11-18T21:57:59.964Z">
+<meta property="og:updated_time" content="2021-11-18T22:02:22.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tableau南丁格尔玫瑰图">
 <meta name="twitter:description" content="发展背景由著名的英国护士及统计学家弗罗伦斯·南丁格尔发明，又名为极区图，南丁格尔自己常昵称这类图为鸡冠花图，是一种圆形的直方图。在19世纪50年代的克里米亚战争中，南丁格尔使用这种图表揭示英军死亡的主要原因实际是在战场外感染疾病，以及在战场上受伤后没有适当的护理而伤重致死，真正死在战场上的人反而不多，汇报对象是那些不太能理解传统统计报表的公务人员，甚至成功打动了维多利亚女王，从而成功改善了战地医院">
@@ -336,13 +336,13 @@
 <a id="more"></a>  
 <p><img src="tableau-nightingale-rose-1.jpg"></p>
 <h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><p>我们以下图数据为基础来做图，做南丁格尔玫瑰图的基础数据需要两个必备的字段： <strong>分类</strong>（用于分区）和 <strong>半径大小</strong>（用于展现分区的大小）。这里分类可以有多级，即在每个分区中进一步通过不同颜色拆分类别。</p>
-<p><img src="tableau-nightingale-rose-2.png" style="zoom:73%;"></p>
+<p><img src="tableau-nightingale-rose-2.png" style="zoom:50%;"></p>
 <p>在正式做图之前，我们要对源数据进行处理：① 新增一列，命名为Path，取值均为1  ② 复制所有数据，将复制后的数据Path列修改为102</p>
-<p><img src="tableau-nightingale-rose-3.png" style="zoom:73%;"></p>
-<h2 id="南丁格尔玫瑰图"><a href="#南丁格尔玫瑰图" class="headerlink" title="南丁格尔玫瑰图"></a>南丁格尔玫瑰图</h2><p>打开 Tableau 连接数据，创建 [Path] 字段的数据桶，数据桶大小修改为1。</p>
-<p><img src="tableau-nightingale-rose-4.png" style="zoom: 50%;"></p>
+<p><img src="tableau-nightingale-rose-3.png" style="zoom:50%;"></p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>打开 Tableau 连接数据，创建 [Path] 字段的数据桶，数据桶大小修改为1。</p>
+<p><img src="tableau-nightingale-rose-4.png" style="zoom: 40%;"></p>
 <p>如下图创建8个计算字段。其中 Radius 需将半径字段根据实际数据进行替换，其他字段无需做修改。</p>
-<p><img src="tableau-nightingale-rose-5.png" style="zoom: 50%;"></p>
+<p><img src="tableau-nightingale-rose-5.png" style="zoom: 40%;"></p>
 <p>文字版（供复制）：</p>
 <ol>
 <li>Angle = ([Edges]-1)<em>(2</em>PI()/WINDOW_MAX([Edges]))</li>
@@ -524,7 +524,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发展背景"><span class="nav-number">1.</span> <span class="nav-text">发展背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据准备"><span class="nav-number">2.</span> <span class="nav-text">数据准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#南丁格尔玫瑰图"><span class="nav-number">3.</span> <span class="nav-text">南丁格尔玫瑰图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失值"><span class="nav-number">4.1.</span> <span class="nav-text">缺失值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适当对Radius进行调整"><span class="nav-number">4.2.</span> <span class="nav-text">适当对Radius进行调整</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发展背景"><span class="nav-number">1.</span> <span class="nav-text">发展背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据准备"><span class="nav-number">2.</span> <span class="nav-text">数据准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现过程"><span class="nav-number">3.</span> <span class="nav-text">实现过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失值"><span class="nav-number">4.1.</span> <span class="nav-text">缺失值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适当对Radius进行调整"><span class="nav-number">4.2.</span> <span class="nav-text">适当对Radius进行调整</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
