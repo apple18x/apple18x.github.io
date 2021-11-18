@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tableau," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="发展背景由著名的英国护士及统计学家弗罗伦斯·南丁格尔发明，又名为极区图，南丁格尔自己常昵称这类图为鸡冠花图，是一种圆形的直方图。在19世纪50年代的克里米亚战争中，南丁格尔使用这种图表揭示英军死亡的主要原因实际是在战场外感染疾病，以及在战场上受伤后没有适当的护理而伤重致死，真正死在战场上的人反而不多，汇报对象是那些不太">
+<meta name="keywords" content="Tableau">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tableau常用操作">
+<meta property="og:url" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/index.html">
+<meta property="og:site_name" content="昕小阳的博客">
+<meta property="og:description" content="发展背景由著名的英国护士及统计学家弗罗伦斯·南丁格尔发明，又名为极区图，南丁格尔自己常昵称这类图为鸡冠花图，是一种圆形的直方图。在19世纪50年代的克里米亚战争中，南丁格尔使用这种图表揭示英军死亡的主要原因实际是在战场外感染疾病，以及在战场上受伤后没有适当的护理而伤重致死，真正死在战场上的人反而不多，汇报对象是那些不太能理解传统统计报表的公务人员，甚至成功打动了维多利亚女王，从而成功改善了战地医院">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-1.jpg">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-2.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-3.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-4.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-5.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-6.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-7.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-8.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-9.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-10.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-12.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-11.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-14.png">
+<meta property="og:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-13.png">
+<meta property="og:updated_time" content="2021-11-18T21:54:25.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tableau常用操作">
+<meta name="twitter:description" content="发展背景由著名的英国护士及统计学家弗罗伦斯·南丁格尔发明，又名为极区图，南丁格尔自己常昵称这类图为鸡冠花图，是一种圆形的直方图。在19世纪50年代的克里米亚战争中，南丁格尔使用这种图表揭示英军死亡的主要原因实际是在战场外感染疾病，以及在战场上受伤后没有适当的护理而伤重致死，真正死在战场上的人反而不多，汇报对象是那些不太能理解传统统计报表的公务人员，甚至成功打动了维多利亚女王，从而成功改善了战地医院">
+<meta name="twitter:image" content="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/tableau-nightingale-rose-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://www.xinxiaoyang/programming/2021-11-18-tableau-nightingale-rose/"/>
+
+
+  <title> Tableau常用操作 | 昕小阳的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99363578-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">昕小阳的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">故事我有，我不喝酒。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Tableau常用操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2021-11-18T00:00:00+08:00" content="2021-11-18">
+              2021-11-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="发展背景"><a href="#发展背景" class="headerlink" title="发展背景"></a>发展背景</h2><p>由著名的英国护士及统计学家弗罗伦斯·南丁格尔发明，又名为极区图，南丁格尔自己常昵称这类图为鸡冠花图，是一种圆形的直方图。在19世纪50年代的克里米亚战争中，南丁格尔使用这种图表揭示英军死亡的主要原因实际是在战场外感染疾病，以及在战场上受伤后没有适当的护理而伤重致死，真正死在战场上的人反而不多，汇报对象是那些不太能理解传统统计报表的公务人员，甚至成功打动了维多利亚女王，从而成功改善了战地医院的卫生条件，为伤员们解决了必须的物资资源，英军伤员的死亡率因此迅速下降。</p>
+<a id="more"></a>  
+<p><img src="tableau-nightingale-rose-1.jpg"></p>
+<h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><p>我们以下图数据为基础来做图，做南丁格尔玫瑰图的基础数据需要两个必备的字段： <strong>分类</strong>（用于分区）和 <strong>半径大小</strong>（用于展现分区的大小）。这里分类可以有多级，即在每个分区中进一步通过不同颜色拆分类别。</p>
+<p><img src="tableau-nightingale-rose-2.png" style="zoom:73%;"></p>
+<p>在正式做图之前，我们要对源数据进行处理：① 新增一列，命名为Path，取值均为1  ② 复制所有数据，将复制后的数据Path列修改为102</p>
+<p><img src="tableau-nightingale-rose-3.png" style="zoom:73%;"></p>
+<h2 id="南丁格尔玫瑰图"><a href="#南丁格尔玫瑰图" class="headerlink" title="南丁格尔玫瑰图"></a>南丁格尔玫瑰图</h2><p>打开 Tableau 连接数据，创建 [Path] 字段的数据桶，数据桶大小修改为1。</p>
+<p><img src="tableau-nightingale-rose-4.png" style="zoom: 50%;"></p>
+<p>如下图创建8个计算字段。其中 Radius 需将半径字段根据实际数据进行替换，其他字段无需做修改。</p>
+<p><img src="tableau-nightingale-rose-5.png" style="zoom: 50%;"></p>
+<p>文字版（供复制）：</p>
+<ol>
+<li>Angle = ([Edges]-1)<em>(2</em>PI()/WINDOW_MAX([Edges]))</li>
+<li>Count = INDEX()</li>
+<li>Edge = INDEX()</li>
+<li>Index = INDEX()</li>
+<li>Number of Slices = WINDOW_MAX([Count])</li>
+<li>Radius = SQRT(AVG([面积（平方公里）])/PI())</li>
+<li>X = IIF([Index]=1 OR [Index]=WINDOW_MAX([Index]),0,<br>WINDOW_MAX([Radius]) <em> COS([Angle]+<br>([Index]-2) </em> WINDOW_MAX(2 <em> PI())/([Number of Slices] </em> 99)))</li>
+<li>Y = IIF([Index]=1 OR [Index]=WINDOW_MAX([Index]),0,<br>WINDOW_MAX([Radius]) <em> SIN([Angle]+<br>([Index]-2)</em>WINDOW_MAX(2 <em> PI())/([Number of Slices]</em>99)))</li>
+</ol>
+<p>标记中的图表类型选择为「多边形」。</p>
+<p>将「Path(数据桶)」拖入行，勾选「显示缺失值」后，将其拖入「路径」。</p>
+<p><img src="tableau-nightingale-rose-6.png" style="zoom: 50%;"></p>
+<p>将需要<strong>用作分区</strong>的字段，这里「类型」和「区域」均可以作为分区，假设在这里我们选用“类型”作为分区，将「类型」字段拖入「颜色」。若字段取值过多时，也可先拖入「详细信息」后将其标记修改为「颜色」，</p>
+<p><img src="tableau-nightingale-rose-7.png" style="zoom: 50%;"></p>
+<p>将字段「X」拖如列，将字段 「Y」拖入行，并分别对 X 和 Y （同X）右键，按如下编辑表计算：即 X (Y) 和 Index 选择「Path(数据桶)」，其余字段选择「类型」。</p>
+<p><img src="tableau-nightingale-rose-8.png" style="zoom: 50%;"></p>
+<p>这样我们就得到了基本的玫瑰图</p>
+<p><img src="tableau-nightingale-rose-9.png" style="zoom: 50%;"></p>
+<p>进行调整和美化后得到</p>
+<p><img src="tableau-nightingale-rose-10.png" style="zoom: 50%;"></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><h3 id="两级分类下不能存在缺失值"><a href="#两级分类下不能存在缺失值" class="headerlink" title="两级分类下不能存在缺失值"></a>两级分类下不能存在缺失值</h3><p>如果我们希望进行二级分类的拆分，可以将二级分类拖入标记中的「颜色」即可。注意：这里要求两个维度必须均有数值，否则会产生扇形角度不一致的状况。例如下图：</p>
+<p><img src="tableau-nightingale-rose-12.png" style="zoom: 50%;"></p>
+<p>通过透视源数据发现两个维度下存在缺失值，</p>
+<p><img src="tableau-nightingale-rose-11.png" style="zoom: 50%;"></p>
+<p>去掉含有缺失值的字段后，我们发现二级分类可正常显示：</p>
+<p><img src="tableau-nightingale-rose-14.png" style="zoom: 50%;"></p>
+<h3 id="适当对Radius进行调整"><a href="#适当对Radius进行调整" class="headerlink" title="适当对Radius进行调整"></a>适当对Radius进行调整</h3><p>在上述存在缺失值的情况下，Radius用AVG可能无法正确反映大小关系。例如在上例中，戈壁的面积求和明显少于有林地，但用AVG后会发现戈壁的均值比有林地更高，因此在图表中也会显示戈壁的面积更大。在这种情况下可对Radius进行适当调整，例如修改为：<code>Radius = SQRT(SUM([面积（平方公里）])/PI())</code></p>
+<p><img src="tableau-nightingale-rose-13.png" style="zoom: 50%;"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tableau/" rel="tag">#Tableau</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2021-08-19-model-performance/" rel="next" title="机器学习性能评估指标">
+                <i class="fa fa-chevron-left"></i> 机器学习性能评估指标
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="昕小阳" />
+          <p class="site-author-name" itemprop="name">昕小阳</p>
+          <p class="site-description motion-element" itemprop="description">故事我有，我不喝酒。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">98</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发展背景"><span class="nav-number">1.</span> <span class="nav-text">发展背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据准备"><span class="nav-number">2.</span> <span class="nav-text">数据准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#南丁格尔玫瑰图"><span class="nav-number">3.</span> <span class="nav-text">南丁格尔玫瑰图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两级分类下不能存在缺失值"><span class="nav-number">4.1.</span> <span class="nav-text">两级分类下不能存在缺失值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适当对Radius进行调整"><span class="nav-number">4.2.</span> <span class="nav-text">适当对Radius进行调整</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">昕小阳</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
